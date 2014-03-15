@@ -1,14 +1,15 @@
-console.log("loaded first sketch");
+kitt.setup = function() {
 
-sketch.setup = function() {
-
+  console.log("calling setup");
 }
 
-sketch.update = function() {
+kitt.update = function() {
 
+  //update loop
 }
 
-sketch.loop = function() {
+kitt.draw = function() {
 
+  //draw loop
 
 }

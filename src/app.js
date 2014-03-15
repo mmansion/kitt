@@ -7,11 +7,7 @@ define([
   //on document load, init app
   , function(kitt, $, hljs) {
 
-    console.log(kitt); //the kitt has loaded
-
     $(function() { //on document load
-
-      window.sketch  = {}; //global sketch namespace
 
       var screenWidth   = window.innerWidth
         , screenHeight  = window.innerHeight
@@ -80,6 +76,7 @@ define([
 
         //deletes the module properties from the requirejs context
         loadedModules.forEach(function(module) {
+
           delete(context.defined[module.name]);
           delete(context.urlFetched[module.url]);
 
@@ -100,8 +97,15 @@ define([
         var xhr = new XMLHttpRequest();
 
         xhr.addEventListener('load', function(evt) {
-          var data;
-          eval(data);
+          var data = evt.target.response
+            , script = document.createElement('script');
+
+          script.type = 'text/javascript';
+          script.innerHTML = data;
+          
+          document.body.appendChild(script);
+
+          kitt.start(document.getElementById('sketch'));
 
           //$('#code').html('<section><pre><code class="javascript">' + data + '</code></pre></section>');
           //$('pre code').each(function(i, e) {hljs.highlightBlock(e)});

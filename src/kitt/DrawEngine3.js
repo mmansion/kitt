@@ -14,8 +14,9 @@ define(function () {
       this.frameRate = false;
       this.fps       = 0;
 
-      if(this.setup && typeof(self.setup) === 'function') {
-        this.setup();
+      //TODO: figure out how to use an inheritance model to make this more modular
+      if(kitt.setup && typeof(kitt.setup) === 'function') {
+        kitt.setup();
       }
 
       window.requestAnimationFrame(function(time) {       
@@ -35,16 +36,16 @@ define(function () {
       self.calcFps(time); // update fps time
         
       //if an update function has been registered, call it for ea animation loop
-      if(self.update && typeof(self.update) === 'function') {
-        self.update();
+      if(kitt.update && typeof(kitt.update) === 'function') {
+        kitt.update();
       }
 
       //if a draw function has been registered, call it for ea animation loop
-      if(self.draw && typeof(self.draw) === 'function') {
+      if(kitt.draw && typeof(kitt.draw) === 'function') {
         self.context.setTransform(1, 0, 0, 1, 0, 0); //remove translations/transforms by seting to identity matrix
-        
         self.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        self.draw(time);
+        
+        kitt.draw(time);
       }
 
       if(self.frameRate) { //if specifying a framerate, don't use rAF

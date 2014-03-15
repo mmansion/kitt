@@ -6,6 +6,12 @@ define([
   function(coords, drawEngine, utils) {
 
   return kitt = {
-    name: 'kitt'
+    
+    name: 'kitt',
+    drawEngine: drawEngine,
+
+    start: function(canvas) {
+      this.drawEngine.start(canvas);
+    }
   };
 });

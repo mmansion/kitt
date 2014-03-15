@@ -4,7 +4,7 @@ require.config({
     jquery: '/bower_components/jquery/dist/jquery',
     highlight: '/bower_components/highlightjs/highlight.pack',
     underscore: '/bower_components/underscore/underscore',
-    kitt: 'kitt/kitt'
+    kitt: 'kitt/Kitt'
   },
   shim: {
     /* 

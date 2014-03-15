@@ -1,3 +1,5 @@
+//TODO: migrate to new format
+
 require(['jquery', 'classes/DrawEngine'], function($, DrawEngine) {
 
   var canvas      = document.getElementById('sketch'),
@@ -15,5 +17,4 @@ require(['jquery', 'classes/DrawEngine'], function($, DrawEngine) {
       ctx.fillStyle = '#fff';
       ctx.fillText(time, canvas.width/2-200, canvas.height/2-25);
     });
-  
 });

@@ -5,7 +5,11 @@ define([
   ]
 
   //on document load, init app
-  , function(kitt, $, hljs) {
+  , function(Kitt, $, hljs) {
+
+    var kitt = {};
+
+    window.kitt = kitt;
 
     $(function() { //on document load
 
@@ -71,8 +75,13 @@ define([
         var scripts = document.scripts,
             context = require.s.contexts['_'];
 
-        sketch = null;
-        sketch = {};
+        //destroy previous kitt, put on the global namespace
+
+        if(kitt.engine) {
+          //clear the animation frame
+           window.cancelAnimationFrame(kitt.engine.animationId);
+           window.kitt = kitt = null;
+        }
 
         //deletes the module properties from the requirejs context
         loadedModules.forEach(function(module) {
@@ -94,6 +103,8 @@ define([
         createNewCanvas();
         clearLoadedModules();
 
+        window.kitt = kitt = new Kitt();
+
         var xhr = new XMLHttpRequest();
 
         xhr.addEventListener('load', function(evt) {
@@ -102,7 +113,7 @@ define([
 
           script.type = 'text/javascript';
           script.innerHTML = data;
-          
+
           document.body.appendChild(script);
 
           kitt.start(document.getElementById('sketch'));

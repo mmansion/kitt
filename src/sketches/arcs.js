@@ -7,6 +7,9 @@ var canvas
   , deg = 0
   , c;
 
+
+console.log(kitt);
+
 /* Setup
   --------------------------------------------------- */
 kitt.setup = function() {

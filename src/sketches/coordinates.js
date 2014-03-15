@@ -1,3 +1,5 @@
+//TODO: migrate to new format
+
 require(['jquery', 'classes/Coords'], function($, Coords) {
 
   var canvas  = document.getElementById('sketch'),

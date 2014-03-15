@@ -5,15 +5,51 @@ define([
   ], 
   function(coords, drawEngine, utils) {
 
-  return kitt = {
-    
-    name: 'kitt',
-    canvas: {},
-    drawEngine: drawEngine,
+    return Kitt = function() {
+      console.log("new kitt created");
 
-    start: function(canvas) {
-      this.canvas = canvas;
-      this.drawEngine.start(canvas);
-    }
-  };
+      var self = this;
+
+      self.name =  'kitt';
+      self.canvas = {};
+      self.engine = drawEngine;
+
+      self.start = function(canvas) {
+        self.canvas = canvas;
+        self.engine.start(canvas);
+      }
+      return self;
+    };
+
+    // return kitt = {
+    //   Kitt: function() {
+    //     var self = this;
+
+    //     console.log(self);
+
+    //     // return {
+    //     //   self.name:   'kitt',
+    //     //   self.canvas: {},
+    //     //   self.engine: drawEngine,
+
+    //     //   self.start:  function() {
+    //     //     self.canvas = canvas;
+    //     //     self.drawEngine.start(canvas);
+    //     //   };
+    //     // }
+    //   }
+    // };
+
+
+  // return kitt = {
+    
+  //   name: 'kitt',
+  //   canvas: {},
+  //   drawEngine: drawEngine,
+
+  //   start: function(canvas) {
+  //     this.canvas = canvas;
+  //     this.drawEngine.start(canvas);
+  //   }
+  // };
 });

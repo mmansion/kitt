@@ -1,3 +1,5 @@
+//TODO: migrate to new format
+
 require(['jquery', 'classes/DrawEngine2', 'classes/Utils'], function($, DrawEngine, utils) {
 
 

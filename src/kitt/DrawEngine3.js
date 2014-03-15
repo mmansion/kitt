@@ -4,7 +4,8 @@ define(function () {
    --------------------------------------------------- */
 
   var DrawEngine = function() {
-    var self = this;
+    var self = this
+        self.animationId;
         
    this.start =  function(canvas, setFrameRate) {
       this.frameRate = setFrameRate || false;
@@ -19,7 +20,7 @@ define(function () {
         kitt.setup();
       }
 
-      window.requestAnimationFrame(function(time) {       
+      self.animationId = window.requestAnimationFrame(function(time) {       
         self.animate.call(self, time); // self is the game
       });
     };
@@ -60,7 +61,7 @@ define(function () {
 
         //requestionAnimationFrame() callback routine must itself call requestAnimationFrame() 
         //in order to animate another frame at the next repaint.
-        window.requestAnimationFrame(function(time) {
+        self.animationId = window.requestAnimationFrame(function(time) {
           self.animate.call(self, time);
         });
       }

@@ -1,7 +1,8 @@
 [
   {
     "title": "arcs",
-    "src": "arcs.js"
+    "src": "arcs.js",
+     "default": "true"
   },
   {
     "title": "coordinates",
@@ -41,12 +42,10 @@
   },
   {
     "title": "2014-02-27-a",
-    "src": "sketch-2014-02-27-a.js",
-    "default": "true"
+    "src": "sketch-2014-02-27-a.js"
   },
   {
     "title": "example",
-    "src": "sketch-example.js",
-    "default": "true"
+    "src": "sketch-example.js"
   }
 ]

@@ -8,9 +8,11 @@ define([
   return kitt = {
     
     name: 'kitt',
+    canvas: {},
     drawEngine: drawEngine,
 
     start: function(canvas) {
+      this.canvas = canvas;
       this.drawEngine.start(canvas);
     }
   };

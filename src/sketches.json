@@ -1,0 +1,52 @@
+[
+  {
+    "title": "arcs",
+    "src": "arcs.js"
+  },
+  {
+    "title": "coordinates",
+    "src": "coordinates.js"
+  },
+  {
+    "title": "loading images",
+    "src": "loading-images.js"
+  },
+  {
+    "title": "pixel printer",
+    "src": "pixel-printer.js"
+  },
+  {
+    "title": "draw engine",
+    "src": "draw-engine.js"
+  },
+  {
+    "title": "random walk 01",
+    "src": "random-walk-01.js"
+  },
+  {
+    "title": "random walk 02",
+    "src": "random-walk-02.js"
+  },
+  {
+    "title": "slice loader",
+    "src": "slice-loader.js"
+  },
+  {
+    "title": "simple paths",
+    "src": "simple-paths.js"
+  },
+  {
+    "title": "light strip",
+    "src": "light-strip.js"
+  },
+  {
+    "title": "2014-02-27-a",
+    "src": "sketch-2014-02-27-a.js",
+    "default": "true"
+  },
+  {
+    "title": "example",
+    "src": "sketch-example.js",
+    "default": "true"
+  }
+]

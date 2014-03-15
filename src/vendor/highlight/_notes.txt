@@ -1,0 +1,2 @@
+This highlight.pack.js has been custom compiled for AMD and JavaScript.
+See section on AMD https://github.com/isagalaev/highlight.js

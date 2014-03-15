@@ -1,18 +1,23 @@
 require.config({
   baseUrl: './',
   paths: {
-    jquery: 'vendor/jquery.min',
-    modernizer: 'vendor/modernizr.min',
-    mlpushmenu: 'vendor/multi-menu/js/mlpushmenu',
-    classie: 'vendor/multi-menu/js/classie',
-    highlight: 'vendor/highlight/highlight.pack',
-    underscore: '../bower_components/underscore/underscore',
+    jquery: '/bower_components/jquery/dist/jquery',
+    highlight: '/bower_components/highlightjs/highlight.pack',
+    underscore: '/bower_components/underscore/underscore',
     kitt: 'kitt/kitt'
   },
   shim: {
-    'mlpushmenu': {
-      deps: ['jquery', 'modernizer', 'classie']    
+    /* 
+    //example
+    'library': {
+      deps: ['jquery', 'modernizer', 'classie']  
+      exports: 'library-name'
     }
+    */
+    'highlight' : {
+      exports: 'hljs'
+    }
+
   }
 });
 require(['app']);

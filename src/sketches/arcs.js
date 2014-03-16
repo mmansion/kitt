@@ -1,4 +1,4 @@
-var canvas
+var canvas    = kitt.canvas
   , lastRun   = + new Date
   , delay     = 100
   , clockwise = true
@@ -7,14 +7,11 @@ var canvas
   , deg = 0
   , c;
 
-
-console.log(kitt);
-
 /* Setup
   --------------------------------------------------- */
 kitt.setup = function() {
-  canvas = this.canvas;
-  c = canvas.getContext('2d');
+  canvas = kitt.canvas;
+  c = kitt.canvas.getContext('2d');
 
 
   c.strokeStyle = '#fff';

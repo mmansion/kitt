@@ -11,8 +11,6 @@ define([
 
     $(function() { //on document load
 
-      console.log(333);
-
       var screenWidth   = window.innerWidth
         , screenHeight  = window.innerHeight
         , xhrObjLoader  = new XMLHttpRequest()

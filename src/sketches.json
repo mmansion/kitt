@@ -5,12 +5,12 @@
   },
   {
     "title": "coordinates",
-    "src": "coordinates.js",
-     "default": "true"
+    "src": "coordinates.js"
   },
   {
     "title": "loading images",
-    "src": "loading-images.js"
+    "src": "loading-images.js",
+    "default": "true"
   },
   {
     "title": "pixel printer",

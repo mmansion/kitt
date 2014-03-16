@@ -8,6 +8,7 @@ define([
     Kitt = function() {
 
       this.canvas = {};
+      this.coords = coords;
       this.engine = drawEngine;
 
       this.start = function(canvas) {

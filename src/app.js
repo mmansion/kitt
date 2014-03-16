@@ -7,11 +7,11 @@ define([
   //on document load, init app
   , function(Kitt, $, hljs) {
 
-    var kitt = {};
-
-    window.kitt = kitt;
+    var kitt = window.kitt = {};
 
     $(function() { //on document load
+
+      console.log(333);
 
       var screenWidth   = window.innerWidth
         , screenHeight  = window.innerHeight
@@ -145,5 +145,9 @@ define([
       function createNewCanvas() {
         $('<canvas id="sketch" width="'+screenWidth+'" height="'+screenHeight+'"></canvas>').appendTo('body');
       }
+  });
+
+  window.addEventListener('resize', function() {
+    kitt.resize();
   });
 });

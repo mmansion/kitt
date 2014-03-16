@@ -16,9 +16,6 @@ kitt.setup = function() {
   canvas = this.canvas;
   c = canvas.getContext('2d');
 
-  canvas.width  = $(window).width();
-  canvas.height = $(window).height();
-
 
   c.strokeStyle = '#fff';
   c.fillStyle = '#fff';

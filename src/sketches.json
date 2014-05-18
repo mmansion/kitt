@@ -13,8 +13,7 @@
   },
   {
     "title": "pixel printer",
-    "src": "pixel-printer.js",
-    "default": "true"
+    "src": "pixel-printer.js"
   },
   {
     "title": "draw engine",
@@ -47,5 +46,10 @@
   {
     "title": "example",
     "src": "sketch-example.js"
+  },
+  {
+    "title": "2014-05-17-a",
+    "src": "sketch-2014-05-17-a.js",
+    "default": "true"
   }
 ]

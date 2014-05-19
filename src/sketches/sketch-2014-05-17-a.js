@@ -38,19 +38,5 @@ function addVideo() {
   });
 
   $('body').append($video);
-
-  // video = $('video').get(0);
-
-  // video.onended = function() {
-  //   console.log(video.currentTime);
-  //   video.currentTime = 1.0;
-  //   console.log(video.currentTime);
-
-  //   video.play();
-    
-  // }
-  
-  // video.play();
-
 }
 

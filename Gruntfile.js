@@ -176,13 +176,16 @@ module.exports = function(grunt) {
         }
       },
 
+      startServer: 'grunt connect &',
+
       loadNexus: {
 
         stdout: true,
         stderr: true,
 
         cmd: function(nexusToLoad) {
-          return String("open ./src/Nexus" + nexusToLoad + "/nexus.app");
+          return '"/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome" --load-and-launch-app=./src/Nexus001/ChromeApp'
+          //return String("open ./src/Nexus" + nexusToLoad + "/nexus.app");
         }
       }
     },
@@ -400,6 +403,7 @@ module.exports = function(grunt) {
    */
 
   G.registerTask('nexus', 'launches a nexus', function(num) {
+    G.task.run('exec:startServer'); //start server at localhost 9001
     G.task.run('exec:loadNexus:' + (num || '001'));
   });
 };

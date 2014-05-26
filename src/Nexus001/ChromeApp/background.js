@@ -1,8 +1,8 @@
 chrome.app.runtime.onLaunched.addListener(function() {
   chrome.app.window.create('window.html', {
-  	id: "mainwin",
+  	id: "NexusWindow",
     bounds: {
-      width: 700,
+      width: 600,
       height: 600
     }
   });

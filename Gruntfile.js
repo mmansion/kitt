@@ -182,10 +182,10 @@ module.exports = function(grunt) {
         stderr: true,
 
         cmd: function(nexusToLoad) {
-          return 'echo ' + nexusToLoad;
+          return String("open ./src/Nexus" + nexusToLoad + "/nexus.app");
         }
       }
-    }
+    },
 
     /**
     *

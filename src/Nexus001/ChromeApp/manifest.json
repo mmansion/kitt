@@ -10,5 +10,9 @@
       "scripts": ["background.js"]
     }
   },
-  "permissions": ["fullscreen", "alwaysOnTopWindows"]
+  "permissions": [
+    "<all_urls>",
+    "fullscreen",
+    "alwaysOnTopWindows"
+  ]
 }

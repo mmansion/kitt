@@ -243,3 +243,9 @@ if (isAlwaysOnTopSupported) {
 if (!isFocusedSupported) {
   $('#newWindowFocused').disabled = true;
 }
+
+
+//chrome.app.window.current().moveTo(1, 1);
+
+chrome.app.window.current().fullscreen();
+

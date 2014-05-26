@@ -1,107 +1,323 @@
 module.exports = function(grunt) {
 
-  /*
-   * Grunt Project Configuration
-   */
+  var G = grunt;
 
+
+   /**
+    *
+    * GRUNT TASK CONFIGURATION
+    *
+    */
+   
   grunt.initConfig({
 
     pkg: grunt.file.readJSON('package.json'),
 
-    clean: {  
+    /**
+    *
+    * BOWER
+    *
+    */
 
-      //ref: https://github.com/gruntjs/grunt-contrib-clean
+    bower: {
+      dist: {
+        dest:      'dist/',
+        js_dest:   'dist/scripts/libs',
+        css_dest:  'dist/styles'
+      }
+    },
 
-      /*
-      clean directories before write
-      dist: 'dist/*',
-      docs: 'docs/*'
-      */
+    /**
+    *
+    * CLEAN
+    *
+    */
+
+    clean: {
+      dist: 'dist/*' //deletes files in dist/webapp dir 
     },
 
     concat: {
+      scripts: {
+        options: {
+          separator: '\n;',
 
-      //ref: https://github.com/gruntjs/grunt-contrib-concat
+          //BANNER FOR MASTER JS BUILD
+          banner: '/**\n * \n * ' +
+                  '<%= pkg.title || pkg.name %> - v<%= pkg.version %> '  +
+                  '<%= grunt.template.today("yyyy.mm.dd") %>\n * \n'     +
+                  '<%= pkg.description ? " * " + pkg.description + "\\n" : "" %>' +
+                  ' * Copyright (c) <%= grunt.template.today("yyyy") %>' +
+                  '<%= pkg.author ? " - " + pkg.author + "\\n" : "" %>'  +
+                  ' *\n */\n\n'
+        },
+        src: [
+          'dist/scripts/chapters/*',
+          'dist/scripts/classes/*',
+          'dist/scripts/core/*'
+        ],
+        dest: 'dist/build.js'
+      },
+      styles: {
+        options: {
+          separator: '\n;',
 
-      
-      // dist: {
-      //   options: {
-      //     separator: '\n',
-      //     banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
-      //             '<%= grunt.template.today("yyyy-mm-dd") %> */'
-      //   },
-      //   src: ['path/to/src.js'],
-      //   dest: 'path/to/dest.js'
-      // }
-      
+          //BANNER FOR MASTER CSS BUILD
+          banner: '/**\n * \n * ' +
+                  '<%= pkg.title || pkg.name %> - v<%= pkg.version %> '  +
+                  '<%= grunt.template.today("yyyy.mm.dd") %>\n * \n'     +
+                  '<%= pkg.description ? " * " + pkg.description + "\\n" : "" %>' +
+                  ' * Copyright (c) <%= grunt.template.today("yyyy") %>' +
+                  '<%= pkg.author ? " - " + pkg.author + "\\n" : "" %>'  +
+                  ' *\n */\n\n'
+        },
+        src: [ //these need to be in order
+          'dist/styles/normalize.css',
+          'dist/styles/bootstrap.css',
+          'dist/styles/main.css',
+          'dist/styles/index.css'
+        ],
+        dest: 'dist/all.css'
+      }
     },
     
+    /**
+    *
+    * CONNECT
+    *
+    */
+
     connect: {
-
-      //ref: https://github.com/gruntjs/grunt-contrib-connect
-
       dev: {
         options: {
-          port: 9999,
+          port: 9001,
           base: '.',
           keepalive: true,
           hostname : '*'
         }
       }
-      
     },
 
+    /**
+    *
+    * COPY
+    *
+    */
+
     copy: {
-
-      //ref: https://github.com/gruntjs/grunt-contrib-copy
-
-      /*
-      dist: { 
-        //copy library assets 
-        //note that oncat can handle copying script files
+      source: { 
         files: [
           {
           expand: true, 
-          cwd: 'src/ralphe',
-          src: [ ] // include or exclude files to copy
+          cwd: 'src/',
+          src: [ 
+            '*/**'
+          ], // include or exclude files to copy
           dest: 'dist/'
           }
         ]
+      },
+      scripts: {
+        files: [
+          {
+          expand: true, 
+          cwd: 'dist/',
+          src: ['build.js', 'build.min.js'],
+          dest: 'dist/scripts'
+          }
+        ]
+      },
+      styles: {
+        files: [
+          {
+          expand: true, 
+          cwd: 'dist/',
+          src: ['all.css', 'all.min.css'],
+          dest: 'dist/styles'
+          }
+        ]
       }
-      */
     },
 
-    jshint: {
-      
-      //ref: https://github.com/gruntjs/grunt-contrib-jshint
+    /**
+    *
+    * CSS MIN
+    *
+    */
 
-      /*
-      all: ['Gruntfile.js', 'path/to/src/**'],
-      options: {
-        '-W002': true //supress warning about IE8 by listing warning number from console output
-      }
-      */
-    },  
-
-    open: {
-      src: {
-        path: 'http:localhost:9999/src'
+    cssmin: {
+      dist: {
+        options: {
+          banner: '/**\n * \n * ' +
+                  '<%= pkg.title || pkg.name %> - v<%= pkg.version %> '  +
+                  '<%= grunt.template.today("yyyy.mm.dd") %>\n * \n'     +
+                  '<%= pkg.description ? " * " + pkg.description + "\\n" : "" %>' +
+                  ' * Copyright (c) <%= grunt.template.today("yyyy") %>' +
+                  '<%= pkg.author ? " - " + pkg.author + "\\n" : "" %>'  +
+                  ' *\n */\n\n'
+          },
+          files: {
+          'dist/all.min.css': ['dist/all.css']
+          }
       }
     },
+
+    /**
+    *
+    * EXEC
+    *
+    */
 
     exec: {
+
       edit: {
         cmd: function(file) {
           return 'subl ./src/sketches/' + file;
         }
+      },
+
+      loadNexus: {
+
+        stdout: true,
+        stderr: true,
+
+        cmd: function(nexusToLoad) {
+          return 'echo ' + nexusToLoad;
+        }
       }
     }
+
+    /**
+    *
+    * JSHINT
+    *
+    */
+
+    jshint: {
+      all: ['Gruntfile.js', 'src/**'],
+      options: {
+        '-W002': true //supress warning about IE8 by listing warning number from console output
+      }
+    },
+
+    /**
+    *
+    * OPEN
+    *
+    */
+
+    open: {
+      src: {
+        path: 'http:localhost:9001/src'
+      }
+    },
+
+    /**
+    *
+    * PROCESS HTML
+    *
+    */
+
+    processhtml: {
+      all: {
+        files: {
+          'dist/index.html': ['src/index.html']
+        }
+      }
+    },
+
+    /**
+    *
+    * REMOVE
+    *
+    */
+
+    remove: {
+      options: {
+        trace: true
+      },
+      scripts: {
+        dirList: ['dist/scripts'],
+      },
+      styles: {
+        dirList: ['dist/styles'],
+      },
+      cleanup: {
+        fileList: [
+          'dist/build.js',
+          'dist/build.min.js',
+          'dist/all.css',
+          'dist/all.min.css',
+          'dist/styles/normalize-css.css',
+          'dist/styles/bootstrap.css'
+        ]
+      }
+    },
+
+    /**
+    *
+    * UGLIFY
+    *
+    */
+
+    uglify: {
+      scripts: {
+        files: {
+          'dist/build.min.js': ['dist/build.js']
+        }
+      }
+    },
+
+    /**
+    *
+    * WATCH
+    *
+    */
+
+    watch: {
+      options: {
+        livereload: true
+      },
+      src: {
+        files: ['src/**'],
+        tasks: [ /*setup tasks to run on watch */ ]
+      },
+      docs: {
+        files: ['src/**'],
+        tasks: [ /* tasks to run on watch */ ]
+      }
+    },
+
+    /**
+    *
+    * YUIDOC
+    *
+    */
+
+    yuidoc: {
+      compile: {
+        name: '<%= pkg.name %>',
+        description: '<%= pkg.description %>',
+        version: '<%= pkg.version %>',
+        url: '<%= pkg.homepage %>',
+        options: {
+          themedir: 'docs/yuidoc-theme/tellart', 
+          paths: 'src/',
+          outdir: 'docs/'
+        }
+      }
+    }
+
   });
 
-  /*
-   * Load NPM Tasks
-   */
+   /**
+    *
+    * Load NPM Modules
+    *
+    */
 
+  grunt.loadNpmTasks('grunt-bower');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-connect');
@@ -114,6 +330,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-yuidoc');
   grunt.loadNpmTasks('grunt-exec');
   grunt.loadNpmTasks('grunt-open');
+  grunt.loadNpmTasks('grunt-processhtml');
+  grunt.loadNpmTasks('grunt-remove');
+
 
   /*
    * Registered Grunt Tasks
@@ -122,7 +341,7 @@ module.exports = function(grunt) {
   //development and distribution tasks
   grunt.registerTask('default', ['open', 'connect']);
 
-
+  //TESTING CONFIG
 
   grunt.registerTask('tmp', 'Generates a new canvas sketch.', function() {
     var configJS = grunt.file.read('src/config.js');
@@ -130,8 +349,14 @@ module.exports = function(grunt) {
     console.log(config());
   });
 
-
    //custom grunt task for generating a new canvas sketch
+
+  /*
+   *
+   * GRUNT SKETCH
+   *
+   *  - generate a new canvas sketch for kitt.io
+   */
 
   grunt.registerTask('sketch', 'Generates a new canvas sketch.', function() {
     var sketchList = grunt.file.readJSON('src/sketches.json')
@@ -167,4 +392,14 @@ module.exports = function(grunt) {
     grunt.task.run('exec:edit:' + newSketch, 'default');
   });
 
+  /*
+   *
+   * GRUNT NEXUS
+   *
+   *  - launches a given nexus number
+   */
+
+  G.registerTask('nexus', 'launches a nexus', function(num) {
+    G.task.run('exec:loadNexus:' + (num || '001'));
+  });
 };

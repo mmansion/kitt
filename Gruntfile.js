@@ -358,7 +358,7 @@ module.exports = function(grunt) {
    *
    * GRUNT SKETCH
    *
-   *  - generate a new canvas sketch for kitt.io
+   *  - generate a new nexus sketch
    */
 
   grunt.registerTask('sketch', 'Generates a new canvas sketch.', function() {

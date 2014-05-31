@@ -2,6 +2,7 @@ define([
 
   '/src/nexus-core/Coords.js',
   '/src/nexus-core/DrawEngine.js',
+  '/src/nexus-core/Video.js',
   '/src/nexus-core/Utils.js'
   ], 
 
@@ -9,9 +10,11 @@ define([
 
     Nexus = function() {
 
+      //provide access to objects via root
       this.canvas = {};
       this.coords = coords;
       this.engine = drawEngine;
+      this.video  = video;
 
       this.start = function(canvas) {
 

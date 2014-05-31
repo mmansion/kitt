@@ -148,4 +148,11 @@ define([
   window.addEventListener('resize', function() {
     nexus.resize();
   });
+
+  //TODO: App Key Shortcuts
+
+  // document.addEventListener('keydown', function(e) {
+  //   console.log(e.keyCode);
+  //   console.log( String.fromCharCode(e.keyCode) );
+  // });
 });

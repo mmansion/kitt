@@ -1,5 +1,6 @@
 define(function () {
 
+
    /* DRAW ENGINE CLASS
    --------------------------------------------------- */
 
@@ -7,7 +8,7 @@ define(function () {
     var self = this
         self.animationId;
         
-   this.start =  function(canvas, setFrameRate) {
+    this.start =  function(canvas, setFrameRate) {
       this.frameRate = setFrameRate || false;
       this.canvas    = canvas;
       this.context   = canvas.getContext('2d');
@@ -81,9 +82,9 @@ define(function () {
    /* PRIVATE FUNCTIONS
    --------------------------------------------------- */
 
-   var getTimeNow = function () {
-      return new Date().getTime();
-   };
+  var getTimeNow = function () {
+    return new Date().getTime();
+  };
   
   return new DrawEngine();
 });

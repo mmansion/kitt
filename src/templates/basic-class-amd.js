@@ -1,14 +1,34 @@
 define(function () {
 
+  /* PRIVATE VARS
+   --------------------------------------------------- */
+
+  var _private = "private variable";
+
+  /* MY CLASS
+   --------------------------------------------------- */
+
   var MyClass = function() {
-    //private vars, getters, setters
+    //properties, getters, setters
+
   };
 
+  /* MY CLASS PROTOTYPE
+   --------------------------------------------------- */
+
   MyClass.prototype = {
+    
     protoMethod: function() {
       //prototype method
     }
   };
+
+  /* PRIVATE FUNCTIONS
+   --------------------------------------------------- */
   
-  return MyClass;
+  function _privateFunction() {
+
+  }
+
+  return new MyClass();
 });

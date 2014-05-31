@@ -3,8 +3,8 @@ var c
 
 /* Setup
   --------------------------------------------------- */
-kitt.setup = function() {
-  c = kitt.canvas.getContext('2d');
+nexus.setup = function() {
+  c = nexus.canvas.getContext('2d');
 
   img =new Image();
   img.onload = drawImage;
@@ -25,8 +25,8 @@ drawImage( image, sx, sy, sw, sh, dx, dy, dw, dh)
 */
 
 function drawImage() {
-  var dx = kitt.canvas.width/2 - 150
-    , dy = kitt.canvas.height/2 - 226
+  var dx = nexus.canvas.width/2 - 150
+    , dy = nexus.canvas.height/2 - 226
     , sx = 0
     , sy = 0
     , sw = 1500

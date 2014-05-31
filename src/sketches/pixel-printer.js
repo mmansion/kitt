@@ -3,8 +3,8 @@ var c
 
 /* Setup
   --------------------------------------------------- */
-kitt.setup = function() {
-  c = kitt.canvas.getContext('2d');
+nexus.setup = function() {
+  c = nexus.canvas.getContext('2d');
 
   img =new Image();
   img.onload = drawImage;
@@ -26,8 +26,8 @@ function drawImage() {
   // d =>  destination canvas | s = > source image
 
   var imageData = {},
-      dx = kitt.canvas.width/2 - 150, //centering
-      dy = kitt.canvas.height/2 - 226, 
+      dx = nexus.canvas.width/2 - 150, //centering
+      dy = nexus.canvas.height/2 - 226, 
 
       dw = 300,  //translated size to destination canvas
       dh = 452, 
@@ -49,7 +49,7 @@ function drawImage() {
 
     imageData = c.getImageData(dx, dy, dw, dh);
 
-    c.clearRect(0, 0, kitt.canvas.width, kitt.canvas.height);
+    c.clearRect(0, 0, nexus.canvas.width, nexus.canvas.height);
 
     //c.putImageData(imageData, dx, dy);
 

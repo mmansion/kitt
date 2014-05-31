@@ -1,38 +1,27 @@
 define(function () {
 
-  //private
-  var _onDraw;
-
    /* DRAW ENGINE CLASS
    --------------------------------------------------- */
 
   var DrawEngine = function() {
+    var self = this
+        self.animationId;
+        
+   this.start =  function(canvas, setFrameRate) {
+      this.frameRate = setFrameRate || false;
+      this.canvas    = canvas;
+      this.context   = canvas.getContext('2d');
+      this.lastRun   = getTimeNow();
+      this.frameRate = false;
+      this.fps       = 0;
 
-    // Time
-    this.startTime = 0;
-    this.lastTime  = 0;
-    this.currTime  = 0;
-    this.fps = 0;
-    this.STARTING_FPS = 60;
+      //TODO: figure out how to use an inheritance model to make this more modular
+      if(nexus.setup && typeof(nexus.setup) === 'function') {
+        nexus.setup();
+      }
 
-   this.start =  function(callback) {
-      var self = this;               // The this variable is the game
-      
-      self.startTime = getTimeNow(); // Record game's startTime (used for pausing)
-
-      _onDraw = callback; //localize the specified draw function
-
-      /**
-       *
-       * @method window.requestAnimationFrame()
-       *
-       * tells the browser that you wish to perform an animation and requests that
-       * the browser call a specified function to update an animation before next repaint
-       */
-
-      window.requestAnimationFrame(function(time) { 
-        console.log("starting to draw engine");        
-        self.draw.call(self, time); // self is the game
+      self.animationId = window.requestAnimationFrame(function(time) {       
+        self.animate.call(self, time); // self is the game
       });
     };
   };
@@ -41,42 +30,53 @@ define(function () {
    --------------------------------------------------- */
 
   DrawEngine.prototype = {
-
-    draw: function (time, callback) {
-
+    
+    animate: function (time) {
       var self = this; // window.requestNextAnimationFrame() called by DOMWindow
-            
-        self.tick(time); // Update fps, game time
 
-
-        if(_onDraw && typeof(_onDraw) === 'function') {
-          //calls a the function specified at start(), passing the current time as an argument
-          _onDraw(time);
-        }
-
-        //Note: requestionAnimationFrame() callback routine must itself 
-        //call requestAnimationFrame() if you want to animate another frame at the next repaint.
-        window.requestAnimationFrame(function(time) {
-          self.draw.call(self, time);
-        });
-      },
-
-      // Update the frame rate, time, and the last time the application
-      // drew an animation frame.
-      
-      tick: function (time) {
-         this.updateFrameRate(time);
-         this.currTime = (getTimeNow()) - this.startTime;
-      },
-
-      // Update the frame rate, based on the amount of time it took
-      // for the last animation frame only.
-      
-      updateFrameRate: function (time) {
-         if (this.lastTime === 0) this.fps = this.STARTING_FPS;
-         else                     this.fps = 1000 / (time - this.lastTime);
+      self.calcFps(time); // update fps time
+        
+      //if an update function has been registered, call it for ea animation loop
+      if(nexus.update && typeof(nexus.update) === 'function') {
+        nexus.update();
       }
-   };
+
+      //if a draw function has been registered, call it for ea animation loop
+      if(nexus.draw && typeof(nexus.draw) === 'function') {
+        self.context.setTransform(1, 0, 0, 1, 0, 0); //remove translations/transforms by seting to identity matrix
+        self.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        
+        nexus.draw(time);
+      }
+
+      if(self.frameRate) { //if specifying a framerate, don't use rAF
+        setTimeout(function() {
+
+          time = getTimeNow() + 1000/self.frameRate; //next scheduled cycle
+          self.animate.call(self, time);
+
+        }, 1000/self.frameRate);
+
+      } else { //rAF is locked to monitor's sync, typically 60 Hz, so we can't adjust the FPS for it in itself 
+
+        //requestionAnimationFrame() callback routine must itself call requestAnimationFrame() 
+        //in order to animate another frame at the next repaint.
+        self.animationId = window.requestAnimationFrame(function(time) {
+          self.animate.call(self, time);
+        });
+      }
+    },
+
+    calcFps: function (time) {
+      //calculates fps by taking frame delta, and then rounds to the nearest hundreth
+       this.fps = Math.round(1 / ((getTimeNow() - this.lastRun) / 1000) * 100) / 100;
+       this.lastRun = getTimeNow();
+    },
+
+    delay: function(ms) {
+      //TODO
+    }
+  };
 
    /* PRIVATE FUNCTIONS
    --------------------------------------------------- */
@@ -85,5 +85,5 @@ define(function () {
       return new Date().getTime();
    };
   
-  return DrawEngine;
+  return new DrawEngine();
 });

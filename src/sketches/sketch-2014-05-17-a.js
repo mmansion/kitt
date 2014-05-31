@@ -2,21 +2,21 @@ var c;
 
 /* Setup
   --------------------------------------------------- */
-kitt.setup = function() {
-  c = kitt.canvas.getContext('2d');
-  addVideo();
+nexus.setup = function() {
+  c = nexus.canvas.getContext('2d');
+  //addVideo();
 }
 
 /* Update
   --------------------------------------------------- */
-kitt.update = function() {
+nexus.update = function() {
 
 }
 
 
 /* Draw
   --------------------------------------------------- */
-kitt.draw = function() {
+nexus.draw = function() {
 
 }
 

@@ -1,4 +1,4 @@
-var canvas    = kitt.canvas
+var canvas    = nexus.canvas
   , lastRun   = + new Date
   , delay     = 100
   , clockwise = true
@@ -9,9 +9,9 @@ var canvas    = kitt.canvas
 
 /* Setup
   --------------------------------------------------- */
-kitt.setup = function() {
-  canvas = kitt.canvas;
-  c = kitt.canvas.getContext('2d');
+nexus.setup = function() {
+  canvas = nexus.canvas;
+  c = nexus.canvas.getContext('2d');
 
 
   c.strokeStyle = '#fff';
@@ -20,7 +20,7 @@ kitt.setup = function() {
 
 /* Update
   --------------------------------------------------- */
-kitt.update = function() {
+nexus.update = function() {
 
   //update loop
 }
@@ -28,7 +28,7 @@ kitt.update = function() {
 
 /* Draw
   --------------------------------------------------- */
-kitt.draw = function() {
+nexus.draw = function() {
   deg++;
 
   if(deg == 360) {

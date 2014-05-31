@@ -1,13 +1,13 @@
 define([
-  'nexus',
+  'kitt',
   'jquery', 
   'highlight'
   ]
 
   //on document load, init app
-  , function(Nexus, $, hljs) {
+  , function(Kitt, $, hljs) {
 
-    var nexus = window.nexus = {};
+    var kitt = window.kitt = {};
 
     $(function() { //on document load
 
@@ -73,12 +73,12 @@ define([
         var scripts = document.scripts,
             context = require.s.contexts['_'];
 
-        //destroy previous nexus, put on the global namespace
+        //destroy previous kitt, put on the global namespace
 
-        if(nexus.engine) {
+        if(kitt.engine) {
           //clear the animation frame
-           window.cancelAnimationFrame(nexus.engine.animationId);
-           window.nexus = nexus = null;
+           window.cancelAnimationFrame(kitt.engine.animationId);
+           window.kitt = kitt = null;
         }
 
         //deletes the module properties from the requirejs context
@@ -101,7 +101,7 @@ define([
         createNewCanvas();
         clearLoadedModules();
 
-        window.nexus = nexus = new Nexus();
+        window.kitt = kitt = new Kitt();
 
         var xhr = new XMLHttpRequest();
 
@@ -114,7 +114,7 @@ define([
 
           document.body.appendChild(script);
 
-          nexus.start(document.getElementById('sketch'));
+          kitt.start(document.getElementById('sketch'));
 
           //$('#code').html('<section><pre><code class="javascript">' + data + '</code></pre></section>');
           //$('pre code').each(function(i, e) {hljs.highlightBlock(e)});
@@ -146,6 +146,6 @@ define([
   });
 
   window.addEventListener('resize', function() {
-    nexus.resize();
+    kitt.resize();
   });
 });

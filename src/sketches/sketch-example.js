@@ -1,14 +1,14 @@
-kitt.setup = function() {
+nexus.setup = function() {
 
   console.log("calling setup");
 }
 
-kitt.update = function() {
+nexus.update = function() {
 
   //update loop
 }
 
-kitt.draw = function() {
+nexus.draw = function() {
 
   //draw loop
 

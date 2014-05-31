@@ -1,14 +1,11 @@
 require.config({
-  
   baseUrl: './',
-
   paths: {
-    jquery:     '/bower_components/jquery/dist/jquery',
-    highlight:  '/bower_components/highlightjs/highlight.pack',
+    jquery: '/bower_components/jquery/dist/jquery',
+    highlight: '/bower_components/highlightjs/highlight.pack',
     underscore: '/bower_components/underscore/underscore',
-    nexus:      'nexus-core/Nexus'
+    kitt: 'kitt/Kitt'
   },
-
   shim: {
     /* 
     //example
@@ -17,12 +14,10 @@ require.config({
       exports: 'library-name'
     }
     */
-
     'highlight' : {
       exports: 'hljs'
     }
 
   }
 });
-
 require(['app']);

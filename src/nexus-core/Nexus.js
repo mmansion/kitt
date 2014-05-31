@@ -1,11 +1,13 @@
 define([
-  '/src/kitt/Coords.js',
-  '/src/kitt/DrawEngine3.js',
-  '/src/kitt/Utils.js'
+
+  '/src/nexus-core/Coords.js',
+  '/src/nexus-core/DrawEngine.js',
+  '/src/nexus-core/Utils.js'
   ], 
+
   function(coords, drawEngine, utils) {
 
-    Kitt = function() {
+    Nexus = function() {
 
       this.canvas = {};
       this.coords = coords;
@@ -21,13 +23,15 @@ define([
       }
     };
 
-    Kitt.prototype = {
+    Nexus.prototype = {
+
       resize: function() {
         this.canvas.width = window.innerWidth;
         this.canvas.height = window.innerHeight;
         this.setup();
       }
+
     };
 
-    return Kitt;
+    return Nexus;
 });

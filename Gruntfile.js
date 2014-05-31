@@ -2,7 +2,6 @@ module.exports = function(grunt) {
 
   var G = grunt;
 
-
    /**
     *
     * GRUNT TASK CONFIGURATION
@@ -173,6 +172,12 @@ module.exports = function(grunt) {
       edit: {
         cmd: function(file) {
           return 'subl ./src/sketches/' + file;
+        }
+      },
+
+      editClass: {
+        cmd: function(file) {
+          return 'subl ./src/nexus-core/' + file;
         }
       },
 
@@ -352,7 +357,46 @@ module.exports = function(grunt) {
     console.log(config());
   });
 
-   //custom grunt task for generating a new canvas sketch
+  /*
+   *
+   * GRUNT CLASS
+   *
+   *  - generate a new nexus sketch
+   */
+
+  grunt.registerTask('class', 'Generates a new nexus class.', function() {
+    var classList = grunt.file.readJSON('src/classes.json')
+      , inc        = 0
+      , alpha      = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+      , newClass   = 'Class-' + grunt.template.today("yyyy-mm-dd");
+
+    // classList.forEach(function(classes) {
+    //   for(var prop in classes) {
+    //     if(prop === 'default') {
+    //       delete classes[prop];
+    //     }
+    //     if(prop == 'src' && classes[prop].search(newSketch) !== -1) {
+    //       while(classes[prop].search(newSketch + '-' + alpha[inc]) !== -1) {
+    //         inc++;
+    //       }
+    //     }
+    //   }
+    // });
+
+    newClass += '-' + alpha[inc] + '.js';
+
+    classList.push({
+      'title'  : grunt.template.today("yyyy-mm-dd") + '-' + alpha[inc],
+      'src'    : newClass,
+      'default': 'true'
+    });
+
+    grunt.log.writeln("generating new canvas sketch");
+    grunt.file.copy('src/templates/basic-class-amd.js', 'src/nexus-core/' + newClass);
+    grunt.file.write('src/classes.json', JSON.stringify(classList, null, 2));
+
+    grunt.task.run('exec:editClass:' + newClass);
+  });
 
   /*
    *

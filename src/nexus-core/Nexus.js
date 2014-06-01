@@ -6,7 +6,7 @@ define([
   '/src/nexus-core/Utils.js'
   ], 
 
-  function(coords, drawEngine, utils) {
+  function(coords, drawEngine, Video, utils) {
 
     Nexus = function() {
 
@@ -14,7 +14,9 @@ define([
       this.canvas = {};
       this.coords = coords;
       this.engine = drawEngine;
-      this.video  = video;
+      
+      //constructor classes
+      this.Video  = Video;
 
       this.start = function(canvas) {
 
@@ -27,6 +29,10 @@ define([
     };
 
     Nexus.prototype = {
+
+      create: function(className) {
+        console.log(className);
+      },
 
       resize: function() {
         this.canvas.width  = window.innerWidth;

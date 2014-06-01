@@ -1,33 +1,15 @@
-define(function () {
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <title>this</title>
+</head>
+<body>
+<!--   <video src="spaceships.webm"></video>
+ -->
+  <script>
 
-   /* VIDEO CLASS
-   --------------------------------------------------- */
-
-   //uses .webm 
-   //Support for WebM is available natively in Chrome,
-
-  var Video = function(video) {
-
-    console.log("instantiating new video");
-
-    if(video) this.load(video);
-  };
-
-  /* CANVAS PROTOTYPE
-   --------------------------------------------------- */
-
-  Video.prototype = {
-
-    /**
-     *
-     * loads a list of webm videos
-     *
-     * @method loadVideos
-     * @param {Array} A list of video sources
-     *
-     */
-
-    load: function (src) {
+  function loadVideo(src) {
 
       var v = document.createElement('video');
 
@@ -69,27 +51,10 @@ define(function () {
 
 
       document.body.appendChild(v);
-    },
-
-    /**
-     *
-     * @method getVideos
-     *
-     */
-
-    getVideos: function (videos) {
-      //todo
     }
 
-  };
+    loadVideo('spaceships.webm');
 
-   /* PRIVATE FUNCTIONS
-   --------------------------------------------------- */
-
-  var getTimeNow = function () {
-      return new Date().getTime();
-  };
-  
-  return Video;
-  //return new Video();
-});
+  </script>
+</body>
+</html>

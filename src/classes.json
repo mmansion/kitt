@@ -2,5 +2,10 @@
   {
     "title": "arcs",
     "src": "arcs.js"
+  },
+  {
+    "title": "2014-06-01-a",
+    "src": "Class-2014-06-01-a.js",
+    "default": "true"
   }
 ]

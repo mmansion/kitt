@@ -7,27 +7,27 @@
 </head>
 
 <body>
+  <!--
   <script src="/socket.io/socket.io.js"></script>
+-->
+  <script src="http://cdn.binaryjs.com/0/binary.js"></script>
 <script>
 
-  var socket = io.connect('http://localhost:3333');
+  var socket = io.connect('http://localhost:9000');
 
   socket.on('connected', function() {
-    console.log('connectedn to server');
+    console.log('socket.io connected to server');
   });
 
   /* Socket Commands from Server
      -------------------------------------------------- */
 
-  //handle FCB1010 pedal event messages 
+  handle FCB1010 pedal event messages 
 
   socket.on('pedalEvent', function (data) {
-
-
     console.log(data);
     socket.emit('my other event', { my: 'data' });
   });
-
 
 
 </script>

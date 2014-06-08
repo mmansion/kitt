@@ -1,7 +1,11 @@
-//(function() {
+(function() {
+
   window.MediaSource = window.MediaSource || window.WebKitMediaSource;
+
   var client = new BinaryClient('ws://'+window.location.hostname);
+  
   var URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
+  
   if( ! URL ){
     URL={};
   }
@@ -28,6 +32,7 @@
   
   // Wait for client to connect to server
   client.on('open', function (stream){
+    console.log("client opened");
     // Stream received from server
     client.on('stream', function (stream){
       console.log("new stream from server")
@@ -62,7 +67,7 @@
       }, false);
     });
   });
-  client.on('close', function (){
+  client.on('close', function () {
     console.log('client closed')
   });
-//})();
+})();

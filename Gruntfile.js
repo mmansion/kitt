@@ -447,7 +447,7 @@ module.exports = function(grunt) {
    */
 
   G.registerTask('nexus', 'launches a nexus', function(num) {
-    G.task.run('exec:startServer'); //start server at localhost 9001
+    //G.task.run('exec:startServer'); //start server at localhost 9001
     G.task.run('exec:loadNexus:' + (num || '001'));
   });
 };

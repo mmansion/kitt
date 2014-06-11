@@ -2,10 +2,15 @@ doctype html
 html
   
   head
+    
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/styles/style.css')
 
   body
+
     block content
-    script(src="/js/jquery.js")
-    script(src="/js/main.js")
+
+    script(src="/socket.io/socket.io.js")
+    script(src="/scripts/jquery.js")
+    script(src="/scripts/fcb1010.js")
+    script(src="/scripts/main.js")

@@ -1,18 +1,22 @@
-
 /**
  * Module dependencies.
  */
 
-var express = require('express');
-var routes = require('./routes');
-var user = require('./routes/user');
-var http = require('http');
-var path = require('path');
+var express = require('express')
+  , app     = express()
+  , routes  = require('./routes')
+  , server  = require('http').createServer(app)
+  , path    = require('path')
+  , udp     = require('dgram').createSocket('udp4', onRequest_OSC)
+  , osc     = require('osc-min')
+  , io      = require('socket.io').listen(server)
+  , fs      = require('fs');
 
-var app = express();
+
+udp.bind("9999");
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3333);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(express.favicon());
@@ -29,8 +33,27 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/users', user.list);
 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+server.listen(app.get('port'), function(){
+  console.log('http server listening on port ' + app.get('port'));
+});
+
+function onRequest_OSC(msg, rinfo) {
+  var error;
+  try {
+    _socketIo.emit('pedalEvent', osc.fromBuffer(msg));
+    return console.log(osc.fromBuffer(msg));
+  } catch (_error) {
+    error = _error;
+    return console.log("invalid OSC packet");
+  }
+}
+
+io.sockets.on('connection', function (socket) {
+  _socketIo = socket;
+
+  socket.emit('connected', 'connected');
+  socket.on('browserEvent', function (data) {
+    //message from the browser
+  });
 });

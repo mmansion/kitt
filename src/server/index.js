@@ -37,7 +37,12 @@ module.exports = {
       app.use(express.errorHandler());
     }
 
+    //routes
     app.get('/', routes.index);
+
+    app.get('/sketch', function(req, res) {
+      res.render('sketch', {title: 'nexus 001'});
+    });
 
     server.listen(app.get('port'), function(){
       console.log('http server listening on port ' + app.get('port'));

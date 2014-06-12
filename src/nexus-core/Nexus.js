@@ -1,9 +1,9 @@
 define([
 
-  '/src/nexus-core/Coords.js',
-  '/src/nexus-core/DrawEngine.js',
-  '/src/nexus-core/Video.js',
-  '/src/nexus-core/Utils.js'
+  '/Coords.js',
+  '/DrawEngine.js',
+  '/Video.js',
+  '/Utils.js'
   ], 
 
   function(coords, drawEngine, Video, utils) {

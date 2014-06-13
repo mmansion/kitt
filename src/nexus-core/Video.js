@@ -6,11 +6,11 @@ define(function () {
    //uses .webm 
    //Support for WebM is available natively in Chrome,
 
-  var Video = function(video) {
+  var Video = function(path) {
 
     console.log("instantiating new video");
 
-    if(video) this.load(video);
+    if(path) this.load(path);
   };
 
   /* CANVAS PROTOTYPE

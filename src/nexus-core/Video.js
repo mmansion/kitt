@@ -3,12 +3,9 @@ define(function () {
    /* VIDEO CLASS
    --------------------------------------------------- */
 
-   //uses .webm 
-   //Support for WebM is available natively in Chrome,
-
   var Video = function(path) {
 
-    console.log("instantiating new video");
+    this.videoElement = {};
 
     if(path) this.load(path);
   };
@@ -20,53 +17,52 @@ define(function () {
 
     /**
      *
+     * Draws video to the canvas
+     *
+     * @method Draw
+     * @param x {Number} The x coordinate of the video
+     * @param y {Number} The y coordinate of the video
+     */
+
+    draw: function (x, y) {
+      //console.log(this.videoElement);
+      //console.log(nexus);
+    },
+
+    /**
+     *
      * loads a list of webm videos
      *
-     * @method loadVideos
-     * @param {Array} A list of video sources
+     * @method load
+     * @param src {String} A path to a webm video file
      *
      */
 
     load: function (src) {
 
-      var v = document.createElement('video');
+      var v = this.videoElement = document.createElement('video');
 
       v.setAttribute('src',   src);
 
-      v.setAttribute('type', 'video/webm');
-      //v.setAttribute('type', 'video/mp4');
-
-      v.setAttribute('autoplay', "autoplay");
-
-      //e.setAttribute('controls', 'false');
-      //v.setAttribute('loop', 'true');
+      v.setAttribute('type',     'video/webm'); //webm only
+      v.setAttribute('autoplay', 'autoplay');
 
       //browser should load the entire video when the page loads
       v.setAttribute('preload', 'auto');
 
-      v.setAttribute('width', 800);
-      v.setAttribute('height', 480);
+      //TODO: provide class width & height config
+      v.setAttribute('width',    800); //TMP
+      v.setAttribute('height',   480); //TMP
 
+      v.style.display = 'none';
       
-
-      //e.removeAttribute('controls');
-      
-
       v.addEventListener('loadeddata', function() {
-    
-        // Video is loaded and can be played
+        // loaded and can now be played
         v.addEventListener('ended', function() {
-
-          //alert("HI");
-          //v.load();
           v.currentTime = 1.0;
-          //alert(v.currentTime);
-          // console.log(v.currentTime);
-          // v.play();
+          v.play();
         });
-        
       }, false);
-
 
       document.body.appendChild(v);
     },
@@ -87,7 +83,7 @@ define(function () {
    --------------------------------------------------- */
 
   var getTimeNow = function () {
-      return new Date().getTime();
+    return new Date().getTime();
   };
   
   return Video;

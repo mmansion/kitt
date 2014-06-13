@@ -6,6 +6,7 @@ define(function () {
   var Video = function(path) {
 
     this.videoElement = {};
+    this.context = nexus.canvas.getContext('2d');
 
     if(path) this.load(path);
   };
@@ -22,11 +23,12 @@ define(function () {
      * @method Draw
      * @param x {Number} The x coordinate of the video
      * @param y {Number} The y coordinate of the video
+     *
      */
 
     draw: function (x, y) {
-      //console.log(this.videoElement);
-      //console.log(nexus);
+
+      this.context.drawImage(this.videoElement, x, y);
     },
 
     /**

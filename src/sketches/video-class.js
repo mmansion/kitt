@@ -22,5 +22,5 @@ nexus.update = function() {
   --------------------------------------------------- */
 nexus.draw = function() {
 
-  video1.draw(0,0);
+  video1.draw(200,100);
 }

@@ -31,9 +31,9 @@ define([
         self.canvas.width  = window.innerWidth;
         self.canvas.height = window.innerHeight;
 
-        self.canvas.elem      = canvasElement;
+        self.canvas.element   = canvasElement;
         self.canvas.context2D = canvasElement.getContext('2d');
-        
+
         self.engine.start(canvasElement);
       }
     };

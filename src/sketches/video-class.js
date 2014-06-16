@@ -9,6 +9,8 @@ nexus.setup = function() {
 
   video1 = new nexus.Video('sketches/data/spaceships.webm');
 
+  video2 = new nexus.Video('sketches/data/spaceships.webm');
+
 }
 
 /* Update
@@ -23,4 +25,6 @@ nexus.update = function() {
 nexus.draw = function() {
 
   video1.draw(200,100);
+
+  video2.draw(800, 200);
 }

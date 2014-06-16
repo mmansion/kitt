@@ -51,5 +51,9 @@
     "title": "video class",
     "src": "video-class.js",
     "default": "true"
+  },
+  {
+    "title": "2014-06-15-a",
+    "src": "sketch-2014-06-15-a.js"
   }
 ]

@@ -1,11 +1,12 @@
 var canvas    = nexus.canvas
   , lastRun   = + new Date
-  , delay     = 100
+  , delay     = 10
   , clockwise = true
   , radStart  = 0
   , radEnd    = 0
   , deg = 0
   , c;
+
 
 /* Setup
   --------------------------------------------------- */
@@ -29,7 +30,7 @@ nexus.update = function() {
 /* Draw
   --------------------------------------------------- */
 nexus.draw = function() {
-  deg++;
+  deg+=2;
 
   if(deg == 360) {
     deg = 1;

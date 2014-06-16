@@ -1,30 +1,40 @@
 define([
 
+  '/Canvas.js',
   '/Coords.js',
   '/DrawEngine.js',
   '/Video.js',
   '/Utils.js'
   ], 
 
-  function(coords, drawEngine, Video, utils) {
+  function(
+    canvas, 
+    coords, 
+    drawEngine, 
+    Video, 
+    utils) {
 
     Nexus = function() {
 
+      self = this;
+
       //provide access to objects via root
-      this.canvas = {};
-      this.coords = coords;
-      this.engine = drawEngine;
+      self.canvas = canvas;
+      self.coords = coords;
+      self.engine = drawEngine;
       
       //constructor classes
-      this.Video  = Video;
+      self.Video  = Video;
 
-      this.start = function(canvas) {
+      self.start = function(canvasElement) { //entry point for application
 
-        canvas.width  = window.innerWidth;
-        canvas.height = window.innerHeight;
+        self.canvas.width  = window.innerWidth;
+        self.canvas.height = window.innerHeight;
 
-        this.canvas = canvas;
-        this.engine.start(canvas);
+        self.canvas.elem      = canvasElement;
+        self.canvas.context2D = canvasElement.getContext('2d');
+        
+        self.engine.start(canvasElement);
       }
     };
 

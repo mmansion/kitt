@@ -1,14 +1,15 @@
 define(function () {
 
-
    /* DRAW ENGINE CLASS
    --------------------------------------------------- */
 
-  var DrawEngine = function() {
+  var DrawEngine = function(options) {
     var self = this
         self.animationId;
-        
-    this.start =  function(canvas, setFrameRate) {
+    
+    self.options = options || {};
+
+    self.start =  function(canvas, setFrameRate) {
       this.frameRate = setFrameRate || false;
       this.canvas    = canvas;
       this.context   = canvas.getContext('2d');
@@ -37,15 +38,21 @@ define(function () {
 
       self.calcFps(time); // update fps time
         
-      //if an update function has been registered, call it for ea animation loop
+      //if an update function has been registered, call it for each animation loop
       if(nexus.update && typeof(nexus.update) === 'function') {
         nexus.update();
       }
 
-      //if a draw function has been registered, call it for ea animation loop
+      //if a draw function has been registered, call it for each animation loop
       if(nexus.draw && typeof(nexus.draw) === 'function') {
-        self.context.setTransform(1, 0, 0, 1, 0, 0); //remove translations/transforms by seting to identity matrix
-        self.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        
+        if(self.options.clearTransforms)  { //DEPRECATED: TODO: move to canvas class
+          self.context.setTransform(1, 0, 0, 1, 0, 0); //remove translations/transforms by seting to identity matrix
+        }
+
+        if(self.options.clearBackground)  { //DEPRECATED: TODO: move to canvas class
+          self.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        }
         
         nexus.draw(time);
       }

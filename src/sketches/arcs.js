@@ -12,7 +12,7 @@ var canvas    = nexus.canvas
   --------------------------------------------------- */
 nexus.setup = function() {
   canvas = nexus.canvas;
-  c = nexus.canvas.getContext('2d');
+  c = nexus.canvas.context2D
 
 
   c.strokeStyle = '#fff';

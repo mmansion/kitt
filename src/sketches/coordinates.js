@@ -6,7 +6,7 @@ var c       //2d context
 /* Setup
   --------------------------------------------------- */
 nexus.setup = function() {
-  c = nexus.canvas.getContext('2d');
+  c = nexus.canvas.context2D;
   
   c.font="12px Telex";
 
@@ -24,8 +24,11 @@ nexus.update = function() {
 /* Draw
   --------------------------------------------------- */
 nexus.draw = function() {
-  c.fillStyle = '#011722';
-  c.fillRect(0, 0, nexus.canvas.width, nexus.canvas.height);  // now fill the canvas
+
+  nexus.canvas.background('#011722');
+
+  //c.fillStyle = '#011722';
+  //c.fillRect(0, 0, nexus.canvas.width, nexus.canvas.height);  // now fill the canvas
   c.fillStyle = '#fff';
   c.fillText('x: ' + x + ' y: ' + y, x + 28, y);
   c.beginPath();

@@ -6,7 +6,7 @@ define(function () {
   var Video = function(path) {
 
     this.videoElement = {};
-    this.context = nexus.canvas.getContext('2d');
+    this.context = nexus.canvas.context2D;
 
     if(path) this.load(path);
   };

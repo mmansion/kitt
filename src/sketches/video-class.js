@@ -10,7 +10,7 @@ var c
   --------------------------------------------------- */
 nexus.setup = function() {
 
-  c = nexus.canvas.getContext('2d');
+  c = nexus.canvas.context2D;
 
   video1 = new nexus.Video('sketches/data/spaceships.webm');
 

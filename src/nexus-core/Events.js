@@ -35,7 +35,7 @@ define(function () {
      *
      */
 
-    addEventListener: function ( type, listener ) {
+    addEventListener: function (type, listener) {
       var listeners;
 
       if(this._listeners === undefined) this._listeners = {};
@@ -46,8 +46,7 @@ define(function () {
       if(listeners[type].indexOf(listener) === - 1) listeners[type].push(listener);
     },
 
-    hasEventListener: function ( type, listener ) {
-
+    hasEventListener: function (type, listener) {
       if(this._listeners === undefined ) return false;
 
       var listeners = this._listeners;
@@ -61,7 +60,7 @@ define(function () {
       }
     },
 
-    removeEventListener: function ( type, listener ) {
+    removeEventListener: function (type, listener) {
       if(this._listeners === undefined ) return;
 
       var listeners = this._listeners;
@@ -76,12 +75,11 @@ define(function () {
       }
     },
 
-    dispatchEvent: function ( event ) {
+    dispatchEvent: function (event) {
       if (this._listeners === undefined) return;
       
       var listeners = this._listeners;
       var listenerArray = listeners[ event.type ];
-
 
       if ( listenerArray !== undefined ) {
         var array = [];
@@ -104,6 +102,6 @@ define(function () {
 
 /**
  *
- * @credits: mr doob, mozilla mdn
+ * @credits: mr doob, mozilla
  *
  */

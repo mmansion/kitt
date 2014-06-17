@@ -1,7 +1,8 @@
 define(function () {
 
   //private members
-  var _offscreenCanvas = {};
+  var _offscreenCanvas = {}
+    , _imageData;
 
    /* VIDEO CLASS
    --------------------------------------------------- */
@@ -10,13 +11,8 @@ define(function () {
 
     this.videoElement = {};
     this.context = nexus.canvas.context2D;
-
-    makeOffScreenCanvas();
-
-    nexus.engine.addEventListener('update', function() {
-      //console.log("on update");
-    });
-
+    this.x;
+    this.y;
 
     if(path) this.load(path);
   };
@@ -37,8 +33,13 @@ define(function () {
      */
 
     draw: function (x, y) {
-
       this.context.drawImage(this.videoElement, x, y);
+    },
+
+    getImageData: function() {
+      var c = _offscreenCanvas;
+      
+      return c.getImageData(0, 0, c.width, c.height);
     },
 
     /**
@@ -78,8 +79,10 @@ define(function () {
 
       document.body.appendChild(v);
 
+      makeOffScreenCanvas(v.width, v.height);
 
-      //console.log(_offscreenCanvas);
+      //TODO: ability to pass properties along with a handler
+      nexus.engine.addEventListener('update', _updateImageData.bind(this));
     }
 
   };
@@ -91,13 +94,27 @@ define(function () {
     return + new Date;
   };
 
-  function makeOffScreenCanvas(width, height) {
+  var _updateImageData = function () {
+    var width  = this.videoElement.width
+      , height = this.videoElement.height;
+
+      _offscreenCanvas.context2D.drawImage(this.videoElement, 0, 0);
+
+    //console.log(this.videoElement.width);
+ //      drawImage(this.video, 0, 0);
+ //      _offscreenCanvas.getImageData(0,0)
+
+ // imageData = offscreenContext.getImageData(0, 0,
+ //                  offscreenCanvas.width, offscreenCanvas.height);
+  }
+
+  function makeOffScreenCanvas(videoWidth, videoHeight) {
     var _canvas = document.createElement('canvas');
 
     _offscreenCanvas = {
       context2D : _canvas.getContext('2d'),
-      width     : nexus.canvas.width,
-      height    : nexus.canvas.height
+      width     : videoWidth,
+      height    : videoHeight
     };
   }
   

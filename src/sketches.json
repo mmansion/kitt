@@ -5,8 +5,7 @@
   },
   {
     "title": "coordinates",
-    "src": "coordinates.js",
-    "default": "true"
+    "src": "coordinates.js"
   },
   {
     "title": "loading images",
@@ -50,7 +49,8 @@
   },
   {
     "title": "video class",
-    "src": "video-class.js"
+    "src": "video-class.js",
+    "default": "true"
   },
   {
     "title": "2014-06-15-a",

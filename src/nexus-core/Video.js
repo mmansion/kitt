@@ -1,5 +1,8 @@
 define(function () {
 
+  //private members
+  var _offscreenCanvas = {};
+
    /* VIDEO CLASS
    --------------------------------------------------- */
 
@@ -7,6 +10,13 @@ define(function () {
 
     this.videoElement = {};
     this.context = nexus.canvas.context2D;
+
+    makeOffScreenCanvas();
+
+    nexus.engine.addEventListener('update', function() {
+      //console.log("on update");
+    });
+
 
     if(path) this.load(path);
   };
@@ -47,7 +57,7 @@ define(function () {
       v.setAttribute('src',   src);
 
       v.setAttribute('type',     'video/webm'); //webm only
-      v.setAttribute('autoplay', 'autoplay');
+      v.setAttribute('autoplay', 'autoplay'); //currently autoplays
 
       //browser should load the entire video when the page loads
       v.setAttribute('preload', 'auto');
@@ -67,16 +77,9 @@ define(function () {
       }, false);
 
       document.body.appendChild(v);
-    },
 
-    /**
-     *
-     * @method getVideos
-     *
-     */
 
-    getVideos: function (videos) {
-      //todo
+      //console.log(_offscreenCanvas);
     }
 
   };
@@ -85,8 +88,18 @@ define(function () {
    --------------------------------------------------- */
 
   var getTimeNow = function () {
-    return new Date().getTime();
+    return + new Date;
   };
+
+  function makeOffScreenCanvas(width, height) {
+    var _canvas = document.createElement('canvas');
+
+    _offscreenCanvas = {
+      context2D : _canvas.getContext('2d'),
+      width     : nexus.canvas.width,
+      height    : nexus.canvas.height
+    };
+  }
   
   return Video;
   //return new Video();

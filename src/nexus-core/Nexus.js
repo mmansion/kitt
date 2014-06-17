@@ -4,6 +4,7 @@ define([
   '/Coords.js',
   '/DrawEngine.js',
   '/Video.js',
+  '/Events.js',
   '/Utils.js'
   ], 
 
@@ -11,7 +12,8 @@ define([
     canvas, 
     coords, 
     drawEngine, 
-    Video, 
+    Video,
+    events,
     utils) {
 
     Nexus = function() {
@@ -22,19 +24,17 @@ define([
       self.canvas = canvas;
       self.coords = coords;
       self.engine = drawEngine;
+      self.events = events;
       
       //constructor classes
       self.Video  = Video;
 
       self.start = function(canvasElement) { //entry point for application
 
-
         self.canvas.width  = window.innerWidth;
         self.canvas.height = window.innerHeight;
 
         self.canvas.element   = canvasElement;
-
-
         self.canvas.context2D = canvasElement.getContext('2d');
 
         //TODO:  move this?
@@ -45,7 +45,7 @@ define([
           canvasProto[method] = self.canvas.context2D[method];
         }
 
-        console.log(self.canvas);
+        //console.log(self.canvas);
 
         self.engine.start(canvasElement);
       }

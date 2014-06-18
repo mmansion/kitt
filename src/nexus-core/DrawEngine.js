@@ -6,7 +6,6 @@ define(function () {
   var DrawEngine = function(options) {
     var self = this;
 
-    self.animationId;
     self.options = options || {};
 
     self.start =  function(canvas, setFrameRate) {
@@ -38,6 +37,7 @@ define(function () {
     animate: function (time) {
       var self = this; // window.requestNextAnimationFrame() called by DOMWindow
 
+      self.time = time;
       self.calcFps(time); // update fps time
         
       //if an update function has been registered, call it for each animation loop
@@ -83,6 +83,14 @@ define(function () {
       //calculates fps by taking frame delta, and then rounds to the nearest hundreth
        this.fps = Math.round(1 / ((getTimeNow() - this.lastRun) / 1000) * 100) / 100;
        this.lastRun = getTimeNow();
+    },
+
+    getFps: function () {
+      return this.fps;
+    },
+
+    getTime: function() {
+      return this.time;
     },
 
     delay: function(ms) {

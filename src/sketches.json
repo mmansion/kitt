@@ -17,7 +17,8 @@
   },
   {
     "title": "draw engine",
-    "src": "draw-engine.js"
+    "src": "draw-engine.js",
+    "default": "true"
   },
   {
     "title": "random walk 01",
@@ -49,8 +50,7 @@
   },
   {
     "title": "video class",
-    "src": "video-class.js",
-    "default": "true"
+    "src": "video-class.js"
   },
   {
     "title": "2014-06-15-a",

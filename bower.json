@@ -21,7 +21,8 @@
     "highlightjs": "~8.0.0",
     "mathjs": "~0.22.0",
     "leapjs": "~0.6.0",
-    "leapjs-plugins": "~0.1.6"
+    "leapjs-plugins": "~0.1.6",
+    "threejs": "*"
   },
   "devDependencies": {
     "requirejs": "~2.1.11"

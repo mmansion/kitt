@@ -11,7 +11,7 @@ define([
 
   //nexus-addons
 
-  '/../nexus-addons/*nxLeap.js'
+  '/../nexus-addons/nxLeap.js'
 
   ], 
 

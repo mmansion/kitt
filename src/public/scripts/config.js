@@ -2,11 +2,20 @@ require.config({
   
   baseUrl: '/scripts',
 
-  paths: {
+  paths: { 
+
+    //NEXUS DEPENDENCIES
+
     jquery:     '/jquery/dist/jquery',
     highlight:  '/highlightjs/highlight.pack',
     underscore: '/underscore/underscore',
-    nexus:      '/_Nexus'
+
+    //NEXUS FRAMEWORK
+
+    nexus:      '/nxMain'
+
+    //NEXUS ADDON DEPENDENCIES
+
   },
 
   shim: {

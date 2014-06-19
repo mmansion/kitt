@@ -1,11 +1,18 @@
 define([
 
+  //nexus-core
+
   '/nxCanvas.js',
   '/nxCoords.js',
   '/nxDrawEngine.js',
   '/nxVideo.js',
   '/nxEvents.js',
-  '/nxUtils.js'
+  '/nxUtils.js',
+
+  //nexus-addons
+
+  '/../nexus-addons/*nxLeap.js'
+
   ], 
 
   function (

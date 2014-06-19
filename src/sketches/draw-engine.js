@@ -26,6 +26,11 @@ var nx = nexus;
 nexus.setup = function() {
 
   nx.font = 'bold 50px Arial';
+
+
+  //console.log(nx);
+
+  
 }
 
 /* Update
@@ -41,10 +46,10 @@ nexus.update = function() {
   --------------------------------------------------- */
 nexus.draw = function() {
 
-  nx.fillStyle = '#011722';
-  nx.fillRect(0, 0, nx.width, nx.height);  // now fill the canvas
-  nx.fillStyle = '#fff';
-  //console.log(nx.engine.getTime());
-  nx.fillText(String(nexus.engine.getTime()), nx.width/2-200, nx.height/2-25);
+  // nx.fillStyle = '#011722';
+  // nx.fillRect(0, 0, nx.width, nx.height);  // now fill the canvas
+  // nx.fillStyle = '#fff';
+  // //console.log(nx.engine.getTime());
+  // nx.fillText(String(nexus.engine.getTime()), nx.width/2-200, nx.height/2-25);
 
 }

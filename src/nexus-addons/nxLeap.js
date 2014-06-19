@@ -38,10 +38,10 @@ define(['leapjs'], function (Leap) {
       enableGestures: true
     });
     
-    self.controller.on('connect', function(){
-      setInterval(function(){
-        var frame = my_controller.frame();
-      }, 500);
+    self.controller.on('connect', function() {
+
+      //TODO: handle connection errors/timeouts/etc
+      console.log("Leap device connected");
     });
 
     self.controller.connect();
@@ -51,8 +51,10 @@ define(['leapjs'], function (Leap) {
    --------------------------------------------------- */
 
   nxLeap.prototype = {
-  
-    //prototype methods go here
+
+    getFrame: function() {
+      return this.controller.frame();
+    }
 
   };
 

@@ -16,7 +16,7 @@ define(function () {
       this.frameRate = false;
       this.fps       = 0;
 
-      nexus.events.apply(this);
+      nexus.events.apply(this); //add this class to the events dispatcher
 
       //TODO: figure out how to use an inheritance model to make this more modular
       if(nexus.setup && typeof(nexus.setup) === 'function') {

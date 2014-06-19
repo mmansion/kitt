@@ -21,17 +21,25 @@ define([
     drawEngine, 
     Video,
     events,
-    utils ) {
+    utils,
+
+    nxLeap
+
+    ) {
 
     Nexus = function () {
 
       self = this;
 
       //provide access to objects via root
+
+      //TODO: update for nx prefix
       self.canvas = canvas;
       self.coords = coords;
       self.engine = drawEngine;
       self.events = events;
+
+      self.Leap = nxLeap;
 
       //constructor classes
       self.Video  = Video;
@@ -49,7 +57,7 @@ define([
         //TODO:  move this?
         //var this.proto = Object.getPrototypeOf(self);
 
-        console.log(self.canvas.context2D);
+        //console.log(self.canvas.context2D);
        
         //move canvas context methods to canvas class of nexus lib
         for(obj in self.canvas.context2D) {
@@ -62,8 +70,8 @@ define([
           }
         }
 
-        console.log(proto);
-        console.log("---------------------");
+        //console.log(proto);
+        //console.log("---------------------");
 
         self.engine.start(canvasElement);
       }

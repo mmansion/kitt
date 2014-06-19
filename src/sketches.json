@@ -17,8 +17,7 @@
   },
   {
     "title": "draw engine",
-    "src": "draw-engine.js",
-    "default": "true"
+    "src": "draw-engine.js"
   },
   {
     "title": "random walk 01",
@@ -55,5 +54,10 @@
   {
     "title": "2014-06-15-a",
     "src": "sketch-2014-06-15-a.js"
+  },
+  {
+    "title": "nx-leap",
+    "src": "nx-leap.js",
+    "default": "true"
   }
 ]

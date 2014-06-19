@@ -1,11 +1,11 @@
 define([
 
-  '/Canvas.js',
-  '/Coords.js',
-  '/DrawEngine.js',
-  '/Video.js',
-  '/Events.js',
-  '/Utils.js'
+  '/nxCanvas.js',
+  '/nxCoords.js',
+  '/nxDrawEngine.js',
+  '/nxVideo.js',
+  '/nxEvents.js',
+  '/nxUtils.js'
   ], 
 
   function (

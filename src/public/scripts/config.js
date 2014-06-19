@@ -6,7 +6,7 @@ require.config({
     jquery:     '/jquery/dist/jquery',
     highlight:  '/highlightjs/highlight.pack',
     underscore: '/underscore/underscore',
-    nexus:      '/Nexus'
+    nexus:      '/_Nexus'
   },
 
   shim: {

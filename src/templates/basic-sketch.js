@@ -1,21 +1,17 @@
-var c;
-
 /* Setup
   --------------------------------------------------- */
-kitt.setup = function() {
-  c = kitt.canvas.getContext('2d');
+nexus.setup = function() {
 
 }
 
 /* Update
   --------------------------------------------------- */
-kitt.update = function() {
+nexus.update = function() {
 
 }
 
-
 /* Draw
   --------------------------------------------------- */
-kitt.draw = function() {
+nexus.draw = function() {
 
 }

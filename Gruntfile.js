@@ -169,7 +169,7 @@ module.exports = function(grunt) {
 
     exec: {
 
-      edit: {
+      editSketch: {
         cmd: function(file) {
           return 'subl ./src/sketches/' + file;
         }
@@ -181,7 +181,8 @@ module.exports = function(grunt) {
         }
       },
 
-      startServer: 'grunt connect &',
+      //startServer: 'grunt connect &',
+      startServer: 'grunt open & node ./src/start.js',
 
       loadNexus: {
 
@@ -216,7 +217,7 @@ module.exports = function(grunt) {
 
     open: {
       src: {
-        path: 'http:localhost:9001/src'
+        path: 'http:localhost:3333/sketch'
       }
     },
 
@@ -347,7 +348,7 @@ module.exports = function(grunt) {
    */
 
   //development and distribution tasks
-  grunt.registerTask('default', ['open', 'connect']);
+  grunt.registerTask('default', ['exec:startServer']);
 
   //TESTING CONFIG
 
@@ -405,7 +406,7 @@ module.exports = function(grunt) {
    *  - generate a new nexus sketch
    */
 
-  grunt.registerTask('sketch', 'Generates a new canvas sketch.', function() {
+  grunt.registerTask('sketch', 'Generates a new canvas sketch.', function () {
     var sketchList = grunt.file.readJSON('src/sketches.json')
       , inc        = 0
       , alpha      = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
@@ -436,7 +437,7 @@ module.exports = function(grunt) {
     grunt.file.copy('src/templates/basic-sketch.js', 'src/sketches/' + newSketch);
     grunt.file.write('src/sketches.json', JSON.stringify(sketchList, null, 2));
 
-    grunt.task.run('exec:edit:' + newSketch, 'default');
+    grunt.task.run('exec:editSketch:' + newSketch, 'default');
   });
 
   /*

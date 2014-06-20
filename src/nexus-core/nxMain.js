@@ -7,6 +7,7 @@ define([
   '/nxDrawEngine.js',
   '/nxVideo.js',
   '/nxEvents.js',
+  '/nxMouse.js',
   '/nxUtils.js',
 
   //nexus-addons
@@ -21,11 +22,15 @@ define([
     drawEngine, 
     Video,
     events,
+    nxMouse,
     utils,
 
     nxLeap
 
     ) {
+
+    /* nxMain Class
+   --------------------------------------------------- */
 
     Nexus = function () {
 
@@ -38,6 +43,10 @@ define([
       self.coords = coords;
       self.engine = drawEngine;
       self.events = events;
+
+
+      //TODO: all core classes should follow this pattern
+      self.mouse = new nxMouse(this);
 
       self.Leap = nxLeap;
 
@@ -76,6 +85,9 @@ define([
         self.engine.start(canvasElement);
       }
     };
+
+    /* nxMain Prototype
+   --------------------------------------------------- */
 
     Nexus.prototype = {
 

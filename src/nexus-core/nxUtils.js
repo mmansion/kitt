@@ -10,8 +10,6 @@ define(function () {
       var p = Object.getPrototypeOf(o)
         , s = 0
         , k;
-
-        console.log(p);
       
       for(k in o) if(o.hasOwnProperty(k)) ++s;
       for(k in p) if(p.hasOwnProperty(k)) ++s;

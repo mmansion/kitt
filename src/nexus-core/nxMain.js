@@ -36,6 +36,9 @@ define([
 
       self = this;
 
+      self.mouseX = 0;
+      self.mouseY = 0;
+
       //provide access to objects via root
 
       //TODO: update for nx prefix
@@ -45,7 +48,7 @@ define([
       self.events = events;
 
 
-      //TODO: all core classes should follow this pattern
+      //TODO: all core classes that get instantiated automatically should follow this pattern
       self.mouse = new nxMouse(this);
 
       self.Leap = nxLeap;

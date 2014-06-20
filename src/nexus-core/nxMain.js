@@ -17,20 +17,26 @@ define([
   ], 
 
   function (
-    canvas, 
-    coords, 
-    drawEngine, 
+
+    //nx-core
+
+    nxCanvas, 
+    nxCoords, 
+    nxDrawEngine, 
     Video,
-    events,
+    nxEvents,
     nxMouse,
-    utils,
+    nxUtils,
+
+    //nx-addons
 
     nxLeap
+    //TODO: nxFCB1010
 
     ) {
 
     /* nxMain Class
-   --------------------------------------------------- */
+      --------------------------------------------------- */
 
     Nexus = function () {
 
@@ -39,24 +45,31 @@ define([
       self.mouseX = 0;
       self.mouseY = 0;
 
-      //provide access to objects via root
-
-      //TODO: update for nx prefix
-      self.canvas = canvas;
-      self.coords = coords;
-      self.engine = drawEngine;
-      self.events = events;
-
+   
+      //PRE-INSTANTIATED CORE CLASSES
 
       //TODO: all core classes that get instantiated automatically should follow this pattern
-      self.mouse = new nxMouse(this);
+      self.coords = new nxCoords     (this);
+      self.canvas = new nxCanvas     (this);
+      self.mouse  = new nxMouse      (this);
+      self.utils  = new nxUtils      (this);
+      self.engine = new nxDrawEngine (this);
+      self.events = new nxEvents     (this);
 
       self.Leap = nxLeap;
 
       //constructor classes
       self.Video  = Video;
 
+
       self.start = function (canvasElement) { //entry point for application
+
+
+        console.log(self.utils.getObjectSize(self));
+
+        console.log(self);
+
+        return;
 
         var proto = Object.getPrototypeOf(self);
 
@@ -86,11 +99,30 @@ define([
         //console.log("---------------------");
 
         self.engine.start(canvasElement);
+
+        //TRANSFER PROTO METHODS FROM CANVAS TO NEXUS MAIN
+        console.log("---------------------------------------");
+        for(obj in self.canvas) {
+          if(self.canvas.hasOwnProperty(obj)) {
+            console.log(obj);
+          }
+        }
+
+        //console.log(Object.getPrototypeOf(self.canvas));
+
+        for(obj in Object.getPrototypeOf(self.canvas)) {
+          console.log(obj);
+        }
+
+        console.log("---------------------------------------");
+
+
+        console.log(proto);
       }
     };
 
     /* nxMain Prototype
-   --------------------------------------------------- */
+      --------------------------------------------------- */
 
     Nexus.prototype = {
 

@@ -57,7 +57,11 @@
   },
   {
     "title": "nx-leap",
-    "src": "nx-leap.js",
+    "src": "nx-leap.js"
+  },
+  {
+    "title": "2014-06-20-a",
+    "src": "sketch-2014-06-20-a.js",
     "default": "true"
   }
 ]

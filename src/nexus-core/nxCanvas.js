@@ -1,9 +1,9 @@
 define(function () {
 
-   /* CANVAS CLASS
+   /* nxCanvas Class
    --------------------------------------------------- */
 
-  var Canvas = function() {
+  var nxCanvas = function(root) {
     var self = this;
     
     //public properties
@@ -11,26 +11,32 @@ define(function () {
     self.width;
     self.height;
     self.context2D;
+
   };
 
-  /* CANVAS PROTOTYPE
+  /* nxCanvas Prototype
    --------------------------------------------------- */
 
-  Canvas.prototype = {
+  nxCanvas.prototype = {
 
-    background: function(color) {
+    background: function(c) {
+
+      var color = c || '#011722';
 
       this.context2D.save(); //save the context on a stack
 
-      c.fillStyle = '#011722'; //TODO: make configurable
+      c.fillStyle = color; //TODO: make configurable
       c.fillRect(0, 0, nexus.canvas.width, nexus.canvas.height);  // now fill the canvas
 
       this.context2D.restore();
+    },
 
+    bg: function(c) {
+      this.background(c);
     }
   
   
   };
   
-  return new Canvas();
+  return nxCanvas;
 });

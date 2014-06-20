@@ -3,7 +3,7 @@ define(function () {
    /* DRAW ENGINE CLASS
    --------------------------------------------------- */
 
-  var DrawEngine = function(options) {
+  var nxDrawEngine = function(options) {
     var self = this;
 
     self.options = options || {};
@@ -32,7 +32,7 @@ define(function () {
   /* DRAW ENGINE PROTOTYPE
    --------------------------------------------------- */
 
-  DrawEngine.prototype = {
+  nxDrawEngine.prototype = {
     
     animate: function (time) {
       var self = this; // window.requestNextAnimationFrame() called by DOMWindow
@@ -105,5 +105,5 @@ define(function () {
     return new Date().getTime();
   };  
   
-  return new DrawEngine();
+  return nxDrawEngine;
 });

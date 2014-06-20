@@ -16,11 +16,6 @@ define( function () {
       root.mouseX  = self.x = _coords.x;
       root.mouseY  = self.y = _coords.y;
     }
-
-    console.log("Instantiated nxMouse");
-    console.log(root);
-
-    //nexus.engine.addEventListener('update', _updateImageData.bind(this));
   };
 
   /* nxMouse Prototype

@@ -1,10 +1,23 @@
 define(function () {
 
-  var Utils = function() {
+  var nxUtils = function(root) {
     //Utils Class
   };
 
-  Utils.prototype = {
+  nxUtils.prototype = {
+
+    getObjectSize: function (o) {
+      var p = Object.getPrototypeOf(o)
+        , s = 0
+        , k;
+
+        console.log(p);
+      
+      for(k in o) if(o.hasOwnProperty(k)) ++s;
+      for(k in p) if(p.hasOwnProperty(k)) ++s;
+  
+      return s;
+    },
 
     hexToRgb: function(hex) {
       var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -100,6 +113,6 @@ define(function () {
     return hex.length == 1 ? "0" + hex : hex;
   }
   
-  return new Utils();
+  return nxUtils;
 
 });

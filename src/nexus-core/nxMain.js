@@ -73,8 +73,7 @@ define([
         self.canvas.width  = window.innerWidth;
         
         //self.height = 
-        self.canvas.height = window.innerHeight;        
-
+        self.canvas.height = window.innerHeight;    
 
         _gatherDrawingContextMethods(self);
         _gatherAllClassMethods(self);
@@ -103,16 +102,34 @@ define([
       --------------------------------------------------- */
 
     function _gatherDrawingContextMethods(root) {
-      var c = root.canvas.getContext();
+      var ctx      = root.canvas.getContext()
+        , ctxProto = Object.getPrototypeOf(ctx);
 
-      for(o in c) {
 
-        if(typeof c[o] === 'function') {
-          _proto[o] = c[o].bind(c);
-        } else {
-          _proto[o] = c[o];
+      for(var key in ctx) {
+        if(typeof ctx[key] === 'function') {
+          root[key] = ctx[key].bind(ctx);
         }
-      }      
+      }
+
+      for(var key in ctxProto) {
+        if(typeof ctxProto[key] === 'function') {
+          _proto[key] = ctxProto[key].bind(ctx);
+        } else {
+          _proto[key] = ctxProto[key];
+        }
+      }
+
+      //TODO: find a better way to expose canvas api to root of main class
+      //inheritance?
+
+      root.engine.addEventListener('update', function() {
+        for(var key in ctx) {
+          if(ctx[key] !== root[key]) {
+            ctx[key] = root[key];
+          }
+        }
+      }.bind(root));
     };
 
     /**
@@ -122,11 +139,8 @@ define([
      */
 
     function _gatherAllClassMethods(root) {
-
       for(var key in root) {
-
         if(root.hasOwnProperty(key)) { //look for classes assigned to root
-
           if(typeof root[key] === 'object') {
             //var proto = Object.getPrototypeOf(root[key]);
 

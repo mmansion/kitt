@@ -13,12 +13,12 @@
   },
   {
     "title": "pixel printer",
-    "src": "pixel-printer.js",
-    "default": "true"
+    "src": "pixel-printer.js"
   },
   {
     "title": "draw engine",
-    "src": "draw-engine.js"
+    "src": "draw-engine.js",
+    "default": "true"
   },
   {
     "title": "random walk 01",

@@ -3,10 +3,12 @@ define(function () {
    /* DRAW ENGINE CLASS
    --------------------------------------------------- */
 
-  var nxDrawEngine = function(options) {
+  var nxDrawEngine = function(root, options) {
     var self = this;
 
     self.options = options || {};
+
+    root.events.apply(self); //add this class to the events class (dispatcher)
 
     self.start =  function(canvas, setFrameRate) {
       this.frameRate = setFrameRate || false;
@@ -16,7 +18,6 @@ define(function () {
       this.frameRate = false;
       this.fps       = 0;
 
-      nexus.events.apply(this); //add this class to the events class (dispatcher)
 
       //TODO: figure out how to use an inheritance model to make this more modular
       if(nexus.setup && typeof(nexus.setup) === 'function') {

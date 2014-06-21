@@ -20,17 +20,14 @@
 // });
 
 var nx = nexus;
+var c;
 
 /* Setup
   --------------------------------------------------- */
 nexus.setup = function() {
+  //c = nx.getContext();
 
   nx.font = 'bold 50px Arial';
-
-
-  //console.log(nx);
-
-  
 }
 
 /* Update
@@ -45,11 +42,19 @@ nexus.update = function() {
 /* Draw
   --------------------------------------------------- */
 nexus.draw = function() {
+  nx.bg();
 
-  // nx.fillStyle = '#011722';
-  // nx.fillRect(0, 0, nx.width, nx.height);  // now fill the canvas
-  // nx.fillStyle = '#fff';
-  // //console.log(nx.engine.getTime());
-  // nx.fillText(String(nexus.engine.getTime()), nx.width/2-200, nx.height/2-25);
+  nx.fillStyle = '#fff';
+  //c.fillStyle = nx.fillStyle;
+
+
+  // c.fillText(String(nx.engine.getTime()), nx.width/2, nx.height/2);
+  // c.beginPath();
+
+
+  nx.fillStyle = '#fff';
+
+  nx.fillText(String(nx.engine.getTime()), nx.width/2, nx.height/2);
+  nx.beginPath();
 
 }

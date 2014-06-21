@@ -1,7 +1,8 @@
 [
   {
     "title": "arcs",
-    "src": "arcs.js"
+    "src": "arcs.js",
+    "default": "true"
   },
   {
     "title": "coordinates",
@@ -61,7 +62,6 @@
   },
   {
     "title": "2014-06-20-a",
-    "src": "sketch-2014-06-20-a.js",
-    "default": "true"
+    "src": "sketch-2014-06-20-a.js"
   }
 ]

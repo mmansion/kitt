@@ -14,7 +14,7 @@ define([
 
   '/../nexus-addons/nxLeap.js'
 
-  ], 
+  ],
 
   function (
 
@@ -35,6 +35,8 @@ define([
 
     ) {
 
+    var _proto;
+
     /* nxMain Class
       --------------------------------------------------- */
 
@@ -42,11 +44,12 @@ define([
 
       self = this;
 
+      self.canvasMode = '2d';
+
       self.mouseX = 0;
       self.mouseY = 0;
 
       //PRE-INSTANTIATED CORE CLASSES
-
       self.coords = new nxCoords     (this);
       self.canvas = new nxCanvas     (this);
       self.mouse  = new nxMouse      (this);
@@ -60,39 +63,23 @@ define([
       //ADDON CONSTRUCTOR CLASSES
       self.Leap = nxLeap;
 
-      self.start = function (canvasElement) { //entry point for application
+      _proto = Object.getPrototypeOf(self);
 
-        var proto = Object.getPrototypeOf(self);
+      self.start = function (canvasElement) { //entry point for app
+
+        self.canvas.element = canvasElement;
 
         //self.width  = 
         self.canvas.width  = window.innerWidth;
         
         //self.height = 
-        self.canvas.height = window.innerHeight;
+        self.canvas.height = window.innerHeight;        
 
-        self.canvas.element   = canvasElement;
-        self.canvas.context2D = canvasElement.getContext('2d');
 
-        //TODO:  move this?
-        //var this.proto = Object.getPrototypeOf(self);
-
-        //console.log(self.canvas.context2D);
-       
-        //move canvas context methods to canvas class of nexus lib
-        // for(obj in self.canvas.context2D) {
-        //   var ctx = self.canvas.context2D;
-
-        //   if(typeof ctx[obj] === 'function') {
-        //     proto[obj] = ctx[obj].bind(ctx);
-        //   } else {
-        //     proto[obj] = ctx[obj];
-        //   }
-        // }
+        _gatherDrawingContextMethods(self);
+        _gatherAllClassMethods(self);
 
         self.engine.start(canvasElement);
-
-
-        gatherAllClassMethods(self);
       }
     };
 
@@ -112,14 +99,40 @@ define([
       }
     };
 
+    /* nxMain Private Functions
+      --------------------------------------------------- */
+
+    function _gatherDrawingContextMethods(root) {
+      var c = root.canvas.getContext();
+
+      for(o in c) {
+
+        if(typeof c[o] === 'function') {
+          _proto[o] = c[o].bind(c);
+        } else {
+          _proto[o] = c[o];
+        }
+      }
+
+      console.log(_proto);
+      // //self.canvas.element   = canvasElement;
+      //   self.canvas.context2D = canvasElement.getContext('2d');
+
+      // //TODO:  move this?
+
+      //   console.log(self.canvas.context2D);
+       
+      //   //move canvas context methods to canvas class of nexus lib
+      
+    };
+
     /**
-     *
      * Gathers all sub-class methods and makes them callable from the main class
      *
      * @method gatherAllClassMethods
      */
 
-    function gatherAllClassMethods(root) {
+    function _gatherAllClassMethods(root) {
 
       for(var key in root) {
 
@@ -129,8 +142,6 @@ define([
             //var proto = Object.getPrototypeOf(root[key]);
 
             for(var subKey in root[key]) {
-              //if(typeof root[key][subKey] === 'function')
-              //console.log(typeof root[key][subKey]);
               root[subKey] = root[key][subKey];
             }
           }

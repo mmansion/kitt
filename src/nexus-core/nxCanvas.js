@@ -5,13 +5,12 @@ define(function () {
 
   var nxCanvas = function(root) {
     var self = this;
-    
-    //public properties
 
-    self.width = 0;
-    self.height = 0;
-    self.context2D;
-
+    //public canvas properties
+    self.root    = root;
+    self.width   = 0;
+    self.height  = 0;
+    self.element = {};
   };
 
   /* nxCanvas Prototype
@@ -33,8 +32,11 @@ define(function () {
 
     bg: function(c) {
       this.background(c);
+    },
+
+    getContext: function() {
+      return this.element.getContext(this.root.canvasMode);
     }
-  
   
   };
   

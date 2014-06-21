@@ -6,7 +6,7 @@ define(function () {
 
   nxCoords.prototype = {
     windowToCanvas: function(canvas, x, y) {
-      var bbox = nexus.canvas.element.getBoundingClientRect(); //TODO: make this a method of the canvas class
+      var bbox = canvas.getBoundingClientRect(); //TODO: make this a method of the canvas class
       return {x: x-bbox.left * (canvas.width / bbox.width), y: y-bbox.top * (canvas.height / bbox.height)};
     }
   };

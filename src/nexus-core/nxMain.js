@@ -129,6 +129,8 @@ define([
             //var proto = Object.getPrototypeOf(root[key]);
 
             for(var subKey in root[key]) {
+              //if(typeof root[key][subKey] === 'function')
+              //console.log(typeof root[key][subKey]);
               root[subKey] = root[key][subKey];
             }
           }

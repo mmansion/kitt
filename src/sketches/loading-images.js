@@ -4,9 +4,9 @@ var c
 /* Setup
   --------------------------------------------------- */
 nexus.setup = function() {
-  c = nexus.canvas.getContext('2d');
+  c = nexus.getContext();
 
-  img =new Image();
+  img = new Image();
   img.onload = drawImage;
   img.src = 'sketches/data/penguin.jpeg';
 }
@@ -25,8 +25,8 @@ drawImage( image, sx, sy, sw, sh, dx, dy, dw, dh)
 */
 
 function drawImage() {
-  var dx = nexus.canvas.width/2 - 150
-    , dy = nexus.canvas.height/2 - 226
+  var dx = nexus.width/2 - 150
+    , dy = nexus.height/2 - 226
     , sx = 0
     , sy = 0
     , sw = 1500

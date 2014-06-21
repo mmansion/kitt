@@ -112,18 +112,7 @@ define([
         } else {
           _proto[o] = c[o];
         }
-      }
-
-      console.log(_proto);
-      // //self.canvas.element   = canvasElement;
-      //   self.canvas.context2D = canvasElement.getContext('2d');
-
-      // //TODO:  move this?
-
-      //   console.log(self.canvas.context2D);
-       
-      //   //move canvas context methods to canvas class of nexus lib
-      
+      }      
     };
 
     /**

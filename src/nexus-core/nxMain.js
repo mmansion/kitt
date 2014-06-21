@@ -50,12 +50,12 @@ define([
       self.mouseY = 0;
 
       //PRE-INSTANTIATED CORE CLASSES
+      self.events = new nxEvents     (this);
       self.coords = new nxCoords     (this);
       self.canvas = new nxCanvas     (this);
       self.mouse  = new nxMouse      (this);
       self.utils  = new nxUtils      (this);
       self.engine = new nxDrawEngine (this);
-      self.events = new nxEvents     (this);
 
       //CORE CONSTRUCTOR CLASSES
       self.Video  = Video;

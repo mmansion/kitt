@@ -1,6 +1,7 @@
 define(function () {
 
   var nxCoords = function(root) {
+
     //Utils Class
   };
 

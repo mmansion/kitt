@@ -19,15 +19,16 @@ define(function () {
   nxCanvas.prototype = {
 
     background: function(c) {
+      var ctx = this.getContext();
 
       var color = c || '#011722';
 
-      this.context2D.save(); //save the context on a stack
+      ctx.save(); //save the context on a stack
 
-      c.fillStyle = color; //TODO: make configurable
-      c.fillRect(0, 0, nexus.canvas.width, nexus.canvas.height);  // now fill the canvas
+      ctx.fillStyle = color; //TODO: make configurable
+      ctx.fillRect(0, 0, this.width, this.height);  // now fill the canvas
 
-      this.context2D.restore();
+      ctx.restore();
     },
 
     bg: function(c) {

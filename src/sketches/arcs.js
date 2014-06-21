@@ -1,5 +1,4 @@
-var canvas    = nexus.canvas
-  , lastRun   = + new Date
+var lastRun   = + new Date
   , delay     = 10
   , clockwise = true
   , radStart  = 0
@@ -11,7 +10,6 @@ var canvas    = nexus.canvas
 /* Setup
   --------------------------------------------------- */
 nexus.setup = function() {
-  canvas = nexus.canvas;
   c = nexus.canvas.getContext();
 
 
@@ -30,9 +28,12 @@ nexus.update = function() {
 /* Draw
   --------------------------------------------------- */
 nexus.draw = function() {
-  deg+=2;
 
-  if(deg == 360) {
+  nexus.bg(); //draw baground
+
+  deg += 2;
+
+  if(deg >= 360) {
     deg = 1;
     clockwise = !clockwise;
   }
@@ -41,12 +42,14 @@ nexus.draw = function() {
 
   c.beginPath();
 
-  //context.arc(x,y,r,sAngle,eAngle,counterclockwise)
-  c.arc(canvas.width/2, canvas.height/2, 90,  radStart, Math.PI*2,  clockwise);
-  c.arc(canvas.width/2, canvas.height/2, 70,  radStart, Math.PI*2,  clockwise);
-  c.arc(canvas.width/2, canvas.height/2, 50,  radStart, Math.PI*2,  clockwise);
-  c.arc(canvas.width/2, canvas.height/2, 30,  radStart, Math.PI*2,  clockwise);
-  c.arc(canvas.width/2, canvas.height/2, 10,  radStart, Math.PI*2,  clockwise);
+  c.arc(nexus.width/2, nexus.height/2, 150,  radStart, Math.PI*2,  clockwise);
+  c.arc(nexus.width/2, nexus.height/2, 130,  radStart, Math.PI*2,  clockwise);
+  c.arc(nexus.width/2, nexus.height/2, 110,  radStart, Math.PI*2,  clockwise);
+  c.arc(nexus.width/2, nexus.height/2, 90,   radStart, Math.PI*2,  clockwise);
+  c.arc(nexus.width/2, nexus.height/2, 70,   radStart, Math.PI*2,  clockwise);
+  c.arc(nexus.width/2, nexus.height/2, 50,   radStart, Math.PI*2,  clockwise);
+  c.arc(nexus.width/2, nexus.height/2, 30,   radStart, Math.PI*2,  clockwise);
+  c.arc(nexus.width/2, nexus.height/2, 10,   radStart, Math.PI*2,  clockwise);
 
   c.stroke();
   

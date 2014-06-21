@@ -6,29 +6,25 @@ var c       //2d context
 /* Setup
   --------------------------------------------------- */
 nexus.setup = function() {
-  c = nexus.canvas.context2D;
+  c = nexus.getContext();
   
   c.font="12px Telex";
-
-  x = nexus.canvas.width/2;
-  y = nexus.canvas.height/2;
 }
 
 /* Update
   --------------------------------------------------- */
 nexus.update = function() {
-  //on update
-}
 
+  x = (nexus.mouseX !== 0) ? nexus.mouseX: nexus.canvas.width/2;
+  y = (nexus.mouseY !== 0) ? nexus.mouseY: nexus.canvas.height/2;
+}
 
 /* Draw
   --------------------------------------------------- */
 nexus.draw = function() {
 
-  nexus.canvas.background('#011722');
+  nexus.bg();
 
-  //c.fillStyle = '#011722';
-  //c.fillRect(0, 0, nexus.canvas.width, nexus.canvas.height);  // now fill the canvas
   c.fillStyle = '#fff';
   c.fillText('x: ' + x + ' y: ' + y, x + 28, y);
   c.beginPath();
@@ -38,11 +34,4 @@ nexus.draw = function() {
   c.lineWidth = 5;
   c.strokeStyle = '#003300';
   c.stroke();
-}
-
-window.onmousemove = function(e) {
-  var canvasCoords = nexus.coords.windowToCanvas(nexus.canvas, e.clientX, e.clientY);
-
-  x = canvasCoords.x;
-  y = canvasCoords.y;
 }

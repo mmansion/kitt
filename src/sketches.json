@@ -1,12 +1,12 @@
 [
   {
     "title": "arcs",
-    "src": "arcs.js",
-    "default": "true"
+    "src": "arcs.js"
   },
   {
     "title": "coordinates",
-    "src": "coordinates.js"
+    "src": "coordinates.js",
+    "default": "true"
   },
   {
     "title": "loading images",

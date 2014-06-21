@@ -8,8 +8,8 @@ define(function () {
     
     //public properties
 
-    self.width;
-    self.height;
+    self.width = 0;
+    self.height = 0;
     self.context2D;
 
   };

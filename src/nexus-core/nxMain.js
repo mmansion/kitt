@@ -45,10 +45,8 @@ define([
       self.mouseX = 0;
       self.mouseY = 0;
 
-   
       //PRE-INSTANTIATED CORE CLASSES
 
-      //TODO: all core classes that get instantiated automatically should follow this pattern
       self.coords = new nxCoords     (this);
       self.canvas = new nxCanvas     (this);
       self.mouse  = new nxMouse      (this);
@@ -56,25 +54,21 @@ define([
       self.engine = new nxDrawEngine (this);
       self.events = new nxEvents     (this);
 
-      self.Leap = nxLeap;
-
-      //constructor classes
+      //CORE CONSTRUCTOR CLASSES
       self.Video  = Video;
 
+      //ADDON CONSTRUCTOR CLASSES
+      self.Leap = nxLeap;
 
       self.start = function (canvasElement) { //entry point for application
 
-
-        console.log(self.utils.getObjectSize(self));
-
-        console.log(self);
-
-        return;
-
         var proto = Object.getPrototypeOf(self);
 
-        self.width  = self.canvas.width  = window.innerWidth;
-        self.height = self.canvas.height = window.innerHeight;
+        //self.width  = 
+        self.canvas.width  = window.innerWidth;
+        
+        //self.height = 
+        self.canvas.height = window.innerHeight;
 
         self.canvas.element   = canvasElement;
         self.canvas.context2D = canvasElement.getContext('2d');
@@ -85,39 +79,20 @@ define([
         //console.log(self.canvas.context2D);
        
         //move canvas context methods to canvas class of nexus lib
-        for(obj in self.canvas.context2D) {
-          var ctx = self.canvas.context2D;
+        // for(obj in self.canvas.context2D) {
+        //   var ctx = self.canvas.context2D;
 
-          if(typeof ctx[obj] === 'function') {
-            proto[obj] = ctx[obj].bind(ctx);
-          } else {
-            proto[obj] = ctx[obj];
-          }
-        }
-
-        //console.log(proto);
-        //console.log("---------------------");
+        //   if(typeof ctx[obj] === 'function') {
+        //     proto[obj] = ctx[obj].bind(ctx);
+        //   } else {
+        //     proto[obj] = ctx[obj];
+        //   }
+        // }
 
         self.engine.start(canvasElement);
 
-        //TRANSFER PROTO METHODS FROM CANVAS TO NEXUS MAIN
-        console.log("---------------------------------------");
-        for(obj in self.canvas) {
-          if(self.canvas.hasOwnProperty(obj)) {
-            console.log(obj);
-          }
-        }
 
-        //console.log(Object.getPrototypeOf(self.canvas));
-
-        for(obj in Object.getPrototypeOf(self.canvas)) {
-          console.log(obj);
-        }
-
-        console.log("---------------------------------------");
-
-
-        console.log(proto);
+        gatherAllClassMethods(self);
       }
     };
 
@@ -136,6 +111,30 @@ define([
         this.setup();
       }
     };
+
+    /**
+     *
+     * Gathers all sub-class methods and makes them callable from the main class
+     *
+     * @method gatherAllClassMethods
+     */
+
+    function gatherAllClassMethods(root) {
+
+      for(var key in root) {
+
+        if(root.hasOwnProperty(key)) { //look for classes assigned to root
+
+          if(typeof root[key] === 'object') {
+            //var proto = Object.getPrototypeOf(root[key]);
+
+            for(var subKey in root[key]) {
+              root[subKey] = root[key][subKey];
+            }
+          }
+        }
+      }
+    }
 
     return Nexus;
 });

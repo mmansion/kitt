@@ -13,5 +13,6 @@ nexus.update = function() {
 /* Draw
   --------------------------------------------------- */
 nexus.draw = function() {
-  console.log(nexus.mouseX, nexus.mouseY);
+  //console.log(nexus.mouseX, nexus.mouseY);
+  //console.log("---");
 }

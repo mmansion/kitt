@@ -4,11 +4,11 @@ var c
 /* Setup
   --------------------------------------------------- */
 nexus.setup = function() {
-  c = nexus.canvas.getContext('2d');
+  c = nexus.getContext();
 
-  img =new Image();
+  img        = new Image();
   img.onload = drawImage;
-  img.src = 'sketches/data/penguin.jpeg';
+  img.src    = 'sketches/data/penguin.jpeg';
 }
 
 /*

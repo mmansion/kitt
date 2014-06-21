@@ -9,12 +9,12 @@
   },
   {
     "title": "loading images",
-    "src": "loading-images.js",
-    "default": "true"
+    "src": "loading-images.js"
   },
   {
     "title": "pixel printer",
-    "src": "pixel-printer.js"
+    "src": "pixel-printer.js",
+    "default": "true"
   },
   {
     "title": "draw engine",

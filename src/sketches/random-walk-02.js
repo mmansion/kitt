@@ -1,74 +1,44 @@
-require([
-  'jquery',
-  'underscore', 
-  'classes/DrawEngine2', 
-  'classes/Utils'
-  ], 
+var nx = nexus
+  , top, btm;
 
-function($, _, DrawEngine, utils) {
+/* Setup
+  --------------------------------------------------- */
+nx.setup = function() {
 
-  /* Random Walk JS */
+  //init arrays with int zero for all values
+  btm = nx.range(20).map(function () { return 0 });
+  top = nx.range(20).map(function () { return 0 });
+}
 
-  window.utils = utils;
+/* Update
+  --------------------------------------------------- */
+nx.update = function() {
 
-  /* Sketch Vars
-    --------------------------------------------------- */
-
-  var 
-
-  canvas  = document.getElementById('sketch'),
-  sketch  = new DrawEngine(canvas),
-  c       = canvas.getContext('2d'),
-
-  top, btm;
-
-  /* Setup
-    --------------------------------------------------- */
-
-  sketch.setup = function() {
-
-    canvas.width  = $(window).width();
-    canvas.height = $(window).height();
-
-    //init arrays with int zero for all values
-    btm = _.range(20).map(function () { return 0 });
-    top = _.range(20).map(function () { return 0 });
-  };
-
-  /* Update
-    --------------------------------------------------- */
-  sketch.update = function() {
-
-
-  };
-
-  /* Draw (main loop)
-    --------------------------------------------------- */
-  sketch.draw = function(time) {
-
-    var topIx = Math.floor(Math.random() * top.length);
-    var btmIx = Math.floor(Math.random() * btm.length);
-
-    top[topIx]++;
-    btm[btmIx]++;
     
-    topWidth = canvas.width/top.length;
-    btmWidth = canvas.width/btm.length;
+}
 
-    for(var x = 0; x < top.length; x++) {
-      c.fillRect(x*topWidth, 0, topWidth-1, top[x]);
-      c.fillStyle = '#fff';
-      c.fill();
-    }
+/* Draw
+  --------------------------------------------------- */
+nx.draw = function() {
 
-    for(var x = 0; x < btm.length; x++) {
-      c.fillRect(x*btmWidth, canvas.height-btm[x], btmWidth-1, btm[x]);
-      c.fillStyle = '#fff';
-      c.fill();
-    }
+  var topIx = Math.floor(Math.random() * top.length);
+  var btmIx = Math.floor(Math.random() * btm.length);
 
-  };
+  top[topIx]++;
+  btm[btmIx]++;
+    
+  topWidth = nx.width/top.length;
+  btmWidth = nx.width/btm.length;
 
-  sketch.start();
+  for(var x = 0; x < top.length; x++) {
+    nx.fillRect(x*topWidth, 0, topWidth-1, top[x]);
+    nx.fillStyle = '#fff';
+    nx.fill();
+  }
 
-});
+  for(var x = 0; x < btm.length; x++) {
+    nx.fillRect(x*btmWidth, nx.height-btm[x], btmWidth-1, btm[x]);
+    nx.fillStyle = '#fff';
+    nx.fill();
+  }
+}

@@ -1,5 +1,5 @@
 var lastRun = + new Date
-  , delay   = 3000
+  , delay   = 10000
   , walker
   , nx = nexus;
 
@@ -63,13 +63,13 @@ Walker.prototype = {
   },
 
   walk: function() {
-    this.x(this.x() + this.getRandomInt(-2,2));
-    this.y(this.y() + this.getRandomInt(-2,2));
+    this.x(this.x() + this.getRandomInt(-4,4));
+    this.y(this.y() + this.getRandomInt(-4,4));
   },
-  
+
   anomaly: function() {
-    this.x(this.x() + this.getRandomInt(-10,10));
-    this.y(this.y() + this.getRandomInt(-10,10));
+    this.x(this.x() + this.getRandomInt(-100,100));
+    this.y(this.y() + this.getRandomInt(-100,100));
   },
 
   getRandomInt: function(min, max) {

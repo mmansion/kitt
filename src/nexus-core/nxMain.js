@@ -52,7 +52,7 @@ define([
       //PRE-INSTANTIATED CORE CLASSES
       self.events = new nxEvents     (this);
       self.coords = new nxCoords     (this);
-      self.canvas = new nxCanvas     (this);
+      //self.canvas = new nxCanvas     (this);
       self.mouse  = new nxMouse      (this);
       self.utils  = new nxUtils      (this);
       self.engine = new nxDrawEngine (this);
@@ -67,16 +67,11 @@ define([
 
       self.start = function (canvasElement) { //entry point for app
 
-        self.canvas.element = canvasElement;
+        self.swapCanvas(canvasElement);
 
-        //self.width  = 
-        self.canvas.width  = window.innerWidth;
-        
-        //self.height = 
-        self.canvas.height = window.innerHeight;    
-
-        _gatherDrawingContextMethods(self);
+        //_gatherDrawingContextMethods(self); //DEPRECATED
         _gatherAllClassMethods(self);
+
 
         self.engine.start(canvasElement);
       }
@@ -85,23 +80,26 @@ define([
     /* nxMain Prototype
       --------------------------------------------------- */
 
-    Nexus.prototype = {
+    Nexus.prototype = new nxCanvas();
 
-      create: function (className) {
-        console.log(className);
-      },
 
-      resize: function () {
-        this.width  = window.innerWidth;
-        this.height = window.innerHeight;
-        this.setup();
-      }
-    };
+    // Nexus.prototype = {
+
+    //   create: function (className) {
+    //     console.log(className);
+    //   },
+
+    //   resize: function () {
+    //     this.width  = window.innerWidth;
+    //     this.height = window.innerHeight;
+    //     this.setup();
+    //   }
+    // };
 
     /* nxMain Private Functions
       --------------------------------------------------- */
 
-    function _gatherDrawingContextMethods(root) {
+    function _gatherDrawingContextMethods(root) { //DEPRECATED
       var ctx      = root.canvas.getContext()
         , ctxProto = Object.getPrototypeOf(ctx);
 
@@ -126,6 +124,7 @@ define([
       root.engine.addEventListener('update', function() {
         for(var key in ctx) {
           if(ctx[key] !== root[key]) {
+            console.log("reset");
             ctx[key] = root[key];
           }
         }
@@ -143,9 +142,13 @@ define([
         if(root.hasOwnProperty(key)) { //look for classes assigned to root
           if(typeof root[key] === 'object') {
             //var proto = Object.getPrototypeOf(root[key]);
-
             for(var subKey in root[key]) {
-              root[subKey] = root[key][subKey];
+              if(typeof root[key][subKey] === 'function') {
+                //bind proper context for functions
+                root[subKey] = root[key][subKey].bind(root[key]);
+              } else {
+                root[subKey] = root[key][subKey];
+              }
             }
           }
         }

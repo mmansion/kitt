@@ -17,12 +17,12 @@
   },
   {
     "title": "draw engine",
-    "src": "draw-engine.js",
-    "default": "true"
+    "src": "draw-engine.js"
   },
   {
     "title": "random walk 01",
-    "src": "random-walk-01.js"
+    "src": "random-walk-01.js",
+    "default": "true"
   },
   {
     "title": "random walk 02",

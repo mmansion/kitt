@@ -1,77 +1,75 @@
-require(['jquery', 'classes/Coords'], function($, Coords) {
+var nx = nexus
+  , img1
+  , img2
+  , renderWidth  = 50
+  , renderHeight = 800
 
-  var canvas  = document.getElementById('sketch'),
-      ctx     = canvas.getContext('2d'),
-      coords  = new Coords(),
-      img1    = new Image(),
-      img2    = new Image(),
+  , sx = 0 //source x coord, where to start clipping
+  , sy = 0 //source y coord, where to start clipping
+  , sw //width of clipped source image
+  , sh //height of clipped source image
 
-      renderWidth  = 50,
-      renderHeight = 800,
+  , dx //x coord of where to place image on destination canvas
+  , dy; //y coord of where to place image on destination canvas
 
-      sx = 0, //source x coord, where to start clipping
-      sy = 0, //source y coord, where to start clipping
-      sw, //width of clipped source image
-      sh, //height of clipped source image
+/* Setup
+  --------------------------------------------------- */
+nexus.setup = function() {
 
-      dx, //x coord of where to place image on destination canvas
-      dy; //y coord of where to place image on destination canvas
+  img1 = new Image();
+  img2 = new Image();
 
-    canvas.width = $(window).width();
-    canvas.height = $(window).height();
+  img1.src = 'sketches/data/site1.png';
 
-    window.resize = function() {
-      canvas.width = $(window).width();
-      canvas.height = $(window).height();
-    }
+  img1.onload = function(e) {
 
-    console.log("sketch loaded");
+    console.log("image 1 loaded");
 
-    img1.src = 'sketches/data/site1.png';
-    
+    // sw = this.width;
+    // sh = this.height;
 
-    img1.onload = function(e) {
+    // dw = sw/10;
+    // dh = sh/10;
 
-      console.log("image 1 loaded");
+    sw = dw = (this.width  > renderWidth)  ?  renderWidth: this.width; 
+    sh = dh = (this.height > renderHeight) ? renderHeight: this.height;
 
-      // sw = this.width;
-      // sh = this.height;
+    dx = nx.width/2  - (sw/2); //centering
+    dy = nx.height/2 - (sh/2); 
 
-      // dw = sw/10;
-      // dh = sh/10;
+    nx.drawImage(img1, sx, sy, sw, sh, dx, dy, dw, dh);
 
-      sw = dw = (this.width > renderWidth) ? renderWidth: this.width; 
-      sh = dh = (this.height > renderHeight) ? renderHeight: this.height;
+    img2.src = 'sketches/data/site2.png';
+  }
 
-      dx = canvas.width/2 - (sw/2); //centering
-      dy = canvas.height/2 - (sh/2); 
+  img2.onload = function(e) {
 
-      //ctx.drawImage(img1,  0, 0);
-      //console.log('loaded');
-      ctx.drawImage(img1, sx, sy, sw, sh, dx, dy, dw, dh);
+    console.log("image 2 loaded");
 
-      img2.src = 'sketches/data/site2.png';
-    }
+    // sw = this.width;
+    // sh = this.height;
 
-    img2.onload = function(e) {
+    // dw = sw/10;
+    // dh = sh/10;
 
-      console.log("image 2 loaded");
+    sw = dw = (this.width > renderWidth)   ? renderWidth: this.width; 
+    sh = dh = (this.height > renderHeight) ? renderHeight: this.height;
 
-      // sw = this.width;
-      // sh = this.height;
+    dx = dx + renderWidth
+    dy = nx.height/2 - (sh/2); 
 
-      // dw = sw/10;
-      // dh = sh/10;
+    nx.drawImage(img2, sx, sy, sw, sh, dx, dy, dw, dh);
+  }
+}
 
-      sw = dw = (this.width > renderWidth) ? renderWidth: this.width; 
-      sh = dh = (this.height > renderHeight) ? renderHeight: this.height;
+/* Update
+  --------------------------------------------------- */
+nexus.update = function() {
 
-      dx = dx + renderWidth
-      dy = canvas.height/2 - (sh/2); 
+}
 
-      //ctx.drawImage(img1,  0, 0);
-      //console.log('loaded');
-      ctx.drawImage(img2, sx, sy, sw, sh, dx, dy, dw, dh);
-    }
-  
-});
+/* Draw
+  --------------------------------------------------- */
+nexus.draw = function() {
+
+}

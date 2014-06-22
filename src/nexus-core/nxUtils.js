@@ -1,6 +1,8 @@
-define(function () {
+define(function (underscore) {
 
   var nxUtils = function(root) {
+
+    //console.log(Object.getPrototypeOf(this));
     //Utils Class
   };
 
@@ -96,6 +98,25 @@ define(function () {
       };
 
       return colorsByName[input];
+    },
+
+    range: function(start, stop, step) {
+      if (arguments.length <= 1) {
+        stop = start || 0;
+        start = 0;
+      }
+      step = arguments[2] || 1;
+
+      var length = Math.max(Math.ceil((stop - start) / step), 0);
+      var idx = 0;
+      var range = Array(length);
+
+      while (idx < length) {
+        range[idx++] = start;
+        start += step;
+      }
+
+      return range;
     },
 
     rgbToHex: function(r, g, b) {

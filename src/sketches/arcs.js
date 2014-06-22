@@ -1,4 +1,5 @@
-var lastRun   = + new Date
+var nx        = nexus
+  , lastRun   = + new Date
   , delay     = 10
   , clockwise = true
   , radStart  = 0
@@ -10,11 +11,9 @@ var lastRun   = + new Date
 /* Setup
   --------------------------------------------------- */
 nexus.setup = function() {
-  c = nexus.canvas.getContext();
 
-
-  c.strokeStyle = '#fff';
-  c.fillStyle = '#fff';
+  nx.strokeStyle = '#fff';
+  nx.fillStyle = '#fff';
 }
 
 /* Update
@@ -29,7 +28,7 @@ nexus.update = function() {
   --------------------------------------------------- */
 nexus.draw = function() {
 
-  nexus.bg(); //draw baground
+  nx.bg(); //draw baground
 
   deg += 2;
 
@@ -40,18 +39,18 @@ nexus.draw = function() {
 
   radStart = deg * (Math.PI/180);
 
-  c.beginPath();
+  nx.beginPath();
 
-  c.arc(nexus.width/2, nexus.height/2, 150,  radStart, Math.PI*2,  clockwise);
-  c.arc(nexus.width/2, nexus.height/2, 130,  radStart, Math.PI*2,  clockwise);
-  c.arc(nexus.width/2, nexus.height/2, 110,  radStart, Math.PI*2,  clockwise);
-  c.arc(nexus.width/2, nexus.height/2, 90,   radStart, Math.PI*2,  clockwise);
-  c.arc(nexus.width/2, nexus.height/2, 70,   radStart, Math.PI*2,  clockwise);
-  c.arc(nexus.width/2, nexus.height/2, 50,   radStart, Math.PI*2,  clockwise);
-  c.arc(nexus.width/2, nexus.height/2, 30,   radStart, Math.PI*2,  clockwise);
-  c.arc(nexus.width/2, nexus.height/2, 10,   radStart, Math.PI*2,  clockwise);
+  nx.arc(nexus.width/2, nexus.height/2, 150,  radStart, Math.PI*2,  clockwise);
+  nx.arc(nexus.width/2, nexus.height/2, 130,  radStart, Math.PI*2,  clockwise);
+  nx.arc(nexus.width/2, nexus.height/2, 110,  radStart, Math.PI*2,  clockwise);
+  nx.arc(nexus.width/2, nexus.height/2, 90,   radStart, Math.PI*2,  clockwise);
+  nx.arc(nexus.width/2, nexus.height/2, 70,   radStart, Math.PI*2,  clockwise);
+  nx.arc(nexus.width/2, nexus.height/2, 50,   radStart, Math.PI*2,  clockwise);
+  nx.arc(nexus.width/2, nexus.height/2, 30,   radStart, Math.PI*2,  clockwise);
+  nx.arc(nexus.width/2, nexus.height/2, 10,   radStart, Math.PI*2,  clockwise);
 
-  c.stroke();
+  nx.stroke();
   
   if( + new Date - lastRun > delay) {
     lastRun = + new Date;

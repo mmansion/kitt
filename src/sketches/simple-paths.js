@@ -1,37 +1,43 @@
-require(['jquery', 'classes/Coords'], function($, Coords) {
+var nx = nexus;
 
-  var canvas  = document.getElementById('sketch'),
-      ctx     = canvas.getContext('2d'),
-      coords  = new Coords();
+/* Setup
+  --------------------------------------------------- */
+nexus.setup = function() {
 
-    canvas.width = $(window).width();
-    canvas.height = $(window).height();
-    window.resize = function() {
-      canvas.width = $(window).width();
-      canvas.height = $(window).height();
-    }
+}
 
-    console.log("sketch loaded");
+/* Update
+  --------------------------------------------------- */
+nexus.update = function() {
+
+}
+
+/* Draw
+  --------------------------------------------------- */
+nexus.draw = function() {
+
+  nx.bg();
+
+  for(var i = 0; i < 100; i++) {
+    var x = i*2;
+
+    nx.fillStyle = '#ccddff';
+    nx.beginPath();
+    nx.moveTo(nx.centerX+x,nx.centerY+x);
+    nx.lineTo(250+x,50);
+    nx.lineTo(200+x,80);
+    nx.closePath();
+    nx.fill();
+    nx.strokeStyle = 'rgb(0,128,0)';
+    nx.lineWidth = 1;
+    nx.stroke();
+  }
+}
 
 
-    var centerX = canvas.width / 2;
-    var centerY = canvas.height / 2;
 
-    for(var i = 0; i < 100; i++) {
-      var x = i*2;
 
-      ctx.fillStyle = '#ccddff';
-      ctx.beginPath();
-      ctx.moveTo(centerX+x,centerY+x);
-      ctx.lineTo(250+x,50);
-      ctx.lineTo(200+x,80);
-      ctx.closePath();
-      ctx.fill();
-      ctx.strokeStyle = 'rgb(0,128,0)';
-      ctx.lineWidth = 1;
-      ctx.stroke();
-    }
 
     
-  
-});
+
+    

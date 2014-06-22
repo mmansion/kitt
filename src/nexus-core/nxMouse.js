@@ -28,7 +28,7 @@ define( function () {
   nxMouse.prototype = {
 
     getCoords: function(x, y) {
-      return this.root.coords.windowToCanvas(this.root.canvas.element, x, y);
+      return this.root.coords.windowToCanvas(this.root.canvas, x, y);
     },
 
     handleMouseMove: function(e) {

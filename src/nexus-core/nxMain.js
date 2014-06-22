@@ -72,7 +72,7 @@ define([
         //_gatherDrawingContextMethods(self); //DEPRECATED
         _gatherAllClassMethods(self);
 
-
+        self.refresh();
         self.engine.start(canvasElement);
       }
     };
@@ -82,19 +82,18 @@ define([
 
     Nexus.prototype = new nxCanvas();
 
+    Nexus.prototype.refresh = function() {
+      this.width  = window.innerWidth;
+      this.height = window.innerHeight;
 
-    // Nexus.prototype = {
+      this.centerX = this.width/2;
+      this.centerY = this.height/2;
+    };
 
-    //   create: function (className) {
-    //     console.log(className);
-    //   },
-
-    //   resize: function () {
-    //     this.width  = window.innerWidth;
-    //     this.height = window.innerHeight;
-    //     this.setup();
-    //   }
-    // };
+    Nexus.prototype.resize = function() {
+      this.refresh();
+      this.setup();
+    };
 
     /* nxMain Private Functions
       --------------------------------------------------- */

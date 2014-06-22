@@ -1,6 +1,12 @@
 define(function () {
 
   var nxCoords = function(root) {
+    var self = this;
+
+    self.root = root;
+
+    self.centerX = root.width/2;
+    self.centerY = root.height/2;
 
     //Utils Class
   };

@@ -14,8 +14,7 @@ define(function () {
        _proto = Object.getPrototypeOf(self);
 
     self.width   = _canvas.width;
-    self.height  = _;
-    self.element = {};
+    self.height  = _canvas.height;
 
     //reset nxCanvas inherited proto to the proper canvas "this" context
     for(var key in _proto) {
@@ -50,6 +49,10 @@ define(function () {
 
     _proto.bg = function() {
       self.background();
+    };
+
+    _proto.getContext = function() {
+      return _context;
     };
   };
 

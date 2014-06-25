@@ -21,8 +21,7 @@
   },
   {
     "title": "random walk 01",
-    "src": "random-walk-01.js",
-    "default": "true"
+    "src": "random-walk-01.js"
   },
   {
     "title": "random walk 02",
@@ -63,5 +62,10 @@
   {
     "title": "2014-06-20-a",
     "src": "sketch-2014-06-20-a.js"
+  },
+  {
+    "title": "2014-06-24-a",
+    "src": "sketch-2014-06-24-a.js",
+    "default": "true"
   }
 ]

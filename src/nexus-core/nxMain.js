@@ -5,6 +5,7 @@ define([
   '/nxCanvas.js',
   '/nxCoords.js',
   '/nxDrawEngine.js',
+  '/nxShape.js',
   '/nxVideo.js',
   '/nxEvents.js',
   '/nxMouse.js',
@@ -23,6 +24,7 @@ define([
     nxCanvas, 
     nxCoords, 
     nxDrawEngine, 
+    nxShape,
     Video,
     nxEvents,
     nxMouse,
@@ -35,45 +37,46 @@ define([
 
     ) {
 
-    var _proto;
+    var _this
+      , _proto;
 
     /* nxMain Class
       --------------------------------------------------- */
 
     Nexus = function () {
 
-      self = this;
+      _this = this;
 
-      self.canvasMode = '2d';
+      _this.canvasMode = '2d';
 
-      self.mouseX = 0;
-      self.mouseY = 0;
+      _this.mouseX = 0;
+      _this.mouseY = 0;
 
       //PRE-INSTANTIATED CORE CLASSES
-      self.events = new nxEvents     (this);
-      self.coords = new nxCoords     (this);
-      //self.canvas = new nxCanvas     (this);
-      self.mouse  = new nxMouse      (this);
-      self.utils  = new nxUtils      (this);
-      self.engine = new nxDrawEngine (this);
+      _this.events = new nxEvents     (this);
+      _this.coords = new nxCoords     (this);
+      _this.shape  = new nxShape      (this);
+      _this.mouse  = new nxMouse      (this);
+      _this.utils  = new nxUtils      (this);
+      _this.engine = new nxDrawEngine (this);
 
       //CORE CONSTRUCTOR CLASSES
-      self.Video  = Video;
+      _this.Video  = Video;
 
       //ADDON CONSTRUCTOR CLASSES
-      self.Leap = nxLeap;
+      _this.Leap = nxLeap;
 
-      _proto = Object.getPrototypeOf(self);
+      _proto = Object.getPrototypeOf(_this);
 
-      self.start = function (canvasElement) { //entry point for app
+      _this.start = function (canvasElement) { //entry point for app
 
-        self.swapCanvas(canvasElement);
+        _this.swapCanvas(canvasElement);
 
-        //_gatherDrawingContextMethods(self); //DEPRECATED
-        _gatherAllClassMethods(self);
+        //_gatherDrawingContextMethods(_this); //DEPRECATED
+        _gatherAllClassMethods(_this);
 
-        self.refresh();
-        self.engine.start(canvasElement);
+        _this.refresh();
+        _this.engine.start(canvasElement);
       }
     };
 
@@ -83,16 +86,16 @@ define([
     Nexus.prototype = new nxCanvas();
 
     Nexus.prototype.refresh = function() {
-      this.width  = window.innerWidth;
-      this.height = window.innerHeight;
+      _this.width  = window.innerWidth;
+      _this.height = window.innerHeight;
 
-      this.centerX = this.width/2;
-      this.centerY = this.height/2;
+      _this.centerX = _this.width/2;
+      _this.centerY = _this.height/2;
     };
 
     Nexus.prototype.resize = function() {
-      this.refresh();
-      this.setup();
+      _this.refresh();
+      _this.setup();
     };
 
     /* nxMain Private Functions

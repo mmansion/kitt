@@ -3,12 +3,16 @@ define(function () {
   /* PRIVATE VARS
    --------------------------------------------------- */
 
-  var _private = "private variable";
+  var _this;
 
   /* MY CLASS
    --------------------------------------------------- */
 
-  var MyClass = function() {
+  var MyClass = function(root) {
+
+    _this      = this;
+    _this.root = root;
+
     //properties, getters, setters
 
   };
@@ -30,5 +34,5 @@ define(function () {
 
   }
 
-  return new MyClass();
+  return MyClass();
 });

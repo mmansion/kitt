@@ -6,7 +6,12 @@ var express = require('express')
   , router  = new express.Router();
  
 
-// route middleware that will happen on every request
+/**
+ *
+ * Used for every request
+ *
+ */
+
 router.use(function(req, res, next) {
 
   // log each request to the console
@@ -16,14 +21,18 @@ router.use(function(req, res, next) {
   next(); 
 });
 
-// home page route (http://localhost:8080)
+
 router.get('/', function(req, res) {
   res.render('index', {title: 'nexus 001'});
 });
 
-// about page route (http://localhost:8080/about)
-router.get('/about', function(req, res) {
-  res.send('im the about page!'); 
+/* Nexus Widgets
+   -------------------------------------------------- */
+
+router.get('/widgets/timeline', function(req, res) {
+  res.render('widgets/timeline');
 });
+
+
 
 module.exports = router;

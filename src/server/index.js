@@ -15,7 +15,13 @@ module.exports = {
 
     // all environments
     app.set('port',  process.env.PORT || 3333);
-    app.set('views', path.join(root, 'views'));
+
+
+    //setup view directories
+    app.set('views',     path.join(root, 'views'));
+    app.locals.basedir = path.join(root, 'views');
+
+    
     app.set('view engine', 'jade');
     
     //app.use(express.favicon());
@@ -26,10 +32,13 @@ module.exports = {
 
     //static routes
     app.use(express.static(path.join(root, '/')));
+    app.use(express.static(path.join(root, '/../bower_components')));
+
     app.use(express.static(path.join(root, 'nexus-core')));
+    //app.use(express.static(path.join(root, 'nexus-widgets')));
+
     app.use(express.static(path.join(root, 'sketches')));
     app.use(express.static(path.join(root, 'public')));
-    app.use(express.static(path.join(root, '/../bower_components')));
 
 
     app.get('/sketch', function(req, res) {

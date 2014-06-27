@@ -28,6 +28,7 @@ define([
     Video,
     nxEvents,
     nxMouse,
+    nxMath,
     nxUtils,
 
     //nx-addons
@@ -57,6 +58,7 @@ define([
       _this.coords = new nxCoords     (this);
       _this.shape  = new nxShape      (this);
       _this.mouse  = new nxMouse      (this);
+      _this.math   = new nxMath       (this);
       _this.utils  = new nxUtils      (this);
       _this.engine = new nxDrawEngine (this);
 

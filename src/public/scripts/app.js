@@ -78,7 +78,7 @@ define([
         if(nexus.engine) {
           //clear the animation frame
            window.cancelAnimationFrame(nexus.engine.animationId);
-           window.nexus = nexus = null;
+           window.nexus = window.nx = nexus = null;
         }
 
         //deletes the module properties from the requirejs context
@@ -101,7 +101,7 @@ define([
         createNewCanvas();
         clearLoadedModules();
 
-        window.nexus = nexus = new Nexus();
+        window.nexus = window.nx = nexus = new Nexus();
 
         var xhr = new XMLHttpRequest();
 

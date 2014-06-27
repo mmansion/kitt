@@ -6,7 +6,6 @@ define(function () {
 
   var _this;
 
-  _this.currentRandom = Math.random;
 
   /* MY CLASS
    --------------------------------------------------- */
@@ -16,7 +15,7 @@ define(function () {
     _this      = this;
     _this.root = root;
 
-    //properties, getters, setters
+    _this.random = Math.random;
 
   };
 
@@ -27,13 +26,13 @@ define(function () {
     
     random: function() {
       if(arguments.length === 0) {
-        return currentRandom();
+        return random();
       }
       if(arguments.length === 1) {
-        return currentRandom() * arguments[0];
+        return random() * arguments[0];
       }
       var aMin = arguments[0], aMax = arguments[1];
-      return currentRandom() * (aMax - aMin) + aMin;
+      return random() * (aMax - aMin) + aMin;
     }
   };
 

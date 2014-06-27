@@ -34,5 +34,5 @@ define(function () {
 
   }
 
-  return MyClass();
+  return MyClass;
 });

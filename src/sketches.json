@@ -65,7 +65,11 @@
   },
   {
     "title": "2014-06-24-a",
-    "src": "sketch-2014-06-24-a.js",
+    "src": "sketch-2014-06-24-a.js"
+  },
+  {
+    "title": "2d rect",
+    "src": "rect-2d-prim.js",
     "default": "true"
   }
 ]

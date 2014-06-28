@@ -9,6 +9,7 @@ define([
   '/nxVideo.js',
   '/nxEvents.js',
   '/nxMouse.js',
+  '/nxMath.js',
   '/nxUtils.js',
 
   //nexus-addons
@@ -50,8 +51,9 @@ define([
 
       _this.canvasMode = '2d';
 
-      _this.mouseX = 0;
-      _this.mouseY = 0;
+      //global properties
+      _this.mouseX     = 0;
+      _this.mouseY     = 0;
 
       //PRE-INSTANTIATED CORE CLASSES
       _this.events = new nxEvents     (this);

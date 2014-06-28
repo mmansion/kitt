@@ -1,20 +1,29 @@
 define(function () {
 
-  var _canvas  = document.createElement('canvas')
+  var _this, _proto
+
+    , _canvas  = document.createElement('canvas')
     , _context = _canvas.getContext('2d');
+
+    _stroke = _context.stroke.bind(_context);
+    _fill   = _context.fill.bind(_context);
 
   //The nxCanvas class gets both the canvas api and the context api
   //both canvas/context get placed onto the nexus prototype
 
    /* nxCanvas Class
-   --------------------------------------------------- */
+      --------------------------------------------------- */
 
   var nxCanvas = function() {
-    var self  = this
-       _proto = Object.getPrototypeOf(self);
 
-    self.width   = _canvas.width;
-    self.height  = _canvas.height;
+    _this  = this
+    _proto = Object.getPrototypeOf(_this);
+
+    _this.width  = _canvas.width;
+    _this.height = _canvas.height;
+
+    _this.hasStroke = true;
+    _this.hasFill   = false;
 
     //reset nxCanvas inherited proto to the proper canvas "this" context
     for(var key in _proto) {
@@ -23,37 +32,67 @@ define(function () {
       }
     }
 
-    self.swapCanvas = function (oldCanvas) {
+    _this.swapCanvas = function (oldCanvas) {
 
-      _canvas.setAttribute('id',     'nexus-' + oldCanvas.id);
+      _canvas.setAttribute('id', 'nexus-' + oldCanvas.id);
+
       _canvas.setAttribute('width',  oldCanvas.width);
       _canvas.setAttribute('height', oldCanvas.height);
 
       oldCanvas.parentNode.replaceChild(_canvas, oldCanvas);
 
-      self.width  = _canvas.width;
-      self.height = _canvas.height;
-    }
+      _this.width  = _canvas.width;
+      _this.height = _canvas.height;
+    };
 
     /* nxCanvas Prototype
-   --------------------------------------------------- */
+       --------------------------------------------------- */
 
     _proto.background = function(c) {
       var color = c || '#011722';
 
       _context.save(); //save the context on a stack
       _context.fillStyle = color; //TODO: make configurable
-      _context.fillRect(0, 0, self.width, self.height);  // now fill the canvas
+      _context.fillRect(0, 0, _this.width, _this.height);  // now fill the canvas
       _context.restore();
     };
 
     _proto.bg = function() {
-      self.background();
+      _this.background();
     };
 
     _proto.getContext = function() {
       return _context;
     };
+
+    _proto.stroke = function(color) {
+      if(color === undefined) {
+        _stroke();
+      } else {
+        _this.hasStroke   = true;
+        _this.strokeStyle = color;
+      }
+    };
+
+    _proto.noStroke = function(color) {
+      _this.hasStroke   = false;
+      _this.strokeStyle = 'rgba(0,0,0,0)';
+    };
+
+    _proto.fill = function(color) {
+      if(color === undefined) {
+        _fill();
+      } else {
+        _this.hasFill   = true;
+        _this.fillStyle = color;
+      }
+    };
+
+    _proto.noFill = function() {
+      _this.hasFill   = false;
+      _this.fillStyle = 'rgba(0,0,0,0)';
+    };
+
   };
 
   /* nxCanvas inheritance

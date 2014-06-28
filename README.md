@@ -1,3 +1,5 @@
-# N E X U S
+# C Y T O
 
-Whisper Lab Performance Toolset
+#### v ~ Pre-alpha
+
+Whisper Lab Creative Performance Tools

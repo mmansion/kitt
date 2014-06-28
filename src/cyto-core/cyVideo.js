@@ -10,7 +10,7 @@ define(function () {
   var Video = function(path) {
 
     this.videoElement = {};
-    this.context = nexus.canvas.context2D;
+    this.context = cyto.canvas.context2D;
     this.x;
     this.y;
 
@@ -82,7 +82,7 @@ define(function () {
       makeOffScreenCanvas(v.width, v.height);
 
       //TODO: ability to pass properties along with a handler
-      nexus.engine.addEventListener('update', _updateImageData.bind(this));
+      cyto.engine.addEventListener('update', _updateImageData.bind(this));
     }
 
   };

@@ -1,18 +1,18 @@
 /* Setup
   --------------------------------------------------- */
-nexus.setup = function() {
+cyto.setup = function() {
 
 }
 
 /* Update
   --------------------------------------------------- */
-nexus.update = function() {
+cyto.update = function() {
 
 }
 
 /* Draw
   --------------------------------------------------- */
-nexus.draw = function() {
-  console.log(nexus.mouseX, nexus.mouseY);
+cyto.draw = function() {
+  console.log(cyto.mouseX, cyto.mouseY);
   //console.log("---");
 }

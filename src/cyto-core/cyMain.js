@@ -1,51 +1,51 @@
 define([
 
-  //nexus-core
+  //cyto-core
 
-  '/nxCanvas.js',
-  '/nxCoords.js',
-  '/nxDrawEngine.js',
-  '/nxShape.js',
-  '/nxVideo.js',
-  '/nxEvents.js',
-  '/nxMouse.js',
-  '/nxMath.js',
-  '/nxUtils.js',
+  '/cyCanvas.js',
+  '/cyCoords.js',
+  '/cyDrawEngine.js',
+  '/cyShape.js',
+  '/cyVideo.js',
+  '/cyEvents.js',
+  '/cyMouse.js',
+  '/cyMath.js',
+  '/cyUtils.js',
 
-  //nexus-addons
+  //cyto-addons
 
-  '/../nexus-addons/nxLeap.js'
+  '/../cyto-addons/cyLeap.js'
 
   ],
 
   function (
 
-    //nx-core
+    //cy-core
 
-    nxCanvas, 
-    nxCoords, 
-    nxDrawEngine, 
-    nxShape,
+    cyCanvas, 
+    cyCoords, 
+    cyDrawEngine, 
+    cyShape,
     Video,
-    nxEvents,
-    nxMouse,
-    nxMath,
-    nxUtils,
+    cyEvents,
+    cyMouse,
+    cyMath,
+    cyUtils,
 
-    //nx-addons
+    //cy-addons
 
-    nxLeap
-    //TODO: nxFCB1010
+    cyLeap
+    //TODO: cyFCB1010
 
     ) {
 
     var _this
       , _proto;
 
-    /* nxMain Class
+    /* cyMain Class
       --------------------------------------------------- */
 
-    Nexus = function () {
+    Cyto = function () {
 
       _this = this;
 
@@ -56,19 +56,19 @@ define([
       _this.mouseY     = 0;
 
       //PRE-INSTANTIATED CORE CLASSES
-      _this.events = new nxEvents     (this);
-      _this.coords = new nxCoords     (this);
-      _this.shape  = new nxShape      (this);
-      _this.mouse  = new nxMouse      (this);
-      _this.math   = new nxMath       (this);
-      _this.utils  = new nxUtils      (this);
-      _this.engine = new nxDrawEngine (this);
+      _this.events = new cyEvents     (this);
+      _this.coords = new cyCoords     (this);
+      _this.shape  = new cyShape      (this);
+      _this.mouse  = new cyMouse      (this);
+      _this.math   = new cyMath       (this);
+      _this.utils  = new cyUtils      (this);
+      _this.engine = new cyDrawEngine (this);
 
       //CORE CONSTRUCTOR CLASSES
       _this.Video  = Video;
 
       //ADDON CONSTRUCTOR CLASSES
-      _this.Leap = nxLeap;
+      _this.Leap = cyLeap;
 
       _proto = Object.getPrototypeOf(_this);
 
@@ -84,12 +84,12 @@ define([
       }
     };
 
-    /* nxMain Prototype
+    /* cyMain Prototype
       --------------------------------------------------- */
 
-    Nexus.prototype = new nxCanvas();
+    Cyto.prototype = new cyCanvas();
 
-    Nexus.prototype.refresh = function() {
+    Cyto.prototype.refresh = function() {
       _this.width  = window.innerWidth;
       _this.height = window.innerHeight;
 
@@ -97,12 +97,12 @@ define([
       _this.centerY = _this.height/2;
     };
 
-    Nexus.prototype.resize = function() {
+    Cyto.prototype.resize = function() {
       _this.refresh();
       _this.setup();
     };
 
-    /* nxMain Private Functions
+    /* cyMain Private Functions
       --------------------------------------------------- */
 
     function _gatherDrawingContextMethods(root) { //DEPRECATED
@@ -161,5 +161,5 @@ define([
       }
     }
 
-    return Nexus;
+    return Cyto;
 });

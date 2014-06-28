@@ -1,36 +1,36 @@
-var nx = nexus;
+var cy = cyto;
 
 /* Setup
   --------------------------------------------------- */
-nexus.setup = function() {
+cyto.setup = function() {
 
 }
 
 /* Update
   --------------------------------------------------- */
-nexus.update = function() {
+cyto.update = function() {
 
 }
 
 /* Draw
   --------------------------------------------------- */
-nexus.draw = function() {
+cyto.draw = function() {
 
-  nx.bg();
+  cy.bg();
 
   for(var i = 0; i < 100; i++) {
     var x = i*2;
 
-    nx.fillStyle = '#ccddff';
-    nx.beginPath();
-    nx.moveTo(nx.centerX+x,nx.centerY+x);
-    nx.lineTo(250+x,50);
-    nx.lineTo(200+x,80);
-    nx.closePath();
-    nx.fill();
-    nx.strokeStyle = 'rgb(0,128,0)';
-    nx.lineWidth = 1;
-    nx.stroke();
+    cy.fillStyle = '#ccddff';
+    cy.beginPath();
+    cy.moveTo(cy.centerX+x,cy.centerY+x);
+    cy.lineTo(250+x,50);
+    cy.lineTo(200+x,80);
+    cy.closePath();
+    cy.fill();
+    cy.strokeStyle = 'rgb(0,128,0)';
+    cy.lineWidth = 1;
+    cy.stroke();
   }
 }
 

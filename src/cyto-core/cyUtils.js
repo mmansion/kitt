@@ -1,12 +1,12 @@
 define(function (underscore) {
 
-  var nxUtils = function(root) {
+  var cyUtils = function(root) {
 
     //console.log(Object.getPrototypeOf(this));
     //Utils Class
   };
 
-  nxUtils.prototype = {
+  cyUtils.prototype = {
 
     getObjectSize: function (o) {
       var p = Object.getPrototypeOf(o)
@@ -132,6 +132,6 @@ define(function (underscore) {
     return hex.length == 1 ? "0" + hex : hex;
   }
   
-  return nxUtils;
+  return cyUtils;
 
 });

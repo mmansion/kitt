@@ -12,7 +12,7 @@ require.config({
 
     //NEXUS FRAMEWORK
 
-    nexus:      '/nxMain'
+    cyto:      '/cyMain'
 
     //NEXUS ADDON DEPENDENCIES
 

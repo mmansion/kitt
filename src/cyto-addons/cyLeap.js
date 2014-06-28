@@ -1,7 +1,7 @@
 require.config({
 
   /**
-   * nxLeap Addon Dependencies
+   * cyLeap Addon Dependencies
    */
 
   paths: 
@@ -11,7 +11,7 @@ require.config({
   },
 
   /**
-   * nxLeap Addon Shims 
+   * cyLeap Addon Shims 
    * 
    * Shims are requires for libraries 
    * not pre-configured as AMD modules
@@ -27,10 +27,10 @@ require.config({
 
 define(['leapjs'], function (Leap) {
 
-   /* nxLeap Class
+   /* cyLeap Class
    --------------------------------------------------- */
 
-  var nxLeap = function(options) {
+  var cyLeap = function(options) {
 
     var self = this;
 
@@ -47,10 +47,10 @@ define(['leapjs'], function (Leap) {
     self.controller.connect();
   };
 
-  /* nxLeap Prototype
+  /* Leap Prototype
    --------------------------------------------------- */
 
-  nxLeap.prototype = {
+  cyLeap.prototype = {
 
     getFrame: function() {
       return this.controller.frame();
@@ -58,6 +58,6 @@ define(['leapjs'], function (Leap) {
 
   };
 
-  return nxLeap;
+  return cyLeap;
 
 });

@@ -34,15 +34,15 @@ module.exports = {
     app.use(express.static(path.join(root, '/')));
     app.use(express.static(path.join(root, '/../bower_components')));
 
-    app.use(express.static(path.join(root, 'nexus-core')));
-    //app.use(express.static(path.join(root, 'nexus-widgets')));
+    app.use(express.static(path.join(root, 'cyto-core')));
+    //app.use(express.static(path.join(root, 'cyto-widgets')));
 
     app.use(express.static(path.join(root, 'sketches')));
     app.use(express.static(path.join(root, 'public')));
 
 
     app.get('/sketch', function(req, res) {
-      res.render('sketch', {title: 'nexus 001'});
+      res.render('sketch', {title: 'cyto 001'});
     });
 
 

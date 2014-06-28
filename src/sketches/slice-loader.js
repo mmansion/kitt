@@ -1,4 +1,4 @@
-var nx = nexus
+var cy = cyto
   , img1
   , img2
   , renderWidth  = 50
@@ -14,7 +14,7 @@ var nx = nexus
 
 /* Setup
   --------------------------------------------------- */
-nexus.setup = function() {
+cyto.setup = function() {
 
   img1 = new Image();
   img2 = new Image();
@@ -34,10 +34,10 @@ nexus.setup = function() {
     sw = dw = (this.width  > renderWidth)  ?  renderWidth: this.width; 
     sh = dh = (this.height > renderHeight) ? renderHeight: this.height;
 
-    dx = nx.width/2  - (sw/2); //centering
-    dy = nx.height/2 - (sh/2); 
+    dx = cy.width/2  - (sw/2); //centering
+    dy = cy.height/2 - (sh/2); 
 
-    nx.drawImage(img1, sx, sy, sw, sh, dx, dy, dw, dh);
+    cy.drawImage(img1, sx, sy, sw, sh, dx, dy, dw, dh);
 
     img2.src = 'sketches/data/site2.png';
   }
@@ -56,20 +56,20 @@ nexus.setup = function() {
     sh = dh = (this.height > renderHeight) ? renderHeight: this.height;
 
     dx = dx + renderWidth
-    dy = nx.height/2 - (sh/2); 
+    dy = cy.height/2 - (sh/2); 
 
-    nx.drawImage(img2, sx, sy, sw, sh, dx, dy, dw, dh);
+    cy.drawImage(img2, sx, sy, sw, sh, dx, dy, dw, dh);
   }
 }
 
 /* Update
   --------------------------------------------------- */
-nexus.update = function() {
+cyto.update = function() {
 
 }
 
 /* Draw
   --------------------------------------------------- */
-nexus.draw = function() {
+cyto.draw = function() {
 
 }

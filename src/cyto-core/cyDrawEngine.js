@@ -3,7 +3,7 @@ define(function () {
    /* DRAW ENGINE CLASS
    --------------------------------------------------- */
 
-  var nxDrawEngine = function(root, options) {
+  var cyDrawEngine = function(root, options) {
     var self = this;
 
     self.options = options || {};
@@ -20,8 +20,8 @@ define(function () {
 
 
       //TODO: figure out how to use an inheritance model to make this more modular
-      if(nexus.setup && typeof(nexus.setup) === 'function') {
-        nexus.setup();
+      if(cyto.setup && typeof(cyto.setup) === 'function') {
+        cyto.setup();
       }
 
       self.animationId = window.requestAnimationFrame(function(time) {       
@@ -33,7 +33,7 @@ define(function () {
   /* DRAW ENGINE PROTOTYPE
    --------------------------------------------------- */
 
-  nxDrawEngine.prototype = {
+  cyDrawEngine.prototype = {
     
     animate: function (time) {
       var self = this; // window.requestNextAnimationFrame() called by DOMWindow
@@ -42,14 +42,14 @@ define(function () {
       self.calcFps(time); // update fps time
         
       //if an update function has been registered, call it for each animation loop
-      if(nexus.update && typeof(nexus.update) === 'function') {
-        nexus.update();
+      if(cyto.update && typeof(cyto.update) === 'function') {
+        cyto.update();
 
         self.dispatchEvent({type: 'update', message: ''}); //emit update event
       }
 
       //if a draw function has been registered, call it for each animation loop
-      if(nexus.draw && typeof(nexus.draw) === 'function') {
+      if(cyto.draw && typeof(cyto.draw) === 'function') {
         
         if(self.options.clearTransforms)  { //DEPRECATED: TODO: move to canvas class
           self.context.setTransform(1, 0, 0, 1, 0, 0); //remove translations/transforms by seting to identity matrix
@@ -59,7 +59,7 @@ define(function () {
           self.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
         }
         
-        nexus.draw(time);
+        cyto.draw(time);
       }
 
       if(self.frameRate) { //if specifying a framerate, don't use rAF
@@ -106,5 +106,5 @@ define(function () {
     return new Date().getTime();
   };  
   
-  return nxDrawEngine;
+  return cyDrawEngine;
 });

@@ -1,13 +1,13 @@
 define([
-  'nexus',
+  'cyto',
   'jquery', 
   'highlight'
   ]
 
   //on document load, init app
-  , function(Nexus, $, hljs) {
+  , function(Cyto, $, hljs) {
 
-    var nexus = window.nexus = {};
+    var cyto = window.cyto = {};
 
     $(function() { //on document load
 
@@ -73,12 +73,12 @@ define([
         var scripts = document.scripts,
             context = require.s.contexts['_'];
 
-        //destroy previous nexus, put on the global namespace
+        //destroy previous cyto, put on the global namespace
 
-        if(nexus.engine) {
+        if(cyto.engine) {
           //clear the animation frame
-           window.cancelAnimationFrame(nexus.engine.animationId);
-           window.nexus = window.nx = nexus = null;
+           window.cancelAnimationFrame(cyto.engine.animationId);
+           window.cyto = window.cy = cyto = null;
         }
 
         //deletes the module properties from the requirejs context
@@ -101,7 +101,7 @@ define([
         createNewCanvas();
         clearLoadedModules();
 
-        window.nexus = window.nx = nexus = new Nexus();
+        window.cyto = window.cy = cyto = new Cyto();
 
         var xhr = new XMLHttpRequest();
 
@@ -114,7 +114,7 @@ define([
 
           document.body.appendChild(script);
 
-          nexus.start(document.getElementById('sketch'));
+          cyto.start(document.getElementById('sketch'));
 
           //$('#code').html('<section><pre><code class="javascript">' + data + '</code></pre></section>');
           //$('pre code').each(function(i, e) {hljs.highlightBlock(e)});
@@ -146,7 +146,7 @@ define([
   });
 
   window.addEventListener('resize', function() {
-    nexus.resize();
+    cyto.resize();
   });
 
   //TODO: App Key Shortcuts

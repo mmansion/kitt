@@ -8,36 +8,36 @@ var c
 
 /* Setup
   --------------------------------------------------- */
-nexus.setup = function() {
+cyto.setup = function() {
 
-  c = nexus.canvas.context2D;
+  c = cyto.canvas.context2D;
 
-  video1 = new nexus.Video('sketches/data/spaceships.webm');
+  video1 = new cyto.Video('sketches/data/spaceships.webm');
 
-  // video2 = new nexus.Video('sketches/data/spaceships.webm');
+  // video2 = new cyto.Video('sketches/data/spaceships.webm');
 
-  // video3 = new nexus.Video('sketches/data/spaceships.webm');
+  // video3 = new cyto.Video('sketches/data/spaceships.webm');
 
-  // video4 = new nexus.Video('sketches/data/spaceships.webm');
+  // video4 = new cyto.Video('sketches/data/spaceships.webm');
 
 }
 
 /* Update
   --------------------------------------------------- */
-nexus.update = function() {
+cyto.update = function() {
 
 }
 
 
 /* Draw
   --------------------------------------------------- */
-nexus.draw = function() {
+cyto.draw = function() {
 
   if( + new Date - lastRun > delay) {
 
     lastRun = + new Date;
 
-    video1.draw(nexus.mouseX, nexus.mouseY);
+    video1.draw(cyto.mouseX, cyto.mouseY);
     // video2.draw(800, 200);
     // video3.draw(1000, 600);
     // video4.draw(400, 900);

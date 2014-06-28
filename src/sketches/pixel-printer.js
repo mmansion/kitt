@@ -1,9 +1,9 @@
-var nx = nexus
+var cy = cyto
   , img;
 
 /* Setup
   --------------------------------------------------- */
-nexus.setup = function() {
+cyto.setup = function() {
   img        = new Image();
   img.onload = drawImage;
   img.src    = 'sketches/data/penguin.jpeg';
@@ -24,8 +24,8 @@ function drawImage() {
   // d =>  destination canvas | s = > source image
 
   var imageData = {},
-      dx = nx.width/2 - 150, //centering
-      dy = nx.height/2 - 226, 
+      dx = cy.width/2 - 150, //centering
+      dy = cy.height/2 - 226, 
 
       dw = 300,  //translated size to destination canvas
       dh = 452, 
@@ -39,16 +39,16 @@ function drawImage() {
 
     //argument options, uncomment to test them out
     
-    //nx.drawImage(image,  dx, dy);
-    //nx.drawImage(image, dx,  dy, dw, dh);
+    //cy.drawImage(image,  dx, dy);
+    //cy.drawImage(image, dx,  dy, dw, dh);
 
-    nx.drawImage(img,  sx, sy, sw, sh, dx, dy, dw, dh);
+    cy.drawImage(img,  sx, sy, sw, sh, dx, dy, dw, dh);
 
-    imageData = nx.getImageData(dx, dy, dw, dh);
+    imageData = cy.getImageData(dx, dy, dw, dh);
 
-    nx.bg();
+    cy.bg();
 
-    //nexus.putImageData(imageData, dx, dy);
+    //cyto.putImageData(imageData, dx, dy);
 
     var pixel = 0
       , pixelX = dx
@@ -57,7 +57,7 @@ function drawImage() {
 
     //ref: http://stackoverflow.com/questions/4899799/whats-the-best-way-to-set-a-single-pixel-in-an-html5-canvas
 
-    var id = nx.createImageData(1,1)
+    var id = cy.createImageData(1,1)
       , d  = id.data;
 
     var pixelPrinter = setInterval(function() {
@@ -69,7 +69,7 @@ function drawImage() {
         d[2] = imageData.data[pixel+2];
         d[3] = imageData.data[pixel+3];
 
-        nx.putImageData(id, pixelX, pixelY);
+        cy.putImageData(id, pixelX, pixelY);
 
         pixel += 4;
         pixelX++;

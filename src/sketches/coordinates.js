@@ -5,25 +5,25 @@ var c       //2d context
 
 /* Setup
   --------------------------------------------------- */
-nexus.setup = function() {
-  c = nexus.getContext();
+cyto.setup = function() {
+  c = cyto.getContext();
   
   c.font="12px Telex";
 }
 
 /* Update
   --------------------------------------------------- */
-nexus.update = function() {
+cyto.update = function() {
 
-  x = (nexus.mouseX !== 0) ? nexus.mouseX: nexus.canvas.width/2;
-  y = (nexus.mouseY !== 0) ? nexus.mouseY: nexus.canvas.height/2;
+  x = (cyto.mouseX !== 0) ? cyto.mouseX: cyto.canvas.width/2;
+  y = (cyto.mouseY !== 0) ? cyto.mouseY: cyto.canvas.height/2;
 }
 
 /* Draw
   --------------------------------------------------- */
-nexus.draw = function() {
+cyto.draw = function() {
 
-  nexus.bg();
+  cyto.bg();
 
   c.fillStyle = '#fff';
   c.fillText('x: ' + x + ' y: ' + y, x + 28, y);

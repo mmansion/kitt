@@ -8,13 +8,13 @@ define(function () {
     _stroke = _context.stroke.bind(_context);
     _fill   = _context.fill.bind(_context);
 
-  //The nxCanvas class gets both the canvas api and the context api
-  //both canvas/context get placed onto the nexus prototype
+  //The cyCanvas class gets both the canvas api and the context api
+  //both canvas/context get placed onto the cyto prototype
 
-   /* nxCanvas Class
+   /* cyCanvas Class
       --------------------------------------------------- */
 
-  var nxCanvas = function() {
+  var cyCanvas = function() {
 
     _this  = this
     _proto = Object.getPrototypeOf(_this);
@@ -25,7 +25,7 @@ define(function () {
     _this.hasStroke = true;
     _this.hasFill   = false;
 
-    //reset nxCanvas inherited proto to the proper canvas "this" context
+    //reset cyCanvas inherited proto to the proper canvas "this" context
     for(var key in _proto) {
       if(typeof _proto[key] === 'function') {
         _proto[key] = _proto[key].bind(_context);
@@ -34,7 +34,7 @@ define(function () {
 
     _this.swapCanvas = function (oldCanvas) {
 
-      _canvas.setAttribute('id', 'nexus-' + oldCanvas.id);
+      _canvas.setAttribute('id', 'cyto-' + oldCanvas.id);
 
       _canvas.setAttribute('width',  oldCanvas.width);
       _canvas.setAttribute('height', oldCanvas.height);
@@ -45,7 +45,7 @@ define(function () {
       _this.height = _canvas.height;
     };
 
-    /* nxCanvas Prototype
+    /* cyCanvas Prototype
        --------------------------------------------------- */
 
     _proto.background = function(c) {
@@ -95,10 +95,10 @@ define(function () {
 
   };
 
-  /* nxCanvas inheritance
+  /* cyCanvas inheritance
    --------------------------------------------------- */
 
-  nxCanvas.prototype = _canvas.getContext('2d');
+  cyCanvas.prototype = _canvas.getContext('2d');
   
-  return nxCanvas;
+  return cyCanvas;
 });

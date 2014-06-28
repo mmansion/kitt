@@ -177,21 +177,21 @@ module.exports = function(grunt) {
 
       editClass: {
         cmd: function(file) {
-          return 'subl ./src/nexus-core/' + file;
+          return 'subl ./src/cyto-core/' + file;
         }
       },
 
       //startServer: 'grunt connect &',
       startServer: 'grunt open & node ./src/start.js',
 
-      loadNexus: {
+      loadCyto: {
 
         stdout: true,
         stderr: true,
 
-        cmd: function(nexusToLoad) {
-          return '"/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome" --load-and-launch-app=./src/Nexus001/ChromeApp'
-          //return String("open ./src/Nexus" + nexusToLoad + "/nexus.app");
+        cmd: function(cytoToLoad) {
+          return '"/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome" --load-and-launch-app=./src/Cyto001/ChromeApp'
+          //return String("open ./src/Cyto" + cytoToLoad + "/cyto.app");
         }
       }
     },
@@ -362,10 +362,10 @@ module.exports = function(grunt) {
    *
    * GRUNT CLASS
    *
-   *  - generate a new nexus sketch
+   *  - generate a new cyto sketch
    */
 
-  grunt.registerTask('class', 'Generates a new nexus class.', function() {
+  grunt.registerTask('class', 'Generates a new cyto class.', function() {
     var classList = grunt.file.readJSON('src/classes.json')
       , inc        = 0
       , alpha      = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
@@ -393,7 +393,7 @@ module.exports = function(grunt) {
     });
 
     grunt.log.writeln("generating new canvas sketch");
-    grunt.file.copy('src/templates/basic-class-amd.js', 'src/nexus-core/' + newClass);
+    grunt.file.copy('src/templates/basic-class-amd.js', 'src/cyto-core/' + newClass);
     grunt.file.write('src/classes.json', JSON.stringify(classList, null, 2));
 
     grunt.task.run('exec:editClass:' + newClass);
@@ -403,7 +403,7 @@ module.exports = function(grunt) {
    *
    * GRUNT SKETCH
    *
-   *  - generate a new nexus sketch
+   *  - generate a new cyto sketch
    */
 
   grunt.registerTask('sketch', 'Generates a new canvas sketch.', function () {
@@ -444,11 +444,11 @@ module.exports = function(grunt) {
    *
    * GRUNT NEXUS
    *
-   *  - launches a given nexus number
+   *  - launches a given cyto number
    */
 
-  G.registerTask('nexus', 'launches a nexus', function(num) {
+  G.registerTask('cyto', 'launches a cyto', function(num) {
     //G.task.run('exec:startServer'); //start server at localhost 9001
-    G.task.run('exec:loadNexus:' + (num || '001'));
+    G.task.run('exec:loadCyto:' + (num || '001'));
   });
 };

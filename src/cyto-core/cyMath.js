@@ -10,7 +10,7 @@ define(function () {
   /* MY CLASS
    --------------------------------------------------- */
 
-  var nxMath = function(root) {
+  var cyMath = function(root) {
 
     _this      = this;
     _this.root = root;
@@ -22,7 +22,7 @@ define(function () {
   /* MY CLASS PROTOTYPE
    --------------------------------------------------- */
 
-  nxMath.prototype = {
+  cyMath.prototype = {
     
     random: function() {
       if(arguments.length === 0) {
@@ -39,5 +39,5 @@ define(function () {
   /* PRIVATE FUNCTIONS
    --------------------------------------------------- */
 
-  return nxMath;
+  return cyMath;
 });

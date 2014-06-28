@@ -56,8 +56,8 @@
     "src": "sketch-2014-06-15-a.js"
   },
   {
-    "title": "nx-leap",
-    "src": "nx-leap.js"
+    "title": "cy-leap",
+    "src": "cy-leap.js"
   },
   {
     "title": "2014-06-20-a",
@@ -71,5 +71,9 @@
     "title": "2d rect",
     "src": "rect-2d-prim.js",
     "default": "true"
+  },
+  {
+    "title": "2014-06-27-a",
+    "src": "sketch-2014-06-27-a.js"
   }
 ]

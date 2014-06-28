@@ -1,23 +1,23 @@
-var nx = nexus
-  , nxLeap = new nx.Leap;
+var cy = cyto
+  , cyLeap = new cy.Leap;
 
 /* Setup
   --------------------------------------------------- */
-nexus.setup = function() {
+cyto.setup = function() {
 
 }
 
 /* Update
   --------------------------------------------------- */
-nexus.update = function() {
+cyto.update = function() {
   
 }
 
 
 /* Draw
   --------------------------------------------------- */
-nexus.draw = function() {
+cyto.draw = function() {
 
-  console.log(nxLeap.getFrame());
+  console.log(cyLeap.getFrame());
 
 }

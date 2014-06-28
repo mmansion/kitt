@@ -1,14 +1,14 @@
 /**
- * @class:  nxMouse
+ * @class:  cyMouse
  * @author: Mikhail Mansion
  */
 
 define( function () {
 
-   /* nxMouse Class
+   /* cyMouse Class
    --------------------------------------------------- */
 
-  var nxMouse = function(root) {
+  var cyMouse = function(root) {
     var self = this;
 
     self.root = root;
@@ -22,10 +22,10 @@ define( function () {
     root.events.apply(self); //add this class to the events class (dispatcher)
   };
 
-  /* nxMouse Prototype
+  /* cyMouse Prototype
    --------------------------------------------------- */
 
-  nxMouse.prototype = {
+  cyMouse.prototype = {
 
     getCoords: function(x, y) {
       return this.root.coords.windowToCanvas(this.root.canvas, x, y);
@@ -53,6 +53,6 @@ define( function () {
     }
   };
   
-  return nxMouse;
+  return cyMouse;
 
 });

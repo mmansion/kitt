@@ -1,32 +1,32 @@
-var nx = nexus;
+var cy = cyto;
 var c;
 
 /* Setup
   --------------------------------------------------- */
-nexus.setup = function() {
-  //c = nx.getContext();
+cyto.setup = function() {
+  //c = cy.getContext();
 
-  nx.font = 'bold 50px Arial';
+  cy.font = 'bold 50px Arial';
 
-  console.log(nx);
+  console.log(cy);
 }
 
 /* Update
   --------------------------------------------------- */
-nexus.update = function() {
+cyto.update = function() {
 
-  //console.log(nexus.getTime());
+  //console.log(cyto.getTime());
 
-  //console.log(nexus.getFps());
+  //console.log(cyto.getFps());
 }
 
 
 /* Draw
   --------------------------------------------------- */
-nexus.draw = function() {
-  nx.bg();
+cyto.draw = function() {
+  cy.bg();
 
-  nx.fillStyle = '#fff';
-  nx.fillText(String(nx.getTime()), nx.width/2, nx.height/2);
-  nx.beginPath();
+  cy.fillStyle = '#fff';
+  cy.fillText(String(cy.getTime()), cy.width/2, cy.height/2);
+  cy.beginPath();
 }

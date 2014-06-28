@@ -1,26 +1,26 @@
 /* Setup
   --------------------------------------------------- */
-nx.setup = function() {
+cy.setup = function() {
 
 }
 
 /* Update
   --------------------------------------------------- */
-nx.update = function() {
+cy.update = function() {
 
 } 
 
 /* Draw
   --------------------------------------------------- */
-nx.draw = function() {
+cy.draw = function() {
 
-  nx.bg();
-  nx.fill('green');
-  nx.noStroke();
-  nx.drawCenter();
-  nx.rect(400, 400, 200, 200, 30);
+  cy.bg();
+  cy.fill('green');
+  cy.noStroke();
+  cy.drawCenter();
+  cy.rect(400, 400, 200, 200, 30);
 
-  nx.noFill();
-  nx.stroke('red');
-  nx.rect(500, 200, 100, 100, 20);
+  cy.noFill();
+  cy.stroke('red');
+  cy.rect(500, 200, 100, 100, 20);
 }

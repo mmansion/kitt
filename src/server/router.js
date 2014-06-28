@@ -1,5 +1,5 @@
 /*
- * Nexus App Routes
+ * Cyto App Routes
  */
 
 var express = require('express')
@@ -23,10 +23,10 @@ router.use(function(req, res, next) {
 
 
 router.get('/', function(req, res) {
-  res.render('index', {title: 'nexus 001'});
+  res.render('index', {title: 'cyto 001'});
 });
 
-/* Nexus Widgets
+/* Cyto Widgets
    -------------------------------------------------- */
 
 router.get('/widgets/timeline', function(req, res) {

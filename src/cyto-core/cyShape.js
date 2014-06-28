@@ -1,6 +1,6 @@
 define(function () {
 
-  /* nxShape Private Vars
+  /* cyShape Private Vars
    --------------------------------------------------- */
 
   var _this,
@@ -8,10 +8,10 @@ define(function () {
       //private flags
       _drawFromCenter = false;
 
-  /* nxShape Constructor
+  /* cyShape Constructor
    --------------------------------------------------- */
 
-  var nxShape = function(root) {
+  var cyShape = function(root) {
 
     _this        = this;
     _this.root   = root;
@@ -21,10 +21,10 @@ define(function () {
 
   };
 
-  /* nxShape Prototype
+  /* cyShape Prototype
    --------------------------------------------------- */
 
-  nxShape.prototype = {
+  cyShape.prototype = {
 
     drawCenter: function(bool) {
       _drawFromCenter = bool || true;
@@ -105,7 +105,7 @@ define(function () {
     }
   };
 
-  /* nxShape Private Functions
+  /* cyShape Private Functions
    --------------------------------------------------- */
   
   function _privateFunction() {
@@ -114,5 +114,5 @@ define(function () {
 
   }
 
-  return nxShape;
+  return cyShape;
 });

@@ -1,23 +1,23 @@
 var lastRun = + new Date
   , delay   = 10000
   , walker
-  , nx = nexus;
+  , cy = cyto;
 
 /* Setup
   --------------------------------------------------- */
-nx.setup = function() {
+cy.setup = function() {
   walker = new Walker();
 }
 
 /* Update
   --------------------------------------------------- */
-nx.update = function() {
+cy.update = function() {
   
 }
 
 /* Draw
   --------------------------------------------------- */
-nx.draw = function() {
+cy.draw = function() {
 
   walker.display();
   
@@ -31,12 +31,12 @@ nx.draw = function() {
 
 
 var Walker = function() {
-  var _x = nx.width/2
-    , _y = nx.width/2;
+  var _x = cy.width/2
+    , _y = cy.width/2;
 
-  nx.strokeStyle = "#fff";
-  nx.beginPath();
-  nx.moveTo(_x,_y);
+  cy.strokeStyle = "#fff";
+  cy.beginPath();
+  cy.moveTo(_x,_y);
 
   this.x = function(x) {
     if(x) {
@@ -58,8 +58,8 @@ var Walker = function() {
 Walker.prototype = {
 
   display: function() { 
-    nx.lineTo(this.x(),this.y());
-    nx.stroke();
+    cy.lineTo(this.x(),this.y());
+    cy.stroke();
   },
 
   walk: function() {

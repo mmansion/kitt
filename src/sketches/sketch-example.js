@@ -1,14 +1,14 @@
-nexus.setup = function() {
+cyto.setup = function() {
 
   console.log("calling setup");
 }
 
-nexus.update = function() {
+cyto.update = function() {
 
   //update loop
 }
 
-nexus.draw = function() {
+cyto.draw = function() {
 
   //draw loop
 

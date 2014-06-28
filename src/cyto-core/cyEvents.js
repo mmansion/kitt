@@ -3,12 +3,12 @@ define(function () {
   /* CONSTRUCTOR
    --------------------------------------------------- */
 
-  var nxEvents = function() {};
+  var cyEvents = function() {};
 
   /* PROTOTYPE
    --------------------------------------------------- */
 
-  nxEvents.prototype = {
+  cyEvents.prototype = {
 
     /**
      *
@@ -97,7 +97,7 @@ define(function () {
     }
   };
 
-  return nxEvents;
+  return cyEvents;
 });
 
 /**

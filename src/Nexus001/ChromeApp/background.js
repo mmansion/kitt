@@ -2,7 +2,7 @@
 
 chrome.app.runtime.onLaunched.addListener(function() {
   chrome.app.window.create('window.html', {
-  	id: "NexusWindow",
+  	id: "CytoWindow",
     bounds: {
       width: 800,
       height: 800

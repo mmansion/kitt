@@ -4,5 +4,5 @@
  */
 
 exports.index = function(req, res){
-  res.render('index', {title: 'nexus 001'});
+  res.render('index', {title: 'cyto 001'});
 };

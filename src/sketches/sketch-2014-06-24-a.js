@@ -1,28 +1,28 @@
 var radius = 70
-  , nx     = nexus;
+  , cy     = cyto;
 
 /* Setup
   --------------------------------------------------- */
-nexus.setup = function() {
+cyto.setup = function() {
 
 }
 
 /* Update
   --------------------------------------------------- */
-nexus.update = function() {
+cyto.update = function() {
 
 } 
 
 /* Draw
   --------------------------------------------------- */
-nexus.draw = function() {
+cyto.draw = function() {
 
-  nx.bg();
+  cy.bg();
 
-  nx.fillStyle = 'green';
-  nx.fill();
-  nx.strokeStyle = '#003300';
-  nx.stroke();
+  cy.fillStyle = 'green';
+  cy.fill();
+  cy.strokeStyle = '#003300';
+  cy.stroke();
 
-  nx.ellipse(nx.mouseX, nx.mouseY, 150, 150, true);
+  cy.ellipse(cy.mouseX, cy.mouseY, 150, 150, true);
 }

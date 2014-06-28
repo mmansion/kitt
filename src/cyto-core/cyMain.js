@@ -10,7 +10,9 @@ define([
   '/cyEvents.js',
   '/cyMouse.js',
   '/cyMath.js',
+  '/Point.js',
   '/cyUtils.js',
+  '/cyVector.js',
 
   //cyto-addons
 
@@ -26,11 +28,13 @@ define([
     cyCoords, 
     cyDrawEngine, 
     cyShape,
-    Video,
+    cyVideo,
     cyEvents,
     cyMouse,
     cyMath,
+    Point,
     cyUtils,
+    cyVector,
 
     //cy-addons
 
@@ -64,8 +68,10 @@ define([
       _this.utils  = new cyUtils      (this);
       _this.engine = new cyDrawEngine (this);
 
-      //CORE CONSTRUCTOR CLASSES
-      _this.Video  = Video;
+      //Constructor Singletons
+      _this.Vector = cyVector;
+      _this.Video  = cyVideo;
+      _this.Point  = Point;
 
       //ADDON CONSTRUCTOR CLASSES
       _this.Leap = cyLeap;

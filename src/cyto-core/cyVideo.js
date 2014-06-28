@@ -1,5 +1,7 @@
 define(function () {
 
+  var _this;
+
   //private members
   var _offscreenCanvas = {}
     , _imageData;
@@ -8,11 +10,13 @@ define(function () {
    --------------------------------------------------- */
 
   var Video = function(path) {
+    _this = this;
+    _this.root = cyto;
 
-    this.videoElement = {};
-    this.context = cyto.canvas.context2D;
-    this.x;
-    this.y;
+    _this.videoElement = {};
+    _this.context = cyto.canvas.context2D;
+    _this.x;
+    _this.y;
 
     if(path) this.load(path);
   };
@@ -33,7 +37,7 @@ define(function () {
      */
 
     draw: function (x, y) {
-      this.context.drawImage(this.videoElement, x, y);
+      _this.root.drawImage(this.videoElement, x, y);
     },
 
     getImageData: function() {

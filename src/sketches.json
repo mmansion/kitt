@@ -69,11 +69,15 @@
   },
   {
     "title": "2d rect",
-    "src": "rect-2d-prim.js",
-    "default": "true"
+    "src": "rect-2d-prim.js"
   },
   {
     "title": "2014-06-27-a",
     "src": "sketch-2014-06-27-a.js"
+  },
+  {
+    "title": "vectors",
+    "src": "vectors.js",
+    "default": "true"
   }
 ]

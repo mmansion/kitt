@@ -7,7 +7,7 @@ require.config({
   paths: 
 
   { 
-    leapjs: '/leapjs/leap-0.6.0' //bower_component
+    leapjs: '/leapjs/leap-0.6.1' //bower_component
   },
 
   /**

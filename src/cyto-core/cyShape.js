@@ -1,5 +1,8 @@
 define(function () {
 
+  //shape should be the base class for drawing 2d primitives
+  //more complex forms can inherit shape's properties and methods
+
   /* cyShape Private Vars
    --------------------------------------------------- */
 
@@ -13,12 +16,8 @@ define(function () {
 
   var cyShape = function(root) {
 
-    _this        = this;
-    _this.root   = root;
-
-    //shape should be the base class for drawing 2d primitives
-    //more complex forms can inherit shape's properties and methods
-
+    _this      = this;
+    _this.root = root;
   };
 
   /* cyShape Prototype
@@ -65,9 +64,8 @@ define(function () {
     },
 
     /**
-     * Draws a rounded rectangle using the current state of the canvas. 
-     * If you omit the last three params, it will draw a rectangle 
-     * outline with a 5 pixel border radius 
+     * Draws a rectangle using the current state of the canvas. 
+     * By providing a fifth r argument a corner radius can be specified
      *
      * @param {CanvasRenderingContext2D} ctx
      * @param {Number} x The top left x coordinate
@@ -104,15 +102,6 @@ define(function () {
       _this.root.fill();
     }
   };
-
-  /* cyShape Private Functions
-   --------------------------------------------------- */
-  
-  function _privateFunction() {
-
-
-
-  }
 
   return cyShape;
 });

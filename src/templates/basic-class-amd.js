@@ -1,4 +1,4 @@
-define(function () {
+define(function() {
 
   /* PRIVATE VARS
    --------------------------------------------------- */
@@ -9,11 +9,11 @@ define(function () {
    --------------------------------------------------- */
 
   var MyClass = function(root) {
-
     _this      = this;
     _this.root = root;
+  };
 
-    //properties, getters, setters
+  MyClass.someMethod = function() {
 
   };
 

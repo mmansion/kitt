@@ -14,7 +14,9 @@ define(function () {
    /* cyCanvas Class
       --------------------------------------------------- */
 
-  var cyCanvas = function() {
+  var cyCanvas = function(root) {
+
+    //console.log('root', root);
 
     _this  = this
     _proto = Object.getPrototypeOf(_this);
@@ -22,8 +24,8 @@ define(function () {
     _this.width  = _canvas.width;
     _this.height = _canvas.height;
 
-    _this.hasStroke = true;
-    _this.hasFill   = false;
+    var _hasStroke = true
+      , _hasFill   = false;
 
     //reset cyCanvas inherited proto to the proper canvas "this" context
     for(var key in _proto) {
@@ -69,13 +71,13 @@ define(function () {
       if(color === undefined) {
         _stroke();
       } else {
-        _this.hasStroke   = true;
+        _hasStroke = true;
         _this.strokeStyle = color;
       }
     };
 
     _proto.noStroke = function(color) {
-      _this.hasStroke   = false;
+      _hasStroke = false;
       _this.strokeStyle = 'rgba(0,0,0,0)';
     };
 
@@ -83,14 +85,22 @@ define(function () {
       if(color === undefined) {
         _fill();
       } else {
-        _this.hasFill   = true;
+        _hasFill = true;
         _this.fillStyle = color;
       }
     };
 
     _proto.noFill = function() {
-      _this.hasFill   = false;
+      _hasFill = false;
       _this.fillStyle = 'rgba(0,0,0,0)';
+    };
+
+    _proto.hasFill = function() {
+      return _hasFill;
+    };
+
+    _proto.hasStroke = function() {
+      return _hasStroke;
     };
 
   };

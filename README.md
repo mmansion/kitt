@@ -4,6 +4,8 @@
 
 A biologically inspirated creative coding toolkit for making art.
 
+*NOTE: The project is currently in very early stages and will probably break a lot--though that's not the intention. However the architecture will eventually firm up and be hopefully useful for others.*
+
 ---
 
 Cyto is an evolving project that borrows is ideas and DNA from a host of popular open source projects, assimilating features and blending functionality into a unique set of tools focused on creative media-based applications and networked-based performance. 

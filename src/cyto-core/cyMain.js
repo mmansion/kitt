@@ -69,9 +69,9 @@ define([
       var ellipse = new cyEllipse();
       this.ellipse = ellipse.ellipse.bind(ellipse);
 
+      var rect = new cyRectangle();
 
       //this.rect    = Object.create(cyRectangle.prototype.rect)
-
 
       this.start = function (canvasElement) { //entry point
         _gatherAllClassMethods(this);

@@ -57,13 +57,14 @@ define([
       this.mouseY     = 0;
 
       //PRE-INSTANTIATED CORE CLASSES
+      this.utils  = new cyUtils         (this);
       this.events = new EventDispatcher (this);
       this.coords = new cyCoords        (this);
       this.shape  = new cyShape         (this);
       this.mouse  = new cyMouse         (this);
       this.math   = new cyMath          (this);
-      this.utils  = new cyUtils         (this);
       this.engine = new cyDrawEngine    (this);
+
 
       //Simle drawing api inheritances for drawing without instantiations
       var ellipse = new cyEllipse();

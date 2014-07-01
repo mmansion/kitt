@@ -1,9 +1,9 @@
-define(function (underscore) {
+define(['/lodash/dist/lodash.js'], function (lodash) {
 
   var cyUtils = function(root) {
 
-    //console.log(Object.getPrototypeOf(this));
-    //Utils Class
+    //Puts lodash environment onto the prototype of the cyUtils class
+    lodash.assign(Object.getPrototypeOf(this), lodash, this);
   };
 
   cyUtils.prototype = {

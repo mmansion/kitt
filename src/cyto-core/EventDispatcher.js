@@ -1,31 +1,39 @@
 define(function () {
 
-  /* CONSTRUCTOR
-   --------------------------------------------------- */
+/**
+ * @module EventDispatcher
+ *
+ * @credits: mr doob, createjs, mozilla
+ */
 
-  var cyEvents = function() {};
+var EventDispatcher = function() { /* uses apply as constructor */ };
 
-  /* PROTOTYPE
-   --------------------------------------------------- */
 
-  cyEvents.prototype = {
+EventDispatcher.prototype = {
+
+  /**
+   * Appends the Events class prototype to a supplied class prototype
+   *
+   * @param o {Object} - A classes' prototype
+   */
+
+  apply: function(target) {
+    target.addEventListener        = this.addEventListener;
+    target.hasEventListener        = this.hasEventListener;
+    target.removeEventListener     = this.removeEventListener;
+    target.removeAllEventListeners = this.removeAllEventListeners;
+    target.dispatchEvent           = this.dispatchEvent;
+    target.on                      = this.on;
+    target.off                     = this.off;
+  },
 
     /**
-     *
-     * Appends the Events class prototype to a supplied class prototype
-     *
-     *  @param o {Object} - A classes' prototype
-     *
-     */
+     * @protected
+     * @property _listeners
+     * @type Object
+     **/
 
-    apply: function (obj) {
-      var self = this;
-
-      obj.addEventListener    = self.addEventListener;
-      obj.hasEventListener    = self.hasEventListener;
-      obj.removeEventListener = self.removeEventListener;
-      obj.dispatchEvent       = self.dispatchEvent;
-    },
+    _listeners: null,
 
     /**
      *
@@ -94,14 +102,16 @@ define(function () {
           array[ i ].call( this, event );
         }
       }
+    },
+
+    on: function (type, listener) {
+      this.addEventListener(type, listener);
+    },
+
+    off: function (type, listener) {
+      this.removeEventListener(type, listener);
     }
   };
 
-  return cyEvents;
+  return EventDispatcher;
 });
-
-/**
- *
- * @credits: mr doob, mozilla
- *
- */

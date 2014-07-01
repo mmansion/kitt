@@ -24,7 +24,7 @@ var cyRectangle = function(options) {
 
   this.topLeft;
   this.center;
-  this.radius;  
+  this.radius;
 };
 
 //subclass extends superclass

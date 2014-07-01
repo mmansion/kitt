@@ -1,4 +1,4 @@
-define(['/cyCanvas.js', '/cyShape.js'], function (Canvas, Shape) {
+define(['/View.js', '/cyShape.js'], function (View, Shape) {
 
   /**
    * Creates an Ellipse object
@@ -18,7 +18,7 @@ define(['/cyCanvas.js', '/cyShape.js'], function (Canvas, Shape) {
 
     //inheritance
     this.shape   = Object.create(Shape.prototype);
-    this.context = Object.create(Canvas.prototype);
+    this.context = Object.create(View.prototype);
 
     this.x          = (options && options.x)          ? options.x          : 0;
     this.y          = (options && options.y)          ? options.y          : 0;

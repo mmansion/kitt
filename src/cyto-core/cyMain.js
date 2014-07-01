@@ -1,12 +1,12 @@
 define([
 
   //Core Modules
-  '/cyCanvas.js',
+  '/View.js',
   '/cyCoords.js',
   '/cyDrawEngine.js',
   '/cyShape.js',
   '/cyVideo.js',
-  '/cyEvents.js',
+  '/EventDispatcher.js',
   '/cyMouse.js',
   '/cyMath.js',
   '/cyPoint.js',
@@ -25,12 +25,12 @@ define([
   function (
 
     //Core Classes
-    cyCanvas, 
+    View, 
     cyCoords, 
     cyDrawEngine, 
     cyShape,
     cyVideo,
-    cyEvents,
+    EventDispatcher,
     cyMouse,
     cyMath,
     cyPoint,
@@ -57,13 +57,13 @@ define([
       this.mouseY     = 0;
 
       //PRE-INSTANTIATED CORE CLASSES
-      this.events = new cyEvents     (this);
-      this.coords = new cyCoords     (this);
-      this.shape  = new cyShape      (this);
-      this.mouse  = new cyMouse      (this);
-      this.math   = new cyMath       (this);
-      this.utils  = new cyUtils      (this);
-      this.engine = new cyDrawEngine (this);
+      this.events = new EventDispatcher (this);
+      this.coords = new cyCoords        (this);
+      this.shape  = new cyShape         (this);
+      this.mouse  = new cyMouse         (this);
+      this.math   = new cyMath          (this);
+      this.utils  = new cyUtils         (this);
+      this.engine = new cyDrawEngine    (this);
 
       //Simle drawing api inheritances for drawing without instantiations
       var ellipse = new cyEllipse();
@@ -93,7 +93,7 @@ define([
       }
     };
 
-    Cyto.prototype = new cyCanvas(); //uses a single canvas for everything
+    Cyto.prototype = new View(); //uses a single canvas view for everything
 
     Cyto.prototype.refresh = function() {
       this.width   = window.innerWidth;

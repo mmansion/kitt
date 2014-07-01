@@ -1,4 +1,4 @@
-define(['/cyCanvas.js'], function (CONSTANTS) {
+define(['/View.js'], function (CONSTANTS) {
 
 
   var cyVector = function(x, y, z) {

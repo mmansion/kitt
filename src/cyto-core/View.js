@@ -27,11 +27,10 @@
 * OTHER DEALINGS IN THE SOFTWARE.
 */
 
-define(function () {
+define(['/cyUtils.js'], function (utils) {
 
   /**
   * Provides the primary View class
-  *
   * @module View
   */
 
@@ -45,15 +44,14 @@ define(function () {
 
   /**
    * The View class wraps and extends the DOM's canvas element and drawing context,
-   *  providing additional properties, methods and events which get exposed to the
-   *  ctyo library's root object.
-   *
+   * providing additional properties, methods and events which get exposed to the
+   * ctyo library's root object.
    * @class View
    */
 
   var View = function(root) {
 
-    var _proto = Object.getPrototypeOf(this);
+    var p = Object.getPrototypeOf(this);
 
     this.width  = _canvas.width;
     this.height = _canvas.height;
@@ -61,16 +59,11 @@ define(function () {
     var _hasStroke = true
       , _hasFill   = false;
 
-    //reset View inherited proto to the proper canvas "this" context
-    for(var key in _proto) {
-      if(typeof _proto[key] === 'function') {
-        _proto[key] = _proto[key].bind(_context);
-      }
-    }
+    utils.bindObjects(p, _context);
+
 
     this.swapCanvas = function (oldCanvas) {
-
-      _canvas.setAttribute('id', 'cyto-' + oldCanvas.id);
+      _canvas.setAttribute('id',    'cyto-' + oldCanvas.id);
 
       _canvas.setAttribute('width',  oldCanvas.width);
       _canvas.setAttribute('height', oldCanvas.height);
@@ -84,7 +77,7 @@ define(function () {
     /* View Prototype
        --------------------------------------------------- */
 
-    _proto.background = function(c) {
+    p.background = function(c) {
       var color = c || '#011722';
 
       _context.save(); //save the context on a stack
@@ -93,15 +86,15 @@ define(function () {
       _context.restore();
     };
 
-    _proto.bg = function() {
+    p.bg = function() {
       this.background();
     };
 
-    _proto.getContext = function() {
+    p.getContext = function() {
       return _context;
     };
 
-    _proto.stroke = function(color) {
+    p.stroke = function(color) {
       if(color === undefined) {
         _stroke();
       } else {
@@ -110,12 +103,12 @@ define(function () {
       }
     };
 
-    _proto.noStroke = function(color) {
+    p.noStroke = function(color) {
       _hasStroke = false;
       this.strokeStyle = 'rgba(0,0,0,0)';
     };
 
-    _proto.fill = function(color) {
+    p.fill = function(color) {
       if(color === undefined) {
         _fill();
       } else {
@@ -124,16 +117,16 @@ define(function () {
       }
     };
 
-    _proto.noFill = function() {
+    p.noFill = function() {
       _hasFill = false;
       this.fillStyle = 'rgba(0,0,0,0)';
     };
 
-    _proto.hasFill = function() {
+    p.hasFill = function() {
       return _hasFill;
     };
 
-    _proto.hasStroke = function() {
+    p.hasStroke = function() {
       return _hasStroke;
     };
 

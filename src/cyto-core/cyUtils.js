@@ -1,12 +1,21 @@
 define(['/lodash/dist/lodash.js'], function (lodash) {
 
-  var cyUtils = function(root) {
+  cyUtils = {
 
-    //Puts lodash environment onto the prototype of the cyUtils class
-    lodash.assign(Object.getPrototypeOf(this), lodash, this);
-  };
+    bindObjects: function(target, source) {
+      for(var key in source) {
+        if(typeof source[key] === 'function') {
+          target[key] = source[key].bind(source);
+        } else {
+          target[key] = source[key];
+        }
+      }
+    },
 
-  cyUtils.prototype = {
+    _componentToHex: function (c) {
+      var hex = c.toString(16);
+      return hex.length == 1 ? "0" + hex : hex;
+    },
 
     getObjectSize: function (o) {
       var p = Object.getPrototypeOf(o)
@@ -124,13 +133,7 @@ define(['/lodash/dist/lodash.js'], function (lodash) {
     }
   };
 
-  /* Private Functions (Helpers)
-     --------------------------------------------------- */
-
-  function componentToHex(c) {
-    var hex = c.toString(16);
-    return hex.length == 1 ? "0" + hex : hex;
-  }
+  lodash.merge(cyUtils, lodash);
   
   return cyUtils;
 

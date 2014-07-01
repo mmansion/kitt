@@ -16,6 +16,7 @@ define([
   //2D Primitives
   '/cyEllipse.js',
   '/cyRectangle.js',
+  '/Polygon.js',
 
   //Addons
   '/../cyto-addons/cyLeap.js'
@@ -40,6 +41,8 @@ define([
     //2D Primitives
     cyEllipse,
     cyRectangle,
+    Polygon,
+
 
     //Addons
     cyLeap
@@ -57,7 +60,8 @@ define([
       this.mouseY     = 0;
 
       //PRE-INSTANTIATED CORE CLASSES
-      this.utils  = new cyUtils         (this);
+      this.utils  = cyUtils;
+
       this.events = new EventDispatcher (this);
       this.coords = new cyCoords        (this);
       this.shape  = new cyShape         (this);
@@ -83,6 +87,7 @@ define([
         this.Point    = cyPoint;
         this.Ellipse  = cyEllipse;
         this.Rectange = cyRectangle;
+        this.Polygon  = Polygon;
 
          //ADDON CONSTRUCTOR CLASSES
         this.Leap = cyLeap;

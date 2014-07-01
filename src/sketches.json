@@ -65,8 +65,7 @@
   },
   {
     "title": "ellipse",
-    "src": "ellipse.js",
-    "default": "true"
+    "src": "ellipse.js"
   },
   {
     "title": "2d rect",
@@ -79,5 +78,10 @@
   {
     "title": "vectors",
     "src": "vectors.js"
+  },
+  {
+    "title": "2014-07-01-a",
+    "src": "sketch-2014-07-01-a.js",
+    "default": "true"
   }
 ]

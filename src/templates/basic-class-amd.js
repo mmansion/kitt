@@ -13,10 +13,6 @@ define(function() {
     _this.root = root;
   };
 
-  MyClass.someMethod = function() {
-
-  };
-
   /* MY CLASS PROTOTYPE
    --------------------------------------------------- */
 

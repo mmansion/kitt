@@ -1,4 +1,4 @@
-define(['/View.js', '/cyShape.js'], function (View, Shape) {
+define(['/cyView.js', '/cyShape.js'], function (View, Shape) {
 
   /**
    * Creates an Ellipse object

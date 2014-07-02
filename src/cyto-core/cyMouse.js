@@ -3,56 +3,77 @@
  * @author: Mikhail Mansion
  */
 
-define( function () {
+define([ 
+//module imports
+'EventDispatcher.js', 
+'cyCoords.js'
+], 
 
-   /* cyMouse Class
-   --------------------------------------------------- */
+function (EventDispatcher, Coords) {
+
+  //constructor
 
   var cyMouse = function(root) {
-    var self = this;
 
-    self.root = root;
-    self.x    = 0;
-    self.y    = 0;
-    
-    window.onmousemove = self.handleMouseMove.bind(this);
-    window.onmousedown = self.handleMouseDown.bind(this);
-    window.onmouseup   = self.handleMouseUp.bind(this);
+    this.root = root;
+    this._mouseX = 10;
+    this._mouseY = 10;
 
-    root.events.apply(self); //add this class to the events class (dispatcher)
+    this.coords     = Object.create(Coords.prototype);
+    this.dispatcher = Object.create(EventDispatcher.prototype);
+
+
+    //window.onmousemove = this.handleMouseMove.bind(this);
+    window.onmousedown = this._handleMouseMove.bind(this);
+
+    //this.addEventListener('mouseMove');
+
+    this.dispatcher.apply(this); //add this class to the events class (dispatcher)
   };
 
-  /* cyMouse Prototype
-   --------------------------------------------------- */
+  /* Prototype inheritance
+     -------------------------------------------------- */
 
-  cyMouse.prototype = {
+  var p = cyMouse.prototype;
 
-    getCoords: function(x, y) {
-      return this.root.coords.windowToCanvas(this.root.canvas, x, y);
-    },
+  /* Public Methods
+     -------------------------------------------------- */
 
-    handleMouseMove: function(e) {
-      var c = this.getCoords(e.clientX, e.clientY);
+  p.events = ['onMouseMove', 'onMouseDown', 'onMouseUp'];
 
-      this.root.mouseX = this.x = c.x;
-      this.root.mouseY = this.y = c.y;
+  Object.defineProperty(p, 'mouseX', {
+    get: function()  { return this._mouseX },
+    set: function(x) { this._mouseX = x;   }
+  });
 
-      this.dispatchEvent({type: 'mouseMove', message: {x: c.x, y: c.y} });
-    },
+  Object.defineProperty(p, 'mouseY', {
+    get: function()  { return this._mouseY },
+    set: function(y) { this._mouseY = y;   }
+  });
 
-    handleMouseDown: function(e) {
-      var c = this.getCoords(e.clientX, e.clientY);
+  /* Private members
+     -------------------------------------------------- */
 
-      this.dispatchEvent({type: 'mouseDown', message: {x: c.x, y: c.y}  });
-    },
+  p._handleMouseMove = function (e) {
+    var c = this.coords.windowToCanvas(this.root.canvas, x, y);
 
-    handleMouseUp: function(e) {
-      var c = this.getCoords(e.clientX, e.clientY);
-      
-      this.dispatchEvent({type: 'mouseUp', message: {x: c.x, y: c.y} });
-    }
+    this.root.mouseX = this.x = c.x;
+    this.root.mouseY = this.y = c.y;
+
+    this.dispatchEvent({type: 'mouseMove', message: {x: c.x, y: c.y} });
+  },
+
+  p._handleMouseDown = function (e) {
+    var c = this.coords.windowToCanvas(this.root.canvas, x, y);
+
+    this.dispatchEvent({type: 'mouseDown', message: {x: c.x, y: c.y}  });
+  },
+
+  p._handleMouseUp = function (e) {
+    var c = this.coords.windowToCanvas(this.root.canvas, x, y);
+    
+    this.dispatchEvent({type: 'mouseUp', message: {x: c.x, y: c.y} });
   };
   
   return cyMouse;
-
 });

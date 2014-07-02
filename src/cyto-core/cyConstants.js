@@ -1,6 +1,6 @@
 define(function() {
 
-  exports.cyConstants = {
+  var cyConstants = {
 
     OTHER:   0,
     WINDOWS: 1,
@@ -13,5 +13,7 @@ define(function() {
     HALF_PI:    Math.PI / 2,
     THIRD_PI:   Math.PI / 3,
     QUARTER_PI: Math.PI / 4
-  }
+  };
+
+  return cyConstants;
 });

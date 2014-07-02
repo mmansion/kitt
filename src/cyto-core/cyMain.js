@@ -1,7 +1,7 @@
 define([
 
   //Core Modules
-  '/View.js',
+  '/cyView.js',
   '/cyCoords.js',
   '/cyDrawEngine.js',
   '/cyShape.js',
@@ -26,7 +26,7 @@ define([
   function (
 
     //Core Classes
-    View, 
+    cyView, 
     cyCoords, 
     cyDrawEngine, 
     cyShape,
@@ -56,8 +56,8 @@ define([
       this.canvasMode = '2d';
 
       //global properties
-      this.mouseX     = 0;
-      this.mouseY     = 0;
+      // this.mouseX     = 0;
+      // this.mouseY     = 0;
 
       //PRE-INSTANTIATED CORE CLASSES
       this.utils  = cyUtils;
@@ -79,6 +79,8 @@ define([
       //this.rect    = Object.create(cyRectangle.prototype.rect)
 
       this.start = function (canvasElement) { //entry point
+
+        gatherRootObjects(this);
         _gatherAllClassMethods(this);
 
          //Constructor Singletons
@@ -92,14 +94,14 @@ define([
          //ADDON CONSTRUCTOR CLASSES
         this.Leap = cyLeap;
         
-        this.swapCanvas(canvasElement);
+        this.initView(canvasElement);
 
         this.refresh();
         this.engine.start(canvasElement);
       }
     };
 
-    Cyto.prototype = new View(); //uses a single canvas view for everything
+    Cyto.prototype = new cyView(); //uses a single canvas view for everything
 
     Cyto.prototype.refresh = function() {
       this.width   = window.innerWidth;
@@ -111,6 +113,31 @@ define([
     Cyto.prototype.resize = function() {
       this.refresh();
       this.setup();
+    };
+
+    function gatherRootObjects(root) {
+      var proto;
+
+      console.log("TODO: pickup here (cyMain.js)");
+      //find classes assigned to the root
+      for(var object in root) {
+
+        if(typeof(root[object]) === 'object') {
+
+          proto = Object.getPrototypeOf(root[object]);
+
+          for(var key in proto) {
+
+            if(!String(key).match(/_/)) { //if not private
+              if(typeof proto[key] === 'function') {
+                root[key] = proto[key].bind(root[key]);
+              } else {
+                root[key] = proto[key];
+              }
+            }
+          }
+        }
+      }
     };
 
     /**

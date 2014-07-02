@@ -44,21 +44,21 @@ define(['/cyDrawingObject.js'], function (DrawingObject) {
     throw 'project(axis) not implemented';
   };
 
-  p.fill = function(context) {
-    context.save();
-    context.fillStyle = this.fillStyle;
-    this.createPath(context);
-    context.fill();
-    context.restore();
-  };
+  // p.fill = function(context) {
+  //   context.save();
+  //   context.fillStyle = this.fillStyle;
+  //   this.createPath(context);
+  //   context.fill();
+  //   context.restore();
+  // };
 
-  p.stroke = function(context) {
-    context.save();
-    context.strokeStyle = this.strokeStyle;
-    this.createPath(context);
-    context.stroke();
-    context.restore();
-  };
+  // p.stroke = function(context) {
+  //   context.save();
+  //   context.strokeStyle = this.strokeStyle;
+  //   this.createPath(context);
+  //   context.stroke();
+  //   context.restore();
+  // };
 
   p.isPointInPath = function(context, x, y) {
   this.createPath(context);

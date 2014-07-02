@@ -15,6 +15,8 @@ EventDispatcher.prototype = {
    * Appends the Events class prototype to a supplied class prototype
    *
    * @param o {Object} - A classes' prototype
+   *
+   * @deprecated
    */
 
   apply: function(target) {
@@ -84,6 +86,9 @@ EventDispatcher.prototype = {
     },
 
     dispatchEvent: function (event) {
+      if(event.type !== 'update') {
+        console.log(this.listenerArray);
+      }
       if (this._listeners === undefined) return;
       
       var listeners = this._listeners;

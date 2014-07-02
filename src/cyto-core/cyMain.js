@@ -6,7 +6,7 @@ define([
   '/cyDrawEngine.js',
   '/cyShape.js',
   '/cyVideo.js',
-  '/EventDispatcher.js',
+  '/cyEvents.js',
   '/cyMouse.js',
   '/cyMath.js',
   '/cyPoint.js',
@@ -31,7 +31,7 @@ define([
     cyDrawEngine, 
     cyShape,
     cyVideo,
-    EventDispatcher,
+    cyEvents,
     cyMouse,
     cyMath,
     cyPoint,
@@ -62,13 +62,12 @@ define([
       //PRE-INSTANTIATED CORE CLASSES
       this.utils  = cyUtils;
 
-      this.events = new EventDispatcher (this);
-      this.coords = new cyCoords        (this);
-      this.shape  = new cyShape         (this);
-      this.mouse  = new cyMouse         (this);
-      this.math   = new cyMath          (this);
-      this.engine = new cyDrawEngine    (this);
-
+      this.events = new cyEvents(this);
+      this.coords     = new cyCoords       (this);
+      this.shape      = new cyShape        (this);
+      this.mouse      = new cyMouse        (this);
+      this.math       = new cyMath         (this);
+      this.engine     = new cyDrawEngine   (this);
 
       //Simle drawing api inheritances for drawing without instantiations
       var ellipse = new cyEllipse();
@@ -80,7 +79,8 @@ define([
 
       this.start = function (canvasElement) { //entry point
 
-        gatherRootObjects(this);
+        this._gatherRootObjects(this);
+
         _gatherAllClassMethods(this);
 
          //Constructor Singletons
@@ -101,38 +101,49 @@ define([
       }
     };
 
-    Cyto.prototype = new cyView(); //uses a single canvas view for everything
+    var p = Cyto.prototype = new cyView(); //uses a single canvas view for everything
 
-    Cyto.prototype.refresh = function() {
+    p.refresh = function() {
       this.width   = window.innerWidth;
       this.height  = window.innerHeight;
       this.centerX = this.width/2;
       this.centerY = this.height/2;
     };
 
-    Cyto.prototype.resize = function() {
+    p.resize = function() {
       this.refresh();
       this.setup();
     };
 
-    function gatherRootObjects(root) {
+    p._events = [];
+
+    p._captureEvents = function (object) {
+
+    };
+
+    p._hasEvents = function(object) {
+      return (object.events !== undefined);
+    };
+
+    p._gatherRootObjects = function () {
       var proto;
 
-      console.log("TODO: pickup here (cyMain.js)");
-      //find classes assigned to the root
-      for(var object in root) {
+      for(var object in this) {
 
-        if(typeof(root[object]) === 'object') {
+        if(typeof(this[object]) === 'object') {
 
-          proto = Object.getPrototypeOf(root[object]);
+          proto = Object.getPrototypeOf(this[object]);
+
+          if(this._hasEvents(proto)) {
+            this._captureEvents(proto);
+          }
 
           for(var key in proto) {
-
             if(!String(key).match(/_/)) { //if not private
               if(typeof proto[key] === 'function') {
-                root[key] = proto[key].bind(root[key]);
+                this[key] = proto[key].bind(this[key]);
               } else {
-                root[key] = proto[key];
+                this[key] = proto[key];
               }
             }
           }

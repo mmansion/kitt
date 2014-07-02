@@ -1,18 +1,18 @@
 define(function () {
 
 /**
- * @module EventDispatcher
+ * @module cyEvents
  *
  * @credits: mr doob, createjs, mozilla
  */
 
-var EventDispatcher = function() { /* uses apply as constructor */ };
+var cyEvents = function() { /* uses apply as constructor */ };
 
 
-EventDispatcher.prototype = {
+cyEvents.prototype = {
 
   /**
-   * Appends the Events class prototype to a supplied class prototype
+   * Appends the cyEvents class prototype to a supplied class prototype
    *
    * @param o {Object} - A classes' prototype
    *
@@ -39,7 +39,7 @@ EventDispatcher.prototype = {
 
     /**
      *
-     * Appends the Events class prototype to a supplied class prototype
+     * Appends the cyEvents class prototype to a supplied class prototype
      *
      *  @param type {String} - A class prototype
      *
@@ -118,5 +118,5 @@ EventDispatcher.prototype = {
     }
   };
 
-  return EventDispatcher;
+  return cyEvents;
 });

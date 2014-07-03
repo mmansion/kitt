@@ -6,7 +6,7 @@ define([
   '/cyDrawEngine.js',
   '/cyShape.js',
   '/cyVideo.js',
-  '/cyEvents.js',
+  '/cyEventDispatcher.js',
   '/cyMouse.js',
   '/cyMath.js',
   '/cyPoint.js',
@@ -43,7 +43,6 @@ define([
     cyRectangle,
     Polygon,
 
-
     //Addons
     cyLeap
 
@@ -62,7 +61,7 @@ define([
       //PRE-INSTANTIATED CORE CLASSES
       this.utils  = cyUtils;
 
-      this.events = new cyEvents(this);
+      this.eventDispatcher     = new cyEvents       (this);
       this.coords     = new cyCoords       (this);
       this.shape      = new cyShape        (this);
       this.mouse      = new cyMouse        (this);
@@ -81,7 +80,9 @@ define([
 
         this._gatherRootObjects(this);
 
-        _gatherAllClassMethods(this);
+        //_gatherAllClassMethods(this);
+
+        this._registerEvents();
 
          //Constructor Singletons
         this.Vector   = cyVector;
@@ -115,10 +116,67 @@ define([
       this.setup();
     };
 
-    p._events = [];
+    p._eventsList = {};
 
-    p._captureEvents = function (object) {
+    p._events = {};
 
+    p._getEventType = function(query) {
+      var eventType;
+
+      for(var type in this._eventsList) {
+        this._eventsList[type].forEach(function(e) {
+          if(eventType) return; //short circuit loop if found
+          if(e === query) {
+            eventType = type;
+          }
+        });
+      }
+      return eventType;
+    };  
+
+    p._noop = function(){};
+
+    p._registerEvents = function() {
+
+      for(var type in this._eventsList) {
+
+        this._eventsList[type].forEach(function(e) {
+
+          p._events[e] = {};
+
+          Object.defineProperty(p, e, {
+            
+            get: function() { 
+              return this._events[e];  
+            }.bind(this),
+
+            set: function(handler) {
+              this._events[e] = handler;
+              this.on(this._events[e], handler);
+            }.bind(this)
+
+          });
+
+          p[e] = p._noop;
+
+        }.bind(this));
+      }
+
+    };
+
+    p._registerGlobalEvents = function() {
+
+    };
+
+    p._captureEvents = function (object, events) {
+
+      events.forEach(function(e) {
+
+        if(!this._eventsList[object]) this._eventsList[object] = []; 
+
+        this._eventsList[object].push(e);
+
+      }.bind(this));
     };
 
     p._hasEvents = function(object) {
@@ -129,19 +187,16 @@ define([
       var proto;
 
       for(var object in this) {
-
         if(typeof(this[object]) === 'object') {
-
           proto = Object.getPrototypeOf(this[object]);
 
           if(this._hasEvents(proto)) {
-            this._captureEvents(proto);
+            this._captureEvents(object, proto.events);
           }
-
           for(var key in proto) {
-            if(!String(key).match(/_/)) { //if not private
+            if(proto.hasOwnProperty(key) && !String(key).match(/_/)) { //if not private
               if(typeof proto[key] === 'function') {
-                this[key] = proto[key].bind(this[key]);
+                this[key] = proto[key];
               } else {
                 this[key] = proto[key];
               }
@@ -158,6 +213,7 @@ define([
      */
 
     function _gatherAllClassMethods(root) {
+      return;
       for(var key in root) {
         if(root.hasOwnProperty(key)) { //look for classes assigned to root
           if(typeof root[key] === 'object') {

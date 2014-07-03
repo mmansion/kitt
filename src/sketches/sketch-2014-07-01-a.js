@@ -39,8 +39,12 @@ cy.setup = function() {
   //  shapes.push(polygon);
   // }
 
+  cy.mouseOver = function() {
+    console.log('mouseOver');
+  };
 
-}
+  console.log(cy.mouseOver);
+} 
 
 /* Update
   --------------------------------------------------- */

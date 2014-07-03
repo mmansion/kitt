@@ -8,7 +8,7 @@ define(function () {
 
     self.options = options || {};
 
-    root.events.apply(self); //add this class to the events class (dispatcher)
+    //TODO: root.events.apply(self); //add this class to the events class (dispatcher)
 
     self.start =  function(canvas, setFrameRate) {
       this.frameRate = setFrameRate || false;
@@ -45,7 +45,7 @@ define(function () {
       if(cyto.update && typeof(cyto.update) === 'function') {
         cyto.update();
 
-        self.dispatchEvent({type: 'update', message: ''}); //emit update event
+        //TODO: self.dispatchEvent({type: 'update', message: ''}); //emit update event
       }
 
       //if a draw function has been registered, call it for each animation loop

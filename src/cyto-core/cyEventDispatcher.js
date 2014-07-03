@@ -1,25 +1,14 @@
 define(function () {
 
 /**
- * @module cyEvents
+ * @module cyEventDispatcher
  *
  * @credits: mr doob, createjs, mozilla
  */
 
-var cyEvents = function() { /* uses apply as constructor */ };
+var cyEventDispatcher = function(target) {
 
-
-cyEvents.prototype = {
-
-  /**
-   * Appends the cyEvents class prototype to a supplied class prototype
-   *
-   * @param o {Object} - A classes' prototype
-   *
-   * @deprecated
-   */
-
-  apply: function(target) {
+  if(target !== undefined) {
     target.addEventListener        = this.addEventListener;
     target.hasEventListener        = this.hasEventListener;
     target.removeEventListener     = this.removeEventListener;
@@ -27,7 +16,11 @@ cyEvents.prototype = {
     target.dispatchEvent           = this.dispatchEvent;
     target.on                      = this.on;
     target.off                     = this.off;
-  },
+  }
+};
+
+
+cyEventDispatcher.prototype = {
 
     /**
      * @protected
@@ -39,7 +32,7 @@ cyEvents.prototype = {
 
     /**
      *
-     * Appends the cyEvents class prototype to a supplied class prototype
+     * Appends the cyEventDispatcher class prototype to a supplied class prototype
      *
      *  @param type {String} - A class prototype
      *
@@ -118,5 +111,5 @@ cyEvents.prototype = {
     }
   };
 
-  return cyEvents;
+  return cyEventDispatcher;
 });

@@ -4,7 +4,7 @@
 
 A biologically inspirated creative coding toolkit for making art.
 
-*NOTE: The project is currently in very early stages and will probably break a lot--though that's not the intention. However the architecture will eventually firm up and be hopefully useful for others.*
+*NOTE: The project is currently in a very early stage of development and will probably break, change and evolve--it will almost certainly frustrate anyone attempting to use it at this time (sorry for that). In some ways it's a learning project for the author. That being said, the utlimate goal is to one day make this quite hopefully useful for others by publishing it as a creative tool for wider use.*
 
 ---
 

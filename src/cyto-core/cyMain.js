@@ -54,6 +54,9 @@ define([
 
       this.canvasMode = '2d';
 
+      this._mouseX = 0;
+      this._mosueY = 0;
+
       //global properties
       // this.mouseX     = 0;
       // this.mouseY     = 0;
@@ -61,7 +64,7 @@ define([
       //PRE-INSTANTIATED CORE CLASSES
       this.utils  = cyUtils;
 
-      this.eventDispatcher     = new cyEvents       (this);
+      this.eventDispatcher = new cyEvents  (this);
       this.coords     = new cyCoords       (this);
       this.shape      = new cyShape        (this);
       this.mouse      = new cyMouse        (this);
@@ -79,10 +82,10 @@ define([
       this.start = function (canvasElement) { //entry point
 
         this._gatherRootObjects(this);
-
         //_gatherAllClassMethods(this);
 
         this._registerEvents();
+        this._registerGlobalEvents();
 
          //Constructor Singletons
         this.Vector   = cyVector;
@@ -104,6 +107,17 @@ define([
 
     var p = Cyto.prototype = new cyView(); //uses a single canvas view for everything
 
+
+    Object.defineProperty(p, 'mouseX', {
+      get: function()  { return this._mouseX },
+      set: function(x) { this._mouseX = x;   }
+    });
+
+    Object.defineProperty(p, 'mouseY', {
+      get: function()  { return this._mouseY },
+      set: function(y) { this._mouseY = y;   }
+    });
+
     p.refresh = function() {
       this.width   = window.innerWidth;
       this.height  = window.innerHeight;
@@ -122,7 +136,6 @@ define([
 
     p._getEventType = function(query) {
       var eventType;
-
       for(var type in this._eventsList) {
         this._eventsList[type].forEach(function(e) {
           if(eventType) return; //short circuit loop if found
@@ -137,35 +150,38 @@ define([
     p._noop = function(){};
 
     p._registerEvents = function() {
-
       for(var type in this._eventsList) {
-
         this._eventsList[type].forEach(function(e) {
-
           p._events[e] = {};
-
           Object.defineProperty(p, e, {
-            
             get: function() { 
               return this._events[e];  
             }.bind(this),
-
             set: function(handler) {
               this._events[e] = handler;
               this.on(this._events[e], handler);
             }.bind(this)
-
           });
-
           p[e] = p._noop;
-
         }.bind(this));
       }
-
     };
 
     p._registerGlobalEvents = function() {
 
+      this.addEventListener('mouseMove', function(e) {
+        var c = this.coords.windowToCanvas(this.canvas, e.message.x, e.message.y);
+        
+        this.mouseX = c.x;
+        this.mouseY = c.y;
+
+        if(this.mouseMove) {
+          this.mouseMove();
+        }
+      });
+      
+      window.onmousemove = this.mouse._mouseMove.bind(this);
+      //window.onmousedown = this._handleMouseMove.bind(this);
     };
 
     p._captureEvents = function (object, events) {

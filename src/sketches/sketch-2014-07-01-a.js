@@ -39,8 +39,8 @@ cy.setup = function() {
   //  shapes.push(polygon);
   // }
 
-  cy.mouseOver = function() {
-    console.log('mouseOver');
+  cy.mouseMove = function() {
+    console.log('mouseMove');
   };
 
   console.log(cy.mouseOver);
@@ -56,14 +56,6 @@ cy.update = function() {
   --------------------------------------------------- */
 cy.draw = function() {
 
-  // shapes.forEach( function (shape) {
-  //   shape.stroke();
-  //   shape.fill();
-  // });
-
+  console.log(cy.mouseX, cy.mouseY);
 }
-
-// cy.on('mousedown', function(){
-
-// });
 

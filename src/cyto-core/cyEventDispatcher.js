@@ -79,9 +79,6 @@ cyEventDispatcher.prototype = {
     },
 
     dispatchEvent: function (event) {
-      if(event.type !== 'update') {
-        console.log(this.listenerArray);
-      }
       if (this._listeners === undefined) return;
       
       var listeners = this._listeners;

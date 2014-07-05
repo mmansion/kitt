@@ -35,9 +35,7 @@ define(['/cyUtils.js'], function (utils) {
   */
 
   var _canvas  = document.createElement('canvas')
-    , _context = _canvas.getContext('2d')
-    , _stroke  = _context.stroke
-    , _fill    = _context.fill;
+    , _context = _canvas.getContext('2d');
 
   /**
    * The View class wraps and extends the DOM's canvas element and drawing context,
@@ -46,40 +44,34 @@ define(['/cyUtils.js'], function (utils) {
    * @class View
    */
 
-  var cyView = function(targetCanvas) {
-
-    //console.log(targetCanvas);
-
-    var p = Object.getPrototypeOf(this);
-
-    //public properties
-    this.width   = _canvas.width;
-    this.height  = _canvas.height;
-    this.bgColor = '#000000'; 
-
-    //private members
-    this._hasStroke = true;
-    this._hasFill   = false;
-
-    utils.bindObjects(p, _context);
-
-    this.initView = function (targetCanvasElement) {
-      _canvas.setAttribute('id', 'cyto-' + targetCanvasElement.id);
-
-      _canvas.setAttribute('width',  targetCanvasElement.width);
-      _canvas.setAttribute('height', targetCanvasElement.height);
-
-      targetCanvasElement.parentNode.replaceChild(_canvas, targetCanvasElement);
-
-      this.width  = _canvas.width;
-      this.height = _canvas.height;
-    };
-
+  var cyView = function() {
+    utils.bindObjects(Object.getPrototypeOf(this), _context);
   };
 
   var p = cyView.prototype = _context;
 
-  p.background = function(c) {
+  //native canvas method overrides
+  p._stroke = _context.stroke.bind(p);
+  p._fill   = _context.fill.bind(p);
+
+  p._hasStroke = true;
+  p._hasFill   = false;
+
+  p._initializeView = function (targetCanvasElement) {
+     _canvas.setAttribute('id', 'cyto-' + targetCanvasElement.id);
+
+    _canvas.setAttribute('width',  targetCanvasElement.width);
+    _canvas.setAttribute('height', targetCanvasElement.height);
+
+    targetCanvasElement.parentNode.replaceChild(_canvas, targetCanvasElement);
+
+    this.width  = _canvas.width;
+    this.height = _canvas.height;
+  };
+
+  p.bgColor = '#000000';
+
+  p.background = function (c) {
     this.bgColor = c || this.bgColor;
 
     _context.save(); //save the context on a stack
@@ -88,52 +80,56 @@ define(['/cyUtils.js'], function (utils) {
     _context.restore();
   };
 
-  p.bg = function(c) {
+  p.bg = function (c) {
     this.background(c);
   };
 
-  p.clear = function() {
+  p.clear = function () {
     _context.fillStyle = this.bgColor;
     _context.fillRect(0, 0, this.width, this.height);  // now fill the canvas
   }
 
-  p.getContext = function() {
+  p.clearPath = function () {
+    this.beginPath();
+  };
+
+  p.getContext = function () {
     return _context;
   };
 
-  p.stroke = function(color) {
-    if(color === undefined) {
-      _stroke();
-    } else {
-      this._hasStroke  = true;
+  p.stroke = function (color) {
+    if(color !== undefined) {
       this.strokeStyle = color;
+      this._hasStroke  = true;
+    }
+    if(this._hasStroke) {
+      this._stroke();
     }
   };
 
-  p.noStroke = function(color) {
+  p.noStroke = function (color) {
     this._hasStroke = false;
-    this.strokeStyle = 'rgba(0,0,0,0)';
+    //this.strokeStyle = 'rgba(0,0,0,0)';
   };
 
-  p.fill = function(color) {
-    if(color === undefined) {
-      _fill();
-    } else {
-      this._hasFill  = true;
+  p.fill = function (color) {
+    if(color !== undefined) {
       this.fillStyle = color;
+      this._hasFill  = true;
     }
+    if(this._hasFill) this._fill();
   };
 
-  p.noFill = function() {
+  p.noFill = function () {
     this._hasFill = false;
-    this.fillStyle = 'rgba(0,0,0,0)';
+    //this.strokeStyle = 'rgba(0,0,0,0)';
   };
 
-  p.hasFill = function() {
+  p.hasFill = function () {
     return this._hasFill;
   };
 
-  p.hasStroke = function() {
+  p.hasStroke = function () {
     return this._hasStroke;
   };
   

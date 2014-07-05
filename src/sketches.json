@@ -68,8 +68,9 @@
     "src": "ellipse.js"
   },
   {
-    "title": "2d rect",
-    "src": "rect-2d-prim.js"
+    "title": "2D Rectangle",
+    "src": "2DRectanglePrimitive.js",
+    "default": "true"
   },
   {
     "title": "2014-06-27-a",
@@ -81,7 +82,6 @@
   },
   {
     "title": "2014-07-01-a",
-    "src": "sketch-2014-07-01-a.js",
-    "default": "true"
+    "src": "sketch-2014-07-01-a.js"
   }
 ]

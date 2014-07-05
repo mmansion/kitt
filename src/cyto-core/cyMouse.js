@@ -3,33 +3,12 @@
  * @author: Mikhail Mansion
  */
 
-define([ 
-//module imports
-'cyCoords.js'
-], 
+define(function() {
 
-function (Coords) {
-
-  //constructor
-
-  var cyMouse = function(root) {
-
-    this.root    = root;
-    this._mouseX = 10;
-    this._mouseY = 10;
-
-    this.coords = Object.create(Coords.prototype);
-
-    window.onmousemove = this._mouseMove.bind(this);
-
-    this.root.view;
-
-    //this.root.events.apply(this); //add this class to the events class (dispatcher)
-  };
+  var cyMouse = function() { /* no constructor */ };
 
   /* Prototype inheritance
      -------------------------------------------------- */
-
   var p = cyMouse.prototype;
 
   /* Public Methods

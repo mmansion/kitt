@@ -50,15 +50,17 @@ define([
 
     ) {
 
-    Cyto = function () {
+    Cyto = function (canvasObject) {
 
       //global properties
       this.canvasMode = '2d';
+      
       this._mouseX = 0;
       this._mosueY = 0;
+      this._drawCenter = false;
 
-      //pre-instantiated core objects
-      this.utils           = new cyUtils      (this);
+      //core objects
+      this.utils           = cyUtils;
       this.eventDispatcher = new cyEvents     (this);
       this.coords          = new cyCoords     (this);
       this.shape           = new cyShape      (this);
@@ -66,23 +68,18 @@ define([
       this.math            = new cyMath       (this);
       this.engine          = new cyDrawEngine (this);
 
-      //Simle drawing api inheritances for drawing without instantiations
-      var ellipse = new cyEllipse();
-      this.ellipse = ellipse.ellipse.bind(ellipse);
-
-      var rect = new cyRectangle();
-
-      //this.rect    = Object.create(cyRectangle.prototype.rect)
+      //core 2d primitives
+      this.rectange        = new cyRectangle  (this);
+      //this.ellipse         = new cyEllipse    (this);
 
       this.start = function (canvasElement) { //entry point
 
+        this._initializeView(canvasElement);
         this._gatherRootObjects(this);
-        //_gatherAllClassMethods(this);
-
         this._registerEvents();
         this._registerGlobalEvents();
 
-         //Constructor Singletons
+        //Constructor Singletons
         this.Vector   = cyVector;
         this.Video    = cyVideo;
         this.Point    = cyPoint;
@@ -92,8 +89,6 @@ define([
 
          //ADDON CONSTRUCTOR CLASSES
         this.Leap = cyLeap;
-        
-        this.initView(canvasElement);
 
         this.refresh();
         this.engine.start(canvasElement);
@@ -110,6 +105,11 @@ define([
     Object.defineProperty(p, 'mouseY', {
       get: function()  { return this._mouseY },
       set: function(y) { this._mouseY = y;   }
+    });
+
+    Object.defineProperty(p, 'drawCenter', {
+      get: function()     { return this._drawCenter; },
+      set: function(bool) { this._drawCenter = bool; }
     });
 
     p.refresh = function() {
@@ -169,10 +169,8 @@ define([
         var e = this.coords.windowToCanvas(this.canvas, e.message.x, e.message.y);
         
         e.type = 'mouseMove';
-
         this.mouseX = e.x;
         this.mouseY = e.y;
-
         if(this.mouseMove) this.mouseMove(e);
       });
       
@@ -184,7 +182,6 @@ define([
         var e = this.coords.windowToCanvas(this.canvas, e.message.x, e.message.y);
         
         e.type = 'mouseDown';
-
         if(this.mouseDown) this.mouseDown(e);
       });
       
@@ -196,7 +193,6 @@ define([
         var e = this.coords.windowToCanvas(this.canvas, e.message.x, e.message.y);
         
         e.type = 'mouseUp';
-
         if(this.mouseUp) this.mouseUp(e);
       });
       
@@ -236,29 +232,6 @@ define([
         }
       }
     };
-
-    /**
-     * Gathers all sub-class methods and makes them callable from the main class
-     *
-     * @method gatherAllClassMethods
-     */
-
-    function _gatherAllClassMethods(root) {
-      return;
-      for(var key in root) {
-        if(root.hasOwnProperty(key)) { //look for classes assigned to root
-          if(typeof root[key] === 'object') {
-            for(var subKey in root[key]) {
-              if(typeof root[key][subKey] === 'function') {
-                root[subKey] = root[key][subKey].bind(root[key]);
-              } else {
-                root[subKey] = root[key][subKey];
-              }
-            }
-          }
-        }
-      }
-    }
 
     return Cyto;
 });

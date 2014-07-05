@@ -14,13 +14,18 @@ cy.update = function() {
   --------------------------------------------------- */
 cy.draw = function() {
 
-  cy.bg();
-  cy.fill('green');
+  cy.bg('#011722');
+
+
   cy.noStroke();
-  cy.drawCenter();
+  cy.fill('lightblue');
+  cy.drawCenter = true;
   cy.rect(400, 400, 200, 200, 30);
 
+
   cy.noFill();
-  cy.stroke('red');
+  cy.stroke('orange');
+  cy.drawCenter = false;
   cy.rect(500, 200, 100, 100, 20);
+
 }

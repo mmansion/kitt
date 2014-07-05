@@ -60,16 +60,16 @@
     "src": "cy-leap.js"
   },
   {
-    "title": "2014-06-20-a",
-    "src": "sketch-2014-06-20-a.js"
-  },
-  {
     "title": "ellipse",
     "src": "ellipse.js"
   },
   {
-    "title": "2D Rectangle",
-    "src": "2DRectanglePrimitive.js",
+    "title": "rect-2d primitive",
+    "src": "2DRectanglePrimitive.js"
+  },
+  {
+    "title": "rect-2d object",
+    "src": "2DRectangleObject.js",
     "default": "true"
   },
   {

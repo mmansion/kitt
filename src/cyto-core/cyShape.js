@@ -1,14 +1,10 @@
 define(['/cyDrawingObject.js'], function (DrawingObject) {
 
   var Shape = function() {
-    this.drawCenter = false;
+    /* shape constructor */
   };
 
   var p = Shape.prototype = new DrawingObject();
-
-  p.drawCenter = function(bool) {
-    this.drawCenter = bool || true;
-  };
     
   p.collidesWith = function(shape) {
       var axes = this.getAxes().concat(shape.getAxes());
@@ -43,22 +39,6 @@ define(['/cyDrawingObject.js'], function (DrawingObject) {
   p.project = function(axis) {
     throw 'project(axis) not implemented';
   };
-
-  // p.fill = function(context) {
-  //   context.save();
-  //   context.fillStyle = this.fillStyle;
-  //   this.createPath(context);
-  //   context.fill();
-  //   context.restore();
-  // };
-
-  // p.stroke = function(context) {
-  //   context.save();
-  //   context.strokeStyle = this.strokeStyle;
-  //   this.createPath(context);
-  //   context.stroke();
-  //   context.restore();
-  // };
 
   p.isPointInPath = function(context, x, y) {
   this.createPath(context);

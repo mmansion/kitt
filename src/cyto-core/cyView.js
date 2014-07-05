@@ -45,12 +45,16 @@ define(['/cyUtils.js'], function (utils) {
    */
 
   var cyView = function() {
+    this.viewProperties = utils.getPropertiesList(this);
     utils.bindObjects(Object.getPrototypeOf(this), _context);
   };
 
   var p = cyView.prototype = _context;
 
+
   //native canvas method overrides
+  p.overridesList = ['fill', 'stroke'];
+  
   p._stroke = _context.stroke.bind(p);
   p._fill   = _context.fill.bind(p);
 

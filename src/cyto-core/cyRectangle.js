@@ -1,4 +1,4 @@
-define(['/cyShape.js'], function (Shape) {
+define(['/cyShape.js', '/cyUtils.js'], function (Shape, utils) {
 
 /**
  * Creates an Rectangle object
@@ -14,20 +14,36 @@ define(['/cyShape.js'], function (Shape) {
 
 var cyRectangle = function(options) {
 
-  Shape.call(this); // call super constructor.
+  this.root = cyto; //TODO: incorporate method of checking for cyto instance on window
 
-  this.x          = (options && options.x)          ? options.x          : 0;
-  this.y          = (options && options.y)          ? options.y          : 0;
-  this.width      = (options && options.width)      ? options.width      : 10;
-  this.height     = (options && options.height)     ? options.height     : 10;
+  this.x          = (options && options.x)          ? options.x          : 100;
+  this.y          = (options && options.y)          ? options.y          : 100;
+  this.width      = (options && options.width)      ? options.width      : 100;
+  this.height     = (options && options.height)     ? options.height     : 100;
   this.drawCenter = (options && options.drawCenter) ? options.drawCenter : false;
   this.radius     = (options && options.radius)     ? options.radius     : 0;
+
+  this.strokeStyle = 'limegreen';
+  this.fillStyle   = 'orange';
+  this._hasStroke  = true;
+  this._hasFill    = false;
 
   this.topLeft;
   this.center;
 
-  //public methods reserved for instantiated class objects
+  if(this.root.canvas && this.root.canvas.id) {
+    var includesFilter = this.root.viewProperties
+      , excludesFilter = this; //avoid collisions with this
 
+    utils.bindObjects (
+      Object.getPrototypeOf(this), 
+      this.root, 
+      includesFilter,
+      excludesFilter
+    );
+  }
+
+  //public methods reserved for instantiated class objects
   this.draw = this._draw;
 };
 
@@ -79,7 +95,19 @@ var cyRectangle = function(options) {
 
   p._draw = function() {
     if(this instanceof cyRectangle) {
-    this.rec(this.x, this.y, this.width, this.height, this.radius)
+      this.save();
+      if(this._hasStroke) {
+        this.stroke(this.strokeStyle);
+      } else {
+        this.noStroke();
+      }
+      if(this._hasFill) {
+        this.fill(this.fillStyle);
+      } else {
+        this.noFill();
+      }
+      this.rect(this.x, this.y, this.width, this.height, this.radius);
+      this.restore();
     }
   }
 

@@ -54,7 +54,7 @@ define([
 
       //global properties
       this.canvasMode = '2d';
-      
+
       this._mouseX = 0;
       this._mosueY = 0;
       this._drawCenter = false;
@@ -80,12 +80,12 @@ define([
         this._registerGlobalEvents();
 
         //Constructor Singletons
-        this.Vector   = cyVector;
-        this.Video    = cyVideo;
-        this.Point    = cyPoint;
-        this.Ellipse  = cyEllipse;
-        this.Rectange = cyRectangle;
-        this.Polygon  = Polygon;
+        this.Vector    = cyVector;
+        this.Video     = cyVideo;
+        this.Point     = cyPoint;
+        this.Ellipse   = cyEllipse;
+        this.Rectangle = cyRectangle;
+        this.Polygon   = Polygon;
 
          //ADDON CONSTRUCTOR CLASSES
         this.Leap = cyLeap;

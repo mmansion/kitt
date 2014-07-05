@@ -1,12 +1,10 @@
-define(['cyView.js'], function (view) {
+define(['cyView.js'], function (cyView) {
 
   var cyDrawingObject = function(options) {
-
-
-    return this;
+    /* drawing object constructor */
   };
 
-  //var p = Shape.prototype = new DrawingObject();
+  //var p = cyDrawingObject.prototype = new cyView();
 
   return cyDrawingObject;
 });

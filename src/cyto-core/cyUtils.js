@@ -2,12 +2,18 @@ define(['/lodash/dist/lodash.js'], function (lodash) {
 
   cyUtils = {
 
-    bindObjects: function(target, source) {
-      for(var key in source) {
-        if(typeof source[key] === 'function') {
-          target[key] = source[key].bind(source);
-        } else {
-          target[key] = source[key];
+    bindObjects: function(targObj, srcObj, filterInc, filterExc) {
+      for(var key in srcObj) {
+        if(filterInc && this.contains(filterInc, key) || 
+           filterInc === undefined) {
+          if(filterExc && !this.contains(filterExc, key) || 
+             filterExc === undefined) {
+            if(typeof srcObj[key] === 'function') {
+              targObj[key] = srcObj[key].bind(srcObj);
+            } else {
+              targObj[key] = srcObj[key];
+            }
+          }
         }
       }
     },
@@ -26,6 +32,25 @@ define(['/lodash/dist/lodash.js'], function (lodash) {
       for(k in p) if(p.hasOwnProperty(k)) ++s;
   
       return s;
+    },
+
+    generateRandomSequence: function(length) {
+      var randomSequence = '';
+
+      for(var i = 0; i < length; i++) {  
+        randomSequence += Math.round(Math.random() * 9);
+      }
+      return randomSequence;
+    },
+
+    getPropertiesList: function(object) {
+      var list = []
+        , key;
+
+      for(key in object) {
+        list.push(key);
+      }
+      return list;
     },
 
     hexToRgb: function(hex) {

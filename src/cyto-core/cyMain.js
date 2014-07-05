@@ -52,24 +52,19 @@ define([
 
     Cyto = function () {
 
+      //global properties
       this.canvasMode = '2d';
-
       this._mouseX = 0;
       this._mosueY = 0;
 
-      //global properties
-      // this.mouseX     = 0;
-      // this.mouseY     = 0;
-
-      //PRE-INSTANTIATED CORE CLASSES
-      this.utils  = cyUtils;
-
-      this.eventDispatcher = new cyEvents  (this);
-      this.coords     = new cyCoords       (this);
-      this.shape      = new cyShape        (this);
-      this.mouse      = new cyMouse        (this);
-      this.math       = new cyMath         (this);
-      this.engine     = new cyDrawEngine   (this);
+      //pre-instantiated core objects
+      this.utils           = new cyUtils      (this);
+      this.eventDispatcher = new cyEvents     (this);
+      this.coords          = new cyCoords     (this);
+      this.shape           = new cyShape      (this);
+      this.mouse           = new cyMouse      (this);
+      this.math            = new cyMath       (this);
+      this.engine          = new cyDrawEngine (this);
 
       //Simle drawing api inheritances for drawing without instantiations
       var ellipse = new cyEllipse();
@@ -106,7 +101,6 @@ define([
     };
 
     var p = Cyto.prototype = new cyView(); //uses a single canvas view for everything
-
 
     Object.defineProperty(p, 'mouseX', {
       get: function()  { return this._mouseX },
@@ -169,29 +163,50 @@ define([
 
     p._registerGlobalEvents = function() {
 
-      this.addEventListener('mouseMove', function(e) {
-        var c = this.coords.windowToCanvas(this.canvas, e.message.x, e.message.y);
-        
-        this.mouseX = c.x;
-        this.mouseY = c.y;
+      //mouse move
 
-        if(this.mouseMove) {
-          this.mouseMove();
-        }
+      this.on('mouseMove', function(e) {
+        var e = this.coords.windowToCanvas(this.canvas, e.message.x, e.message.y);
+        
+        e.type = 'mouseMove';
+
+        this.mouseX = e.x;
+        this.mouseY = e.y;
+
+        if(this.mouseMove) this.mouseMove(e);
       });
       
       window.onmousemove = this.mouse._mouseMove.bind(this);
-      //window.onmousedown = this._handleMouseMove.bind(this);
+
+      //mouse down
+
+      this.on('mouseDown', function(e) {
+        var e = this.coords.windowToCanvas(this.canvas, e.message.x, e.message.y);
+        
+        e.type = 'mouseDown';
+
+        if(this.mouseDown) this.mouseDown(e);
+      });
+      
+      window.onmousedown = this.mouse._mouseDown.bind(this);
+
+      //mouse up
+
+      this.on('mouseUp', function(e) {
+        var e = this.coords.windowToCanvas(this.canvas, e.message.x, e.message.y);
+        
+        e.type = 'mouseUp';
+
+        if(this.mouseUp) this.mouseUp(e);
+      });
+      
+      window.onmouseup = this.mouse._mouseUp.bind(this);
     };
 
     p._captureEvents = function (object, events) {
-
       events.forEach(function(e) {
-
         if(!this._eventsList[object]) this._eventsList[object] = []; 
-
         this._eventsList[object].push(e);
-
       }.bind(this));
     };
 

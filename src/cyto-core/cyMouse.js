@@ -56,15 +56,15 @@ function (Coords) {
   },
 
   p._mouseDown = function (e) {
-    var c = this.coords.windowToCanvas(this.root.canvas, x, y);
-
-    this.dispatchEvent({type: 'mouseDown', message: {x: c.x, y: c.y}  });
+    if(this.dispatchEvent) {
+      this.dispatchEvent({type: 'mouseDown', message: {x: e.pageX, y: e.pageY} });
+    }
   },
 
   p._mouseUp = function (e) {
-    var c = this.coords.windowToCanvas(this.root.canvas, x, y);
-    
-    this.dispatchEvent({type: 'mouseUp', message: {x: c.x, y: c.y} });
+    if(this.dispatchEvent) {
+      this.dispatchEvent({type: 'mouseUp', message: {x: e.pageX, y: e.pageY} });
+    }
   };
   
   return cyMouse;

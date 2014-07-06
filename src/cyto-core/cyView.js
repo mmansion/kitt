@@ -27,7 +27,7 @@
 * OTHER DEALINGS IN THE SOFTWARE.
 */
 
-define(['/cyUtils.js'], function (utils) {
+define(['cyConfig.js','/cyUtils.js'], function (config, utils) {
 
   /**
   * Provides the primary View class
@@ -73,7 +73,7 @@ define(['/cyUtils.js'], function (utils) {
     this.height = _canvas.height;
   };
 
-  p.bgColor = '#000000';
+  p.bgColor = config.bgColor; //default cyto bg col
 
   p.background = function (c) {
     this.bgColor = c || this.bgColor;
@@ -89,8 +89,10 @@ define(['/cyUtils.js'], function (utils) {
   };
 
   p.clear = function () {
+    _context.save(); //save the context on a stack
     _context.fillStyle = this.bgColor;
     _context.fillRect(0, 0, this.width, this.height);  // now fill the canvas
+    _context.restore(); //save the context on a stack
   }
 
   p.clearPath = function () {

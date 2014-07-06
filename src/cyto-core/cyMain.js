@@ -176,17 +176,17 @@ define([
     };
 
     p._mouseUp = function (e) {
-      if(this.mouseUp) this.mouseUp(e.message);
+      if(this.mouseUp) this.mouseUp(e);
     };
 
     p._mouseDown = function (e) {
-      if(this.mouseDown) this.mouseDown(e.message);
+      if(this.mouseDown) this.mouseDown(e);
     };
 
     p._mouseMove = function (e) {
       this.mouseX = e.x;
       this.mouseY = e.y;
-      if(this.mouseMove) this.mouseMove(e.message);
+      if(this.mouseMove) this.mouseMove(e);
     };
 
     p._captureEvents = function (object, events) {

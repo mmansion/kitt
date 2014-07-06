@@ -24,6 +24,7 @@ define(['/cyShape.js', '/cyUtils.js'], function (Shape, utils) {
     this.radius      = (options && options.radius)      ? options.radius      : 0;
     this.strokeStyle = (options && options.strokeStyle) ? options.strokeStyle : '#fff';
     this.fillStyle   = (options && options.fillStyle)   ? options.fillStyle   : '#000';
+    this.draggable   = (options && options.draggable)   ? true                : false;
 
     //private properties
 
@@ -32,17 +33,22 @@ define(['/cyShape.js', '/cyUtils.js'], function (Shape, utils) {
 
     this._x = (options && options.x) ? (this.drawCenter) ?
               options.x - this._width / 2 : options.x : 
-              (this.drawCenter) ? -this._width/2 : 0;
+              (this.drawCenter) ? - this._width/2 : 0;
 
     this._y = (options && options.y) ? (this.drawCenter) ?
-              options.y - this.height / 2 : options.y : 
-              (this.drawCenter) ? -this._height/2 : 0;
+              options.y - this._height / 2 : options.y : 
+              (this.drawCenter) ? - this._height/2 : 0;
 
     this._hasFill    = (options && options.fillStyle);
     this._hasStroke  = true;
+    this._dragging   = false;
 
-    this.top  = (this.drawCenter) ? this._y - this._height / 2 : this._y;
-    this.left = (this.drawCenter) ? this._x - this._width / 2  : this._x;
+    this._hasBeenDrawn   = false;
+
+    this.top    = this._y;
+    this.bottom = this._y + this._height;
+    this.left   = this._x;
+    this.right  = this._x + this._width;
 
     //getters + setters
 
@@ -50,7 +56,8 @@ define(['/cyShape.js', '/cyUtils.js'], function (Shape, utils) {
       get: function()  { return this._y },
       set: function(y) { 
         this._y  = y;  
-        this.top = (this.drawCenter) ? this._y - this._width / 2  : this._y; 
+        this.top = this._y; 
+        this.bottom = this._y + this._height;
       }
     });
 
@@ -58,7 +65,8 @@ define(['/cyShape.js', '/cyUtils.js'], function (Shape, utils) {
       get: function()  { return this._x },
       set: function(x) { 
         this._x = x;  
-        this.left = (this.drawCenter) ? this._x - this._width / 2  : this._x; 
+        this.left = this._x;
+        this.right  = this._x + this._width;
       }
     });
 
@@ -137,30 +145,33 @@ define(['/cyShape.js', '/cyUtils.js'], function (Shape, utils) {
      -------------------------------------------------- */
   p._registerEvents = function () {
     //hook into the root's mouse events
+    this.root.on('mouseMove', this._mouseMove.bind(this));
     this.root.on('mouseDown', this._mouseDown.bind(this));
     this.root.on('mouseUp',   this._mouseUp.bind(this));
   };
 
-  p._mouseDown = function () {
-    console.log('top',  this.top);
-    console.log('left', this.left);
-
-    this.save();
-    this.noStroke();
-    this.fill('red');
-    this.rect(this.left, this.top, 10, 10, 5);
-    this.restore();
+  p._mouseDown = function (e) {
+    if(e.x > this.left && e.x < this.right && e.y > this.top && e.y < this.bottom) {
+      if(this._hasBeenDrawn && this.draggable) this._dragging = true;
+    }
   };
 
   p._mouseUp = function () {
-    //console.log("mouse up from rectangle");
+    if(this.draggable) this._dragging = false;
   };
 
-  p._mouseMove = function () {
-
+  p._mouseMove = function (e) {
+    if(this._dragging) {
+      this._dragging = true;
+      this.x = (this.drawCenter) ? e.x - this.width / 2 : e.x;
+      this.y = (this.drawCenter) ? e.y - this.height / 2 : e.y;
+      this.clear();
+      this.draw();
+    }
   };
 
   p._draw = function() {
+    if(!this._hasBeenDrawn) this._hasBeenDrawn = true;
     if(this instanceof cyRectangle) {
       this.save();
       if(this._hasStroke) {

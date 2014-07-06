@@ -32,21 +32,21 @@ define(function() {
   p._mouseMove = function (e) {
     if(this.dispatchEvent) {
       e = this.coords.windowToCanvas(this.canvas, e.pageX, e.pageY);
-      this.dispatchEvent({type: 'mouseMove', message: {type: 'mouseMove', x: e.x, y: e.y} });
+      this.dispatchEvent({type: 'mouseMove', x: e.x, y: e.y });
     }
   },
 
   p._mouseDown = function (e) {
     if(this.dispatchEvent) {
       e = this.coords.windowToCanvas(this.canvas, e.pageX, e.pageY);
-      this.dispatchEvent({type: 'mouseDown', message: {type: 'mouseDown', x: e.x, y: e.y} });
+      this.dispatchEvent({type: 'mouseDown', x: e.x, y: e.y });
     }
   },
 
   p._mouseUp = function (e) {
     if(this.dispatchEvent) {
       e = this.coords.windowToCanvas(this.canvas, e.pageX, e.pageY);
-      this.dispatchEvent({type: 'mouseUp', message: {type: 'mouseUp', x: e.x, y: e.y} });
+      this.dispatchEvent({type: 'mouseUp', x: e.x, y: e.y });
     }
   };
   

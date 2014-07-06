@@ -27,10 +27,17 @@ define(['/cyShape.js', '/cyUtils.js'], function (Shape, utils) {
 
     //private properties
 
-    this._x          = (options && options.x)          ? options.x          : 100;
-    this._y          = (options && options.y)          ? options.y          : 100;
     this._width      = (options && options.width)      ? options.width      : 100;
     this._height     = (options && options.height)     ? options.height     : 100;
+
+    this._x = (options && options.x) ? (this.drawCenter) ?
+              options.x - this._width / 2 : options.x : 
+              (this.drawCenter) ? -this._width/2 : 0;
+
+    this._y = (options && options.y) ? (this.drawCenter) ?
+              options.y - this.height / 2 : options.y : 
+              (this.drawCenter) ? -this._height/2 : 0;
+
     this._hasFill    = (options && options.fillStyle);
     this._hasStroke  = true;
 
@@ -135,9 +142,14 @@ define(['/cyShape.js', '/cyUtils.js'], function (Shape, utils) {
   };
 
   p._mouseDown = function () {
-    console.log(this);
     console.log('top',  this.top);
     console.log('left', this.left);
+
+    this.save();
+    this.noStroke();
+    this.fill('red');
+    this.rect(this.left, this.top, 10, 10, 5);
+    this.restore();
   };
 
   p._mouseUp = function () {

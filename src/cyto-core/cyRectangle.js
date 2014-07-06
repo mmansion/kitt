@@ -130,18 +130,18 @@ define(['/cyShape.js', '/cyUtils.js'], function (Shape, utils) {
      -------------------------------------------------- */
   p._registerEvents = function () {
     //hook into the root's mouse events
-    this.root.on('mouseDown', this._mouseDown);
-    this.root.on('mouseUp',   this._mouseUp);
+    this.root.on('mouseDown', this._mouseDown.bind(this));
+    this.root.on('mouseUp',   this._mouseUp.bind(this));
   };
 
   p._mouseDown = function () {
-    console.log("mouse down from rectangle");
-    // console.log('top',  this.top);
-    // console.log('left', this.left);
+    console.log(this);
+    console.log('top',  this.top);
+    console.log('left', this.left);
   };
 
   p._mouseUp = function () {
-    console.log("mouse up from rectangle");
+    //console.log("mouse up from rectangle");
   };
 
   p._mouseMove = function () {

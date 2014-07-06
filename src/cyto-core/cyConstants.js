@@ -2,6 +2,8 @@ define(function() {
 
   var cyConstants = {
 
+    ROOT:   {},
+
     OTHER:   0,
     WINDOWS: 1,
     MAXOSX:  2,

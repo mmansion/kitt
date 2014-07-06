@@ -14,8 +14,6 @@ define(['/cyShape.js', '/cyUtils.js'], function (Shape, utils) {
 
 var cyRectangle = function(options) {
 
-  this.root = cyto; //TODO: incorporate method of checking for cyto instance on window
-
   this.x          = (options && options.x)          ? options.x          : 100;
   this.y          = (options && options.y)          ? options.y          : 100;
   this.width      = (options && options.width)      ? options.width      : 100;
@@ -31,7 +29,10 @@ var cyRectangle = function(options) {
   this.topLeft;
   this.center;
 
-  if(this.root.canvas && this.root.canvas.id) {
+
+  this.root = utils.getRootInstance();
+
+  if(this.root && this.root.canvas && this.root.canvas.id) {
     var includesFilter = this.root.viewProperties
       , excludesFilter = this; //avoid collisions with this
 

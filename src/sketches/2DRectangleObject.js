@@ -5,6 +5,8 @@ var rectangle;
 cyto.setup = function() {
 
   rectangle = new cy.Rectangle();
+
+  console.log(rectangle.left);
   
 }
 

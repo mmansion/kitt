@@ -2,6 +2,7 @@ define([
 
   //Core Modules
   '/cyView.js',
+  '/cyConstants.js',
   '/cyCoords.js',
   '/cyDrawEngine.js',
   '/cyShape.js',
@@ -27,6 +28,7 @@ define([
 
     //Core Classes
     cyView, 
+    cyConstants,
     cyCoords, 
     cyDrawEngine, 
     cyShape,
@@ -94,6 +96,8 @@ define([
         this.engine.start(canvasElement);
       }
     };
+
+    cyConstants.ROOT = Cyto; //root reference
 
     var p = Cyto.prototype = new cyView(); //uses a single canvas view for everything
 

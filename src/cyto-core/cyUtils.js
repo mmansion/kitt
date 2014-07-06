@@ -1,4 +1,9 @@
-define(['/lodash/dist/lodash.js'], function (lodash) {
+define([
+  '/lodash/dist/lodash.js', 
+  '/cyConstants.js'
+  ], 
+
+  function (lodash, cyConstants) {
 
   cyUtils = {
 
@@ -51,6 +56,27 @@ define(['/lodash/dist/lodash.js'], function (lodash) {
         list.push(key);
       }
       return list;
+    },
+
+    getRootInstance: function () {
+      var object      = window
+        , hasInstance = false
+        , root;
+
+      do {
+        if(hasInstance) break;
+        try {
+          Object.getOwnPropertyNames(object).forEach(function(name) {
+            if(object[name] instanceof cyConstants.ROOT) {
+              root = object[name];
+              hasInstance = true;
+            }
+          });
+        } catch(e) {
+          console.error(e);
+        }
+      } while(object = Object.getPrototypeOf(object));
+      return (root !== undefined) ? root: false;
     },
 
     hexToRgb: function(hex) {

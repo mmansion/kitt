@@ -1,38 +1,72 @@
 define(['/cyShape.js', '/cyUtils.js'], function (Shape, utils) {
 
-/**
- * Creates an Rectangle object
- *
- * @constructor Ellipse
- * 
- * @param options        {Object}  - configuration options for ellipse object
- * @param options.x      {Number}  - center x coordinate of the ellipse
- * @param options.y      {Number}  - center y coordinate of the ellipse
- * @param options.width  {Number}  - width of the ellipse
- * @param options.height {Number}  - height of the ellipse
- */
+  /**
+   * Creates an Rectangle object
+   *
+   * @constructor Ellipse
+   * 
+   * @param options        {Object}  - configuration options for ellipse object
+   * @param options.x      {Number}  - center x coordinate of the ellipse
+   * @param options.y      {Number}  - center y coordinate of the ellipse
+   * @param options.width  {Number}  - width of the ellipse
+   * @param options.height {Number}  - height of the ellipse
+   */
 
-var cyRectangle = function(options) {
+  var cyRectangle = function(options) {
 
-  this.x          = (options && options.x)          ? options.x          : 100;
-  this.y          = (options && options.y)          ? options.y          : 100;
-  this.width      = (options && options.width)      ? options.width      : 100;
-  this.height     = (options && options.height)     ? options.height     : 100;
-  this.drawCenter = (options && options.drawCenter) ? options.drawCenter : false;
-  this.radius     = (options && options.radius)     ? options.radius     : 0;
+    this.root = utils.getRootInstance();
 
-  this.strokeStyle = 'limegreen';
-  this.fillStyle   = 'orange';
-  this._hasStroke  = true;
-  this._hasFill    = false;
+    if(!this.root) return this; //don't run constructor if root not instantiated
 
-  this.topLeft;
-  this.center;
+    // set constructor options
 
+    this.drawCenter  = (options && options.drawCenter)  ? options.drawCenter  : false;
+    this.radius      = (options && options.radius)      ? options.radius      : 0;
+    this.strokeStyle = (options && options.strokeStyle) ? options.strokeStyle : '#fff';
+    this.fillStyle   = (options && options.fillStyle)   ? options.fillStyle   : '#000';
 
-  this.root = utils.getRootInstance();
+    //private properties
 
-  if(this.root && this.root.canvas && this.root.canvas.id) {
+    this._x          = (options && options.x)          ? options.x          : 100;
+    this._y          = (options && options.y)          ? options.y          : 100;
+    this._width      = (options && options.width)      ? options.width      : 100;
+    this._height     = (options && options.height)     ? options.height     : 100;
+    this._hasFill    = (options && options.fillStyle);
+    this._hasStroke  = true;
+
+    this.top  = (this.drawCenter) ? this._y - this._height / 2 : this._y;
+    this.left = (this.drawCenter) ? this._x - this._width / 2  : this._x;
+
+    //getters + setters
+
+    Object.defineProperty(this, 'y', {
+      get: function()  { return this._y },
+      set: function(y) { 
+        this._y  = y;  
+        this.top = (this.drawCenter) ? this._y - this._width / 2  : this._y; 
+      }
+    });
+
+    Object.defineProperty(this, 'x', {
+      get: function()  { return this._x },
+      set: function(x) { 
+        this._x = x;  
+        this.left = (this.drawCenter) ? this._x - this._width / 2  : this._x; 
+      }
+    });
+
+    Object.defineProperty(this, 'width', {
+      get: function()  { return this._width; },
+      set: function(w) { this._width = w;    }
+    });
+
+    Object.defineProperty(this, 'height', {
+      get: function()  { return this._height; },
+      set: function(h) { this._height = h;    }
+    });
+
+    //link canvas 2D drawing api to prototype
+
     var includesFilter = this.root.viewProperties
       , excludesFilter = this; //avoid collisions with this
 
@@ -42,11 +76,12 @@ var cyRectangle = function(options) {
       includesFilter,
       excludesFilter
     );
-  }
+    
+    //public methods reserved for instantiated class objects
+    this.draw = this._draw;
 
-  //public methods reserved for instantiated class objects
-  this.draw = this._draw;
-};
+    this._registerEvents();
+  };
 
   var p = cyRectangle.prototype = new Shape();
 
@@ -93,6 +128,25 @@ var cyRectangle = function(options) {
 
   /* private functions
      -------------------------------------------------- */
+  p._registerEvents = function () {
+    //hook into the root's mouse events
+    this.root.on('mouseDown', this._mouseDown);
+    this.root.on('mouseUp',   this._mouseUp);
+  };
+
+  p._mouseDown = function () {
+    console.log("mouse down from rectangle");
+    // console.log('top',  this.top);
+    // console.log('left', this.left);
+  };
+
+  p._mouseUp = function () {
+    console.log("mouse up from rectangle");
+  };
+
+  p._mouseMove = function () {
+
+  };
 
   p._draw = function() {
     if(this instanceof cyRectangle) {

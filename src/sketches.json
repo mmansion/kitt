@@ -81,7 +81,7 @@
     "src": "vectors.js"
   },
   {
-    "title": "2014-07-01-a",
-    "src": "sketch-2014-07-01-a.js"
+    "title": "Simple Mouse Events",
+    "src": "simpleMouseEvents.js"
   }
 ]

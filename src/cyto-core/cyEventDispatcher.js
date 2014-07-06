@@ -6,22 +6,24 @@ define(function () {
  * @credits: mr doob, createjs, mozilla
  */
 
-var cyEventDispatcher = function(target) {
+  var cyEventDispatcher = function(target) {
 
-  if(target !== undefined) {
-    target.addEventListener        = this.addEventListener;
-    target.hasEventListener        = this.hasEventListener;
-    target.removeEventListener     = this.removeEventListener;
-    target.removeAllEventListeners = this.removeAllEventListeners;
-    target.dispatchEvent           = this.dispatchEvent;
-    target.on                      = this.on;
-    target.off                     = this.off;
-  }
-};
+    if(target !== undefined) this.apply(target);
+  };
 
 
-cyEventDispatcher.prototype = {
+  cyEventDispatcher.prototype = {
 
+    apply: function(target) {
+      target.addEventListener        = this.addEventListener;
+      target.hasEventListener        = this.hasEventListener;
+      target.removeEventListener     = this.removeEventListener;
+      target.removeAllEventListeners = this.removeAllEventListeners;
+      target.dispatchEvent           = this.dispatchEvent;
+      target.on                      = this.on;
+      target.off                     = this.off;
+    },
+  
     /**
      * @protected
      * @property _listeners

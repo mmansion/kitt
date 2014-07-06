@@ -5,7 +5,8 @@
 
 define(function() {
 
-  var cyMouse = function() { /* no constructor */ };
+  //cyMouse should only be instantiated through Cyto (main)
+  var cyMouse = function() {};
 
   /* Prototype inheritance
      -------------------------------------------------- */
@@ -14,7 +15,7 @@ define(function() {
   /* Public Methods
      -------------------------------------------------- */
 
-  p.events = ['mouseMove', 'mouseDown', 'mouseUp'];
+  p._eventsList = ['mouseMove', 'mouseDown', 'mouseUp'];
 
   Object.defineProperty(p, 'mouseX', {
     get: function()  { return this._mouseX },
@@ -30,19 +31,22 @@ define(function() {
      -------------------------------------------------- */
   p._mouseMove = function (e) {
     if(this.dispatchEvent) {
-      this.dispatchEvent({type: 'mouseMove', message: {x: e.pageX, y: e.pageY} });
+      e = this.coords.windowToCanvas(this.canvas, e.pageX, e.pageY);
+      this.dispatchEvent({type: 'mouseMove', message: {type: 'mouseMove', x: e.x, y: e.y} });
     }
   },
 
   p._mouseDown = function (e) {
     if(this.dispatchEvent) {
-      this.dispatchEvent({type: 'mouseDown', message: {x: e.pageX, y: e.pageY} });
+      e = this.coords.windowToCanvas(this.canvas, e.pageX, e.pageY);
+      this.dispatchEvent({type: 'mouseDown', message: {type: 'mouseDown', x: e.x, y: e.y} });
     }
   },
 
   p._mouseUp = function (e) {
     if(this.dispatchEvent) {
-      this.dispatchEvent({type: 'mouseUp', message: {x: e.pageX, y: e.pageY} });
+      e = this.coords.windowToCanvas(this.canvas, e.pageX, e.pageY);
+      this.dispatchEvent({type: 'mouseUp', message: {type: 'mouseUp', x: e.x, y: e.y} });
     }
   };
   

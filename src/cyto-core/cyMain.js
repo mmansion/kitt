@@ -66,12 +66,12 @@ define([
       this.eventDispatcher = new cyEvents     (this);
       this.coords          = new cyCoords     (this);
       this.shape           = new cyShape      (this);
-      this.mouse           = new cyMouse      (this);
       this.math            = new cyMath       (this);
       this.engine          = new cyDrawEngine (this);
+      this.mouse           = new cyMouse      (this);
 
       //core 2d primitives
-      this.rectange        = new cyRectangle  (this);
+      this.rectange = new cyRectangle();
       //this.ellipse         = new cyEllipse    (this);
 
       this.start = function (canvasElement) { //entry point
@@ -145,9 +145,9 @@ define([
       return eventType;
     };  
 
-    p._noop = function(){};
+    p._noop = function () { /* no operation */ return false };
 
-    p._registerEvents = function() {
+    p._registerEvents = function () {
       for(var type in this._eventsList) {
         this._eventsList[type].forEach(function(e) {
           p._events[e] = {};
@@ -165,42 +165,28 @@ define([
       }
     };
 
-    p._registerGlobalEvents = function() {
-
-      //mouse move
-
-      this.on('mouseMove', function(e) {
-        var e = this.coords.windowToCanvas(this.canvas, e.message.x, e.message.y);
-        
-        e.type = 'mouseMove';
-        this.mouseX = e.x;
-        this.mouseY = e.y;
-        if(this.mouseMove) this.mouseMove(e);
-      });
-      
+    p._registerGlobalEvents = function () {
+      this.on('mouseDown', this._mouseDown);
+      this.on('mouseUp'  , this._mouseUp);
+      this.on('mouseMove', this._mouseMove);
+  
       window.onmousemove = this.mouse._mouseMove.bind(this);
-
-      //mouse down
-
-      this.on('mouseDown', function(e) {
-        var e = this.coords.windowToCanvas(this.canvas, e.message.x, e.message.y);
-        
-        e.type = 'mouseDown';
-        if(this.mouseDown) this.mouseDown(e);
-      });
-      
       window.onmousedown = this.mouse._mouseDown.bind(this);
+      window.onmouseup   = this.mouse._mouseUp.bind(this);
+    };
 
-      //mouse up
+    p._mouseUp = function (e) {
+      if(this.mouseUp) this.mouseUp(e.message);
+    };
 
-      this.on('mouseUp', function(e) {
-        var e = this.coords.windowToCanvas(this.canvas, e.message.x, e.message.y);
-        
-        e.type = 'mouseUp';
-        if(this.mouseUp) this.mouseUp(e);
-      });
-      
-      window.onmouseup = this.mouse._mouseUp.bind(this);
+    p._mouseDown = function (e) {
+      if(this.mouseDown) this.mouseDown(e.message);
+    };
+
+    p._mouseMove = function (e) {
+      this.mouseX = e.x;
+      this.mouseY = e.y;
+      if(this.mouseMove) this.mouseMove(e.message);
     };
 
     p._captureEvents = function (object, events) {

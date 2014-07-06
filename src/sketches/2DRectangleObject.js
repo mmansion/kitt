@@ -4,7 +4,10 @@ var rectangle;
   --------------------------------------------------- */
 cyto.setup = function() {
 
-  rectangle = new cy.Rectangle();
+  rectangle = new cy.Rectangle({
+    drawCenter: true,
+    fillStyle: 'blue'
+  });
 
   console.log(rectangle.left);
   

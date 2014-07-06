@@ -67,6 +67,9 @@ define([
         if(hasInstance) break;
         try {
           Object.getOwnPropertyNames(object).forEach(function(name) {
+            
+            if(name === 'webkitStorageInfo') return; //deprectated window object
+
             if(object[name] instanceof cyConstants.ROOT) {
               root = object[name];
               hasInstance = true;

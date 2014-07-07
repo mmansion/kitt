@@ -7,8 +7,16 @@ var radius = 70
   --------------------------------------------------- */
 cyto.setup = function() {
 
-  ellipse1 = new cy.Ellipse({x: cy.centerX, y: cy.centerY, width: 100, height: 100});
-  ellipse2 = new cy.Ellipse({x: 400, y: 400, width: 100, height: 100});
+  ellipse1 = new cy.Ellipse({
+    x: cy.centerX, 
+    y: cy.centerY, 
+    width: 100, 
+    height: 100,
+    fillStyle: '#333',
+    draggable: true,
+    drawCenter: true
+  });
+
 
 }
 
@@ -27,14 +35,10 @@ cyto.draw = function() {
   cy.fillStyle = 'green';
 
   //draws an ellipse without instantiation
-  cy.ellipse(cy.mouseX, cy.mouseY, 150, 150, true);
+  cy.ellipse(100, 100, 150, 150, true);
  
-  cy.fillStyle = 'orange';
 
   ellipse1.draw();
 
-  cy.fillStyle = 'red';
-
-  ellipse2.draw();
 
 }

@@ -70,7 +70,7 @@ define([
             
             if(name === 'webkitStorageInfo') return; //deprectated window object
 
-            if(object[name] instanceof cyConstants.ROOT) {
+            if(object[name] instanceof cyConstants.ROOT_CLASS) {
               root = object[name];
               hasInstance = true;
             }

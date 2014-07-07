@@ -16,7 +16,7 @@ define(['/cyShape.js', '/cyUtils.js'], function (Shape, utils) {
 
     this.root = utils.getRootInstance();
 
-    if(!this.root) return this; //don't run constructor if root not instantiated
+    if(!this.root) return this; //evade constructor if root not instantiated
 
     // set constructor options
 
@@ -41,59 +41,17 @@ define(['/cyShape.js', '/cyUtils.js'], function (Shape, utils) {
 
     this._hasFill    = (options && options.fillStyle);
     this._hasStroke  = true;
-    this._dragging   = false;
-
-    this._hasBeenDrawn   = false;
 
     this.top    = this._y;
     this.bottom = this._y + this._height;
     this.left   = this._x;
     this.right  = this._x + this._width;
 
-    //getters + setters
-
-    Object.defineProperty(this, 'y', {
-      get: function()  { return this._y },
-      set: function(y) { 
-        this._y  = y;  
-        this.top = this._y; 
-        this.bottom = this._y + this._height;
-      }
-    });
-
-    Object.defineProperty(this, 'x', {
-      get: function()  { return this._x },
-      set: function(x) { 
-        this._x = x;  
-        this.left = this._x;
-        this.right  = this._x + this._width;
-      }
-    });
-
-    Object.defineProperty(this, 'width', {
-      get: function()  { return this._width; },
-      set: function(w) { this._width = w;    }
-    });
-
-    Object.defineProperty(this, 'height', {
-      get: function()  { return this._height; },
-      set: function(h) { this._height = h;    }
-    });
-
-    //link canvas 2D drawing api to prototype
-
-    var includesFilter = this.root.viewProperties
-      , excludesFilter = this; //avoid collisions with this
-
-    utils.bindObjects (
-      Object.getPrototypeOf(this), 
-      this.root, 
-      includesFilter,
-      excludesFilter
-    );
-    
     //public methods reserved for instantiated class objects
     this.draw = this._draw;
+
+    //links 'this' to canvas 2D drawing api
+    this._bindToView();
 
     this._registerEvents();
   };
@@ -143,32 +101,6 @@ define(['/cyShape.js', '/cyUtils.js'], function (Shape, utils) {
 
   /* private functions
      -------------------------------------------------- */
-  p._registerEvents = function () {
-    //hook into the root's mouse events
-    this.root.on('mouseMove', this._mouseMove.bind(this));
-    this.root.on('mouseDown', this._mouseDown.bind(this));
-    this.root.on('mouseUp',   this._mouseUp.bind(this));
-  };
-
-  p._mouseDown = function (e) {
-    if(e.x > this.left && e.x < this.right && e.y > this.top && e.y < this.bottom) {
-      if(this._hasBeenDrawn && this.draggable) this._dragging = true;
-    }
-  };
-
-  p._mouseUp = function () {
-    if(this.draggable) this._dragging = false;
-  };
-
-  p._mouseMove = function (e) {
-    if(this._dragging) {
-      this._dragging = true;
-      this.x = (this.drawCenter) ? e.x - this.width / 2 : e.x;
-      this.y = (this.drawCenter) ? e.y - this.height / 2 : e.y;
-      this.clear();
-      this.draw();
-    }
-  };
 
   p._draw = function() {
     if(!this._hasBeenDrawn) this._hasBeenDrawn = true;
@@ -187,7 +119,7 @@ define(['/cyShape.js', '/cyUtils.js'], function (Shape, utils) {
       this.rect(this.x, this.y, this.width, this.height, this.radius);
       this.restore();
     }
-  }
+  };
 
   return cyRectangle;
 });

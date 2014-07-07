@@ -72,7 +72,9 @@ define([
 
       //core 2d primitives
       this.rectange = new cyRectangle();
-      //this.ellipse         = new cyEllipse    (this);
+      this.ellipse  = new cyEllipse();
+
+      cyConstants.ROOT_INSTANCE = this; //root reference
 
       this.start = function (canvasElement) { //entry point
 
@@ -97,7 +99,7 @@ define([
       }
     };
 
-    cyConstants.ROOT = Cyto; //root reference
+    cyConstants.ROOT_CLASS   = Cyto; //root reference
 
     var p = Cyto.prototype = new cyView(); //uses a single canvas view for everything
 

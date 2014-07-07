@@ -24,6 +24,7 @@
     "leapjs-plugins": "~0.1.6",
     "threejs": "*",
     "requirejs": "~2.1.11",
-    "lodash": "~2.4.1"
+    "lodash": "~2.4.1",
+    "font-awesome": "~4.1.0"
   }
 }

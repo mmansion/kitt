@@ -25,6 +25,7 @@
     "threejs": "*",
     "requirejs": "~2.1.11",
     "lodash": "~2.4.1",
-    "font-awesome": "~4.1.0"
+    "font-awesome": "~4.1.0",
+    "jquery-ui": "~1.11.0"
   }
 }

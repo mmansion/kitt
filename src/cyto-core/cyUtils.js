@@ -11,16 +11,12 @@ define([
       for(var key in srcObj) {
         if(filterInc && this.contains(filterInc, key) || 
            filterInc === undefined) {
-          if(filterExc && !this.contains(filterExc, key) || 
+          if(filterExc && !filterExc.hasOwnProperty(key) || 
              filterExc === undefined) {
             if(typeof srcObj[key] === 'function') {
               targObj[key] = srcObj[key].bind(srcObj);
             } else {
-              if(cyConstants.ROOT_INSTANCE[key]) {
-                targObj[key] = cyConstants.ROOT_INSTANCE[key]
-              } else {
-                targObj[key] = srcObj[key];
-              }
+              targObj[key] = srcObj[key];
             }
           }
         }

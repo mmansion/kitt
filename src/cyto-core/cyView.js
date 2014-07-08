@@ -47,9 +47,6 @@ define(['cyConfig.js','/cyUtils.js'], function (config, utils) {
   var cyView = function() {
     this.viewProperties = utils.getPropertiesList(this);
     utils.bindObjects(Object.getPrototypeOf(this), _context);
-
-    this.lineWidth = 10;
-    console.log(this.lineWidth);
   };
 
   var p = cyView.prototype = _context;

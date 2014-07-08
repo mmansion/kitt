@@ -61,8 +61,7 @@
   },
   {
     "title": "ellipse",
-    "src": "ellipse.js",
-    "default": "true"
+    "src": "ellipse.js"
   },
   {
     "title": "rect-2d primitive",
@@ -83,5 +82,10 @@
   {
     "title": "Simple Mouse Events",
     "src": "simpleMouseEvents.js"
+  },
+  {
+    "title": "Grid",
+    "src": "grid.js",
+    "default": "true"
   }
 ]

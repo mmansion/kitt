@@ -1,13 +1,13 @@
 define(['/cyShape.js', '/cyPoint.js'], function(Shape, Point) {
 
-  var Polygon = function() {
+  var cyPolygon = function() {
 
     this.points = [];
     this.strokeStyle = 'blue';
     this.fillStyle = 'white';
   };
 
-  var p = Polygon.prototype = new Shape();
+  var p = cyPolygon.prototype = new Shape();
 
   p.getAxes = function () {
     var v1 = new Vector(),
@@ -87,5 +87,5 @@ define(['/cyShape.js', '/cyPoint.js'], function(Shape, Point) {
   };
 
 
-  return Polygon;
+  return cyPolygon;
 });

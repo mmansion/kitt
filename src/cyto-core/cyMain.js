@@ -2,6 +2,7 @@ define([
 
   //Core Modules
   '/cyView.js',
+  '/cyGrid.js',
   '/cyConstants.js',
   '/cyCoords.js',
   '/cyDrawEngine.js',
@@ -17,7 +18,7 @@ define([
   //2D Primitives
   '/cyEllipse.js',
   '/cyRectangle.js',
-  '/Polygon.js',
+  '/cyPolygon.js',
 
   //Addons
   '/../cyto-addons/cyLeap.js'
@@ -28,6 +29,7 @@ define([
 
     //Core Classes
     cyView, 
+    cyGrid,
     cyConstants,
     cyCoords, 
     cyDrawEngine, 
@@ -43,7 +45,7 @@ define([
     //2D Primitives
     cyEllipse,
     cyRectangle,
-    Polygon,
+    cyPolygon,
 
     //Addons
     cyLeap
@@ -84,12 +86,13 @@ define([
         this._registerGlobalEvents();
 
         //Constructor Singletons
+        this.Grid      = cyGrid;
         this.Vector    = cyVector;
         this.Video     = cyVideo;
         this.Point     = cyPoint;
         this.Ellipse   = cyEllipse;
         this.Rectangle = cyRectangle;
-        this.Polygon   = Polygon;
+        this.Polygon   = cyPolygon;
 
          //ADDON CONSTRUCTOR CLASSES
         this.Leap = cyLeap;

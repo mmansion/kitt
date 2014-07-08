@@ -16,7 +16,11 @@ define([
             if(typeof srcObj[key] === 'function') {
               targObj[key] = srcObj[key].bind(srcObj);
             } else {
-              targObj[key] = srcObj[key];
+              if(cyConstants.ROOT_INSTANCE[key]) {
+                targObj[key] = cyConstants.ROOT_INSTANCE[key]
+              } else {
+                targObj[key] = srcObj[key];
+              }
             }
           }
         }

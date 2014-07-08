@@ -1,34 +1,14 @@
 define(function() {
 
-  /* PRIVATE VARS
-   --------------------------------------------------- */
-
-  var _this;
-
-  /* MY CLASS
-   --------------------------------------------------- */
-
-  var MyClass = function(root) {
-    _this      = this;
-    _this.root = root;
+  var MyClass = function(options) {
+    //constructor
   };
 
-  /* MY CLASS PROTOTYPE
-   --------------------------------------------------- */
-
-  MyClass.prototype = {
+  var p = MyClass.prototype; /* = new InheritedClass() ?? */
     
-    protoMethod: function() {
+  p.protoMethod = function() {
       //prototype method
-    }
   };
-
-  /* PRIVATE FUNCTIONS
-   --------------------------------------------------- */
-  
-  function _privateFunction() {
-
-  }
 
   return MyClass;
 });

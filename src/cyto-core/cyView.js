@@ -47,6 +47,12 @@ define(['cyConfig.js','/cyUtils.js'], function (config, utils) {
   var cyView = function() {
     this.viewProperties = utils.getPropertiesList(this);
     utils.bindObjects(Object.getPrototypeOf(this), _context);
+
+    // Object.defineProperty(this, 'lineWidth', {
+    //   get: function()  { return this._lineWidth },
+    //   set: function(w) { this._lineWidth = w;   }
+    // });
+
   };
 
   var p = cyView.prototype = _context;
@@ -54,13 +60,10 @@ define(['cyConfig.js','/cyUtils.js'], function (config, utils) {
   //native canvas method overrides
   p.overridesList = ['fill', 'stroke'];
   
-  p._stroke = _context.stroke.bind(p);
-  p._fill   = _context.fill.bind(p);
-
+  p._stroke    = _context.stroke.bind(p);
+  p._fill      = _context.fill.bind(p);
   p._hasStroke = true;
   p._hasFill   = false;
-
-  p._lineWidth = _context.lineWidth;
 
   p._initializeView = function (targetCanvasElement) {
      _canvas.setAttribute('id', 'cyto-' + targetCanvasElement.id);
@@ -103,6 +106,10 @@ define(['cyConfig.js','/cyUtils.js'], function (config, utils) {
   p.getContext = function () {
     return _context;
   };
+
+  p.lineWidth = function() {
+
+  }
 
   p.stroke = function (color) {
     if(color !== undefined) {

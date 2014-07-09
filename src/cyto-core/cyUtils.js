@@ -9,6 +9,7 @@ define([
 
     bindObjects: function(targObj, srcObj, filterInc, filterExc) {
       for(var key in srcObj) {
+        
         if(filterInc && this.contains(filterInc, key) || 
            filterInc === undefined) {
           if(filterExc && !filterExc.hasOwnProperty(key) || 

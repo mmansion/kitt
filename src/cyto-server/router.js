@@ -23,8 +23,16 @@ router.use(function(req, res, next) {
 
 
 router.get('/', function(req, res) {
-  res.render('index', {title: 'cyto 001'});
+  res.render('index', {title: 'cyto'});
 });
+
+/* Cyto UI
+   -------------------------------------------------- */
+
+ router.get('/ui/dock', function(req, res) {
+  res.render('ui/dock');
+});  
+
 
 /* Cyto Widgets
    -------------------------------------------------- */

@@ -17,7 +17,6 @@
     "underscore": "~1.6.0",
     "kineticjs": "~5.0.1",
     "paper": "~0.9.15",
-    "jquery": "~2.1.1",
     "highlightjs": "~8.0.0",
     "mathjs": "~0.22.0",
     "leapjs": "~0.6.0",
@@ -26,6 +25,7 @@
     "requirejs": "~2.1.11",
     "lodash": "~2.4.1",
     "font-awesome": "~4.1.0",
-    "jquery-ui": "~1.11.0"
+    "jquery-ui": "~1.11.0",
+    "uikit": "~2.8.0"
   }
 }

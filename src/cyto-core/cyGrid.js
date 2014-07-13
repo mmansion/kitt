@@ -12,8 +12,11 @@ define(['/cyDrawingObject.js', '/cyUtils.js'], function (DrawingObject, utils) {
     this._y      = (options && options.y)      ? options.y      : 0;
     this._width  = (options && options.width)  ? options.width  : this.root.canvas.width;
     this._height = (options && options.height) ? options.height : this.root.canvas.height;
+    this._scale  = (options && options.scale)  ? options.scale  : 1;
     this._stepX  = (options && options.stepX)  ? options.stepX  : 20;
     this._stepY  = (options && options.stepY)  ? options.stepY  : 20;
+
+    this._cells  = [];
 
     //expose public methods
     this.draw = this._drawGrid;
@@ -24,13 +27,20 @@ define(['/cyDrawingObject.js', '/cyUtils.js'], function (DrawingObject, utils) {
 
   var p = cyGrid.prototype = new DrawingObject();
 
+  //currently only works with non-remainder integer divisions of rows and columns; no fractions
+  //TODO: handle fractions in grid size calculations
+
   p._drawGrid = function (x, y, width, height, stepX, stepY) {
     var x      = x      || this._x
       , y      = y      || this._y
       , width  = width  || this._width
       , height = height || this._height
       , stepX  = stepX  || this._stepX
-      , stepY  = stepY  || this._stepY;
+      , stepY  = stepY  || this._stepY
+      , rows   = width/stepX
+      , cols   = height/stepY
+
+      console.log(rows, cols);
 
     this.save();
 
@@ -45,9 +55,11 @@ define(['/cyDrawingObject.js', '/cyUtils.js'], function (DrawingObject, utils) {
       this.noFill();
     }
 
+    this.scale(this._scale, this._scale);
+
     this.rect(x, y, width, height);
 
-    for (var i = stepX + 0.5; i < width; i += stepX) {
+    for (var i = stepX + this.lineWidth; i < width; i += stepX) {
       this.beginPath();
       this.moveTo(x + i, y);
       this.lineTo(x + i, height + y);
@@ -55,13 +67,16 @@ define(['/cyDrawingObject.js', '/cyUtils.js'], function (DrawingObject, utils) {
       this.clearPath();
     }
 
-    for (var i = stepY + 0.5; i < height; i += stepY) {
+    for (var i = stepY + this.lineWidth; i < height; i += stepY) {
       this.beginPath();
       this.moveTo(x, i + y);
       this.lineTo(width + x, i + y);
       this.stroke();
       this.clearPath();
     }
+
+    console.log(this._cells);
+
     this.restore();
   };
 

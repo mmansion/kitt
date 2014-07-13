@@ -85,7 +85,11 @@
   },
   {
     "title": "Grid",
-    "src": "grid.js",
+    "src": "grid.js"
+  },
+  {
+    "title": "Game of Life",
+    "src": "gameOfLife.js",
     "default": "true"
   }
 ]

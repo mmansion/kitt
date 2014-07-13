@@ -16,12 +16,10 @@ module.exports = {
     // all environments
     app.set('port',  process.env.PORT || 3333);
 
-
     //setup view directories
     app.set('views',     path.join(root, 'views'));
     app.locals.basedir = path.join(root, 'views');
 
-    
     app.set('view engine', 'jade');
     
     //app.use(express.favicon());
@@ -40,11 +38,9 @@ module.exports = {
     app.use(express.static(path.join(root, 'sketches')));
     app.use(express.static(path.join(root, 'public')));
 
-
     app.get('/sketch', function(req, res) {
       res.render('sketch', {title: 'cyto 001'});
     });
-
 
     // apply the routes to our application
     app.use('/', require('./router'));
@@ -53,7 +49,6 @@ module.exports = {
       console.log('http server listening on port ' + app.get('port'));
     });
   }
-
 };
 
 function onRequest_OSC(msg, rinfo) {

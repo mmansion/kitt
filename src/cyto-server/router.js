@@ -21,17 +21,26 @@ router.use(function(req, res, next) {
   next(); 
 });
 
+/* Core Views / Pages
+   -------------------------------------------------- */
 
 router.get('/', function(req, res) {
   res.render('index', {title: 'cyto'});
 });
 
+router.get('/login', function(req, res) {
+  res.render('login', {
+    title: 'login'
+  });
+}); 
+
 /* Cyto UI
    -------------------------------------------------- */
 
- router.get('/ui/dock', function(req, res) {
+router.get('/ui/dock', function(req, res) {
   res.render('ui/dock');
 });  
+
 
 
 /* Cyto Widgets

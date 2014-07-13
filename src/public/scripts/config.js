@@ -6,9 +6,10 @@ require.config({
 
     //NEXUS DEPENDENCIES
 
-    jquery:     '/jquery/dist/jquery',
-    highlight:  '/highlightjs/highlight.pack',
-    underscore: '/underscore/underscore',
+    jquery     :   '/jquery/jquery',
+    highlight  :  '/highlightjs/highlight.pack',
+    underscore : '/underscore/underscore',
+    uikit      : '/uikit/dist/js/uikit',
 
     //NEXUS FRAMEWORK
 
@@ -30,8 +31,13 @@ require.config({
     'highlight' : {
       exports: 'hljs'
     }
-
   }
 });
 
-require(['app']);
+if(document.title === 'login') {
+  console.log('TODO: load login page');
+  //require login page
+} else {
+  //load the app
+  require(['app']);
+}

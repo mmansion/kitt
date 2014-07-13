@@ -18,7 +18,10 @@ cyto.setup = function() {
 
   grid.draw();
 
-  //console.log(grid.cell);
+
+  grid.cell(0, 0, true);
+  grid.cell(0, 1, true);
+  //grid.cell(0, 2, true);
 
 };
 

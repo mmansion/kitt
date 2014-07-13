@@ -5,7 +5,7 @@ define(['/cyDrawingObject.js', '/cyUtils.js'], function (DrawingObject, utils) {
     this.root = utils.getRootInstance();
 
     this.strokeStyle = this._strokeStyle = (options && options.strokeStyle) ? options.strokeStyle : '#fff';
-    this.fillStyle   = this._fillStyle   = (options && options.fillStyle)   ? options.fillStyle   : '#000';
+    this.fillStyle   = this._fillStyle   = (options && options.fillStyle)   ? options.fillStyle   : '#fff';
     this.lineWidth   = this._lineWidth   = (options && options.lineWidth)   ? options.lineWidth   : .5;
 
     this._x      = (options && options.x)      ? options.x      : 0;
@@ -17,6 +17,8 @@ define(['/cyDrawingObject.js', '/cyUtils.js'], function (DrawingObject, utils) {
     this._stepY  = (options && options.stepY)  ? options.stepY  : 20;
 
     this._cells  = [];
+    this._rows   = 0;
+    this._cols   = 0;
 
     //expose public methods
     this.draw = this._drawGrid;
@@ -36,11 +38,9 @@ define(['/cyDrawingObject.js', '/cyUtils.js'], function (DrawingObject, utils) {
       , width  = width  || this._width
       , height = height || this._height
       , stepX  = stepX  || this._stepX
-      , stepY  = stepY  || this._stepY
-      , rows   = width/stepX
-      , cols   = height/stepY
+      , stepY  = stepY  || this._stepY;
 
-      console.log(rows, cols);
+    this._makeCellTable(x, y, width, height, stepX, stepY);
 
     this.save();
 
@@ -57,27 +57,58 @@ define(['/cyDrawingObject.js', '/cyUtils.js'], function (DrawingObject, utils) {
 
     this.scale(this._scale, this._scale);
 
-    this.rect(x, y, width, height);
-
-    for (var i = stepX + this.lineWidth; i < width; i += stepX) {
+    for (var i = x; i <= x + width + this.lineWidth; i += stepX) {
       this.beginPath();
-      this.moveTo(x + i, y);
-      this.lineTo(x + i, height + y);
+      this.moveTo(i, y);
+      this.lineTo(i , y + height);
       this.stroke();
       this.clearPath();
     }
 
-    for (var i = stepY + this.lineWidth; i < height; i += stepY) {
+    for (var i = y; i <= y + height + this.lineWidth; i += stepY) {
       this.beginPath();
-      this.moveTo(x, i + y);
-      this.lineTo(width + x, i + y);
+      this.moveTo(x, i);
+      this.lineTo(x + width , i);
       this.stroke();
       this.clearPath();
     }
-
-    console.log(this._cells);
 
     this.restore();
+  };
+
+  p.cell = function(x, y, setting) {
+    if(setting) {
+      this._cells[x][y].on = setting;
+      this._fillCells();
+    } else {
+      return this._cells[x][y]; 
+    }
+  };
+
+  p._fillCells = function() {
+    this.save();
+    for(var c = 0; c < this._cols; c++) {
+      for(var r = 0; r < this._rows; r++) {
+        if(this._cells[c][r].on) {
+          this.fill(this.fillStyle);
+          this.scale(this._scale, this._scale);
+          this.rect(this._cells[c][r].x, this._cells[c][r].y, this._stepX, this._stepY, 0);
+        }
+      }
+    }
+    this.restore();
+  };
+
+  p._makeCellTable = function (x, y, width, height, stepX, stepY) {
+    this._rows = width/stepX;
+    this._cols = height/stepY;
+
+    for(var c = 0; c < this._cols; c++) {
+      this._cells[c] = [];
+      for(var r = 0; r < this._rows; r++) {
+        this._cells[c][r] = { 'x': x + r * stepX, 'y': y + c * stepY, on: false };
+      }
+    }
   };
 
   return cyGrid;

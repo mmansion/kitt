@@ -20,6 +20,12 @@ define(['/cyDrawingObject.js', '/cyUtils.js'], function (DrawingObject, utils) {
     this._rows   = 0;
     this._cols   = 0;
 
+    Object.defineProperty(this, 'cells', {
+      get: function() { return this._cells; }
+    });
+
+    this.cells.forEach = this._iterateCells.bind(this);
+
     //expose public methods
     this.draw = this._drawGrid;
 
@@ -38,11 +44,22 @@ define(['/cyDrawingObject.js', '/cyUtils.js'], function (DrawingObject, utils) {
       , width  = width  || this._width
       , height = height || this._height
       , stepX  = stepX  || this._stepX
-      , stepY  = stepY  || this._stepY;
+      , stepY  = stepY  || this._stepY
 
-    this._makeCellTable(x, y, width, height, stepX, stepY);
+      , oldCols = this._cols
+      , oldRows = this._rows;
+
+    this._cols = width/stepX;
+    this._rows = height/stepY;
+
+    if(this._cols !== oldCols || this._rows !== oldRows) {
+      console.log("making tables");
+      this._makeCellTable(x, y, width, height, stepX, stepY);
+    }
 
     this.save();
+
+    this._fillCells();
 
     if(this._hasStroke) {
       this.stroke(this.strokeStyle);
@@ -79,7 +96,6 @@ define(['/cyDrawingObject.js', '/cyUtils.js'], function (DrawingObject, utils) {
   p.cell = function(x, y, setting) {
     if(setting) {
       this._cells[x][y].on = setting;
-      this._fillCells();
     } else {
       return this._cells[x][y]; 
     }
@@ -91,19 +107,30 @@ define(['/cyDrawingObject.js', '/cyUtils.js'], function (DrawingObject, utils) {
     for(var c = 0; c < this._cols; c++) {
       for(var r = 0; r < this._rows; r++) {
         if(this._cells[c][r].on) {
-          this.fill('red');
+          this.fill(this.fillStyle);
           this.rect(this._cells[c][r].x, this._cells[c][r].y, this._stepX, this._stepY, 0);
         }
       }
     }
     this.restore();
-    this.draw();
+  };
+
+  p._iterateCells = function(callback) {
+    while(this._isDrawing) { /* pause */ }
+    for(var c = 0; c < this._cols; c++) {
+      for(var r = 0; r < this._rows; r++) {
+        callback(this._cells[c][r]);
+        //console.log(this._cells[c][r].on);
+      }
+    }
+   
+    // this._cells.forEach(function(c) {
+    //   console.log(c);
+    // });
+
   };
 
   p._makeCellTable = function (x, y, width, height, stepX, stepY) {
-    this._rows = width/stepX;
-    this._cols = height/stepY;
-
     for(var c = 0; c < this._cols; c++) {
       this._cells[c] = [];
       for(var r = 0; r < this._rows; r++) {

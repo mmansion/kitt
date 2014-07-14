@@ -53,7 +53,6 @@ define(['/cyDrawingObject.js', '/cyUtils.js'], function (DrawingObject, utils) {
     this._rows = height/stepY;
 
     if(this._cols !== oldCols || this._rows !== oldRows) {
-      console.log("making tables");
       this._makeCellTable(x, y, width, height, stepX, stepY);
     }
 
@@ -93,11 +92,15 @@ define(['/cyDrawingObject.js', '/cyUtils.js'], function (DrawingObject, utils) {
     this.restore();
   };
 
-  p.cell = function(x, y, setting) {
+  p.cell = function(row, col, setting) {
     if(setting) {
-      this._cells[x][y].on = setting;
+      this._cells[col][row].on = setting;
     } else {
-      return this._cells[x][y]; 
+      try {
+        return (this._cells[col][row] !== undefined) ? this._cells[col][row]: false;
+      } catch(e) {
+        return false;
+      }
     }
   };
 
@@ -116,25 +119,18 @@ define(['/cyDrawingObject.js', '/cyUtils.js'], function (DrawingObject, utils) {
   };
 
   p._iterateCells = function(callback) {
-    while(this._isDrawing) { /* pause */ }
-    for(var c = 0; c < this._cols; c++) {
-      for(var r = 0; r < this._rows; r++) {
+    for(var r = 0; r < this._rows; r++) {
+      for(var c = 0; c < this._cols; c++) {
         callback(this._cells[c][r]);
-        //console.log(this._cells[c][r].on);
       }
     }
-   
-    // this._cells.forEach(function(c) {
-    //   console.log(c);
-    // });
-
   };
 
   p._makeCellTable = function (x, y, width, height, stepX, stepY) {
     for(var c = 0; c < this._cols; c++) {
       this._cells[c] = [];
       for(var r = 0; r < this._rows; r++) {
-        this._cells[c][r] = { 'x': x + r * stepX, 'y': y + c * stepY, on: false };
+        this._cells[c][r] = { 'x': x + c * stepX, 'y': y + r * stepY, row: r, col: c, on: false };
       }
     }
   };

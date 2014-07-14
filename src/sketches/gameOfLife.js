@@ -1,6 +1,8 @@
 //Conway's Game of Life in Cyto
 
-var grid;
+var grid
+  , lastRun = + new Date
+  , delay   = 1000
 
 /* Setup
   --------------------------------------------------- */
@@ -20,24 +22,15 @@ cyto.setup = function() {
 
   grid.draw();
 
-  grid.cell(0, 0, true);
-  grid.cell(1, 1, true);
-  grid.cell(2, 2, true);
-  grid.cell(3, 3, true);
-  grid.cell(4, 4, true);
-  grid.cell(5, 5, true);
-  grid.cell(6, 6, true);
-  grid.cell(7, 7, true);
-  grid.cell(8, 8, true);
-  grid.cell(9, 9, true);
+  //first seed
+  grid.cell(11, 11, true); //row, col, on/off
+  grid.cell(12, 10, true);
+  grid.cell(12, 12, true);
+  grid.cell(13, 11, true);
+  grid.cell(11, 13, true);
+  grid.cell(12, 14, true);
 
   grid.draw();
-
-
-  grid.cells.forEach(function(cell) {
-    console.log(cell);
-  });
-
 };
 
 /* Update
@@ -50,5 +43,34 @@ cyto.update = function() {
   --------------------------------------------------- */
 cyto.draw = function() {
 
+  if( + new Date - lastRun > delay) {
+    lastRun = + new Date;
+
+    cy.bg();
+
+    grid.cells.forEach(function(cell) {
+      var neighbors = {
+        top:    grid.cell(cell.row - 1, cell.col),
+        right:  grid.cell(cell.row, cell.col + 1),
+        bottom: grid.cell(cell.row + 1, cell.col),
+        left:   grid.cell(cell.row, cell.col - 1)
+      };
+      cell.on = cellLife(neighbors);
+    });
+
+    grid.draw();
+  }
 
 };
+
+function cellLife(neighbors) {
+  var livingNeighbors = 0;
+  for(var cell in neighbors) {
+    if(typeof(neighbors[cell]) === 'object') {
+      if(neighbors[cell].on) {
+        livingNeighbors++;
+      }
+    }
+  }
+  return (livingNeighbors > 1 && livingNeighbors < 4);
+}

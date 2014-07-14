@@ -87,16 +87,17 @@ define(['/cyDrawingObject.js', '/cyUtils.js'], function (DrawingObject, utils) {
 
   p._fillCells = function() {
     this.save();
+    this.scale(this._scale, this._scale);
     for(var c = 0; c < this._cols; c++) {
       for(var r = 0; r < this._rows; r++) {
         if(this._cells[c][r].on) {
-          this.fill(this.fillStyle);
-          this.scale(this._scale, this._scale);
+          this.fill('red');
           this.rect(this._cells[c][r].x, this._cells[c][r].y, this._stepX, this._stepY, 0);
         }
       }
     }
     this.restore();
+    this.draw();
   };
 
   p._makeCellTable = function (x, y, width, height, stepX, stepY) {

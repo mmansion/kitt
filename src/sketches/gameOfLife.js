@@ -7,7 +7,7 @@ var grid;
 cyto.setup = function() {
 
   grid = new cy.Grid({
-    scale:  2,
+    scale:  1,
     width:  20,
     height: 40,
     stepX:  10,
@@ -21,7 +21,8 @@ cyto.setup = function() {
 
   grid.cell(0, 0, true);
   grid.cell(0, 1, true);
-  //grid.cell(0, 2, true);
+  grid.cell(2, 0, true);
+  grid.cell(3, 1, true);
 
 };
 

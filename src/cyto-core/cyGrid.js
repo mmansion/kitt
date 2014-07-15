@@ -20,9 +20,11 @@ define(['/cyDrawingObject.js', '/cyUtils.js'], function (DrawingObject, utils) {
     this._rows   = 0;
     this._cols   = 0;
 
+
     Object.defineProperty(this, 'cells', {
       get: function() { return this._cells; }
     });
+
 
     this.cells.forEach = this._iterateCells.bind(this);
 
@@ -31,6 +33,13 @@ define(['/cyDrawingObject.js', '/cyUtils.js'], function (DrawingObject, utils) {
 
     //links 'this' to canvas 2D drawing api
     this._bindToView();
+
+    //setup initial cell table
+
+    this._cols = this._width / this._stepX;
+    this._rows = this._height / this._stepY;
+
+    this._makeCellTable(this._x, this._y, this._width, this._height, this._stepX, this._stepY);
   };
 
   var p = cyGrid.prototype = new DrawingObject();
@@ -127,6 +136,10 @@ define(['/cyDrawingObject.js', '/cyUtils.js'], function (DrawingObject, utils) {
   };
 
   p._makeCellTable = function (x, y, width, height, stepX, stepY) {
+    this.cells.total = this._cols * this._rows;
+    this.cells.rows  = this._rows;
+    this.cells.cols  = this._cols;
+    
     for(var c = 0; c < this._cols; c++) {
       this._cells[c] = [];
       for(var r = 0; r < this._rows; r++) {

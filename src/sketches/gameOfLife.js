@@ -2,7 +2,7 @@
 
 var grid
   , lastRun = + new Date
-  , delay   = 1000
+  , delay   = 100
 
 /* Setup
   --------------------------------------------------- */
@@ -10,7 +10,7 @@ cyto.setup = function() {
 
   grid = new cy.Grid({
     scale       : 1.5,
-    width       : 500,
+    width       : 480,
     height      : 300,
     strokeStyle : '#333',
     fillStyle   : '#AAA',
@@ -20,15 +20,8 @@ cyto.setup = function() {
     y           : 50
   });
 
-  grid.draw();
-
-  //first seed
-  grid.cell(11, 11, true); //row, col, on/off
-  grid.cell(12, 10, true);
-  grid.cell(12, 12, true);
-  grid.cell(13, 11, true);
-  grid.cell(11, 13, true);
-  grid.cell(12, 14, true);
+  generateRandomSeeds(450);
+ 
 
   grid.draw();
 };
@@ -57,11 +50,20 @@ cyto.draw = function() {
       };
       cell.on = cellLife(neighbors);
     });
-
+    
     grid.draw();
   }
-
 };
+
+function generateRandomSeeds(amount) {
+  var randRow, randCol;
+  while(amount--) {
+    randRow = cy.math.random(0, grid.cells.rows-1);
+    randCol = cy.math.random(0, grid.cells.cols-1);
+
+    grid.cell(randRow, randCol, true);
+  }
+}
 
 function cellLife(neighbors) {
   var livingNeighbors = 0;

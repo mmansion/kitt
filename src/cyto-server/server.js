@@ -1,11 +1,12 @@
-var express = require('express')
-  , osc     = require('osc-min')
-  , path    = require('path')
-  , app     = express()
-  , server  = require('http').createServer(app)
-  , udp     = require('dgram').createSocket('udp4', onRequest_OSC)
-  , io      = require('socket.io').listen(server)
-  , fs      = require('fs');
+var express    = require('express')
+  , bodyParser = require('body-parser')
+  , osc        = require('osc-min')
+  , path       = require('path')
+  , app        = express()
+  , server     = require('http').createServer(app)
+  , udp        = require('dgram').createSocket('udp4', onRequest_OSC)
+  , io         = require('socket.io').listen(server)
+  , fs         = require('fs');
 
 module.exports = {
 
@@ -13,7 +14,7 @@ module.exports = {
     
     udp.bind("9999");
 
-    // all environments
+    //set the server port
     app.set('port',  process.env.PORT || 3333);
 
     //setup view directories
@@ -21,6 +22,10 @@ module.exports = {
     app.locals.basedir = path.join(root, 'views');
 
     app.set('view engine', 'jade');
+
+    // configure app to use bodyParser()
+    // this will let us get the data from a POST
+    app.use(bodyParser());
     
     //app.use(express.favicon());
     //app.use(express.logger('dev'));
@@ -31,9 +36,7 @@ module.exports = {
     //static routes
     app.use(express.static(path.join(root, '/')));
     app.use(express.static(path.join(root, '/../bower_components')));
-
     app.use(express.static(path.join(root, 'cyto-core')));
-    //app.use(express.static(path.join(root, 'cyto-widgets')));
 
     app.use(express.static(path.join(root, 'sketches')));
     app.use(express.static(path.join(root, 'public')));
@@ -42,11 +45,14 @@ module.exports = {
       res.render('sketch', {title: 'cyto 001'});
     });
 
-    // apply the routes to our application
+    // DEFAULT ROUTES
     app.use('/', require('./router'));
 
+    // API V1 ROUTES
+    app.use('/api', require('./api/v1'));
+
     server.listen(app.get('port'), function(){
-      console.log('http server listening on port ' + app.get('port'));
+      console.log('Cyto Server listening on port ' + app.get('port'));
     });
   }
 };

@@ -5,12 +5,8 @@
 var express = require('express')
   , router  = new express.Router();
  
-
-/**
- *
- * Used for every request
- *
- */
+/* Top-level middleware for every request
+   -------------------------------------------------- */
 
 router.use(function(req, res, next) {
 
@@ -49,7 +45,6 @@ router.get('/ui/dock', function(req, res) {
 router.get('/widgets/timeline', function(req, res) {
   res.render('widgets/timeline');
 });
-
 
 
 module.exports = router;

@@ -1,2 +1,2 @@
 //start node server with minimal configuration
-require('./cyto-server/index').start(__dirname);
+require('./cyto-server/server').start(__dirname);

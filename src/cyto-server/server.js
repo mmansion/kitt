@@ -23,9 +23,18 @@ module.exports = {
 
     app.set('view engine', 'jade');
 
-    // configure app to use bodyParser()
-    // this will let us get the data from a POST
-    app.use(bodyParser());
+    /*
+    Note that the use of express.bodyParser() is not recommended.
+
+    app.use(express.bodyParser());
+    ...is equivalent to:
+
+    app.use(express.json());
+    app.use(express.urlencoded());
+    app.use(express.multipart());
+    */
+
+    app.use(bodyParser.json());
     
     //app.use(express.favicon());
     //app.use(express.logger('dev'));

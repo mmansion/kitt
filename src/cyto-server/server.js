@@ -51,6 +51,9 @@ module.exports = {
     // API V1 ROUTES
     app.use('/api', require('./api/v1'));
 
+    // AUTH ROUTE
+    app.use('/auth', require('./auth'));
+
     server.listen(app.get('port'), function(){
       console.log('Cyto Server listening on port ' + app.get('port'));
     });

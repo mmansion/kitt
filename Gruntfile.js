@@ -371,19 +371,6 @@ module.exports = function(grunt) {
       , alpha      = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
       , newClass   = 'Class-' + grunt.template.today("yyyy-mm-dd");
 
-    // classList.forEach(function(classes) {
-    //   for(var prop in classes) {
-    //     if(prop === 'default') {
-    //       delete classes[prop];
-    //     }
-    //     if(prop == 'src' && classes[prop].search(newSketch) !== -1) {
-    //       while(classes[prop].search(newSketch + '-' + alpha[inc]) !== -1) {
-    //         inc++;
-    //       }
-    //     }
-    //   }
-    // });
-
     newClass += '-' + alpha[inc] + '.js';
 
     classList.push({

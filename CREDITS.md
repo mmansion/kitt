@@ -1,6 +1,6 @@
 # C Y T O . P R O J E C T
 
-*The Cyto project borrows inspiration and open sourced properties from a myriad of projects around the world. This page is an effort to both credit those projects and act as resource for others to discover them.*
+*The Cyto project borrows inspiration and open sourced properties from a host of popular sources. This page is an effort to both credit those projects and act as resource for others to discover them.*
 
 #### Influences and Credits
 

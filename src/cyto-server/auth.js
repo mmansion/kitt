@@ -13,6 +13,9 @@ var express = require('express')
 
 auth.use(function(req, res, next) {
 
+  //TODO: post validation
+  //https://github.com/freewil/express-form
+
   console.log("auth request received");
 
   // log each request to the console

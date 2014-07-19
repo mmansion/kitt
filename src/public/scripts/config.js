@@ -33,8 +33,8 @@ require.config({
 });
 
 if(document.title === 'login') {
-  console.log('TODO: load login page');
   //require login page
+  require(['login']);
 } else {
   //load the app
   require(['app']);

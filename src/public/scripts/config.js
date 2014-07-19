@@ -4,18 +4,16 @@ require.config({
 
   paths: { 
 
-    //NEXUS DEPENDENCIES
+    //CYTO DEPENDENCIES
 
-    jquery     :   '/jquery/jquery',
-    highlight  :  '/highlightjs/highlight.pack',
+    jquery     :  '/jquery/jquery',
+    highlight  : '/highlightjs/highlight.pack',
     underscore : '/underscore/underscore',
     uikit      : '/uikit/dist/js/uikit',
 
-    //NEXUS FRAMEWORK
+    //CYTO FRAMEWORK
 
     cyto:      '/cyMain'
-
-    //NEXUS ADDON DEPENDENCIES
 
   },
 

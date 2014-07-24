@@ -8,6 +8,8 @@ var express    = require('express')
   , io         = require('socket.io').listen(server)
   , fs         = require('fs');
 
+  var users = require('./db/users');
+
 module.exports = {
 
   start: function(root) {

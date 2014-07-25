@@ -10,19 +10,19 @@
 
 #### v ~ Pre-cambrian
 
-A genome for making art.
+The creative genome
 
 *STATUS: evolving quickly but breaking often*
 
 ---
 
-Cyto borrows is ideas and DNA from a host of popular open source projects, assimilating features and blending functionality into a unique set of tools focused on creative media-based applications and networked-based performance. While much of the code is quite novel, there is a good deal of assimilated patterns, methods and code. Influences range from a host of incredible tools and artwork. An an ongoing list of inspirations and credits can be [found here](CREDITS.md).*
+Cyto is DNA for building a range of creative coding projects including digital media, sound art, robotics, interactive environments and networked-based performance. The project is a chimera of popular libraries and original code born from the author's own personal interest for creating new media art. Influences range from a host of incredible tools and artworks from around the globe. An an ongoing list of inspirations and credits can be [found here](CREDITS.md).*
 
 
 ---
 The MIT License (MIT)
 
-Copyright (c) 2014 mikhail@radiomansion.com
+Copyright (c) 2014 mikhail@whisperlab.io
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

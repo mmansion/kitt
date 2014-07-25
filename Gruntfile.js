@@ -162,10 +162,20 @@ module.exports = function(grunt) {
     },
 
     curl: {
-      'dbbackup-design-views': {
+
+      'db-design-view-bkup': {
         src:  'http://localhost:5984/node_auth/_design/users',
         dest: 'src/cyto-db/design-views/users.json'
-      }
+      },
+
+      'upload': {
+          src: [{
+            url: 'http://localhost:3333/cyto-db/design-views/users.json',
+            method: 'PUT'
+          }],
+          dest: 'http://localhost:5984/cytodb/_design/'
+        }
+      
     },
 
     /**

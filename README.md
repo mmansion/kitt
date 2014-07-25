@@ -1,22 +1,28 @@
 # C Y T O . P R O J E C T
 
-#### v ~ Pre-alpha
+     ██████╗██╗   ██╗████████╗ ██████╗ 
+    ██╔════╝╚██╗ ██╔╝╚══██╔══╝██╔═══██╗
+    ██║      ╚████╔╝    ██║   ██║   ██║
+    ██║       ╚██╔╝     ██║   ██║   ██║
+    ╚██████╗   ██║      ██║   ╚██████╔╝
+     ╚═════╝   ╚═╝      ╚═╝    ╚═════╝ 
 
-The beginnings of a creative coding toolkit for making art.
 
-*NOTE: The project is currently in a very early stage of development and will probably break, change and evolve--it will almost certainly frustrate anyone attempting to use it at this time (sorry for that). In some ways it's a learning project for the author. That being said, the utlimate goal is to one day make this useful (hopefully) for others by publishing it as a creative tool for wider use.*
+#### v ~ Pre-cambrian
+
+The creative genome
+
+*STATUS: evolving quickly but breaking often*
 
 ---
 
-Cyto is an evolving project that borrows is ideas and DNA from a host of popular open source projects, assimilating features and blending functionality into a unique set of tools focused on creative media-based applications and networked-based performance. 
-
-*NOTE: Most of the code is quite novel, but there is a good deal of assimilated patterns, integrated methods and ported code, as well as influences from many other types of tools and artworks. It is important to place credit where credit is due, so an ongoing list of inspirations and accreditations can be [found here](CREDITS.md).*
+Cyto is DNA for building a range of creative coding projects, especially works that involve digital media, sound, physical computing, robotics, interactive installation and networked-based performance. The project is a chimera of popular libraries and original code born of the author's personal interest for creating new media art. Influences range from a host of remarkable tools and artwork from around the planet. An an ongoing list of inspirations and credits can be [found here](CREDITS.md).*
 
 
 ---
 The MIT License (MIT)
 
-Copyright (c) 2014 mikhail@radiomansion.com
+Copyright (c) 2014 mikhail@whisperlab.io
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

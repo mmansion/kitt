@@ -16,7 +16,7 @@ The creative genome
 
 ---
 
-Cyto is DNA for building a range of creative coding projects including digital media, sound art, robotics, interactive environments and networked-based performance. The project is a chimera of popular libraries and original code born from the author's own personal interest for creating new media art. Influences range from a host of incredible tools and artworks from around the globe. An an ongoing list of inspirations and credits can be [found here](CREDITS.md).*
+Cyto is DNA for building a range of creative coding projects, including digital media, sound art, robotics, interactive environments and networked-based performances. The project is a chimera of popular libraries and original code born of the author's own personal interest for creating new media art. Influences range from a host of incredible tools and artworks from around the globe. An an ongoing list of inspirations and credits can be [found here](CREDITS.md).*
 
 
 ---

@@ -1,11 +1,13 @@
 var nano   = require('nano')('http://localhost:5984/') 
+  , colors = require('colors')
   , config = require('./config.js')
   , users  = require('./design-views/users.json')
   , db     = {};
 
 var init = function () {
 
-  console.log("initialization of database");
+  console.log('   info  - '.cyan + 'initialization of database');
+
 
   //start by listing all databases
   nano.db.list(function(err, body) {

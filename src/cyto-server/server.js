@@ -1,5 +1,7 @@
-var express    = require('express')
+var signature  = require('./signature')
+  , express    = require('express')
   , bodyParser = require('body-parser')
+  , colors     = require('colors')
   , osc        = require('osc-min')
   , path       = require('path')
   , app        = express()
@@ -68,7 +70,7 @@ module.exports = {
     app.use('/auth', require('./auth'));
 
     server.listen(app.get('port'), function(){
-      console.log('Cyto Server listening on port ' + app.get('port'));
+      console.log('   info  - '.cyan + 'cyto server listening on port ' + app.get('port'));
     });
   }
 };

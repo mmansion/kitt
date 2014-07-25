@@ -53,7 +53,7 @@ var addViews = function () {
 
 var onComplete = function () {
 
-  console.log(config.dbName + ' database initialization is complete');
+  console.log('   info  - '.cyan + 'database initialization is complete');
 }
 
 module.exports = init;

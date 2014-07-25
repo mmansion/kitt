@@ -89,7 +89,11 @@
   },
   {
     "title": "Game of Life",
-    "src": "gameOfLife.js",
+    "src": "gameOfLife.js"  
+  },
+  {
+    "title": "Points Array",
+    "src": "points-array.js",
     "default": "true"
   }
 ]

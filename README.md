@@ -10,15 +10,13 @@
 
 #### v ~ Pre-cambrian
 
-The humble beginnings of a genome for making art.
+A genome for making art.
 
-*current status: evolving quickly and breaking often*
+*STATUS: evolving quickly but breaking often*
 
 ---
 
-Cyto borrows is ideas and DNA from a host of popular open source projects, assimilating features and blending functionality into a unique set of tools focused on creative media-based applications and networked-based performance. 
-
-*NOTE: Most of the code is quite novel, but there is a good deal of assimilated patterns, integrated methods and ported code, as well as influences from many other types of tools and artworks. It is important to place credit where credit is due, so an ongoing list of inspirations and accreditations can be [found here](CREDITS.md).*
+Cyto borrows is ideas and DNA from a host of popular open source projects, assimilating features and blending functionality into a unique set of tools focused on creative media-based applications and networked-based performance. While much of the code is quite novel, there is a good deal of assimilated patterns, methods and code. Influences range from a host of incredible tools and artwork. An an ongoing list of inspirations and credits can be [found here](CREDITS.md).*
 
 
 ---

@@ -8,15 +8,15 @@
      ╚═════╝   ╚═╝      ╚═╝    ╚═════╝ 
 
 
-#### v ~ Pre-alpha
+#### v ~ Pre-cambrian
 
-The beginnings of a creative coding toolkit for making art.
+The humble beginnings of a genome for making art.
 
-*NOTE: The project is currently in a very early stage of development and will probably break, change and evolve--it will almost certainly frustrate anyone attempting to use it at this time (sorry for that). In some ways it's a learning project for the author. That being said, the utlimate goal is to one day make this useful (hopefully) for others by publishing it as a creative tool for wider use.*
+*current status: evolving quickly and breaking often*
 
 ---
 
-Cyto is an evolving project that borrows is ideas and DNA from a host of popular open source projects, assimilating features and blending functionality into a unique set of tools focused on creative media-based applications and networked-based performance. 
+Cyto borrows is ideas and DNA from a host of popular open source projects, assimilating features and blending functionality into a unique set of tools focused on creative media-based applications and networked-based performance. 
 
 *NOTE: Most of the code is quite novel, but there is a good deal of assimilated patterns, integrated methods and ported code, as well as influences from many other types of tools and artworks. It is important to place credit where credit is due, so an ongoing list of inspirations and accreditations can be [found here](CREDITS.md).*
 

@@ -161,6 +161,13 @@ module.exports = function(grunt) {
       }
     },
 
+    curl: {
+      'dbbackup-design-views': {
+        src:  'http://localhost:5984/node_auth/_design/users',
+        dest: 'src/cyto-db/design-views/users.json'
+      }
+    },
+
     /**
     *
     * EXEC

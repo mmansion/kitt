@@ -19,7 +19,6 @@ define(['/cyShape.js', '/cyUtils.js'], function (Shape, utils) {
     if(!this.root) return this; //evade constructor if root not instantiated
 
     // set constructor options
-
     this.drawCenter  = (options && options.drawCenter)  ? options.drawCenter  : false;
     this.radius      = (options && options.radius)      ? options.radius      : 0;
     this.strokeStyle = (options && options.strokeStyle) ? options.strokeStyle : '#fff';
@@ -27,9 +26,8 @@ define(['/cyShape.js', '/cyUtils.js'], function (Shape, utils) {
     this.draggable   = (options && options.draggable)   ? true                : false;
 
     //private properties
-
-    this._width      = (options && options.width)      ? options.width      : 100;
-    this._height     = (options && options.height)     ? options.height     : 100;
+    this._width  = (options && options.width)  ? options.width  : 100;
+    this._height = (options && options.height) ? options.height : 100;
 
     this._x = (options && options.x) ? (this.drawCenter) ?
               options.x - this._width / 2 : options.x : 

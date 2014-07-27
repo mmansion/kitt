@@ -45,6 +45,8 @@
             
                 <li><a href="../classes/:  cyPoint.html">:  cyPoint</a></li>
             
+                <li><a href="../classes/cyPoint.html">cyPoint</a></li>
+            
                 <li><a href="../classes/View.html">View</a></li>
             
             </ul>
@@ -101,31 +103,42 @@
 
 define(function() {
 
-  //some point methods from paperjs
-  //https://github.com/paperjs/paper.js/blob/master/src/basic/Point.js
-  
-  var _this;
-
   /**
-   * Represents a book.
-   * @constructor
-   * @param {string} title - The title of the book.
-   * @param {string} author - The author of the book.
-   */
-  var Point = function(x, y) {
-    
-    _this = this;
+  * Point Constructor
+  *
+  * @class cyPoint
+  * @constructor
+  */
 
-    _this.x = x || 0;
-    _this.y = y || 0;
+  var cyPoint = function(x, y) {
+
+    this.x = x || 0;
+    this.y = y || 0;
   };
 
-  Point.prototype = {
+  cyPoint.prototype = {
+
+  /**
+   * Set x and y coordinate for the point
+   *
+   * @method set
+   * @param {Number} x - A new x coordinate
+   * @param {Number} y - A new y coordinate
+   */
 
     set: function(x, y) {
       this.x = x;
       this.y = y;
     },
+
+  /**
+   * Checks whether the coordinates of the points are equal 
+   *  to that of the supplied point.
+   *
+   * @method equals
+   * @param {Point} point - The x coordinate
+   * @returns {Boolean} true if the points are equal, false otherwise
+   */
 
     equals: function(point) {
     return this === point || point
@@ -136,11 +149,11 @@ define(function() {
     },
 
     clone: function() {
-      return new Point(this.x, this.y);
+      return new cyPoint(this.x, this.y);
     },
 
     getDistance: function(/* point, squared */) {
-      var point = Point.read(arguments),
+      var point = cyPoint.read(arguments),
         x = point.x - this.x,
         y = point.y - this.y,
         d = x * x + y * y,
@@ -149,37 +162,36 @@ define(function() {
     },
 
     add: function(/* point */) {
-      var point = Point.read(arguments);
-      return new Point(this.x + point.x, this.y + point.y);
+      var point = cyPoint.read(arguments);
+      return new cyPoint(this.x + point.x, this.y + point.y);
     },
 
     subtract: function(/* point */) {
-      var point = Point.read(arguments);
-      return new Point(this.x - point.x, this.y - point.y);
+      var point = cyPoint.read(arguments);
+      return new cyPoint(this.x - point.x, this.y - point.y);
     },
 
     multiply: function(/* point */) {
-      var point = Point.read(arguments);
-      return new Point(this.x * point.x, this.y * point.y);
+      var point = cyPoint.read(arguments);
+      return new cyPoint(this.x * point.x, this.y * point.y);
     },
 
     divide: function(/* point */) {
-      var point = Point.read(arguments);
-      return new Point(this.x / point.x, this.y / point.y);
+      var point = cyPoint.read(arguments);
+      return new cyPoint(this.x / point.x, this.y / point.y);
     },
 
     modulo: function(/* point */) {
-      var point = Point.read(arguments);
-      return new Point(this.x % point.x, this.y % point.y);
+      var point = cyPoint.read(arguments);
+      return new cyPoint(this.x % point.x, this.y % point.y);
     },
 
     isClose: function(point, tolerance) {
       return this.getDistance(point) &lt; tolerance;
     }
-
   };
 
-  return Point;
+  return cyPoint;
 
 });
     </pre>

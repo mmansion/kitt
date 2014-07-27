@@ -327,7 +327,7 @@ module.exports = function(grunt) {
         version: '<%= pkg.version %>',
         url: '<%= pkg.homepage %>',
         options: {
-          themedir: 'docs/yuidoc-theme/cyto-doc-theme', 
+          themedir: 'docs/yuidoc-theme/cyto', 
           paths: 'src/',
           outdir: 'docs/'
         }

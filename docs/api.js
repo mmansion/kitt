@@ -3,7 +3,8 @@ YUI.add("yuidoc-meta", function(Y) {
     "classes": [
         ":  cyMouse",
         ":  cyPoint",
-        "View"
+        "View",
+        "cyPoint"
     ],
     "modules": [
         "cyEventDispatcher",

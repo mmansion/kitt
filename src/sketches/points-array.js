@@ -1,23 +1,49 @@
-var radius = 70
-  , cy     = cyto
+var radius   = 70
+  , cy       = cyto
+  , ellipses = []
+  , points   = [];
 
-  , ellipse1, ellipse2;
+var columns   = 10;
+var rows      = 20;
+var gridSpace = 20;
+var gridStart = 100;
 
 /* Setup
   --------------------------------------------------- */
 cyto.setup = function() {
 
-  ellipse1 = new cy.Ellipse({
-    x: cy.centerX, 
-    y: cy.centerY, 
-    width: 100, 
-    height: 100,
-    fillStyle: '#333',
-    draggable: true,
-    drawCenter: true
-  });
+  for(var c = 0; c < columns; c++) {
 
+    points.push([]);
+    ellipses.push([]);
 
+    for(var r = 0; r < rows; r++) {
+
+      points[c].push(new cy.Point( 
+        (r * (20 + gridSpace)) + gridStart, 
+        (c * (20 + gridSpace)) + gridStart));
+
+      ellipses[c].push(
+        new cy.Ellipse({
+          x: points[c][r].x, 
+          y: points[c][r].y,
+          width:  20,
+          height: 20,
+          fillStyle:   '#fff',
+          strokeStyle: 'none',
+          draggable:   true,
+          drawCenter:  true
+        })
+      );
+
+    }
+  }
+
+  for(var c = 0; c < columns; c++) {
+    for(var r = 0; r < rows; r++) {
+      ellipses[c][r].draw();
+    }
+  }
 }
 
 /* Update
@@ -30,15 +56,12 @@ cyto.update = function() {
   --------------------------------------------------- */
 cyto.draw = function() {
 
-  cy.bg();
+  //cy.bg();
 
-  cy.fillStyle = 'green';
+  //cy.fillStyle = 'green';
 
   //draws an ellipse without instantiation
-  cy.ellipse(100, 100, 150, 150, true);
+  // cy.ellipse(100, 100, 150, 150, true);
  
-
-  ellipse1.draw();
-
-
+  
 }

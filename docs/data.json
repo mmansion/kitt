@@ -56,7 +56,8 @@
             "name": "src/cyto-core/cyPoint.js",
             "modules": {},
             "classes": {
-                ":  cyPoint": 1
+                ":  cyPoint": 1,
+                "cyPoint": 1
             },
             "fors": {},
             "namespaces": {}
@@ -107,13 +108,14 @@
             "submodules": {},
             "classes": {
                 ":  cyMouse": 1,
-                ":  cyPoint": 1
+                ":  cyPoint": 1,
+                "cyPoint": 1
             },
             "fors": {},
             "namespaces": {},
             "tag": "module",
             "file": "src/cyto-core/cyPoint.js",
-            "line": 1,
+            "line": 8,
             "credits": ": mr doob, createjs, mozilla"
         },
         "cyView": {
@@ -158,6 +160,21 @@
             "file": "src/cyto-core/cyPoint.js",
             "line": 1,
             "author": ": Mikhail Mansion"
+        },
+        "cyPoint": {
+            "name": "cyPoint",
+            "shortname": "cyPoint",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "cyEventDispatcher",
+            "namespace": "",
+            "file": "src/cyto-core/cyPoint.js",
+            "line": 8,
+            "description": "Point Constructor",
+            "is_constructor": 1
         },
         "View": {
             "name": "View",
@@ -268,22 +285,43 @@
         },
         {
             "file": "src/cyto-core/cyPoint.js",
-            "line": 13,
-            "description": "Represents a book.",
-            "is_constructor": 1,
+            "line": 23,
+            "description": "Set x and y coordinate for the point",
+            "itemtype": "method",
+            "name": "set",
             "params": [
                 {
-                    "name": "title",
-                    "description": "- The title of the book.",
-                    "type": "String"
+                    "name": "x",
+                    "description": "- A new x coordinate",
+                    "type": "Number"
                 },
                 {
-                    "name": "author",
-                    "description": "- The author of the book.",
-                    "type": "String"
+                    "name": "y",
+                    "description": "- A new y coordinate",
+                    "type": "Number"
                 }
             ],
-            "class": ":  cyPoint",
+            "class": "cyPoint",
+            "module": "cyEventDispatcher"
+        },
+        {
+            "file": "src/cyto-core/cyPoint.js",
+            "line": 36,
+            "description": "Checks whether the coordinates of the points are equal \n to that of the supplied point.",
+            "itemtype": "method",
+            "name": "equals",
+            "params": [
+                {
+                    "name": "point",
+                    "description": "- The x coordinate",
+                    "type": "Point"
+                }
+            ],
+            "return": {
+                "description": "true if the points are equal, false otherwise",
+                "type": "Boolean"
+            },
+            "class": "cyPoint",
             "module": "cyEventDispatcher"
         },
         {
@@ -479,6 +517,10 @@
             "line": " src/cyto-core/cyMath.js:26"
         },
         {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/cyto-core/cyPoint.js:36"
+        },
+        {
             "message": "unknown tag: name",
             "line": " src/sketches/sketch-2014-02-27-a.js:88"
         },
@@ -505,10 +547,6 @@
         {
             "message": "Missing item type\nAppends the cyEventDispatcher class prototype to a supplied class prototype",
             "line": " src/cyto-core/cyEventDispatcher.js:35"
-        },
-        {
-            "message": "Missing item type\nRepresents a book.",
-            "line": " src/cyto-core/cyPoint.js:13"
         },
         {
             "message": "Missing item type\nCreates an Rectangle object",

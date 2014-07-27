@@ -1,3 +1,8 @@
+/**
+ * @class:  cyPoint
+ * @author: Mikhail Mansion
+ */
+
 define(function() {
 
   //some point methods from paperjs
@@ -5,6 +10,7 @@ define(function() {
   
   var _this;
 
+  
   var Point = function(x, y) {
     
     _this = this;

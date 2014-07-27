@@ -1,0 +1,530 @@
+{
+    "project": {
+        "name": "canvas",
+        "description": "",
+        "version": "0.0.0",
+        "url": ""
+    },
+    "files": {
+        "src/Nexus001/app.js": {
+            "name": "src/Nexus001/app.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/cyto-addons/cyLeap.js": {
+            "name": "src/cyto-addons/cyLeap.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/cyto-core/cyEllipse.js": {
+            "name": "src/cyto-core/cyEllipse.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/cyto-core/cyEventDispatcher.js": {
+            "name": "src/cyto-core/cyEventDispatcher.js",
+            "modules": {
+                "cyEventDispatcher": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/cyto-core/cyMath.js": {
+            "name": "src/cyto-core/cyMath.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/cyto-core/cyMouse.js": {
+            "name": "src/cyto-core/cyMouse.js",
+            "modules": {},
+            "classes": {
+                ":  cyMouse": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/cyto-core/cyPoint.js": {
+            "name": "src/cyto-core/cyPoint.js",
+            "modules": {},
+            "classes": {
+                ":  cyPoint": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/cyto-core/cyRectangle.js": {
+            "name": "src/cyto-core/cyRectangle.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/cyto-core/cyVideo.js": {
+            "name": "src/cyto-core/cyVideo.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/cyto-core/cyView.js": {
+            "name": "src/cyto-core/cyView.js",
+            "modules": {
+                "cyView": 1
+            },
+            "classes": {
+                "View": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/public/scripts/app.js": {
+            "name": "src/public/scripts/app.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/sketches/sketch-2014-02-27-a.js": {
+            "name": "src/sketches/sketch-2014-02-27-a.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "cyEventDispatcher": {
+            "name": "cyEventDispatcher",
+            "submodules": {},
+            "classes": {
+                ":  cyMouse": 1,
+                ":  cyPoint": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/cyto-core/cyPoint.js",
+            "line": 1,
+            "credits": ": mr doob, createjs, mozilla"
+        },
+        "cyView": {
+            "name": "cyView",
+            "submodules": {},
+            "classes": {
+                "View": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/cyto-core/cyView.js",
+            "line": 40,
+            "description": "Provides the primary View class"
+        }
+    },
+    "classes": {
+        ":  cyMouse": {
+            "name": ":  cyMouse",
+            "shortname": ":  cyMouse",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "cyEventDispatcher",
+            "namespace": "",
+            "file": "src/cyto-core/cyMouse.js",
+            "line": 1,
+            "author": ": Mikhail Mansion"
+        },
+        ":  cyPoint": {
+            "name": ":  cyPoint",
+            "shortname": ":  cyPoint",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "cyEventDispatcher",
+            "namespace": "",
+            "file": "src/cyto-core/cyPoint.js",
+            "line": 1,
+            "author": ": Mikhail Mansion"
+        },
+        "View": {
+            "name": "View",
+            "shortname": "View",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "cyView",
+            "namespace": "",
+            "file": "src/cyto-core/cyView.js",
+            "line": 40,
+            "description": "The View class wraps and extends the DOM's canvas element and drawing context,\nproviding additional properties, methods and events which get exposed to the\nctyo library's root object."
+        }
+    },
+    "classitems": [
+        {
+            "file": "src/Nexus001/app.js",
+            "line": 1,
+            "description": "Module dependencies.",
+            "class": ":  cyMouse"
+        },
+        {
+            "file": "src/cyto-addons/cyLeap.js",
+            "line": 3,
+            "description": "cyLeap Addon Dependencies",
+            "class": ":  cyMouse"
+        },
+        {
+            "file": "src/cyto-addons/cyLeap.js",
+            "line": 13,
+            "description": "cyLeap Addon Shims \n\nShims are requires for libraries \nnot pre-configured as AMD modules",
+            "class": ":  cyMouse"
+        },
+        {
+            "file": "src/cyto-core/cyEllipse.js",
+            "line": 3,
+            "description": "Creates an Ellipse object",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "options",
+                    "description": "- configuration options for ellipse object",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "x",
+                            "description": "- center x coordinate of the ellipse",
+                            "type": "Number"
+                        },
+                        {
+                            "name": "y",
+                            "description": "- center y coordinate of the ellipse",
+                            "type": "Number"
+                        },
+                        {
+                            "name": "w",
+                            "description": "- width of the ellipse",
+                            "type": "Number"
+                        },
+                        {
+                            "name": "h",
+                            "description": "- height of the ellipse",
+                            "type": "Number"
+                        }
+                    ]
+                }
+            ],
+            "class": ":  cyMouse"
+        },
+        {
+            "file": "src/cyto-core/cyEventDispatcher.js",
+            "line": 27,
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "property",
+            "name": "_listeners",
+            "type": "Object",
+            "class": ":  cyMouse",
+            "module": "cyEventDispatcher"
+        },
+        {
+            "file": "src/cyto-core/cyEventDispatcher.js",
+            "line": 35,
+            "description": "Appends the cyEventDispatcher class prototype to a supplied class prototype",
+            "params": [
+                {
+                    "name": "type",
+                    "description": "- A class prototype",
+                    "type": "String"
+                }
+            ],
+            "class": ":  cyMouse",
+            "module": "cyEventDispatcher"
+        },
+        {
+            "file": "src/cyto-core/cyMath.js",
+            "line": 26,
+            "access": "public",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "random",
+            "min": "{Number} A number representing the minum range value",
+            "max": "{NUmber} A number representing the maximum range value",
+            "class": ":  cyMouse",
+            "module": "cyEventDispatcher"
+        },
+        {
+            "file": "src/cyto-core/cyPoint.js",
+            "line": 13,
+            "description": "Represents a book.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "title",
+                    "description": "- The title of the book.",
+                    "type": "String"
+                },
+                {
+                    "name": "author",
+                    "description": "- The author of the book.",
+                    "type": "String"
+                }
+            ],
+            "class": ":  cyPoint",
+            "module": "cyEventDispatcher"
+        },
+        {
+            "file": "src/cyto-core/cyRectangle.js",
+            "line": 3,
+            "description": "Creates an Rectangle object",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "options",
+                    "description": "- configuration options for ellipse object",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "x",
+                            "description": "- center x coordinate of the ellipse",
+                            "type": "Number"
+                        },
+                        {
+                            "name": "y",
+                            "description": "- center y coordinate of the ellipse",
+                            "type": "Number"
+                        },
+                        {
+                            "name": "width",
+                            "description": "- width of the ellipse",
+                            "type": "Number"
+                        },
+                        {
+                            "name": "height",
+                            "description": "- height of the ellipse",
+                            "type": "Number"
+                        }
+                    ]
+                }
+            ],
+            "class": "View",
+            "module": "cyEventDispatcher"
+        },
+        {
+            "file": "src/cyto-core/cyRectangle.js",
+            "line": 61,
+            "description": "Draws a rectangle using the current state of the canvas. \nBy providing a fifth r argument a corner radius can be specified",
+            "params": [
+                {
+                    "name": "ctx",
+                    "description": "",
+                    "type": "CanvasRenderingContext2D"
+                },
+                {
+                    "name": "x",
+                    "description": "The top left x coordinate",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "The top left y coordinate",
+                    "type": "Number"
+                },
+                {
+                    "name": "width",
+                    "description": "The width of the rectangle",
+                    "type": "Number"
+                },
+                {
+                    "name": "height",
+                    "description": "The height of the rectangle",
+                    "type": "Number"
+                },
+                {
+                    "name": "r",
+                    "description": "radius The corner radius. Defaults to 5;",
+                    "type": "Number"
+                },
+                {
+                    "name": "fill",
+                    "description": "Whether to fill the rectangle. Defaults to false.",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "stroke",
+                    "description": "Whether to stroke the rectangle. Defaults to true.",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "View",
+            "module": "cyEventDispatcher"
+        },
+        {
+            "file": "src/cyto-core/cyVideo.js",
+            "line": 29,
+            "description": "Draws video to the canvas",
+            "itemtype": "method",
+            "name": "Draw",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "The x coordinate of the video",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "The y coordinate of the video",
+                    "type": "Number"
+                }
+            ],
+            "class": "View",
+            "module": "cyEventDispatcher"
+        },
+        {
+            "file": "src/cyto-core/cyVideo.js",
+            "line": 49,
+            "description": "loads a list of webm videos",
+            "itemtype": "method",
+            "name": "load",
+            "params": [
+                {
+                    "name": "src",
+                    "description": "A path to a webm video file",
+                    "type": "String"
+                }
+            ],
+            "class": "View",
+            "module": "cyEventDispatcher"
+        },
+        {
+            "file": "src/public/scripts/app.js",
+            "line": 43,
+            "description": "Event Handlers",
+            "class": "",
+            "module": "cyView"
+        },
+        {
+            "file": "src/public/scripts/app.js",
+            "line": 66,
+            "description": "Private Functions",
+            "class": "",
+            "module": "cyView"
+        },
+        {
+            "file": "src/sketches/sketch-2014-02-27-a.js",
+            "line": 88,
+            "name": "",
+            "itemtype": "method",
+            "global": "",
+            "params": [
+                {
+                    "name": "pointX",
+                    "description": "- x coordinate of the point to test",
+                    "type": "Num"
+                },
+                {
+                    "name": "pointY",
+                    "description": "- y coordinate of the point to test",
+                    "type": "Num"
+                },
+                {
+                    "name": "centerX",
+                    "description": "- center x coordinate of the given arc",
+                    "type": "Num"
+                },
+                {
+                    "name": "centerY",
+                    "description": "- center y coordinate of the given arc",
+                    "type": "Num"
+                },
+                {
+                    "name": "radius",
+                    "description": "- the radius of the given arc",
+                    "type": "Num"
+                },
+                {
+                    "name": "tolerance",
+                    "description": "- acceptable distance from stroke for an intersection",
+                    "type": "Num"
+                }
+            ],
+            "class": "",
+            "module": "cyView"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "unknown tag: credits",
+            "line": " src/cyto-core/cyEventDispatcher.js:3"
+        },
+        {
+            "message": "unknown tag: min",
+            "line": " src/cyto-core/cyMath.js:26"
+        },
+        {
+            "message": "unknown tag: max",
+            "line": " src/cyto-core/cyMath.js:26"
+        },
+        {
+            "message": "unknown tag: name",
+            "line": " src/sketches/sketch-2014-02-27-a.js:88"
+        },
+        {
+            "message": "replacing incorrect tag: function with method",
+            "line": " src/sketches/sketch-2014-02-27-a.js:88"
+        },
+        {
+            "message": "Missing item type\nModule dependencies.",
+            "line": " src/Nexus001/app.js:1"
+        },
+        {
+            "message": "Missing item type\ncyLeap Addon Dependencies",
+            "line": " src/cyto-addons/cyLeap.js:3"
+        },
+        {
+            "message": "Missing item type\ncyLeap Addon Shims \n\nShims are requires for libraries \nnot pre-configured as AMD modules",
+            "line": " src/cyto-addons/cyLeap.js:13"
+        },
+        {
+            "message": "Missing item type\nCreates an Ellipse object",
+            "line": " src/cyto-core/cyEllipse.js:3"
+        },
+        {
+            "message": "Missing item type\nAppends the cyEventDispatcher class prototype to a supplied class prototype",
+            "line": " src/cyto-core/cyEventDispatcher.js:35"
+        },
+        {
+            "message": "Missing item type\nRepresents a book.",
+            "line": " src/cyto-core/cyPoint.js:13"
+        },
+        {
+            "message": "Missing item type\nCreates an Rectangle object",
+            "line": " src/cyto-core/cyRectangle.js:3"
+        },
+        {
+            "message": "Missing item type\nDraws a rectangle using the current state of the canvas. \nBy providing a fifth r argument a corner radius can be specified",
+            "line": " src/cyto-core/cyRectangle.js:61"
+        },
+        {
+            "message": "Missing item type\nEvent Handlers",
+            "line": " src/public/scripts/app.js:43"
+        },
+        {
+            "message": "Missing item type\nPrivate Functions",
+            "line": " src/public/scripts/app.js:66"
+        }
+    ]
+}

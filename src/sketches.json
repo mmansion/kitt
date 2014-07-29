@@ -93,7 +93,11 @@
   },
   {
     "title": "Points Array",
-    "src": "points-array.js",
+    "src": "points-array.js"
+  },
+  {
+    "title": "Sin Wave",
+    "src": "sin-wave.js",
     "default": "true"
   }
 ]

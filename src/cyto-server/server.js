@@ -64,7 +64,7 @@ module.exports = {
       });
 
       // DEFAULT ROUTES
-      app.use('/', require('./router'));
+      app.use('/', require('./routes/default'));
 
       // API V1 ROUTES
       app.use('/api', require('./api/v1'));

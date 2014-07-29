@@ -76,6 +76,8 @@ define([
       this.rectange = new cyRectangle();
       this.ellipse  = new cyEllipse();
 
+      this.const = cyConstants;
+
       cyConstants.ROOT_INSTANCE = this; //root reference
 
       this.start = function (canvasElement) { //entry point

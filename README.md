@@ -12,7 +12,7 @@
 
 The creative genome
 
-*STATUS: evolving quickly but breaking often*
+*STATUS: EXPERIMENTAL / UNSTABLE / BREAKS OFTEN*
 
 ---
 

@@ -69,6 +69,9 @@ module.exports = {
       // AUTH ROUTE
       app.use('/auth', require('./auth'));
 
+      //require('./routes_v2.js')(app, passport); // load our routes and pass in our app and fully configured passport
+
+
       server.listen(app.get('port'), function(){
         console.log('   info  - '.cyan + 'cyto server listening on port ' + app.get('port'));
       });

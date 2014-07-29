@@ -48,13 +48,16 @@ module.exports = {
       //app.use(express.methodOverride());
 
       //static routes
-      app.use(express.static(path.join(root, '/')));
-      app.use(express.static(path.join(root, '/../bower_components')));
-      app.use(express.static(path.join(root, 'cyto-core')));
-      app.use(express.static(path.join(root, 'cyto-db')));
+      // app.use(express.static(path.join(root, '/')));
+      // app.use(express.static(path.join(root, '/../bower_components')));
+      // app.use(express.static(path.join(root, 'cyto-core')));
+      // app.use(express.static(path.join(root, 'cyto-db')));
 
-      app.use(express.static(path.join(root, 'sketches')));
-      app.use(express.static(path.join(root, 'public')));
+      // app.use(express.static(path.join(root, 'sketches')));
+      // app.use(express.static(path.join(root, 'public')));
+
+      //static sketches
+      require('./routes/static')(root, app);
 
       app.get('/sketch', function(req, res) {
         res.render('sketch', {title: 'cyto 001'});

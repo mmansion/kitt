@@ -49,7 +49,8 @@
   },
   {
     "title": "video class",
-    "src": "video-class.js"
+    "src": "video-class.js",
+    "default": "true"
   },
   {
     "title": "2014-06-15-a",
@@ -89,7 +90,7 @@
   },
   {
     "title": "Game of Life",
-    "src": "gameOfLife.js"  
+    "src": "gameOfLife.js" 
   },
   {
     "title": "Points Array",
@@ -97,7 +98,6 @@
   },
   {
     "title": "Sin Wave",
-    "src": "sin-wave.js",
-    "default": "true"
+    "src": "sin-wave.js"
   }
 ]

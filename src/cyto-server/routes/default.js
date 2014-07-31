@@ -32,6 +32,10 @@ router.get('/login', function(req, res) {
   });
 }); 
 
+router.get('/sketch', function(req, res) {
+  res.render('sketch', {title: 'cyto 001'});
+});
+
 /* Cyto UI
    -------------------------------------------------- */
 

@@ -1,7 +1,6 @@
 //static routes
-
-var path = require('path');
-var express    = require('express');
+var path     = require('path');
+var express  = require('express');
 
 module.exports = function(root, app) {
 
@@ -13,5 +12,4 @@ module.exports = function(root, app) {
 
   app.use(express.static(path.join(root, 'sketches')));
   app.use(express.static(path.join(root, 'public')));
-
 };

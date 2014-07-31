@@ -15,7 +15,7 @@ module.exports = {
   start: function(root) {
 
     //initilize database
-    require('../cyto-db/init')(function() {
+    require('../cyto-db/index')(function() {
 
       udp.bind("9999");
 
@@ -37,43 +37,23 @@ module.exports = {
       app.use(express.json());
       app.use(express.urlencoded());
       app.use(express.multipart());
+
+      //better to select the exact type of parsing we need
       */
 
       app.use(bodyParser.json());
-      
-      //app.use(express.favicon());
-      //app.use(express.logger('dev'));
-      //app.use(express.json());
-      //app.use(express.urlencoded());
-      //app.use(express.methodOverride());
 
       //static routes
-      // app.use(express.static(path.join(root, '/')));
-      // app.use(express.static(path.join(root, '/../bower_components')));
-      // app.use(express.static(path.join(root, 'cyto-core')));
-      // app.use(express.static(path.join(root, 'cyto-db')));
-
-      // app.use(express.static(path.join(root, 'sketches')));
-      // app.use(express.static(path.join(root, 'public')));
-
-      //static sketches
       require('./routes/static')(root, app);
 
-      app.get('/sketch', function(req, res) {
-        res.render('sketch', {title: 'cyto 001'});
-      });
-
-      // DEFAULT ROUTES
+      //default routes
       app.use('/', require('./routes/default'));
 
-      // API V1 ROUTES
+      //api v1
       app.use('/api', require('./api/v1'));
 
-      // AUTH ROUTE
-      app.use('/auth', require('./auth'));
-
-      //require('./routes_v2.js')(app, passport); // load our routes and pass in our app and fully configured passport
-
+      //auth
+      app.use('/auth', require('./routes/auth'));
 
       server.listen(app.get('port'), function(){
         console.log('   info  - '.cyan + 'cyto server listening on port ' + app.get('port'));

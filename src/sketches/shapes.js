@@ -2,7 +2,7 @@
   --------------------------------------------------- */
 cy.setup = function() {
 
-  var shape = new cy.Shape();
+  console.log("hello core");
 
 }
 

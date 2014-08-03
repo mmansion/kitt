@@ -134,14 +134,16 @@ define([
         // });
       }
 
-      function removeOldCanvas() {
+      function removeOldCanvas() { //TODO: remove div container instead of canvas element (see fn below)
         if($('canvas').length) {
           $('canvas').remove();
         }
       }
 
       function createNewCanvas() {
-        $('<canvas id="sketch" width="'+screenWidth+'" height="'+screenHeight+'"></canvas>').appendTo('body');
+        console.log("here");
+        //$('<canvas id="sketch" width="'+screenWidth+'" height="'+screenHeight+'"></canvas>').appendTo('body');
+        $('<div id="sketch" width="'+screenWidth+'" height="'+screenHeight+'"></div>').appendTo('body');
       }
   });
 

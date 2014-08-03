@@ -57,7 +57,7 @@ define([
     Cyto = function (canvasObject) {
 
       //global properties
-      
+
       this.canvasMode = '2d';
 
       this._mouseX = 0;
@@ -69,15 +69,15 @@ define([
       this.utils           = cyUtils;
       this.eventDispatcher = new cyEventDispatcher (this);
       this.coords          = new cyCoords          (this);
-      this.shape           = new cyShape           (this);
-      this.math            = new cyMath            (this);
+      // this.shape           = new cyShape           (this);
+      // this.math            = new cyMath            (this);
       this.engine          = new cyDrawEngine      (this);
       this.mouse           = new cyMouse           (this);
 
       //instantiate core 2d primitives
 
-      this.rectange = new cyRectangle();
-      this.ellipse  = new cyEllipse();
+      //this.rectange = new cyRectangle();
+      //this.ellipse  = new cyEllipse();
 
       this.const = cyConstants;
 
@@ -85,26 +85,26 @@ define([
 
       this.start = function (canvasElement) { //entry point
 
-        this._initializeView(canvasElement);
-        this._gatherRootObjects(this);
-        this._registerEvents();
-        this._registerGlobalEvents();
+        //this._initializeView(canvasElement);
+        // this._gatherRootObjects(this);
+        // this._registerEvents();
+        // this._registerGlobalEvents();
 
-        //Constructor Singletons
-        this.Grid      = cyGrid;
-        this.Vector    = cyVector;
-        this.Video     = cyVideo;
-        this.Point     = cyPoint;
-        this.Shape     = cyShape;
-        this.Ellipse   = cyEllipse;
-        this.Rectangle = cyRectangle;
-        this.Polygon   = cyPolygon;
+        // //Constructor Singletons
+        // this.Grid      = cyGrid;
+        // this.Vector    = cyVector;
+        // this.Video     = cyVideo;
+        // this.Point     = cyPoint;
+        // this.Shape     = cyShape;
+        // this.Ellipse   = cyEllipse;
+        // this.Rectangle = cyRectangle;
+        // this.Polygon   = cyPolygon;
 
-         //ADDON CONSTRUCTOR CLASSES
-        this.Leap = cyLeap;
+        //  //ADDON CONSTRUCTOR CLASSES
+        // this.Leap = cyLeap;
 
-        this.refresh();
-        this.engine.start(canvasElement);
+        // this.refresh();
+        // this.engine.start(canvasElement);
       }
     };
 

@@ -27,5 +27,8 @@
     "font-awesome": "~4.1.0",
     "jquery-ui": "~1.11.0",
     "uikit": "~2.8.0"
+  },
+  "devDependencies": {
+    "angular": "~1.2.21"
   }
 }

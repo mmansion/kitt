@@ -5,8 +5,8 @@ require.config({
   paths: { 
 
     //CYTO DEPENDENCIES
-
-    jquery     :  '/jquery/jquery',
+    angular    : '/angular/angular',
+    jquery     : '/jquery/jquery',
     highlight  : '/highlightjs/highlight.pack',
     underscore : '/underscore/underscore',
     uikit      : '/uikit/dist/js/uikit',
@@ -14,21 +14,11 @@ require.config({
     //CYTO FRAMEWORK
 
     cyto:      '/cyMain'
-
   },
 
   shim: {
-    /* 
-    //example
-    'library': {
-      deps: ['jquery', 'modernizer', 'classie']  
-      exports: 'library-name'
-    }
-    */
-
-    'highlight' : {
-      exports: 'hljs'
-    }
+    'angular'   : { exports : 'angular'},
+    'highlight' : { exports : 'hljs'}
   }
 });
 

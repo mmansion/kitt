@@ -17,12 +17,18 @@ a:focus {
   color: #fff;
   outline: none;
 }
+/* cyto container */
+.cyto {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
 /* canvas
    --------------------------------------------------- */
 #sketch {
   position: absolute;
   top: 0;
-  z-index: -1;
 }
 /* code
    --------------------------------------------------- */

@@ -12,6 +12,7 @@ define([
   '/cyMouse.js',
   '/cyMath.js',
   '/cyPoint.js',
+  '/cySketchLoader.js',
   '/cyUtils.js',
   '/cyVector.js',
 
@@ -39,6 +40,7 @@ define([
     cyMouse,
     cyMath,
     cyPoint,
+    cySketchLoader,
     cyUtils,
     cyVector,
 
@@ -64,8 +66,6 @@ define([
       var cytoElements = document.querySelectorAll('.cyto');
       var sketch = cytoElements[0].getAttribute('data-sketch');
 
-      console.log(sketch);
-
       this.utils           = cyUtils;
       this.eventDispatcher = new cyEventDispatcher (this);
       this.coords          = new cyCoords          (this);
@@ -73,6 +73,14 @@ define([
       // this.math            = new cyMath            (this);
       this.engine          = new cyDrawEngine      (this);
       this.mouse           = new cyMouse           (this);
+
+      this.sketchLoader = new cySketchLoader(this);
+
+      var path = 'sketches/' + sketch + '.js';
+      
+      this.sketchLoader.loadSketch(path, function() {
+        console.log('sketch was loaded');
+      });
 
       //instantiate core 2d primitives
 

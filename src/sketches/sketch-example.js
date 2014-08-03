@@ -1,6 +1,7 @@
+console.log("loaded sketch example");
+
 cyto.setup = function() {
 
-  console.log("calling setup");
 }
 
 cyto.update = function() {

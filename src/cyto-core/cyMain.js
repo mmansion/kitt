@@ -56,15 +56,15 @@ define([
 
     Cyto = function (canvasObject) {
 
-      //global properties
-
-      this.canvasMode = '2d';
-
-      this._mouseX = 0;
-      this._mosueY = 0;
-      this._drawCenter = false;
+      // this._mouseX = 0;
+      // this._mosueY = 0;
+      // this._drawCenter = false;
 
       //instantiate core objects
+      var cytoElements = document.querySelectorAll('.cyto');
+      var sketch = cytoElements[0].getAttribute('data-sketch');
+
+      console.log(sketch);
 
       this.utils           = cyUtils;
       this.eventDispatcher = new cyEventDispatcher (this);

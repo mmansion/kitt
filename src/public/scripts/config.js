@@ -33,9 +33,10 @@ require.config({
 });
 
 if(document.title === 'login') {
-  //require login page
+  
   require(['login']);
+
 } else {
-  //load the app
-  require(['app']);
+
+  require(['app2']);
 }

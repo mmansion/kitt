@@ -51,7 +51,6 @@ define([
 
     //Addons
     cyLeap
-
     //TODO: cyFCB1010
 
     ) {
@@ -61,10 +60,6 @@ define([
       // this._mouseX = 0;
       // this._mosueY = 0;
       // this._drawCenter = false;
-
-      //instantiate core objects
-      var cytoElements = document.querySelectorAll('.cyto');
-      var sketch = cytoElements[0].getAttribute('data-sketch');
 
       this.utils           = cyUtils;
       this.eventDispatcher = new cyEventDispatcher (this);
@@ -76,11 +71,39 @@ define([
 
       this.sketchLoader = new cySketchLoader(this);
 
-      var path = 'sketches/' + sketch + '.js';
+        //this._gatherRootObjects(this);
+        // this._registerEvents();
+        // this._registerGlobalEvents();
+
+        //Constructor Singletons
+        this.Grid      = cyGrid;
+        this.Vector    = cyVector;
+        this.Video     = cyVideo;
+        this.Point     = cyPoint;
+        this.Shape     = cyShape;
+        this.Ellipse   = cyEllipse;
+        this.Rectangle = cyRectangle;
+        this.Polygon   = cyPolygon;
+
+        //  //ADDON CONSTRUCTOR CLASSES
+        // this.Leap = cyLeap;
+
+        // this.refresh();
+        // this.engine.start(canvasElement);
+
+
+      //instantiate core objects
+
+      //TODO: support multiple sketches on one page
+      //var cytoElements = document.querySelectorAll('.cyto');
+      // var sketch = cytoElements[0].getAttribute('data-sketch');
+      // var path = 'sketches/' + sketch + '.js';
       
-      this.sketchLoader.loadSketch(path, function() {
-        console.log('sketch was loaded');
-      });
+      // this.sketchLoader.loadSketch(path, function() {
+
+      //   //this._initializeView(canvasElement);
+      //   console.log('sketch was loaded');
+      // });
 
       //instantiate core 2d primitives
 
@@ -91,122 +114,102 @@ define([
 
       cyConstants.ROOT_INSTANCE = this; //root reference
 
-      this.start = function (canvasElement) { //entry point
 
-        //this._initializeView(canvasElement);
-        // this._gatherRootObjects(this);
-        // this._registerEvents();
-        // this._registerGlobalEvents();
 
-        // //Constructor Singletons
-        // this.Grid      = cyGrid;
-        // this.Vector    = cyVector;
-        // this.Video     = cyVideo;
-        // this.Point     = cyPoint;
-        // this.Shape     = cyShape;
-        // this.Ellipse   = cyEllipse;
-        // this.Rectangle = cyRectangle;
-        // this.Polygon   = cyPolygon;
 
-        //  //ADDON CONSTRUCTOR CLASSES
-        // this.Leap = cyLeap;
-
-        // this.refresh();
-        // this.engine.start(canvasElement);
-      }
     };
 
     cyConstants.ROOT_CLASS   = Cyto; //root reference
 
     var p = Cyto.prototype = new cyView(); //uses a single canvas view for everything
 
-    Object.defineProperty(p, 'mouseX', {
-      get: function()  { return this._mouseX },
-      set: function(x) { this._mouseX = x;   }
-    });
+    // Object.defineProperty(p, 'mouseX', {
+    //   get: function()  { return this._mouseX },
+    //   set: function(x) { this._mouseX = x;   }
+    // });
 
-    Object.defineProperty(p, 'mouseY', {
-      get: function()  { return this._mouseY },
-      set: function(y) { this._mouseY = y;   }
-    });
+    // Object.defineProperty(p, 'mouseY', {
+    //   get: function()  { return this._mouseY },
+    //   set: function(y) { this._mouseY = y;   }
+    // });
 
-    Object.defineProperty(p, 'drawCenter', {
-      get: function()     { return this._drawCenter; },
-      set: function(bool) { this._drawCenter = bool; }
-    });
+    // Object.defineProperty(p, 'drawCenter', {
+    //   get: function()     { return this._drawCenter; },
+    //   set: function(bool) { this._drawCenter = bool; }
+    // });
 
-    p.refresh = function() {
-      this.width   = window.innerWidth;
-      this.height  = window.innerHeight;
-      this.centerX = this.width/2;
-      this.centerY = this.height/2;
-    };
+    // p.refresh = function() {
+    //   this.width   = window.innerWidth;
+    //   this.height  = window.innerHeight;
+    //   this.centerX = this.width/2;
+    //   this.centerY = this.height/2;
+    // };
 
-    p.resize = function() {
-      this.refresh();
-      this.setup();
-    };
+    // p.resize = function() {
+    //   this.refresh();
+    //   this.setup();
+    // };
 
-    p._eventsList = {};
+    // p._eventsList = {};
 
-    p._events = {};
+    // p._events = {};
 
-    p._getEventType = function(query) {
-      var eventType;
-      for(var type in this._eventsList) {
-        this._eventsList[type].forEach(function(e) {
-          if(eventType) return; //short circuit loop if found
-          if(e === query) {
-            eventType = type;
-          }
-        });
-      }
-      return eventType;
-    };  
+    // p._getEventType = function(query) {
+    //   var eventType;
+    //   for(var type in this._eventsList) {
+    //     this._eventsList[type].forEach(function(e) {
+    //       if(eventType) return; //short circuit loop if found
+    //       if(e === query) {
+    //         eventType = type;
+    //       }
+    //     });
+    //   }
+    //   return eventType;
+    // };  
 
-    p._noop = function () { /* no operation */ return false };
+    //p._noop = function () { /* no operation */ return false };
 
-    p._registerEvents = function () {
-      for(var type in this._eventsList) {
-        this._eventsList[type].forEach(function(e) {
-          p._events[e] = {};
-          Object.defineProperty(p, e, {
-            get: function() { 
-              return this._events[e];  
-            }.bind(this),
-            set: function(handler) {
-              this._events[e] = handler;
-              this.on(this._events[e], handler);
-            }.bind(this)
-          });
-          p[e] = p._noop;
-        }.bind(this));
-      }
-    };
+    // p._registerEvents = function () {
+    //   for(var type in this._eventsList) {
+    //     this._eventsList[type].forEach(function(e) {
+    //       p._events[e] = {};
+    //       Object.defineProperty(p, e, {
+    //         get: function() { 
+    //           return this._events[e];  
+    //         }.bind(this),
+    //         set: function(handler) {
+    //           this._events[e] = handler;
+    //           this.on(this._events[e], handler);
+    //         }.bind(this)
+    //       });
+    //       p[e] = p._noop;
+    //     }.bind(this));
+    //   }
+    // };
 
-    p._registerGlobalEvents = function () {
-      this.on('mouseDown', this._mouseDown);
-      this.on('mouseUp'  , this._mouseUp);
-      this.on('mouseMove', this._mouseMove);
+    // p._registerGlobalEvents = function () {
+    //   this.on('mouseDown', this._mouseDown);
+    //   this.on('mouseUp'  , this._mouseUp);
+    //   this.on('mouseMove', this._mouseMove);
   
-      window.onmousemove = this.mouse._mouseMove.bind(this);
-      window.onmousedown = this.mouse._mouseDown.bind(this);
-      window.onmouseup   = this.mouse._mouseUp.bind(this);
-    };
+    //   window.onmousemove = this.mouse._mouseMove.bind(this);
+    //   window.onmousedown = this.mouse._mouseDown.bind(this);
+    //   window.onmouseup   = this.mouse._mouseUp.bind(this);
+    // };
 
-    p._mouseUp = function (e) {
-      if(this.mouseUp) this.mouseUp(e);
-    };
+    // p._mouseUp = function (e) {
+    //   if(this.mouseUp) this.mouseUp(e);
+    // };
 
-    p._mouseDown = function (e) {
-      if(this.mouseDown) this.mouseDown(e);
-    };
+    // p._mouseDown = function (e) {
+    //   if(this.mouseDown) this.mouseDown(e);
+    // };
 
-    p._mouseMove = function (e) {
-      this.mouseX = e.x;
-      this.mouseY = e.y;
-      if(this.mouseMove) this.mouseMove(e);
-    };
+    // p._mouseMove = function (e) {
+    //   this.mouseX = e.x;
+    //   this.mouseY = e.y;
+    //   if(this.mouseMove) this.mouseMove(e);
+    // };
 
     p._captureEvents = function (object, events) {
       events.forEach(function(e) {

@@ -1,17 +1,17 @@
 /* Setup
   --------------------------------------------------- */
-nx.setup = function() {
+cy.setup = function() {
 
 }
 
 /* Update
   --------------------------------------------------- */
-nx.update = function() {
+cy.update = function() {
 
 }
 
 /* Draw
   --------------------------------------------------- */
-nx.draw = function() {
+cy.draw = function() {
 
 }

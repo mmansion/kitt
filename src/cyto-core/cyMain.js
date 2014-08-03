@@ -35,7 +35,7 @@ define([
     cyDrawEngine, 
     cyShape,
     cyVideo,
-    cyEvents,
+    cyEventDispatcher,
     cyMouse,
     cyMath,
     cyPoint,
@@ -57,22 +57,25 @@ define([
     Cyto = function (canvasObject) {
 
       //global properties
+      
       this.canvasMode = '2d';
 
       this._mouseX = 0;
       this._mosueY = 0;
       this._drawCenter = false;
 
-      //core objects
-      this.utils           = cyUtils;
-      this.eventDispatcher = new cyEvents     (this);
-      this.coords          = new cyCoords     (this);
-      this.shape           = new cyShape      (this);
-      this.math            = new cyMath       (this);
-      this.engine          = new cyDrawEngine (this);
-      this.mouse           = new cyMouse      (this);
+      //instantiate core objects
 
-      //core 2d primitives
+      this.utils           = cyUtils;
+      this.eventDispatcher = new cyEventDispatcher (this);
+      this.coords          = new cyCoords          (this);
+      this.shape           = new cyShape           (this);
+      this.math            = new cyMath            (this);
+      this.engine          = new cyDrawEngine      (this);
+      this.mouse           = new cyMouse           (this);
+
+      //instantiate core 2d primitives
+
       this.rectange = new cyRectangle();
       this.ellipse  = new cyEllipse();
 
@@ -92,6 +95,7 @@ define([
         this.Vector    = cyVector;
         this.Video     = cyVideo;
         this.Point     = cyPoint;
+        this.Shape     = cyShape;
         this.Ellipse   = cyEllipse;
         this.Rectangle = cyRectangle;
         this.Polygon   = cyPolygon;

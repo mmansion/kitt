@@ -6,7 +6,10 @@
 define(function() {
 
   //cyMouse should only be instantiated through Cyto (main)
-  var cyMouse = function() {};
+  var cyMouse = function(target) {
+
+    console.log(target.eventDispatcher);//eventDispatcher
+  };
 
   /* Prototype inheritance
      -------------------------------------------------- */

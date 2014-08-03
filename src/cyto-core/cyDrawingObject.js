@@ -53,11 +53,14 @@ define(['/cyConstants.js', '/cyUtils.js'], function(CONSTANTS, utils) {
         this._strokeStyle = this.root.strokeStyle = c;
       }
     });
+
+    //this._registerEvents(); //moving this here requires constructing the core first
   };
 
   var p = cyDrawingObject.prototype;
 
   p._registerEvents = function (object) {
+    console.log(this.root);
     //hook into the root's mouse events
     this.root.on('mouseMove', this._mouseMove.bind(this));
     this.root.on('mouseDown', this._mouseDown.bind(this));

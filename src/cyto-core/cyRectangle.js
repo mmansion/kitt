@@ -50,8 +50,6 @@ define(['/cyShape.js', '/cyUtils.js'], function (Shape, utils) {
 
     //links 'this' to canvas 2D drawing api
     this._bindToView();
-
-    this._registerEvents();
   };
 
   var p = cyRectangle.prototype = new Shape();
@@ -102,6 +100,7 @@ define(['/cyShape.js', '/cyUtils.js'], function (Shape, utils) {
 
   p._draw = function() {
     if(!this._hasBeenDrawn) this._hasBeenDrawn = true;
+
     if(this instanceof cyRectangle) {
       this.save();
       if(this._hasStroke) {

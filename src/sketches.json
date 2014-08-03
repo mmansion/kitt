@@ -49,8 +49,7 @@
   },
   {
     "title": "video class",
-    "src": "video-class.js",
-    "default": "true"
+    "src": "video-class.js"
   },
   {
     "title": "2014-06-15-a",
@@ -70,7 +69,8 @@
   },
   {
     "title": "rect-2d object",
-    "src": "2DRectangleObject.js"
+    "src": "2DRectangleObject.js",
+    "default": "true"
   },
   {
     "title": "2014-06-27-a",
@@ -90,7 +90,7 @@
   },
   {
     "title": "Game of Life",
-    "src": "gameOfLife.js" 
+    "src": "gameOfLife.js"
   },
   {
     "title": "Points Array",
@@ -99,5 +99,9 @@
   {
     "title": "Sin Wave",
     "src": "sin-wave.js"
+  },
+  {
+    "title": "shapes",
+    "src": "shapes.js"
   }
 ]

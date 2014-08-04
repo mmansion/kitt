@@ -115,7 +115,9 @@ define([
       cyConstants.ROOT_INSTANCE = this; //root reference
 
 
-
+      this.init = function() {
+        console.log("initializing cyto library");
+      };
 
     };
 

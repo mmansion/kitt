@@ -2,6 +2,7 @@
 
 define([
 
+  'Cyto',
   'angular',
   'filters',
   'services',
@@ -9,12 +10,11 @@ define([
   'controllers',
   'angularRoute',
 
-  ], function (angular, filters, services, directives, controllers) {
+  ], function (Cyto, angular, filters, services, directives, controllers) {
 
+    // Declare app-level module which depends on filters, and services
 
-    // Declare app level module which depends on filters, and services
-
-    var cytoApp = angular.module('cytoApp', [
+    var app = angular.module('cytoApp', [
       'ngRoute',
       'cytoApp.filters',
       'cytoApp.services',
@@ -22,5 +22,7 @@ define([
       'cytoApp.controllers'
     ]);
 
-    return cytoApp;
+    app.cyto = new Cyto(); //initialize the cyto app
+
+    return app;
 });

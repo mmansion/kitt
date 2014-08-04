@@ -1,6 +1,6 @@
 'use strict';
 
-define(['angular', 'services'], function(angular, services) {
+define(['angular', 'services', 'Cyto'], function(angular, services) {
 
   /* Directives */
 
@@ -9,7 +9,6 @@ define(['angular', 'services'], function(angular, services) {
 
     .directive('appVersion', ['version', function(version) {
       return function(scope, elm, attrs) {
-        console.log(elm);
         elm.text(version);
     };
 

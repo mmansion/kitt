@@ -18,7 +18,7 @@ require.config({
 
     //CYTO LIBRARY
 
-    CytoLib      : '/cyMain'
+    Cyto      : '/cyMain'
   },
 
   shim: {
@@ -43,16 +43,14 @@ if(document.title === 'login') {
 
     'angular',
     'app',
-    'routes',
-    'CytoLib'
+    'routes'
 
-    ], function(angular, app, routes, Cyto) {
+    ], function(angular, app, routes) {
 
       angular.element().ready(function () {
 
         angular.resumeBootstrap([app.name]);
-
-        //app.cyto = new Cyto(); //initialize the cyto app
+        app.cyto.init();
       });
   });
 }

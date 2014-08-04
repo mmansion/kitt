@@ -6,7 +6,8 @@ require.config({
 
   paths: { 
 
-    //CYTO DEPENDENCIES
+    //CYTO APP
+
     angular      : '/angular/angular',
     angularRoute : '/angular-route/angular-route',
     angularMocks : 'angular-mocks/angular-mocks',
@@ -15,9 +16,9 @@ require.config({
     underscore   : '/underscore/underscore',
     uikit        : '/uikit/dist/js/uikit',
 
-    //CYTO FRAMEWORK
+    //CYTO LIBRARY
 
-    cyto:      '/cyMain'
+    CytoLib      : '/cyMain'
   },
 
   shim: {
@@ -38,9 +39,20 @@ if(document.title === 'login') {
 
 } else {
 
-  require(['angular', 'app2', 'routes'], function(angular, app, routes) {
-    angular.element().ready(function() {
-      angular.resumeBootstrap([app.name]);
-    });
+  require([
+
+    'angular',
+    'app',
+    'routes',
+    'CytoLib'
+
+    ], function(angular, app, routes, Cyto) {
+
+      angular.element().ready(function () {
+
+        angular.resumeBootstrap([app.name]);
+
+        //app.cyto = new Cyto(); //initialize the cyto app
+      });
   });
 }

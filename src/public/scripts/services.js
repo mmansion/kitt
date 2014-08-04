@@ -2,7 +2,6 @@
 
 define(['angular'], function (angular) {
 
-  console.log("here");
 
   /* Services */
 

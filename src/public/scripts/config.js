@@ -37,14 +37,14 @@ if(document.title === 'login') {
 
 } else {
 
-  require(['angular', 'app2'], function(angular, app) {
+  require(['angular', 'app2', 'routes'], function(angular, app, routes) {
 
     var $html = angular.element(document.getElementsByTagName('html')[0]);
 
     angular.element().ready(function() {
-      angular.resumeBootstrap([app['name']]);
+      angular.resumeBootstrap([app.name]);
 
-      console.log(app['name']);
+      console.log(app);
     });
   });
 }

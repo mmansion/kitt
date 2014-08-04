@@ -2,6 +2,8 @@
 
 define(['angular'], function (angular) {
 
+  console.log("here");
+
   /* Services */
 
   // Demonstrate how to register services

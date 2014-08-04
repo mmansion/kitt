@@ -14,7 +14,21 @@ html(lang="en" ng-app="cytoApp")
 
   body(class='uk-height-1-1')
 
+    h4.
+      AngularJS + RequireJS
+
+    ul(class='menu')
+      li
+        a(href='#/view1').
+          view1
+      li
+        a(href='#/view2').
+          view2
+
+    div(ng-view)
+
     block content
+
 
     // data-main sets config opts for rjs, then loads app
     script(src='/requirejs/require.js' data-main='/scripts/config')

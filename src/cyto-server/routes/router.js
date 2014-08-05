@@ -7,7 +7,6 @@ var express = require('express')
  
 /* Top-level middleware for every request
    -------------------------------------------------- */
-
 router.use(function(req, res, next) {
 
   console.log("another router");
@@ -21,7 +20,6 @@ router.use(function(req, res, next) {
 
 /* Core Views / Pages
    -------------------------------------------------- */
-
 router.get('/', function(req, res) {
   res.render('index', {title: 'cyto'});
 });
@@ -34,16 +32,13 @@ router.get('/login', function(req, res) {
 
 /* Cyto UI
    -------------------------------------------------- */
-
 router.get('/ui/dock', function(req, res) {
   res.render('ui/dock');
 });  
 
 
-
 /* Cyto Widgets
    -------------------------------------------------- */
-
 router.get('/widgets/timeline', function(req, res) {
   res.render('widgets/timeline');
 });

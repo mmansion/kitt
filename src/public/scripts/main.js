@@ -8,13 +8,23 @@ require.config({
 
     //CYTO APP
 
-    angular      : '/angular/angular',
-    angularRoute : '/angular-route/angular-route',
-    angularMocks : 'angular-mocks/angular-mocks',
-    jquery       : '/jquery/jquery',
-    highlight    : '/highlightjs/highlight.pack',
-    underscore   : '/underscore/underscore',
-    uikit        : '/uikit/dist/js/uikit',
+    /*
+    note: bower_components already included in server static paths
+      so there is no need to specify the directory here */
+
+    /*
+    for using angular ui route see:
+    http://scotch.io/tutorials/javascript/angular-routing-using-ui-router
+    */
+
+    angular         : '/angular/angular',
+    angularRoute    : '/angular-route/angular-route',
+    angularUiRouter : '/angular-ui-router/release/angular-ui-router',
+    angularMocks    : 'angular-mocks/angular-mocks',
+    jquery          : '/jquery/jquery',
+    highlight       : '/highlightjs/highlight.pack',
+    underscore      : '/underscore/underscore',
+    uikit           : '/uikit/dist/js/uikit',
 
     //CYTO LIBRARY
 
@@ -22,10 +32,11 @@ require.config({
   },
 
   shim: {
-    angular      : { exports : 'angular'},
-    angularRoute : ['angular'],
-    angularMocks : { deps:['angular'], exports: 'angular.mock' },
-    highlight    : { exports : 'hljs'}
+    angular         : { exports : 'angular'},
+    angularRoute    : ['angular'],
+    angularUiRouter : ['angular'],
+    angularMocks    : { deps:['angular'], exports: 'angular.mock' },
+    highlight       : { exports : 'hljs'}
   }
 
 });

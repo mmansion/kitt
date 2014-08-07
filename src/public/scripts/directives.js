@@ -10,10 +10,22 @@ define(['angular', 'services', 'Cyto'], function(angular, services) {
     .directive('appVersion', ['version', function(version) {
       return function(scope, elm, attrs) {
         elm.text(version);
-    };
+      };
+    }])
 
+    .directive('myDirective', function() {
+      return {
+        restrict: 'E',
+        scope: {
+           current: '=current'
+        },
+        templateUrl: 'myDirective.html',
+        controller: function($scope) {
+            //controller for your sub area.
+        }
+      };
+    });
 
-  }]);
 });
 
 //TODO:

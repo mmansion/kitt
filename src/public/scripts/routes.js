@@ -7,9 +7,9 @@ define(['angular', 'app'],
     var router = app.config([
 
       '$routeProvider',
-      '$routeProvider',
+      '$locationProvider',
 
-      function($routeProvider) {
+      function($routeProvider, $locationProvider) {
 
       $routeProvider
 

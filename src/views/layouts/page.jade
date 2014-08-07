@@ -1,9 +1,9 @@
 doctype html
-html(lang="en" ng-app="cytoApp")
+html(lang='en' ng-app='cytoApp')
   
   head
 
-    meta(charset="utf-8")
+    meta(charset='utf-8')
     
     title= title
     link(rel='stylesheet' href='/styles/normalize.css')
@@ -27,6 +27,26 @@ html(lang="en" ng-app="cytoApp")
 
     div(ng-view)
 
+    hr
+
+    nav(class='navbar' navbar-inverse role='navigation')
+      div(class='navbar-header')
+        a(class='navbar-brand' ui-sref='#').
+          AngularUI Router
+      ul(class='nav navbar-nav')
+        li
+          //state reference
+          a(ui-sref='home').
+            Home
+        li
+          //state reference
+          a(ui-sref='about').
+            About
+
+    div(class='container')
+      div(ui-view)
+
     block content
 
+    //all scripts loaded via requirejs
     script(src='/requirejs/require.js' data-main='/scripts/main')

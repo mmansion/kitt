@@ -1,33 +1,81 @@
 'use strict';
 
-define(['angular', 'app'], 
+define(['angular', 'app'], function(angular, app) {
 
-  function(angular, app) {
+  /* View Router
+     -------------------------------------------------- */
 
-    var router = app.config([
+  var viewRouter = app.config([
 
-      '$routeProvider',
-      '$locationProvider',
+    '$routeProvider',
+    '$locationProvider',
 
-      function($routeProvider, $locationProvider) {
+    function($routeProvider, $locationProvider) {
 
-      //prevents hash in url
-      //$locationProvider.html5Mode(true);
+    //prevents hash in url
+    //$locationProvider.html5Mode(true);
 
-      $routeProvider
+    $routeProvider
 
-      .when('/view1', {
-        templateUrl: '/partials/partial1',
-        controller: 'MyCtrl1'
-      })
+    .when('/view1', {
+      templateUrl: '/partials/partial1',
+      controller: 'MyCtrl1'
+    })
 
-      .when('/view2', {
-        templateUrl: '/partials/partial2',
-        controller: 'MyCtrl2'
-      })
+    .when('/view2', {
+      templateUrl: '/partials/partial2',
+      controller: 'MyCtrl2'
+    })
+  
+    .otherwise({redirectTo: '/view1'});
     
-      .otherwise({redirectTo: '/view1'});
+  }]);
+
+  /* UI Router
+     -------------------------------------------------- */
+
+   var uiRouter = app.config([
+
+    '$stateProvider',
+    '$urlRouterProvider',
+
+    function($stateProvider, $urlRouterProvider) {
+
+      $urlRouterProvider.otherwise('/home');
+    
+      $stateProvider
+        
+      .state('home', {
+          url: '/home',
+          templateUrl: 'partials/partial-home.html'
+      })
+        
+      .state('about', {
+        // we'll get to this in a bit       
+      });
     
   }]);
 
 });
+
+// app.js
+// var routerApp = angular.module('routerApp', ['ui.router']);
+
+// routerApp.config(function($stateProvider, $urlRouterProvider) {
+    
+//     $urlRouterProvider.otherwise('/home');
+    
+//     $stateProvider
+        
+//         // HOME STATES AND NESTED VIEWS ========================================
+//         .state('home', {
+//             url: '/home',
+//             templateUrl: 'partial-home.html'
+//         })
+        
+//         // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
+//         .state('about', {
+//             // we'll get to this in a bit       
+//         });
+        
+// });

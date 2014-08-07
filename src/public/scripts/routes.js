@@ -1,21 +1,45 @@
 'use strict';
 
-define(['angular', 'app'], function(angular, app) {
+define(['angular', 'app'], 
 
-  return app.config(['$routeProvider', function($routeProvider) {
+  function(angular, app) {
 
-    $routeProvider.when('/view1', {
-      templateUrl: '/partials/partial1.html',
-      controller: 'MyCtrl1'
-    });
+    var router = app.config([
 
-    $routeProvider.when('/view2', {
-      templateUrl: '/partials/partial2.html',
-      controller: 'MyCtrl2'
-    });
+      '$routeProvider',
+      '$routeProvider',
+
+      function($routeProvider) {
+
+      $routeProvider
+
+      .when('/view1', {
+        templateUrl: '/partials/partial1',
+        controller: 'MyCtrl1'
+      })
+
+      .when('/view2', {
+        templateUrl: '/partials/partial2',
+        controller: 'MyCtrl2'
+      })
     
-    $routeProvider.otherwise({redirectTo: '/view1'});
+      .otherwise({redirectTo: '/view1'});
     
   }]);
 
 });
+
+// $routeProvider.
+//     when('/view1', {
+//       templateUrl: 'partials/partial1',
+//       controller: 'MyCtrl1'
+//     }).
+//     when('/view2', {
+//       templateUrl: 'partials/partial2',
+//       controller: 'MyCtrl2'
+//     }).
+//     otherwise({
+//       redirectTo: '/view1'
+//     });
+
+//   $locationProvider.html5Mode(true);

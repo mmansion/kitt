@@ -6,10 +6,24 @@ define(['angular', 'services'], function (angular) {
 
   return angular.module('cytoApp.controllers', ['cytoApp.services'])
   
-    // Sample controller where service is being used
-    .controller('MyCtrl1', ['$scope', 'version', function ($scope, version) {
-      $scope.scopedAppVersion = version;
-    }])
+    .controller('MyCtrl1', [
+
+      '$scope', 
+      '$routeParams', 
+      '$http',
+      'version', 
+
+      function ($scope, $routeParams, $http, version) {
+
+        $scope.init = function () {
+
+          console.log("init controller for view 1");
+        }
+
+        $scope.init();
+
+        $scope.scopedAppVersion = version;
+      }])
 
     // More involved example where controller is required from an external file
     .controller('MyCtrl2', ['$scope', '$injector', function($scope, $injector) {

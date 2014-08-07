@@ -37,7 +37,7 @@ module.exports = {
       require('./routes/static')(root, app);
 
       //default routes
-      // app.use('/', require('./routes/default'));
+      app.use('/', require('./routes/default'));
 
       //api v1
       //app.use('/api', require('./routes/api/v1'));

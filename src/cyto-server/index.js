@@ -10,6 +10,51 @@ var signature  = require('./signature')
   //, io         = require('socket.io').listen(server)
   , fs         = require('fs');
 
+var out = fs.openSync('./out.log', 'a');
+var err = fs.openSync('./out.log', 'a');
+
+var workers = [];
+
+var spawn = require('child_process').spawn;
+var couchdb = spawn('couchdb', [], { detached: true, customFds: [-1, -1, -1] });
+
+console.log(couchdb.pid);
+workers.push(couchdb.pid);
+
+// process.kill(couchdb);
+
+//child.unref();
+
+
+
+
+var killWorkers = function() {
+  workers.forEach(function(worker) {
+    process.kill(worker);
+  });
+};
+
+//process.on("uncaughtException", killWorkers);
+process.on("SIGINT", killWorkers);
+process.on("SIGTERM", killWorkers);
+
+
+
+couchdb.stdout.on('data', function (data) {    // register one or more handlers
+  console.log("here");
+  console.log('stdout: ' + data);
+});
+
+couchdb.stderr.on('data', function (data) {
+  console.log('stderr: ' + data);
+});
+
+couchdb.on('exit', function (code) {
+  console.log('child process exited with code ' + code);
+});
+
+//-------------------------------------------------------
+
   partials = require('./routes/partials');
 
 module.exports = {

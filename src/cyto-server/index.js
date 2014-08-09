@@ -21,12 +21,9 @@ var couchdb = spawn('couchdb', [], { detached: true, customFds: [-1, -1, -1] });
 console.log(couchdb.pid);
 workers.push(couchdb.pid);
 
-// process.kill(couchdb);
+var dbPort = 5984;
 
 //child.unref();
-
-
-
 
 var killWorkers = function() {
   workers.forEach(function(worker) {
@@ -38,19 +35,18 @@ var killWorkers = function() {
 process.on("SIGINT", killWorkers);
 process.on("SIGTERM", killWorkers);
 
-
-
 couchdb.stdout.on('data', function (data) {    // register one or more handlers
-  console.log("here");
-  console.log('stdout: ' + data);
+  if(data.toString().search(dbPort) != -1) {
+    console.log("TODO: Start server after DB started (pick up here)");
+  }
+});
+
+couchdb.stdout.on('exit', function () {    // register one or more handlers
+  console.log("exit");
 });
 
 couchdb.stderr.on('data', function (data) {
   console.log('stderr: ' + data);
-});
-
-couchdb.on('exit', function (code) {
-  console.log('child process exited with code ' + code);
 });
 
 //-------------------------------------------------------

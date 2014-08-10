@@ -1,4 +1,5 @@
 var signature  = require('./signature')
+  //, config     = require('./')
   , express    = require('express')
   , bodyParser = require('body-parser')
   , colors     = require('colors')
@@ -8,95 +9,92 @@ var signature  = require('./signature')
   , server     = require('http').createServer(app)
   //, udp        = require('dgram').createSocket('udp4', onRequest_OSC)
   //, io         = require('socket.io').listen(server)
-  , fs         = require('fs');
-
-var out = fs.openSync('./out.log', 'a');
-var err = fs.openSync('./out.log', 'a');
-
-var workers = [];
-
-var spawn = require('child_process').spawn;
-var couchdb = spawn('couchdb', [], { detached: true, customFds: [-1, -1, -1] });
-
-console.log(couchdb.pid);
-workers.push(couchdb.pid);
-
-var dbPort = 5984;
-
-//child.unref();
+  , fs         = require('fs')
+  , out        = fs.openSync('./out.log', 'a')
+  , err        = fs.openSync('./out.log', 'a')
+  , spawn      = require('child_process').spawn
+  , dbPort     = 5984
+  , workers    = [];
 
 var killWorkers = function() {
-  workers.forEach(function(worker) {
-    process.kill(worker);
+  workers.forEach(function(worker) { 
+    process.kill(worker); 
   });
+  process.exit(0);
 };
 
-//process.on("uncaughtException", killWorkers);
-process.on("SIGINT", killWorkers);
+process.on("uncaughtException", killWorkers);
+process.on("SIGINT",  killWorkers);
 process.on("SIGTERM", killWorkers);
-
-couchdb.stdout.on('data', function (data) {    // register one or more handlers
-  if(data.toString().search(dbPort) != -1) {
-    console.log("TODO: Start server after DB started (pick up here)");
-  }
-});
-
-couchdb.stdout.on('exit', function () {    // register one or more handlers
-  console.log("exit");
-});
-
-couchdb.stderr.on('data', function (data) {
-  console.log('stderr: ' + data);
-});
 
 //-------------------------------------------------------
 
-  partials = require('./routes/partials');
+partials = require('./routes/partials');
 
 module.exports = {
 
   start: function(root) {
+    
+    var couchdb = spawn('couchdb', [], { detached: true, customFds: [-1, -1, -1] });
 
-    //init db
-    require('../cyto-db/index')(function() {
+    workers.push(couchdb.pid);
 
-      //TODO: udp.bind("9999");
+    couchdb.stdout.on('data', function (data) { // register one or more handlers
 
-      //set the server port
-      app.set('port',  process.env.PORT || 3333);
+      if(data.toString().search(dbPort) != -1) {
 
-      //setup view directories
-      app.set('views',     path.join(root, 'views'));
-      app.locals.basedir = path.join(root, 'views');
+        console.log('   info  - '.cyan + 'starting process for couchdb: pid = ' + couchdb.pid);
 
-      //set view engine
-      app.set('view engine', 'jade');
+        require('../cyto-db/index')(function() {
 
-      app.use(bodyParser.json());
+          //TODO: udp.bind("9999");
 
-      //static routes
-      require('./routes/static')(root, app);
+          //set the server port
+          app.set('port',  process.env.PORT || 3333);
 
-      //default routes
-      app.use('/', require('./routes/default'));
+          //setup view directories
+          app.set('views',     path.join(root, 'views'));
+          app.locals.basedir = path.join(root, 'views');
 
-      //api v1
-      //app.use('/api', require('./routes/api/v1'));
+          //set view engine
+          app.set('view engine', 'jade');
 
-      //auth
-      //app.use('/auth', require('./routes/auth'));
+          app.use(bodyParser.json());
 
-      //app.use('/partials', require('./routes/partials'));
+          //static routes
+          require('./routes/static')(root, app);
 
-      //app.get('/partials/name', partials.name);
+          //default routes
+          app.use('/', require('./routes/default'));
 
-      app.get('/partials/:name', partials.partials);
+          //api v1
+          //app.use('/api', require('./routes/api/v1'));
 
+          //auth
+          //app.use('/auth', require('./routes/auth'));
 
-      server.listen(app.get('port'), function(){
-        console.log('   info  - '.cyan + 'cyto server listening on port ' + app.get('port'));
-      });
+          //app.use('/partials', require('./routes/partials'));
+
+          //app.get('/partials/name', partials.name);
+
+          app.get('/partials/:name', partials.partials);
+
+          server.listen(app.get('port'), function(){
+            console.log('   info  - '.cyan + 'cyto server listening on port ' + app.get('port'));
+          });
+
+        });
+      }
     });
+
+    // couchdb.stdout.on('exit', function () {    // register one or more handlers
+    //   console.log("exit");
+    // });
+
+    // couchdb.stderr.on('data', function (data) {
+    //   console.log('stderr: ' + data);
+    // });
+    
   }
 };
 

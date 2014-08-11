@@ -32,6 +32,7 @@
 <div id="editor-container">
 <textarea id="code"></textarea>
 </div>
+<button id="myButton">get value</button>
 
 <script>
 var myCodeMirror = CodeMirror
@@ -46,6 +47,10 @@ var myCodeMirror = CodeMirror
   lineNumbers: true,
   theme: 'default'
 });
+
+document.getElementById('myButton').onclick = function() {
+  console.log(myCodeMirror.getValue());
+}
 </script>
 </body>
 </html>

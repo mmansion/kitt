@@ -30,6 +30,7 @@
     "threejs": "*",
     "uikit": "~2.8.0",
     "underscore": "~1.6.0",
-    "angular-ui-router": "~0.2.10"
+    "angular-ui-router": "~0.2.10",
+    "codemirror": "~4.4.0"
   }
 }

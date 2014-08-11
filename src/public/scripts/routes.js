@@ -47,7 +47,7 @@ define(['angular', 'app'], function(angular, app) {
         
       .state('home', {
           url: '/home',
-          templateUrl: '/partials/partial1'
+          templateUrl: '/widgets/editor'
       })
         
       .state('about', {

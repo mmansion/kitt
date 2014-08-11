@@ -59,9 +59,8 @@ if(document.title === 'login') {
     ], function(angular, app, routes) {
 
       angular.element().ready(function () {
-
+        
         angular.resumeBootstrap([app.name]);
-        app.cyto.init();
       });
   });
 }

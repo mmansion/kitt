@@ -36,11 +36,13 @@ define([
       'cytoApp.controllers'
     ]);
 
-    //instantiating cyto library
+    app.run(function($rootScope, $urlRouter) {
 
-    app.cyto = new Cyto();
+      //instantiating cyto library
+      $rootScope.cyto = new Cyto();
+      $rootScope.cyto.init();
+    })
 
     //returning app back to main
-
     return app;
 });

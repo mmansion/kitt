@@ -1,8 +1,9 @@
-var express = require('express')
-  , nano    = require('nano')('http://localhost:5984/') 
-  , colors  = require('colors')
-  , api     = new express.Router()
-  , db      = {};
+var express  = require('express')
+  , nano     = require('nano')('http://localhost:5984/') 
+  , dbConfig = require('../../../cyto-db/config.js')
+  , colors   = require('colors')
+  , api      = new express.Router()
+  , db       = nano.use(dbConfig.dbName);
  
 /**
  *
@@ -42,7 +43,24 @@ api.route('/v1/sketches')
 
 .get(function(req, res) {
 
-  res.json({ message: 'getting sketches' });
+  var data;
+
+  db.get('sketches', function(err, body) {
+    console.log(body);
+
+    //check if _design/users view exists
+    if(err && err.status_code == 404) {
+
+      data = 404;
+
+    } else {
+      
+      data = body;
+    }
+    
+    res.json({ message: data });
+  });
+
 });
 
 

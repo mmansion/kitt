@@ -9,8 +9,6 @@ var express = require('express')
    -------------------------------------------------- */
 router.use(function(req, res, next) {
 
-  console.log("another router");
-
   // log each request to the console
   console.log(req.method, req.url);
 

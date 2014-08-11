@@ -6,14 +6,14 @@ var nano   = require('nano')('http://localhost:5984/')
 
 var init = function (callback) {
 
-  console.log('   info  - '.cyan + 'initilizing database');
-
   //start by listing all databases
   nano.db.list(function(err, body) {
 
     if(err) {
       console.log('   error - '.red + 'cannot connect to database');
     } else {
+
+      console.log('   info  - '.cyan + 'couchdb listening on port 5984');
       //check for the db name specified in config
       if(body.indexOf(config.dbName) === -1) {
 
@@ -55,8 +55,6 @@ var addViews = function (callback) {
 }
 
 var onComplete = function (callback) {
-
-  console.log('   info  - '.cyan + 'database initialization is complete');
   if(callback && typeof(callback) === 'function') {
     callback();
   }

@@ -68,7 +68,7 @@ module.exports = {
           app.use('/', require('./routes/default'));
 
           //api v1
-          //app.use('/api', require('./routes/api/v1'));
+          app.use('/api', require('./routes/api/v1'));
 
           //auth
           //app.use('/auth', require('./routes/auth'));

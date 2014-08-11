@@ -16,13 +16,18 @@ define(['angular', 'services'], function (angular) {
       function ($scope, $routeParams, $http, version) {
 
         $scope.init = function () {
-
           console.log("init controller for view 1");
         }
 
         $scope.init();
 
         $scope.scopedAppVersion = version;
+
+        $http.get('http://rest-service.guides.spring.io/greeting').
+        success(function(data) {
+            $scope.greeting = data;
+        });
+
       }])
 
     // More involved example where controller is required from an external file

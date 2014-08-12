@@ -1,0 +1,11 @@
+#editor-container {
+  border: thin dashed black;
+  font-size: 1em;
+  background: white;
+  height: 100px;
+  width: 100%;
+}
+textarea {
+  width: 100px;
+  height: 100px;
+}

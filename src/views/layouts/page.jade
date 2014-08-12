@@ -19,29 +19,12 @@ html(lang='en' ng-app='cytoApp')
 
     ul(class='menu')
       li
-        a(href='#/view1').
-          view1
-      li
-        a(href='#/view2').
-          view2
+        a(ui-sref='editor').
+          editor
 
     div(ng-view)
 
     hr
-
-    nav(class='navbar' navbar-inverse role='navigation')
-      div(class='navbar-header')
-        a(class='navbar-brand' ui-sref='#').
-          AngularUI Router
-      ul(class='nav navbar-nav')
-        li
-          //state reference
-          a(ui-sref='home').
-            Home
-        li
-          //state reference
-          a(ui-sref='about').
-            About
 
     div(class='container')
       div(ui-view)
@@ -50,3 +33,5 @@ html(lang='en' ng-app='cytoApp')
 
     //all scripts loaded via requirejs
     script(src='/requirejs/require.js' data-main='/scripts/main')
+    //- script(src="codemirror/lib/codemirror.js")
+    //- script(src="codemirror/mode/javascript/javascript.js")

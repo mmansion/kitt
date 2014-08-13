@@ -18,7 +18,6 @@ require.config({
     */
 
     angular         : '/angular/angular',
-    angularRoute    : '/angular-route/angular-route',
     angularUiRouter : '/angular-ui-router/release/angular-ui-router',
     angularMocks    : 'angular-mocks/angular-mocks',
     codemirror      : '/codemirror/lib/codemirror', 
@@ -38,7 +37,6 @@ require.config({
 
   shim: {
     angular         : { exports : 'angular' } ,
-    angularRoute    : [ 'angular' ],
     angularUiRouter : [ 'angular' ],
     angularMocks    : { deps:['angular'], exports: 'angular.mock' },
     codemirror      : { exports : 'CodeMirror' },

@@ -10,7 +10,6 @@ define([
   'services',
   'directives',
   'controllers',
-  'angularRoute',
   'angularUiRouter'
 
   ], function (
@@ -23,13 +22,12 @@ define([
     services, 
     directives, 
     controllers, 
-    angularRoute) {
+    angularUiRouter) {
 
     // declaring app-level angular module, which depends on filters, and services
 
     var app = angular.module('cytoApp', [
       'ui.router',
-      'ngRoute',
       'cytoApp.filters',
       'cytoApp.services',
       'cytoApp.directives',

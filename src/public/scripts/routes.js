@@ -24,9 +24,8 @@ define(['angular', 'app'], function(angular, app) {
       })
 
       .state('ui.editor', {
-          template: 'this is a test',
-          //templateUrl: '/ui/editor',
-          //controller: 'EditorCtrl'
+          templateUrl: '/ui/editor',
+          controller: 'EditorCtrl'
       })
 
   }]);

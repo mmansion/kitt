@@ -1,22 +1,12 @@
-define(['codemirror', 'cyEditor'], function(CodeMirror, cyEditor) {
+define(['cyEditor'], function(cyEditor) {
 
   return ['$scope', '$http', function($scope, $http) {
 
     $scope.init = function () {
+      
+      
       console.log("Editor Controller Loaded");
 
-      var myCodeMirror = CodeMirror
-        .fromTextArea(document.getElementById('code'), {
-        mode:  "javascript",
-        styleActiveLine: true,
-        matchBrackets: true,
-        indentUnit: 2,
-        smartIndent: true,
-        tabSize: 2,
-        indentWithTabs: false,
-        lineNumbers: true,
-        theme: 'default'
-      });
     }
 
     // You can access the scope of the controller from here

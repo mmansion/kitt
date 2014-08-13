@@ -1,0 +1,12 @@
+extends /layouts/ui
+
+block content
+
+  //include ./editor
+
+  ul(class='menu')
+    li
+      a(ui-sref='.editor').
+        ui.editor
+
+  div(ui-view)

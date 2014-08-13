@@ -4,8 +4,10 @@ html(lang='en' ng-app='cytoApp')
   head
 
     meta(charset='utf-8')
-    
+    base(href='/')
+
     title= title
+
     link(rel='stylesheet' href='/styles/normalize.css')
     link(rel='stylesheet' href='/uikit/dist/css/uikit.css')
     link(rel='stylesheet' href='/uikit/dist/css/uikit.gradient.css')
@@ -19,7 +21,7 @@ html(lang='en' ng-app='cytoApp')
 
     ul(class='menu')
       li
-        a(ui-sref='editor').
+        a(ui-sref='/editor').
           editor
 
     div(ng-view)

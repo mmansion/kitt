@@ -30,7 +30,7 @@ process.on("SIGTERM", killWorkers);
 //-------------------------------------------------------
 
 partials = require('./routes/partials').partials;
-widgets = require('./routes/widgets').widgets;
+ui = require('./routes/ui').ui;
 
 module.exports = {
 
@@ -79,7 +79,7 @@ module.exports = {
           //app.get('/partials/name', partials.name);
 
           app.get('/partials/:name', partials);
-          app.get('/widgets/:name', widgets);
+          app.get('/ui/:name', ui);
 
           server.listen(app.get('port'), function(){
             console.log('   info  - '.cyan + 'cyto server listening on port ' + app.get('port'));

@@ -9,6 +9,7 @@ module.exports = function(root, app) {
   app.use(express.static(path.join(root, '/../bower_components')));
   app.use(express.static(path.join(root, 'cyto-core')));
   app.use(express.static(path.join(root, 'cyto-db')));
+  app.use(express.static(path.join(root, 'cyto-ui')));
 
   app.use(express.static(path.join(root, 'sketches')));
   app.use(express.static(path.join(root, 'public')));

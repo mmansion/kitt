@@ -29,13 +29,17 @@ require.config({
 
     //CYTO LIBRARY
 
-    Cyto      : '/cyMain'
+    Cyto      : '/cyMain',
+
+    //CYTO UI
+
+    cyEditor : '/cyEditor'
   },
 
   shim: {
     angular         : { exports : 'angular' } ,
-    angularRoute    : ['angular'],
-    angularUiRouter : ['angular'],
+    angularRoute    : [ 'angular' ],
+    angularUiRouter : [ 'angular' ],
     angularMocks    : { deps:['angular'], exports: 'angular.mock' },
     codemirror      : { exports : 'CodeMirror' },
     highlight       : { exports : 'hljs' }

@@ -21,6 +21,7 @@ require.config({
     angularRoute    : '/angular-route/angular-route',
     angularUiRouter : '/angular-ui-router/release/angular-ui-router',
     angularMocks    : 'angular-mocks/angular-mocks',
+    codemirror      : '/codemirror/lib/codemirror', 
     jquery          : '/jquery/jquery',
     highlight       : '/highlightjs/highlight.pack',
     underscore      : '/underscore/underscore',
@@ -32,11 +33,12 @@ require.config({
   },
 
   shim: {
-    angular         : { exports : 'angular'},
+    angular         : { exports : 'angular' } ,
     angularRoute    : ['angular'],
     angularUiRouter : ['angular'],
     angularMocks    : { deps:['angular'], exports: 'angular.mock' },
-    highlight       : { exports : 'hljs'}
+    codemirror      : { exports : 'CodeMirror' },
+    highlight       : { exports : 'hljs' }
   }
 
 });

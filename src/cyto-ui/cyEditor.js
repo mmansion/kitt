@@ -4,6 +4,8 @@ define(['codemirror'], function (CodeMirror) {
 
     console.log("new cyEditor instantiated");
 
+    console.log(document.getElementById('code'));
+
      var myCodeMirror = CodeMirror
         .fromTextArea(document.getElementById('code'), {
         mode:  "javascript",
@@ -16,7 +18,6 @@ define(['codemirror'], function (CodeMirror) {
         lineNumbers: true,
         theme: 'default'
       });
-    
   };
 
   return new cyEditor;

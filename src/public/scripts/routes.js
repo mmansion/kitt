@@ -18,16 +18,34 @@ define(['angular', 'app'], function(angular, app) {
       $stateProvider
         
       .state('ui', {
-        url: '/',
-        templateUrl: '/ui/main',
-        //controller: 'EditorCtrl'
+
+        url   : '/',
+
+        views : {
+
+          // main template placed here (relatively named)
+          ''  : { templateUrl: '/ui/main' },
+
+          // child views are defined here (absolutely named)
+
+          'editor@ui'   : { 
+            templateUrl : '/ui/editor',
+            controller  :  'EditorCtrl'
+          },
+
+          'timeline@ui' : { 
+            templateUrl : '/ui/timeline',
+            //controller  : 'TimelineCtrl'
+          }
+        }
       })
 
-      .state('ui.editor', {
-        templateUrl: '/ui/editor',
-          //controller: 'EditorCtrl'
-      })
+      //SUBVIEW FORMAT (of ui)
+
+      // .state('ui.editor', {
+      //   templateUrl: '/ui/editor',
+      //     //controller: 'EditorCtrl'
+      // })
 
   }]);
-
 });

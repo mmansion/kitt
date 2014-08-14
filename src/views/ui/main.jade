@@ -4,10 +4,14 @@ block content
 
   //include ./editor
 
+  p Multiple Views
   ul(class='menu')
     li
       a(ui-sref='.editor').
         ui.editor
+    li
+      a(ui-sref='.timeline').
+        ui.timeline
 
-  div(ui-view)
-  //div(ui-view='timeline')
+  div(ui-view='editor')
+  div(ui-view='timeline')

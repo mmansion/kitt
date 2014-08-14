@@ -23,7 +23,7 @@ require.config({
     highlight       : '/highlightjs/highlight.pack',
     underscore      : '/underscore/underscore',
     uikit           : '/uikit/dist/js/uikit',
-    cm              : '/codemirror',  //code mirror path
+    cm              : '/codemirror',  //code mirror folder path
 
     //CYTO LIBRARY
 
@@ -38,8 +38,6 @@ require.config({
     angular         : { exports : 'angular' } ,
     angularUiRouter : [ 'angular' ],
     angularMocks    : { deps: ['angular'], exports: 'angular.mock' },
-    //codemirror      : { exports : 'CodeMirror' },
-    //codemirrorJS    : { exports : 'codemirrorJS' },
     highlight       : { exports : 'hljs' }
   }
 

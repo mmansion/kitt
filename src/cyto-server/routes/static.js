@@ -12,5 +12,5 @@ module.exports = function(root, app) {
   app.use(express.static(path.join(root, 'cyto-ui')));
 
   app.use(express.static(path.join(root, 'sketches')));
-  app.use(express.static(path.join(root, 'public')));
+  app.use(express.static(path.join(root, 'cyto-app')));
 };

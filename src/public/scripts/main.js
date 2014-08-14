@@ -21,6 +21,7 @@ require.config({
     angularUiRouter : '/angular-ui-router/release/angular-ui-router',
     angularMocks    : 'angular-mocks/angular-mocks',
     codemirror      : '/codemirror/lib/codemirror', 
+    codemirrorJS    : 'codemirror/mode/javascript/javascript',
     jquery          : '/jquery/jquery',
     highlight       : '/highlightjs/highlight.pack',
     underscore      : '/underscore/underscore',
@@ -38,8 +39,9 @@ require.config({
   shim: {
     angular         : { exports : 'angular' } ,
     angularUiRouter : [ 'angular' ],
-    angularMocks    : { deps:['angular'], exports: 'angular.mock' },
+    angularMocks    : { deps: ['angular'], exports: 'angular.mock' },
     codemirror      : { exports : 'CodeMirror' },
+    codemirrorJS    : { deps: ['codemirror'], exports: 'codemirrorJS' },
     highlight       : { exports : 'hljs' }
   }
 
@@ -49,13 +51,11 @@ require.config({
 window.name = "NG_DEFER_BOOTSTRAP!";
 
 if(document.title === 'login') {
-  
   require(['login']);
 
 } else {
 
   require([
-
     'angular',
     'app',
     'routes'
@@ -63,7 +63,6 @@ if(document.title === 'login') {
     ], function(angular, app, routes) {
 
       angular.element().ready(function () {
-        
         angular.resumeBootstrap([app.name]);
       });
   });

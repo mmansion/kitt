@@ -1,4 +1,7 @@
-define(['codemirror'], function (CodeMirror) {
+define([
+  'cm/lib/codemirror', 
+  'cm/mode/javascript/javascript'
+  ], function (CodeMirror) {
 
   var cyEditor = function() {
 

@@ -19,13 +19,11 @@ require.config({
 
     angular         : '/angular/angular',
     angularUiRouter : '/angular-ui-router/release/angular-ui-router',
-    angularMocks    : 'angular-mocks/angular-mocks',
-    codemirror      : '/codemirror/lib/codemirror', 
-    codemirrorJS    : 'codemirror/mode/javascript/javascript',
-    jquery          : '/jquery/jquery',
+    angularMocks    : '/angular-mocks/angular-mocks',
     highlight       : '/highlightjs/highlight.pack',
     underscore      : '/underscore/underscore',
     uikit           : '/uikit/dist/js/uikit',
+    cm              : '/codemirror',  //code mirror path
 
     //CYTO LIBRARY
 
@@ -40,8 +38,8 @@ require.config({
     angular         : { exports : 'angular' } ,
     angularUiRouter : [ 'angular' ],
     angularMocks    : { deps: ['angular'], exports: 'angular.mock' },
-    codemirror      : { exports : 'CodeMirror' },
-    codemirrorJS    : { deps: ['codemirror'], exports: 'codemirrorJS' },
+    //codemirror      : { exports : 'CodeMirror' },
+    //codemirrorJS    : { exports : 'codemirrorJS' },
     highlight       : { exports : 'hljs' }
   }
 

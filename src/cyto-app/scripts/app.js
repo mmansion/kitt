@@ -2,7 +2,7 @@
 
 define([
 
-  //requirejs module
+  //requirejs modules
 
   'Cyto',
   'angular',

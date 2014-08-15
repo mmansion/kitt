@@ -5,7 +5,14 @@ define([
 
   ], function (CodeMirror) {
 
-  var cyEditor = function() {
+  var CyEditor = function($scope) {
+
+    $scope.submit = function() {
+      console.log("a form has been submitted");
+    };
+
+
+    console.log('initiating new cyEditor');
 
     var codeArea = document.getElementById('code')
       , submitBtn = document.getElementById('save')
@@ -23,5 +30,5 @@ define([
       });
   };
 
-  return new cyEditor;
+  return CyEditor;
 });

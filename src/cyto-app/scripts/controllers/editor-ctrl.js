@@ -1,12 +1,13 @@
-define(['cyEditor'], function(cyEditor) {
+define(['cyEditor'], function(CyEditor) {
 
   return ['$scope', '$http', function($scope, $http) {
 
-    $scope.init = function () {
-      
-      
-      console.log("Editor Controller Loaded");
+    var cyEditor;
 
+    $scope.init = function () { //initialize controller
+
+      cyEditor = new CyEditor($scope);
+      
     }
 
     // You can access the scope of the controller from here
@@ -14,15 +15,11 @@ define(['cyEditor'], function(cyEditor) {
 
     $scope.userType = 'guest';
 
-    $scope.submit = function() {
-      console.log("submit clicked");
-    };
+   
+    // Because controller is loaded asynchronously Angular's initial call
+    // to $apply gets missed, and we have to explicitly call it.
 
-    // because this has happened asynchroneusly we've missed
-    // Angular's initial call to $apply after the controller has been loaded
-    // hence we need to explicityly call it at the end of our Controller constructor
     $scope.$apply();
-
     $scope.init();
   }];
 });

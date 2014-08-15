@@ -7,11 +7,9 @@ define([
 
   var cyEditor = function() {
 
-    console.log("new cyEditor instantiated");
-
-    console.log(document.getElementById('code'));
-
-     var myCodeMirror = CodeMirror
+    var codeArea = document.getElementById('code')
+      , submitBtn = document.getElementById('save')
+      , codeMirro = CodeMirror
         .fromTextArea(document.getElementById('code'), {
         mode:  "javascript",
         styleActiveLine: true,

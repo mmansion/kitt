@@ -2,3 +2,6 @@
   border: thin dashed black;
   font-size: 1em;
 }
+input {
+  color: black;
+}

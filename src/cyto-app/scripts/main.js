@@ -29,9 +29,10 @@ require.config({
 
     Cyto      : '/cyMain',
 
-    //CYTO UI
+    //CYTO UI MODULES (exposes the ui controller class modules)
 
-    cyEditor : '/cyEditor'
+    cyEditor   : '/cyEditor',
+    cyTimeline : '/cyTimeline'
   },
 
   shim: {

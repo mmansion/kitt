@@ -35,7 +35,7 @@ define(['angular', 'app'], function(angular, app) {
 
           'timeline@ui' : { 
             templateUrl : '/ui/timeline',
-            //controller  : 'TimelineCtrl'
+            controller  : 'TimelineCtrl'
           }
         }
       })

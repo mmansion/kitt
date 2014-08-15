@@ -399,7 +399,7 @@ module.exports = function(grunt) {
     });
 
     grunt.log.writeln("generating new canvas sketch");
-    grunt.file.copy('src/templates/basic-class-amd.js', 'src/cyto-core/' + newClass);
+    grunt.file.copy('src/cyto-templates/basic-class-amd.js', 'src/cyto-core/' + newClass);
     grunt.file.write('src/classes.json', JSON.stringify(classList, null, 2));
 
     grunt.task.run('exec:editClass:' + newClass);
@@ -440,7 +440,7 @@ module.exports = function(grunt) {
     });
 
     grunt.log.writeln("generating new canvas sketch");
-    grunt.file.copy('src/templates/basic-sketch.js', 'src/sketches/' + newSketch);
+    grunt.file.copy('src/cyto-templates/basic-sketch.js', 'src/sketches/' + newSketch);
     grunt.file.write('src/sketches.json', JSON.stringify(sketchList, null, 2));
 
     grunt.task.run('exec:editSketch:' + newSketch, 'default');

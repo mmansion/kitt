@@ -21,7 +21,7 @@ define(['angular', 'services', 'Cyto'], function(angular, services) {
         },
         templateUrl: 'myDirective.html',
         controller: function($scope) {
-            //controller for your sub area.
+          //controller for sub area.
         }
       };
     });
@@ -29,5 +29,4 @@ define(['angular', 'services', 'Cyto'], function(angular, services) {
 });
 
 //TODO:
-
 //http://stackoverflow.com/questions/12863663/angularjs-complex-nesting-of-partials-and-templates

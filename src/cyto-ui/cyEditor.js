@@ -31,8 +31,6 @@ define([
     $scope.submit = function() {
       console.log("a form has been submitted");
     };
-
-
   };
 
   return CyEditor;

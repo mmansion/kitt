@@ -29,8 +29,17 @@ process.on("SIGTERM", killWorkers);
 
 //-------------------------------------------------------
 
-partials = require('./routes/partials').partials;
-ui = require('./routes/ui').ui;
+var
+
+routers = {
+  partials : require('./routes/partials').partials,
+  ui       : require('./routes/ui').ui
+},
+
+apis = {
+  sketches : require('../cyto-api/v1/sketches').sketches
+};
+
 
 module.exports = {
 
@@ -69,7 +78,7 @@ module.exports = {
           app.use('/', require('./routes/default'));
 
           //api v1
-          app.use('/api', require('./routes/api/v1'));
+          //app.use('/api', require('./routes/api/v1'));
 
           //auth
           //app.use('/auth', require('./routes/auth'));
@@ -78,8 +87,10 @@ module.exports = {
 
           //app.get('/partials/name', partials.name);
 
-          app.get('/partials/:name', partials);
-          app.get('/ui/:name', ui);
+          app.get('/partials/:name', routers.partials);
+          app.get('/ui/:name', routers.ui);
+
+          app.get('/api/v1/sketches/:name', apis.sketches);
 
           server.listen(app.get('port'), function(){
             console.log('   info  - '.cyan + 'cyto server listening on port ' + app.get('port'));

@@ -46,7 +46,6 @@ api.route('/v1/sketches')
   var data;
 
   db.get('sketches', function(err, body) {
-    console.log(body);
 
     //check if _design/users view exists
     if(err && err.status_code == 404) {
@@ -60,6 +59,63 @@ api.route('/v1/sketches')
     
     res.json({ message: data });
   });
+
+});
+
+/**
+ *
+ * Editor API - Works with CyEditor Controller Class
+ *
+ */
+
+api.route('/v1/editor')
+
+.post(function(req, res) {
+
+  // var postData = {
+  //   name: req.post.name
+  // };
+
+  var respData;
+
+  db.get('sketches', function(err, doc) {
+
+    console.log(doc.sketches.length);
+
+    //check if _design/users view exists
+    // if(err && err.status_code == 404) {
+
+    //   respData = {
+    //     status  : 404,
+    //     message : 'not found'
+    //   };
+
+    // } else {
+      
+    //   respData = {
+    //     status  : 202,
+    //     message : body.sketches
+    //   }
+    // }
+    
+    res.json({});
+  });
+
+  // //add "users" view (couchdb _design doc)
+  // db.get('_design/users', function(err, body) {
+
+  //   //check if _design/users view exists
+  //   if(err && err.status_code == 404) {
+
+  //     //restore the users view from backup
+  //     db.insert(users, '_design/users', function(err, body) {
+  //       if (!err) onComplete(callback);
+  //     });
+
+  //   } else {
+  //     onComplete(callback);
+  //   }
+  // });
 
 });
 

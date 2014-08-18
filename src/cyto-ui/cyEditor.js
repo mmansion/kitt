@@ -5,7 +5,7 @@ define([
 
   ], function (CodeMirror) {
 
-  var CyEditor = function($scope) {
+  var CyEditor = function($scope, $http) {
 
     $scope.init = function() {
 

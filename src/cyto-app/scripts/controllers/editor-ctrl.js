@@ -2,7 +2,7 @@ define(['cyEditor'], function(CyEditor) {
 
   return ['$scope', '$http', function($scope, $http) {
 
-    var cyEditor = new CyEditor($scope); //passes scope into the ui class
+    var cyEditor = new CyEditor($scope, $http); //passes scope into the ui class
    
     // Because controller is loaded asynchronously Angular's initial call
     // to $apply gets missed, and we have to explicitly call it.

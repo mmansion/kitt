@@ -26,8 +26,23 @@ define([
     };
 
     $scope.submit = function() {
-      console.log(this.codeMirror.getValue());
+      //console.log(this.codeMirror.getValue());
+      $http({
+        method: 'POST',
+        url: '/api/v1/sketch/test'
+      }).
+      success(function (data, status, headers, config) {
+        //$scope.name = data.name;
+        console.log("SUCCESS");
+      }).
+      error(function (data, status, headers, config) {
+        //$scope.name = 'Error!';
+
+        console.log("ERROR");
+      });
     };
+
+
   };
 
   return CyEditor;

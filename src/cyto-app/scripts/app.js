@@ -2,7 +2,7 @@
 
 define([
 
-  //requirejs modules
+  //amd module dependencies
 
   'Cyto',
   'angular',
@@ -24,7 +24,7 @@ define([
     controllers, 
     angularUiRouter) {
 
-    // declaring app-level angular module, which depends on filters, and services
+    // declare app-level angular module, which has additional dependencies
 
     var app = angular.module('cytoApp', [
       'ui.router',

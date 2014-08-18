@@ -27,7 +27,7 @@ require.config({
 
     //CYTO LIBRARY
 
-    Cyto      : '/cyMain',
+    Cyto : '/cyMain',
 
     //CYTO UI MODULES (exposes the ui controller class modules)
 

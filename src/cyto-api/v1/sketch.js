@@ -12,7 +12,7 @@ var express  = require('express')
   , colors   = require('colors')
   , api      = new express.Router()
   , db       = nano.use(dbConfig.dbName);
- 
+
 /*
 
 Sketch API Definitions:
@@ -23,10 +23,23 @@ save
 delete
 list
 
+couchdb map function:
+
+function(doc) {
+  if (doc.sketches) {
+  for(var i=0; i<doc.sketches.length; i++) {
+        if(doc.sketches[i].name) {
+            emit(doc.sketches[i].name, doc.sketches[i]);
+    }
+  }
+  }
+}
+
 */
 
 exports.sketch = function (req, res) {
   var isDefinedMethod = false;
+
   for(var method in api) {
     for(var key in api[method]) {
       if(req.params.name === key) {
@@ -36,7 +49,12 @@ exports.sketch = function (req, res) {
     }
   }
   if(!isDefinedMethod) {
-    res.json({'message': 'is not a defined method'});
+    if(req.method.toLowerCase() === 'get') {
+      api.get.sketch(req, res);
+    }
+    if(req.method.toLowerCase() === 'post') {
+      res.json({'message': 'is not a defined method'});
+    }
   }
 };
 
@@ -48,8 +66,24 @@ var api = {
   get: {
 
     sketch: function(req, res) {
+      console.log(req.params.name);
 
-      res.json({'message': 'getting sketch by name'});
+      db.view('sketches', 'by_name', {keys: [] }, function(err, body) {
+
+
+          if (!err) {
+            body.rows.forEach(function(doc) {
+              console.log(doc.value);
+            });
+          } else {
+            console.log(err);
+          }
+          
+          res.json({'message': 'getting sketch by name'});
+
+
+
+      });
     },
 
     /**
@@ -63,7 +97,6 @@ var api = {
       var reqData  = {}
         , respData = {};
 
-      //res.json({'message': 'listing sketches'});
       db.get('sketches', function(err, doc) {
 
         //check if _design/users view exists

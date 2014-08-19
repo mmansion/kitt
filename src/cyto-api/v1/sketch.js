@@ -2,7 +2,7 @@
  * Cyto Sketch API
  *
  * The Sketch API is used to save, retrieve and update
- * sketches when working with the front-end UI editor.
+ * sketches when working with the front-end sketch editor.
  */
 
 
@@ -13,7 +13,6 @@ var express  = require('express')
   , api      = new express.Router()
   , db       = nano.use(dbConfig.dbName);
  
-
 /*
 
 Sketch API Definitions:
@@ -26,7 +25,6 @@ list
 
 */
 
-
 exports.sketch = function (req, res) {
   api[req.params.name](req, res);
 };
@@ -35,7 +33,33 @@ var api = {
 
   // list all sketches
   list: function(req, res) {
-    res.json({'message': 'listing sketches'});
+
+    var respData = {};
+
+    //res.json({'message': 'listing sketches'});
+    db.get('sketches', function(err, doc) {
+
+      //check if _design/users view exists
+      if(err && err.status_code == 404) {
+
+        respData = {
+          status  : 404,
+          message : 'not found',
+          data    : {} 
+        };
+
+      } else {
+        
+        respData = {
+          status  : 202,
+          message : 'success',
+          data    : doc.sketches
+        };
+      }
+
+      res.json(respData);
+
+    });
   }
 }
 

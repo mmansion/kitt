@@ -26,7 +26,18 @@ list
 */
 
 exports.sketch = function (req, res) {
-  api[req.method.toLowerCase()][req.params.name](req, res);
+  var isDefinedMethod = false;
+  for(var method in api) {
+    for(var key in api[method]) {
+      if(req.params.name === key) {
+        isDefinedMethod = true;
+        api[req.method.toLowerCase()][req.params.name](req, res);
+      }
+    }
+  }
+  if(!isDefinedMethod) {
+    res.json({'message': 'is not a defined method'});
+  }
 };
 
 var api = {
@@ -36,12 +47,10 @@ var api = {
 
   get: {
 
-  }
+    sketch: function(req, res) {
 
-  /* Post API Methods
-     -------------------------------------------------- */
-
-  post: {
+      res.json({'message': 'getting sketch by name'});
+    },
 
     /**
      * @method list
@@ -79,5 +88,14 @@ var api = {
 
       });
     }
+
+  },
+
+  /* Post API Methods
+     -------------------------------------------------- */
+
+  post: {
+
+    
   }
 }

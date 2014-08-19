@@ -91,6 +91,7 @@ module.exports = {
           app.get('/ui/:name', routers.ui);
 
           //API SETUP
+          app.get('/api/v1/sketch/',       apis.sketch);
           app.get('/api/v1/sketch/:name',  apis.sketch);
           app.post('/api/v1/sketch/:name', apis.sketch);
 

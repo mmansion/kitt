@@ -6,17 +6,16 @@
  */
 
 
-var express  = require('express')
-  , nano     = require('nano')('http://localhost:5984/')
-  , path     = require('path') 
-  , dbConfig = require('../../cyto-db/config.js')
-  , colors   = require('colors')
-  , api      = new express.Router()
-  , db       = nano.use(dbConfig.dbName)
-  , fs       = require('fs');
+var express    = require('express')
+  , nano       = require('nano')('http://localhost:5984/')
+  , path       = require('path') 
+  , sketchPath = path.join(__dirname, '/../../cyto-sketches/')
+  , dbConfig   = require('../../cyto-db/config.js')
+  , colors     = require('colors')
+  , api        = new express.Router()
+  , db         = nano.use(dbConfig.dbName)
+  , fs         = require('fs');
 
-
-var sketchPath = path.join(__dirname, '/../../cyto-sketches/');
 
 
   // fs.writeFile(sketchPath + 'grid.js', 'Hello Node', function (err) {
@@ -24,15 +23,15 @@ var sketchPath = path.join(__dirname, '/../../cyto-sketches/');
   //   console.log('It\'s saved!');
   // });
   
-  console.log(sketchPath);
+  
+  //write data to sketch path
+  // fs.readFile(sketchBin + 'grid.js', function (err, data) {
+  //   if (err) throw err;
 
-  fs.readFile(sketchPath + 'grid.js', function (err, data) {
-    if (err) throw err;
-
-    var data = data.toString("utf8", 0, data.length);
+  //   var data = data.toString("utf8", 0, data.length);
  
-    console.log(data);
-  });
+  //   console.log(data);
+  // });
 
 
 
@@ -152,6 +151,9 @@ var api = {
 
   post: {
 
+    save: function(req, res) {
+      res.json({'message': 'saving sketch'});
+    }
     
   }
 }

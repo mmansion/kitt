@@ -7,11 +7,34 @@
 
 
 var express  = require('express')
-  , nano     = require('nano')('http://localhost:5984/') 
+  , nano     = require('nano')('http://localhost:5984/')
+  , path     = require('path') 
   , dbConfig = require('../../cyto-db/config.js')
   , colors   = require('colors')
   , api      = new express.Router()
-  , db       = nano.use(dbConfig.dbName);
+  , db       = nano.use(dbConfig.dbName)
+  , fs       = require('fs');
+
+
+var sketchPath = path.join(__dirname, '/../../cyto-sketches/');
+
+
+  // fs.writeFile(sketchPath + 'grid.js', 'Hello Node', function (err) {
+  //   if (err) throw err;
+  //   console.log('It\'s saved!');
+  // });
+  
+  console.log(sketchPath);
+
+  fs.readFile(sketchPath + 'grid.js', function (err, data) {
+    if (err) throw err;
+
+    var data = data.toString("utf8", 0, data.length);
+ 
+    console.log(data);
+  });
+
+
 
 /*
 

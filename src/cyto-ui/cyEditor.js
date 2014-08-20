@@ -7,12 +7,16 @@ define([
 
   var CyEditor = function($scope, $http) {
 
-    $scope.init = function() {
+    //ref: http://pastebin.com/KTJgzWf4
 
-      this.codeArea   = document.getElementById('code');
-      this.submitBtn  = document.getElementById('save');
+    var $cyEditor = $scope;
 
-      this.codeMirror = CodeMirror.fromTextArea(this.codeArea, {
+    $cyEditor.init = function() {
+
+      $cyEditor.codeArea   = document.getElementById('code');
+      $cyEditor.submitBtn  = document.getElementById('save');
+
+      $cyEditor.codeMirror = CodeMirror.fromTextArea($cyEditor.codeArea, {
         mode             : 'javascript',
         styleActiveLine  : true,
         matchBrackets    : true,
@@ -25,24 +29,23 @@ define([
       });
     };
 
-    $scope.submit = function() {
-      //console.log(this.codeMirror.getValue());
+    $cyEditor.submit = function() {
+      var postData = { sketch: $cyEditor.codeMirror.getValue() };
+
       $http({
         method: 'POST',
-        url: '/api/v1/sketch/test'
+        url:    '/api/v1/sketch/save',
+        data:   JSON.stringify(postData)
       }).
       success(function (data, status, headers, config) {
-        //$scope.name = data.name;
-        console.log("SUCCESS");
+        console.log(data, status, headers, config);
       }).
       error(function (data, status, headers, config) {
-        //$scope.name = 'Error!';
-
-        console.log("ERROR");
+        console.log(data, status, headers, config);
       });
     };
 
-
+    return $cyEditor;
   };
 
   return CyEditor;

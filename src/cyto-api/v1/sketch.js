@@ -6,19 +6,17 @@
  */
 
 
-var express    = require('express')
-  , nano       = require('nano')('http://localhost:5984/')
-  , path       = require('path') 
-  , sketchPath = path.join(__dirname, '/../../cyto-sketches/')
-  , dbConfig   = require('../../cyto-db/config.js')
-  , colors     = require('colors')
-  , api        = new express.Router()
-  , db         = nano.use(dbConfig.dbName)
-  , fs         = require('fs');
+var express   = require('express')
+  , nano      = require('nano')('http://localhost:5984/')
+  , path      = require('path') 
+  , sketchDir = path.join(__dirname, '/../../cyto-sketches/')
+  , dbConfig  = require('../../cyto-db/config.js')
+  , colors    = require('colors')
+  , api       = new express.Router()
+  , db        = nano.use(dbConfig.dbName)
+  , fs        = require('fs');
 
-
-
-  // fs.writeFile(sketchPath + 'grid.js', 'Hello Node', function (err) {
+  // fs.writeFile(sketchDir + 'grid.js', 'Hello Node', function (err) {
   //   if (err) throw err;
   //   console.log('It\'s saved!');
   // });

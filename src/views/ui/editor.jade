@@ -6,10 +6,15 @@ link(rel='stylesheet' href='styles/ui/editor.css')
 
 //editor template
 
-h1 Editor
+h1 cyEditor
 
-form(ng-submit="submit()" name='editor-form' class='editor-form') 
-  div(id='editor-container')
-    textarea(id="code")
-  input(id='save' type='submit' value='Submit')
-  
+p {{editor.title}}
+
+label Sketch Title: 
+
+input(type="text" name="input" ng-model="title")
+
+div(id='editor-container')
+  textarea(id='code')
+
+input(id='save' type='submit' value='Submit' ng-click="onSubmit()")

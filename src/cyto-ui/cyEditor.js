@@ -11,6 +11,10 @@ define([
 
     var $cyEditor = $scope;
 
+    //TODO: Make an ng-model object for all the sketch editor parts
+
+    $scope.title = 'test';
+
     $cyEditor.init = function() {
 
       $cyEditor.codeArea   = document.getElementById('code');
@@ -29,8 +33,15 @@ define([
       });
     };
 
-    $cyEditor.submit = function() {
-      var postData = { sketch: $cyEditor.codeMirror.getValue() };
+    
+    $cyEditor.onSubmit = function() {
+      
+      var postData = { 
+        title:  $cyEditor.title,
+        sketch: $cyEditor.codeMirror.getValue() 
+      };
+
+      console.log(postData);
 
       $http({
         method: 'POST',
@@ -38,10 +49,11 @@ define([
         data:   JSON.stringify(postData)
       }).
       success(function (data, status, headers, config) {
-        console.log(data, status, headers, config);
+        console.log(data);
+        //console.log(data, status, headers, config);
       }).
       error(function (data, status, headers, config) {
-        console.log(data, status, headers, config);
+        //console.log(data, status, headers, config);
       });
     };
 

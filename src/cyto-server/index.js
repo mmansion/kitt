@@ -1,7 +1,12 @@
 var signature  = require('./signature')
   //, config     = require('./')
   , express    = require('express')
+  , morgan     = require('morgan')
+  , session    = require('express-session')
   , bodyParser = require('body-parser')
+  , cookieParser = require('cookie-parser')
+  , passport   = require('passport')
+  , flash      = require('flash')
   , colors     = require('colors')
   //, osc        = require('osc-min')
   , path       = require('path')
@@ -81,7 +86,7 @@ module.exports = {
           //app.use('/api', require('./routes/api/v1'));
 
           //auth
-          //app.use('/auth', require('./routes/auth'));
+          app.use('/auth', require('./routes/auth'));
 
           //app.use('/partials', require('./routes/partials'));
 

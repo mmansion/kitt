@@ -6,7 +6,7 @@ var signature  = require('./signature')
   , bodyParser = require('body-parser')
   , cookieParser = require('cookie-parser')
   , passport   = require('passport')
-  , flash      = require('flash')
+  , flash      = require('connect-flash')
   , colors     = require('colors')
   //, osc        = require('osc-min')
   , path       = require('path')
@@ -45,7 +45,6 @@ apis = {
   sketch : require('../cyto-api/v1/sketch').sketch
 };
 
-
 module.exports = {
 
   start: function(root) {
@@ -67,14 +66,28 @@ module.exports = {
           //set the server port
           app.set('port',  process.env.PORT || 3333);
 
-          //setup view directories
+          //setup the view directories
           app.set('views',     path.join(root, 'views'));
           app.locals.basedir = path.join(root, 'views');
 
           //set view engine
           app.set('view engine', 'jade');
 
-          app.use(bodyParser.json());
+          // set up our express application
+          app.use(morgan('dev'));     // log every request to the console
+          app.use(cookieParser());    // read cookies (needed for auth)
+          //app.use(bodyParser());    // get information from html forms
+          app.use(bodyParser.json()); //specifically parse json
+
+          // required for passport
+          app.use(session({secret: 'cytootyc', 
+                 saveUninitialized: true,
+                 resave: true}));
+
+          app.use(passport.initialize());
+          app.use(flash()); // use connect-flash for flash messages stored in session
+
+          //require(path.join(root, 'cyto-auth/passport'))(passport); // pass passport for configuration
 
           //static routes
           require('./routes/static')(root, app);

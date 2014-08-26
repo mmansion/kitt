@@ -1,6 +1,14 @@
+#editor-window {
+  position: absolute;
+  background: lightgreen;
+  width: 50%;
+  right: 0;
+}
 #editor-container {
+  background: lightgreen;
   border: thin dashed black;
   font-size: 1em;
+  height: 800px;
 }
 input {
   color: black;

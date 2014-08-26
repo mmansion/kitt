@@ -1,20 +1,31 @@
-//editor styles
+//cyEditor styles
 
 link(rel='stylesheet' href='codemirror/lib/codemirror.css')
 link(rel='stylesheet' href='codemirror/theme/xq-light.css')
-link(rel='stylesheet' href='styles/ui/editor.css')
+link(rel='stylesheet' href='styles/ui/cyEditor.css')
 
-//editor template
+// cyEditor Template
 
-h1 cyEditor
+div(id='cy-editor-window' class='widget-main')
 
-p {{editor.title}}
+  div(class='widget-top-panel')
 
-label Sketch Title: 
+    p(class='widget-title uk-text-large') 
 
-input(type="text" name="input" ng-model="title")
+      i(class='uk-icon-chevron-down uk-text-bold uk-text-right')
 
-div(id='editor-container')
-  textarea(id='code')
+      |  Sketch Editor 
 
-input(id='save' type='submit' value='Submit' ng-click="onSubmit()")
+  div(class='widget-content')
+
+    div(id='code-ide')
+
+      p {{editor.title}}
+
+      label Sketch Title: 
+
+      input(type="text" name="input" ng-model="title")
+
+      textarea(id='code')
+
+      input(id='save' type='submit' value='Submit' ng-click="onSubmit()")

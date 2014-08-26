@@ -1,9 +1,11 @@
 define([
-  
+
+  'jquery',
+  'jqueryUi',
   'cm/lib/codemirror', 
   'cm/mode/javascript/javascript'
 
-  ], function (CodeMirror) {
+  ], function ($, jqueryUi, CodeMirror) {
 
   var CyEditor = function($scope, $http) {
 
@@ -13,9 +15,12 @@ define([
 
     //TODO: Make an ng-model object for all the sketch editor parts
 
-    $scope.title = 'test';
+    $scope.title = 'my new sketch';
 
     $cyEditor.init = function() {
+
+      //make top panel the drag handle
+      $('#cy-editor-window').draggable({ handle: '.widget-top-panel' });
 
       $cyEditor.codeArea   = document.getElementById('code');
       $cyEditor.submitBtn  = document.getElementById('save');
@@ -33,7 +38,6 @@ define([
       });
     };
 
-    
     $cyEditor.onSubmit = function() {
       
       var postData = { 

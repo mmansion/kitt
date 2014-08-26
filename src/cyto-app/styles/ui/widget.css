@@ -1,1 +1,25 @@
 /* main ui widget styles */
+.widget-main {
+  position: absolute;
+  top: 0;
+  border: thin solid gray;
+  background-color: #012030;
+}
+.widget-main .widget-top-panel {
+  position: relative;
+  top: 0;
+  left: 0;
+  max-height: 2em;
+  background: #BFE2FF;
+  margin-bottom: 4em;
+  cursor: move;
+  padding: .2em;
+  border-bottom: thin solid #566669;
+}
+.widget-main .widget-top-panel .widget-title {
+  color: #444444;
+}
+.widget-main .widget-content {
+  color: #666666;
+  padding: 1em;
+}

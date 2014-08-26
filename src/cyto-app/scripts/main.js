@@ -25,6 +25,9 @@ require.config({
     uikit           : '/uikit/dist/js/uikit',
     cm              : '/codemirror',  //code mirror folder path
 
+    jquery          : '/jquery/jquery',
+    jqueryUi        : '/jquery-ui/jquery-ui',
+
     //CYTO LIBRARY
 
     Cyto : '/cyMain',

@@ -12,11 +12,11 @@
 
 The creative genome
 
-*STATUS: EXPERIMENTAL / UNSTABLE / BREAKS OFTEN*
+*STATUS: Experimental / Unstable / Breaks Often*
 
 ---
 
-Cyto is DNA for building a range of creative coding projects, especially works involving net art, digital media, sound, physical computing, robotics, interactive installation and networked-based performance. The project is a chimera of popular libraries and original concepts born of the author's own personal research interests and penchant for making new media artwork. Influences range from a host of remarkable tools and works from around the planet. An an ongoing list of inspirations and credits are listed [here](CREDITS.md).
+Cyto is DNA for building creative coding projects and networked-based performances. The project is a chimera of opensource libraries and tools, glued together into a platform for building Whisper Lab projects. The interests and influences behind the this effort come from many other remarkable projects. An an ongoing list of inspirations and credits are kept [here](CREDITS.md).
 
 
 ---

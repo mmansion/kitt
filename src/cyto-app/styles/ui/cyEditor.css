@@ -1,7 +1,28 @@
-#cy-editor-window {
+#editor-window {
   position: absolute;
   width: 50%;
+  height: 100%;
   right: 0;
+  padding: 0 !important;
+  pointer-events: none;
+}
+.widget-content {
+  padding: 0 !important;
+}
+.widget-content .editor {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: #FEFEFE;
+}
+.widget-content .editor .CodeMirror {
+  border: 1px solid #eee;
+  height: auto;
+  pointer-events: auto !important;
+  background: #FEFEFE;
+}
+#save {
+  pointer-events: auto;
 }
 input {
   color: black;

@@ -1,9 +1,9 @@
 /* main ui widget styles */
 
+//colors
+
 @base: #012030;
-
 @widget-text-primary: #666666;
-
 @widget-heading-primary: #444444;
 
 .widget-main {
@@ -12,19 +12,37 @@
   border: thin solid gray;
   background-color: @base;
 
-  .widget-top-panel {
-    position: relative;
+  .widget-drag-ew {
+    position: fixed;
     top: 0;
-    left:0;
-    max-height: 2em;
-    background: #BFE2FF;
-    margin-bottom: 4em;
-    cursor: move;
-    padding: .2em;
-    border-bottom: thin solid #566669;
+    height: 100%;
+    width: .1em;
+    background: #000;
+    cursor: ew-resize;
+    pointer-events: auto;
+    z-index: 999;
+  }
+
+  .widget-top-panel {
+    background: #EEEEEE;
+    border-bottom: thin solid #EEE;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 
     .widget-title {
+      margin: 0;
+      display: inline;
       color: @widget-heading-primary;
+    }
+    .panel-left, .panel-right {
+      padding: .5em;
+    }
+    .panel-right {
+      text-align: right;
+      i {
+        cursor: pointer;
+      }
     }
   }
   .widget-content {

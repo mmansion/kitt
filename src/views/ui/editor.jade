@@ -6,26 +6,21 @@ link(rel='stylesheet' href='styles/ui/cyEditor.css')
 
 // cyEditor Template
 
-div(id='cy-editor-window' class='widget-main')
+div(id='editor-window' class='widget-main')
+  div(class='widget-drag-ew')
 
-  div(class='widget-top-panel')
+  div(class='widget-top-panel uk-grid uk-text-large')
 
-    p(class='widget-title uk-text-large') 
+    div(class='panel-left uk-width-1-2')
+      p(class='widget-title') 
+        //i(class='uk-icon-chevron-down uk-text-bold uk-text-left') 
+        | Sketch Editor 
+        input(type="text" name="input" ng-model="title")
 
-      i(class='uk-icon-chevron-down uk-text-bold uk-text-right')
-
-      |  Sketch Editor 
+    div(class='panel-right uk-width-1-2')
+      div(id='save' class='uk-button' ng-click="onSubmit()")
+        i(class='uk-icon-save uk-text-bold uk-text-right')
 
   div(class='widget-content')
-
-    div(id='code-ide')
-
-      p {{editor.title}}
-
-      label Sketch Title: 
-
-      input(type="text" name="input" ng-model="title")
-
+    div(class='editor')
       textarea(id='code')
-
-      input(id='save' type='submit' value='Submit' ng-click="onSubmit()")

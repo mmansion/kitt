@@ -28,11 +28,6 @@ require.config({
     jquery          : '/jquery/jquery',
     jqueryUi        : '/jquery-ui/jquery-ui',
 
-    jqUiCore        : '/jquery-ui/ui/core',
-    jqUiWidget      : '/jquery-ui/ui/widget',
-    jqUiMouse       : '.jquery-ui/ui/mouse',
-    jqUiResizable   : '/jquery-ui/ui/resizable',
-
     //CYTO LIBRARY
 
     Cyto : '/cyMain',

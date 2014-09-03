@@ -7,10 +7,12 @@
 @widget-heading-primary: #444444;
 
 .widget-main {
+
   position: absolute;
   top: 0;
   border: thin solid gray;
   background-color: @base;
+  min-width: 100px;
 
   .widget-resize-handle-left {
     position: absolute;
@@ -49,4 +51,27 @@
     color: @widget-text-primary;
     padding: 1em; 
   }
+}
+
+/* Widget UI
+   -------------------------------------------------- */
+
+.ui-resizable-handle {
+    position: absolute;
+    font-size: 0.1px;
+    display: block;
+}
+
+.ui-resizable-disabled .ui-resizable-handle,
+.ui-resizable-autohide .ui-resizable-handle {
+  display: none;
+}
+
+
+.ui-resizable-w {
+    cursor: ew-resize;
+    width: 7px;
+    left: 0px;
+    top: 0;
+    height: 100%;
 }

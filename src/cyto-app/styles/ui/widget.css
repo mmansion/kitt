@@ -4,6 +4,7 @@
   top: 0;
   border: thin solid gray;
   background-color: #012030;
+  min-width: 100px;
 }
 .widget-main .widget-resize-handle-left {
   position: absolute;
@@ -40,4 +41,22 @@
 .widget-main .widget-content {
   color: #666666;
   padding: 1em;
+}
+/* Widget UI
+   -------------------------------------------------- */
+.ui-resizable-handle {
+  position: absolute;
+  font-size: 0.1px;
+  display: block;
+}
+.ui-resizable-disabled .ui-resizable-handle,
+.ui-resizable-autohide .ui-resizable-handle {
+  display: none;
+}
+.ui-resizable-w {
+  cursor: ew-resize;
+  width: 7px;
+  left: 0px;
+  top: 0;
+  height: 100%;
 }

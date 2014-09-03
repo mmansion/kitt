@@ -19,19 +19,12 @@ define([
 
     $cyEditor.init = function() {
 
-      console.log($('.widget-top-panel'));
-      //make top panel the drag handle
-      //$('#cy-editor').draggable({ handle: '.widget-top-panel' });
-
-      $("#resizable").resizable({ handles: "n, e, s, w, se, sw, nw, ne" });
-    var handles = $("#resizable").resizable("option", "handles");
-    $("#resizable").resizable("option", "handles", "n, e, s, w, se, sw, nw, ne");
-
-     $("#resizable").find("div.ui-resizable-se").removeClass("ui-icon");
-    $("#resizable").find("div.ui-resizable-se").removeClass("ui-icon-gripsmall-diagonal-se");
-
-  
-
+      //make widget resizable
+      $("#cy-editor").resizable({ 
+        minWidth: 300,
+        maxWidth: $(window).width() - 50,
+        handles: "n, e, s, w, se, sw, nw, ne" 
+      });
 
       $cyEditor.codeArea   = document.getElementById('code');
       $cyEditor.submitBtn  = document.getElementById('save');

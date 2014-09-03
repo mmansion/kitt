@@ -3,7 +3,9 @@ define([
   'jquery',
   'jqueryUi',
   'cm/lib/codemirror', 
-  'cm/mode/javascript/javascript'
+  'cm/mode/javascript/javascript',
+  'jqUiResizable'
+
 
   ], function ($, jqueryUi, CodeMirror) {
 
@@ -19,8 +21,13 @@ define([
 
     $cyEditor.init = function() {
 
+      console.log($('.widget-top-panel'));
       //make top panel the drag handle
-      $('#cy-editor-window').draggable({ handle: '.widget-top-panel' });
+      $('#cy-editor').draggable({ handle: '.widget-top-panel' });
+
+      $('#resizable').resizable({ handles: "n, e, s, w" });
+
+      console.log($('#resizable').resizable());
 
       $cyEditor.codeArea   = document.getElementById('code');
       $cyEditor.submitBtn  = document.getElementById('save');

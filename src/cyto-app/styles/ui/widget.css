@@ -5,8 +5,8 @@
   border: thin solid gray;
   background-color: #012030;
 }
-.widget-main .widget-drag-ew {
-  position: fixed;
+.widget-main .widget-resize-handle-left {
+  position: absolute;
   top: 0;
   height: 100%;
   width: .1em;

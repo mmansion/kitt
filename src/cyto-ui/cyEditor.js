@@ -15,13 +15,15 @@ define([
 
     //TODO: Make an ng-model object for all the sketch editor parts
 
-    $scope.title = 'my new sketch';
+    $cyEditor.title = 'New Sketch';
+    $cyEditor.isInput1ReadOnly = true;
+
 
     $cyEditor.init = function() {
 
       //make widget resizable
       $("#cy-editor").resizable({ 
-        minWidth: 300,
+        minWidth: 100,
         maxWidth: $(window).width() - 50,
         handles: "n, e, s, w, se, sw, nw, ne" 
       });
@@ -40,6 +42,12 @@ define([
         lineNumbers      : true,
         theme            : 'default'
       });
+    };
+
+    $cyEditor.editTitle = function (e) {
+
+      $(e.target).toggleClass('edit');
+
     };
 
     $cyEditor.onSubmit = function() {

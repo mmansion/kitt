@@ -28,6 +28,15 @@
   display: inline;
   color: #444444;
 }
+.widget-main .widget-top-panel .widget-title.editable {
+  background: #EEEEEE;
+  outline: none;
+  border: none;
+  font-size: 14px;
+}
+.widget-main .widget-top-panel .widget-title.edit {
+  background: white !important;
+}
 .widget-main .widget-top-panel .panel-left,
 .widget-main .widget-top-panel .panel-right {
   padding: .5em;

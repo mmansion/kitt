@@ -15,9 +15,10 @@ div(id='cy-editor' class='widget-main')
     div(class='panel-left uk-width-1-2')
 
       input(
-        class='widget-title editable' 
-        ng-click='editTitle($event)'
-        ng-disabled='false' 
+        class='widget-title editable'
+        ng-class="titleInputClass" 
+        ng-click='onTitleClick()'
+        ng-enter='onTitleEnter()'
         ng-model='title' 
         name='title'
         )

@@ -34,7 +34,7 @@
   border: none;
   font-size: 14px;
 }
-.widget-main .widget-top-panel .widget-title.edit {
+.widget-main .widget-top-panel .widget-title.active {
   background: white !important;
 }
 .widget-main .widget-top-panel .panel-left,

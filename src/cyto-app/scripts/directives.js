@@ -20,9 +20,28 @@ define(['angular', 'services', 'Cyto'], function(angular, services) {
            current: '=current'
         },
         templateUrl: 'myDirective.html',
-        controller: function($scope) {
+        controller: function(scope) {
           //controller for sub area.
         }
+      };
+    })
+
+
+    /*
+    This directive allows us to pass a function in on an enter key to do what we want.
+    */
+
+    .directive('ngEnter', function () {
+      return function (scope, element, attr) {
+        element.bind('keydown keypress', function (event) {
+          if(event.which === 13) {
+            scope.$apply(attr.ngEnter); 
+            // scope.$apply(function (event) {
+            //     scope.$eval(attr.ngEnter);
+            // });
+            event.preventDefault();
+          }
+        });
       };
     });
 

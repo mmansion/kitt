@@ -18,6 +18,8 @@ define([
     $cyEditor.title = 'New Sketch';
     $cyEditor.isInput1ReadOnly = true;
 
+    $cyEditor.titleInputClass = ''
+    $cyEditor.titleInputDisabled = true;
 
     $cyEditor.init = function() {
 
@@ -44,10 +46,12 @@ define([
       });
     };
 
-    $cyEditor.editTitle = function (e) {
+    $cyEditor.onTitleClick = function () {
+      $cyEditor.titleInputClass = 'active'
+    };
 
-      $(e.target).toggleClass('edit');
-
+    $cyEditor.onTitleEnter = function() {
+      $cyEditor.titleInputClass = '';
     };
 
     $cyEditor.onSubmit = function() {

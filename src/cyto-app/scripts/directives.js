@@ -26,7 +26,6 @@ define(['angular', 'services', 'Cyto'], function(angular, services) {
       };
     })
 
-
     /*
     This directive allows us to pass a function in on an enter key to do what we want.
     */
@@ -34,7 +33,16 @@ define(['angular', 'services', 'Cyto'], function(angular, services) {
     .directive('ngEnter', function () {
       return function (scope, element, attr) {
         element.bind('keydown keypress', function (event) {
+          
           if(event.which === 13) {
+
+            //clear selection
+            if(document.selection && typeof(document.selection.empty) == 'function') {
+              document.selection.empty();
+            } else {
+              window.getSelection().removeAllRanges();
+            }
+
             scope.$apply(attr.ngEnter); 
             // scope.$apply(function (event) {
             //     scope.$eval(attr.ngEnter);
@@ -44,6 +52,7 @@ define(['angular', 'services', 'Cyto'], function(angular, services) {
         });
       };
     });
+
 
 });
 

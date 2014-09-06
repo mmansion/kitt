@@ -2,7 +2,7 @@
 
 *The Cyto project borrows inspiration and open sourced properties from a host of popular projects. This page is an effort to both credit those projects and act as resource for others to discover them.*
 
-#### Influences and Credits
+#### Homages
 
 [Adobe Flash](http://www.adobe.com/products/flash.html), 
 [Ableton Live](https://www.ableton.com/), 

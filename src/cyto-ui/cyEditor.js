@@ -2,7 +2,7 @@ define([
 
   'jquery',
   'jqueryUi',
-  'cm/lib/codemirror', 
+  'cm/lib/codemirror',
   'cm/mode/javascript/javascript'
 
   ], function ($, jqueryUi, CodeMirror) {
@@ -27,7 +27,7 @@ define([
       $("#cy-editor").resizable({ 
         minWidth: 100,
         maxWidth: $(window).width() - 50,
-        handles: "n, e, s, w, se, sw, nw, ne" 
+        handles: "e, w" 
       });
 
       $cyEditor.codeArea   = document.getElementById('code');
@@ -42,7 +42,7 @@ define([
         tabSize          : 2,
         indentWithTabs   : false,
         lineNumbers      : true,
-        theme            : 'default'
+        theme            : 'cyto'
       });
     };
 

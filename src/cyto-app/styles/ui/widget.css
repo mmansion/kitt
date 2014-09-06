@@ -3,7 +3,7 @@
   position: absolute;
   top: 0;
   border: thin solid gray;
-  background-color: #012030;
+  background-color: #011722;
   min-width: 100px;
 }
 .widget-main .widget-resize-handle-left {
@@ -17,7 +17,6 @@
   z-index: 999;
 }
 .widget-main .widget-top-panel {
-  background: #EEEEEE;
   border-bottom: thin solid #EEE;
   width: 100%;
   margin: 0;
@@ -26,16 +25,16 @@
 .widget-main .widget-top-panel .widget-title {
   margin: 0;
   display: inline;
-  color: #444444;
+  color: #00ffff;
 }
 .widget-main .widget-top-panel .widget-title.editable {
-  background: #EEEEEE;
+  background: #011722;
   outline: none;
   border: none;
   font-size: 14px;
 }
 .widget-main .widget-top-panel .widget-title.active {
-  background: white !important;
+  background: #4480B2 !important;
 }
 .widget-main .widget-top-panel .panel-left,
 .widget-main .widget-top-panel .panel-right {
@@ -48,7 +47,7 @@
   cursor: pointer;
 }
 .widget-main .widget-content {
-  color: #666666;
+  color: #00ffff;
   padding: 1em;
 }
 /* Widget UI

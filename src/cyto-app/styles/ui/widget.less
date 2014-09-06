@@ -1,17 +1,15 @@
+@import '../includes/cyto-colors.less';
+
 /* main ui widget styles */
 
 //colors
-
-@base: #012030;
-@widget-text-primary: #666666;
-@widget-heading-primary: #444444;
 
 .widget-main {
 
   position: absolute;
   top: 0;
   border: thin solid gray;
-  background-color: @base;
+  background-color: @color-bg-dark;
   min-width: 100px;
 
   .widget-resize-handle-left {
@@ -26,7 +24,6 @@
   }
 
   .widget-top-panel {
-    background: #EEEEEE;
     border-bottom: thin solid #EEE;
     width: 100%;
     margin: 0;
@@ -35,15 +32,15 @@
     .widget-title {
       margin: 0;
       display: inline;
-      color: @widget-heading-primary;
+      color: @color-text;
       &.editable {
-        background: #EEEEEE;
+        background: @color-bg-dark;
         outline: none;
         border: none;
         font-size: 14px;
       }
       &.active {
-        background: white !important;
+        background: #4480B2 !important;
       }
     }
     .panel-left, .panel-right {
@@ -57,7 +54,7 @@
     }
   }
   .widget-content {
-    color: @widget-text-primary;
+    color: @color-text;
     padding: 1em; 
   }
 }

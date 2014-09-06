@@ -2,18 +2,19 @@
 body {
   background: #011722;
   font-weight: 300;
-  font-family: 'Telex', Arial, sans-serif;
-  font-size: 14px;
+  font-family: 'Muli', Arial, sans-serif;
+  font-size: 1rem;
   line-height: 28px;
+  color: #00ffff;
 }
 a {
-  text-decoration: none;
-  color: #f7f7f7;
+  text-decoration: underline;
+  color: #00ffff;
   outline: none;
 }
 a:hover,
 a:focus {
-  color: #fff;
+  color: #00ffff;
   outline: none;
 }
 /* cyto container */
@@ -35,42 +36,4 @@ a:focus {
   font-size: 50px;
   margin-left: .3em;
   display: none;
-}
-nav {
-  transition: all .5s;
-  -webkit-transition: all .5s;
-  -moz-transition: all .5s;
-  position: absolute;
-  text-transform: lowercase;
-  border-right: thin dashed rgba(255, 255, 255, 0.2);
-  padding-right: 1em;
-  z-index: 999;
-  width: 2em;
-  height: 100%;
-  left: 0;
-  font-size: smaller;
-  text-align: right;
-  background-color: rgba(0, 100, 200, 0.1);
-  overflow-x: hidden;
-  overflow-y: scroll;
-  white-space: nowrap;
-}
-nav:hover {
-  background: rgba(0, 100, 200, 0.2);
-  width: 10em;
-  cursor: pointer;
-}
-nav:hover > ul {
-  visibility: visible;
-}
-nav ul {
-  color: gray;
-  float: right;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  visibility: hidden;
-}
-nav h2 {
-  color: gray;
 }

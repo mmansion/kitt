@@ -27,19 +27,21 @@ define(['angular', 'app'], function(angular, app) {
 
           // main template placed here (relatively named)
 
-          ''  : { templateUrl: '/ui/main' },
+          ''  : { templateUrl: '/modules/dashboard' },
 
           // child views are defined here (absolutely named)
 
           'editor@ui'   : { 
-            templateUrl : '/ui/editor',
+            templateUrl : '/modules/editor',
             controller  :  'EditorCtrl'
           },
 
-          'timeline@ui' : { 
-            templateUrl : '/ui/timeline',
-            controller  : 'TimelineCtrl'
-          }
+          //TODO:
+          // 'timeline@ui' : { 
+          //   templateUrl : '/ui/timeline',
+          //   controller  : 'TimelineCtrl'
+          // }
+          
         }
       })
 

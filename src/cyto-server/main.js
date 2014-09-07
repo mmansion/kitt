@@ -38,7 +38,7 @@ var
 
 routers = {
   partials : require('./routes/partials').partials,
-  ui       : require('./routes/ui').ui
+  modules  : require('./routes/ui').modules
 },
 
 apis = {
@@ -106,7 +106,7 @@ module.exports = {
           //app.get('/partials/name', partials.name);
 
           app.get('/partials/:name', routers.partials);
-          app.get('/ui/:name', routers.ui);
+          app.get('/modules/:name', routers.modules);
 
           //API SETUP
           app.get('/api/v1/sketch/',       apis.sketch);

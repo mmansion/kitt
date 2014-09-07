@@ -21,17 +21,13 @@ router.use(function(req, res, next) {
    -------------------------------------------------- */
 
 router.get('/', function(req, res) {
-  res.render('index', {title: 'cyto'});
+  res.render('screens/index', {title: 'cyto'});
 });
 
 router.get('/login', function(req, res) {
-  res.render('login', {
+  res.render('screens/login', {
     title: 'login'
   });
-}); 
-
-router.get('/sketch', function(req, res) {
-  res.render('sketch', {title: 'cyto 001'});
 });
 
 /* Cyto UI
@@ -39,9 +35,7 @@ router.get('/sketch', function(req, res) {
 
 router.get('/ui/dock', function(req, res) {
   res.render('ui/dock');
-});  
-
-
+});
 
 /* Cyto Widgets
    -------------------------------------------------- */

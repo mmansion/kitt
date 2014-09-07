@@ -14,6 +14,8 @@ define(['angular', 'app'], function(angular, app) {
 
       $locationProvider.html5Mode(true);
       $urlRouterProvider.otherwise('/');
+
+      // multiple ui views
     
       $stateProvider
         
@@ -24,6 +26,7 @@ define(['angular', 'app'], function(angular, app) {
         views : {
 
           // main template placed here (relatively named)
+
           ''  : { templateUrl: '/ui/main' },
 
           // child views are defined here (absolutely named)
@@ -40,7 +43,7 @@ define(['angular', 'app'], function(angular, app) {
         }
       })
 
-      //SUBVIEW FORMAT (of ui)
+      // sub-view formats based on states
 
       // .state('ui.editor', {
       //   templateUrl: '/ui/editor',

@@ -67,8 +67,8 @@ module.exports = {
           app.set('port',  process.env.PORT || 3333);
 
           //setup the view directories
-          app.set('views',     path.join(root, 'views'));
-          app.locals.basedir = path.join(root, 'views');
+          app.set('views',     path.join(root, 'cyto-views'));
+          app.locals.basedir = path.join(root, 'cyto-views');
 
           //set view engine
           app.set('view engine', 'jade');

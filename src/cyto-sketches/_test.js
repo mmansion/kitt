@@ -147,10 +147,12 @@ var api = {
     save: function(req, res) {
       res.json({'message': 'saving sketch'});
 
-      fs.writeFile(sketchDir + '_test.js', req.body.sketch, function (err) {
-        if (err) throw err;
-        console.log('It\'s saved!');
-      });
+      console.log(req.body.sketch);
+
+      // fs.writeFile(sketchDir + '_test.js', req.body, function (err) {
+      //   if (err) throw err;
+      //   console.log('It\'s saved!');
+      // });
   
   
     }

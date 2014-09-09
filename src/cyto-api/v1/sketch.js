@@ -119,7 +119,7 @@ var api = {
 
       db.get('sketches', function(err, doc) {
 
-        //check if _design/users view exists
+        //check if _design/sketches view exists
         if(err && err.status_code == 404) {
 
           respData = {

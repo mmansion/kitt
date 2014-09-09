@@ -145,15 +145,38 @@ var api = {
   post: {
 
     save: function(req, res) {
+      var update = false;
+
       res.json({'message': 'saving sketch'});
 
-      fs.writeFile(sketchDir + '_test.js', req.body.sketch, function (err) {
-        if (err) throw err;
-        console.log('It\'s saved!');
-      });
-  
-  
-    }
+      db.get('sketches', function(err, doc) {
+        //check if _design/sketches view exists
+        if(err && err.status_code == 404) {
+          respData = {
+            status  : 500,
+            message : 'internal server error',
+            data    : {} 
+          };
+        } else {
+          for(var key in doc.sketches) {
+            if(doc.sketches[key].name === req.body.name) {
+              update = true;
+            }
+          }
+        }
+
+        if(!update) {
+          fs.writeFile(sketchDir + '_test.js', req.body.sketch, function (err) {
+            if (err) throw err;
+            console.log('It\'s saved!');
+          });
+        } else {
+          console.log("already exists, need to update file");
+          //TODO: update file
+        }
     
+        res.json(respData);
+      });  
+    }
   }
 }

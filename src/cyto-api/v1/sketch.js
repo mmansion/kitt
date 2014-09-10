@@ -81,6 +81,7 @@ var api = {
   get: {
 
     sketch: function(req, res) {
+
       console.log(req.params.name);
 
       db.view('sketches', 'by_name', {keys: [] }, function(err, body) {
@@ -147,16 +148,19 @@ var api = {
     save: function(req, res) {
       var update = false;
 
-      res.json({'message': 'saving sketch'});
+      //res.json({'message': 'saving sketch'});
 
       db.get('sketches', function(err, doc) {
+
         //check if _design/sketches view exists
         if(err && err.status_code == 404) {
-          respData = {
+          res.json({
             status  : 500,
             message : 'internal server error',
-            data    : {} 
-          };
+            data    : {},
+            error   : err 
+          });
+
         } else {
           for(var key in doc.sketches) {
             if(doc.sketches[key].name === req.body.name) {
@@ -165,17 +169,42 @@ var api = {
           }
         }
 
-        if(!update) {
-          fs.writeFile(sketchDir + '_test.js', req.body.sketch, function (err) {
-            if (err) throw err;
-            console.log('It\'s saved!');
-          });
-        } else {
-          console.log("already exists, need to update file");
-          //TODO: update file
+        if(update) {
+          //TODO: update the database meta info (consider keeping revisions??)
         }
-    
-        res.json(respData);
+
+        //essentially we don't need to do an update on the file. overwriting it is enough
+
+        fs.writeFile(sketchDir + '_test.js', req.body.code, function (err) {
+          if (err) throw err;
+          console.log('It\'s saved!');
+          res.json({
+            status  : 202,
+            message : 'success'
+          });
+        });
+
+        // if(!update) {
+        // } else {
+        //   fs.exists(fileName, function(exists) {
+        //     if (exists) {
+        //       fs.stat(fileName, function(error, stats) {
+        //         fs.open(fileName, "r", function(error, fd) {
+        //           var buffer = new Buffer(stats.size);
+           
+        //           fs.read(fd, buffer, 0, buffer.length, null, function(error, bytesRead, buffer) {
+        //             var data = buffer.toString("utf8", 0, buffer.length);
+           
+        //             console.log(data);
+        //             fs.close(fd);
+        //           });
+        //         });
+        //       });
+        //     }
+        //   });
+        //   console.log("already exists, need to update file");
+        //   //TODO: update file
+        // }
       });  
     }
   }

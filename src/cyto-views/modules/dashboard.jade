@@ -2,14 +2,16 @@ extends ./_template.jade
 
 block content
 
-  p Multiple Views
-  ul(class='menu')
-    li
-      a(ui-sref='.editor').
-        ui.editor
-    li
-      a(ui-sref='.timeline').
-        ui.timeline
+  //- example of ui-router linking
+  //- p Multiple Views
+
+  //- ul(class='menu')
+  //-   li
+  //-     a(ui-sref='.editor').
+  //-       ui.editor
+  //-   li
+  //-     a(ui-sref='.timeline').
+  //-       ui.timeline
 
   div(ui-view='editor')
   

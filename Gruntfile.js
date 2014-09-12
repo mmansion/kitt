@@ -1,13 +1,11 @@
 module.exports = function(grunt) {
 
-  var G = grunt;
-
-   /**
-    *
-    * GRUNT TASK CONFIGURATION
-    *
-    */
-   
+  /**
+  *
+  * GRUNT TASKS
+  *
+  */
+ 
   grunt.initConfig({
 
     pkg: grunt.file.readJSON('package.json'),
@@ -448,13 +446,13 @@ module.exports = function(grunt) {
 
   /*
    *
-   * GRUNT NEXUS
+   * GRUNT CYTO
    *
    *  - launches a given cyto number
    */
 
-  G.registerTask('cyto', 'launches a cyto', function(num) {
-    //G.task.run('exec:startServer'); //start server at localhost 9001
-    G.task.run('exec:loadCyto:' + (num || '001'));
+  grunt.registerTask('cyto', 'launches a cyto', function(num) {
+    //grunt.task.run('exec:startServer'); //start server at localhost 9001
+    grunt.task.run('exec:loadCyto:' + (num || '001'));
   });
 };

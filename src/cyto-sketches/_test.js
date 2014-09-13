@@ -1,1 +1,6 @@
-//javascript sketch code 2
+var myNewSketch = {
+  
+  prop: "value",
+  another: true,
+  something : 54
+};

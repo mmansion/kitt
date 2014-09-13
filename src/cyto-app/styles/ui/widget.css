@@ -25,7 +25,7 @@
 .widget-main .widget-top-panel .widget-title {
   margin: 0;
   display: inline;
-  color: #00ffff;
+  color: #f5f5f5;
 }
 .widget-main .widget-top-panel .widget-title.editable {
   background: #011722;
@@ -47,7 +47,7 @@
   cursor: pointer;
 }
 .widget-main .widget-content {
-  color: #00ffff;
+  color: #f5f5f5;
   padding: 1em;
 }
 /* Widget UI

@@ -163,7 +163,7 @@ var api = {
 
         } else {
           for(var key in doc.sketches) {
-            if(doc.sketches[key].name === req.body.name) {
+            if(doc.sketches[key].name === req.body.title) {
               update = true;
             }
           }
@@ -175,7 +175,7 @@ var api = {
 
         //essentially we don't need to do an update on the file. overwriting it is enough
 
-        fs.writeFile(sketchDir + '_test.js', req.body.code, function (err) {
+        fs.writeFile(sketchDir + '_test.js', req.body.sketch, function (err) {
           if (err) throw err;
           console.log('It\'s saved!');
           res.json({

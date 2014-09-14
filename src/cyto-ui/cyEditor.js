@@ -21,7 +21,10 @@ define([
     $cyEditor.titleInputClass = ''
     $cyEditor.titleInputDisabled = true;
 
+
     $cyEditor.init = function() {
+
+
 
       //make widget resizable
       $("#cy-editor").resizable({ 
@@ -44,6 +47,8 @@ define([
         lineNumbers      : true,
         theme            : 'cyto'
       });
+
+      $('#cy-editor').removeClass('show-onload');
     };
 
     $cyEditor.onTitleClick = function () {

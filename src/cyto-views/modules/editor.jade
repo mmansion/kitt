@@ -5,7 +5,7 @@ link(rel='stylesheet' href='styles/ui/cyEditor.css')
 
 // template
 
-div(id='cy-editor' class='widget-main')
+div(id='cy-editor' class='widget-main show-onload')
 
   div(class='widget-top-panel uk-grid uk-text-large')
 
@@ -13,7 +13,7 @@ div(id='cy-editor' class='widget-main')
 
       input(
         class='widget-title editable'
-        ng-class="titleInputClass" 
+        ng-class='titleInputClass'
         ng-click='onTitleClick()'
         ng-enter='onTitleEnter()'
         ng-model='title' 
@@ -21,7 +21,7 @@ div(id='cy-editor' class='widget-main')
         )
 
     div(class='panel-right uk-width-1-2')
-      div(id='save' class='uk-button' ng-click="onSubmit()")
+      div(id='save' class='uk-button' ng-click='onSubmit()')
         i(class='uk-icon-save uk-text-bold uk-text-right')
 
   div(class='widget-content')

@@ -1,5 +1,5 @@
 doctype html
-html(lang='en' ng-app='cytoApp')
+html(lang='en' ng-app='cytoApp' ng-cloak)
   
   head
 
@@ -12,6 +12,8 @@ html(lang='en' ng-app='cytoApp')
     include /includes/user-styles.jade
 
   body(class='uk-height-1-1')
+
+    div(id='veil')
 
     block content
 

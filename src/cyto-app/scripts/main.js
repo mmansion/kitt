@@ -56,6 +56,7 @@ if(document.title === 'login') {
 } else {
 
   require([
+
     'angular',
     'app',
     'routes'

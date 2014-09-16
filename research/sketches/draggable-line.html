@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>paperjs sketch</title>
+</head>
+<body>
+<canvas id="sketch" resize></canvas>
+<script type="text/javascript" src="../bower_components/paper/dist/paper.js"></script>
+<script type="text/paperscript" canvas="sketch" keepalive="false" resize="true">
+
+var points = 50;
+var segmentLength = 20;
+var numPaths = 50;
+
+var line = new Path({
+  strokeColor: 'red',
+  strokeWidth: 2,
+  strokeCap: 'round'
+});
+
+var hitOptions = {
+  segments: false,
+  stroke: false,
+  fill: true,
+  tolerance: 5
+};
+
+var nodes = [];
+
+var start = view.center / [10, 1];
+
+drawString();
+
+function drawString() {
+  for (var i = 0; i < points; i++) {
+    line.add(start + new Point(i * segmentLength, 0));
+  }
+
+  //draw the path nodes onto line
+  line.segments.forEach(function(e) {
+    var node = drawCirlce(new Point(e.point.x, e.point.y), 5, 5);
+    
+    nodes.push(node);
+  });
+}
+
+
+function drawCirlce(center, radius, points) {
+  var circle = new Path({
+    fillColor:'rgba(0,0,200,.3)',
+    strokeColor: 'black',
+    closed: true
+  });
+  
+  for (var i = 0; i < points; i++) {
+    var delta = new Point({
+      length: radius,
+      angle: (360 / points) * i
+    });
+    circle.add(center + delta);
+  }
+  circle.smooth();
+
+  return circle;
+}
+
+function onMouseDown(event) {
+  path = null;
+  var hitResult = project.hitTest(event.point, hitOptions);
+ 
+  if (hitResult) path = hitResult.item;
+}
+
+function onMouseUp(event) {
+  view.element.style.cursor = "default";
+  draggingLine = false;
+}
+
+function onMouseMove(event) {
+  var hitResult = project.hitTest(event.point, hitOptions);
+
+  if(hitResult) {
+    view.element.style.cursor = "pointer";
+  } else {
+    view.element.style.cursor = "default";
+  }
+}
+var done = false;
+
+var draggingLine = false;
+
+function onMouseDrag(event) {
+  if (path) {
+    if(!draggingLine) {
+      //get the segment of line from which to drag
+      line.segments.forEach(function(segment) {
+        if(event.point.isClose(segment.point,8)) {
+          dragSegment = segment;
+          draggingLine = true;
+        }
+      });
+    }
+
+    //console.log("start index = " + dragSegment.index);
+
+    dragSegment.point = event.point;
+    nodes[dragSegment.index].position = dragSegment.point;
+    
+    //loop down from currently selected node handle
+    for(var i = dragSegment.index; i > 0; i--) {
+      var segment = line.segments[i];
+      var prvSeg  = segment.previous;
+      var vector  = segment.point - prvSeg.point;
+
+      vector.length = segmentLength;
+      prvSeg.point = segment.point - vector;
+      
+      nodes[i-1].position = prvSeg.point;
+    }
+
+    for(var i = dragSegment.index; i < line.segments.length-1; i++) {
+      var segment = line.segments[i];
+      var nxtSeg  = segment.next;
+      var vector  = segment.point - nxtSeg.point;
+
+      vector.length = segmentLength;
+      nxtSeg.point = segment.point - vector;
+      nodes[i+1].position = nxtSeg.point;
+    }
+  }
+}
+
+//draw a circle
+
+var circle = new Path({
+    fillColor:'black',
+    strokeColor: 'black',
+    closed: true
+  });
+circle.add(100,100);
+circle.smooth();
+
+
+var path = drawCirlce;
+
+//multicolor test
+nodes.forEach(function(node) {
+  var r = Math.ceil(Math.random() * 255),
+      g = Math.ceil(Math.random() * 255),
+      b = Math.ceil(Math.random() * 255);
+
+  node.fillColor = 'rgba(' + r + ',' + g + ',' + b + ',1)';
+  //node.fillColor = 'white';
+
+});
+
+</script>
+</body>
+</html>

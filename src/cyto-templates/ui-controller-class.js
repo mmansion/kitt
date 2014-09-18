@@ -2,17 +2,19 @@ define(function () {
 
   var CyUiClassName = function($scope) {
 
-    /* the class controller's $scope initialization
-       -------------------------------------------------- */
+    var $cyUiClassName = $scope;
 
-    $scope.init = function() {
+    $cyUiClassName.init = function() {
 
- 
+      // ui init
     };
 
-    $scope.submit = function() {
-      
+    $cyUiClassName.onSomeEvent = function () {
+
+      // event handler
     };
+
+    return $cyUiClassName;
 
   };
 

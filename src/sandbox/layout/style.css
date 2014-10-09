@@ -7,12 +7,11 @@
 .panel-right {
   position: fixed;
   bottom: 0;
-  left: 100%;
-  margin-left: -200px;
-  width: 200px;
+  left: 0%;
+  width: 90%;
   overflow-x: hidden;
   height: 100%;
-  padding-left: 1rem;
+  padding-left: 0;
   background-color: purple;
 }
 .panel-right div {
@@ -22,10 +21,13 @@
 }
 .panel-right ._1 {
   background-color: orange;
+  z-index: 1;
 }
 .panel-right ._2 {
   background-color: lightgreen;
+  z-index: 2;
 }
 .panel-right ._3 {
   background-color: cyan;
+  z-index: 3;
 }

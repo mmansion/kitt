@@ -20,3 +20,4 @@
 [ROS](http://www.ros.org/), 
 [ThreeJS](http://threejs.org/), 
 [Max Software](http://cycling74.com/products/max/)
+[TimbreJS](http://mohayonao.github.io/timbre.js/)

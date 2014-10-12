@@ -133,7 +133,17 @@ module.exports = function(grunt) {
           dest: 'dist/styles'
           }
         ]
-      }
+      },
+      sandbox: {
+        files: [
+          {
+          expand: true, 
+          cwd: 'src/sandbox/sandbox-template/',
+          src: ['**'],
+          dest: 'src/sandbox/new-sandbox/'
+          }
+        ]
+      },
     },
 
     /**
@@ -366,6 +376,7 @@ module.exports = function(grunt) {
 
   //development and distribution tasks
   grunt.registerTask('default', ['exec:startServer']);
+  grunt.registerTask('sandbox', ['copy:sandbox']);
 
   //TESTING CONFIG
 

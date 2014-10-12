@@ -32,6 +32,7 @@
     "underscore": "~1.6.0",
     "angular-ui-router": "~0.2.10",
     "codemirror": "~4.4.0",
-    "timbre": "*"
+    "timbre": "*",
+    "subcollider.js": "https://github.com/mohayonao/subcollider.js.git"
   }
 }

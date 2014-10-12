@@ -7,14 +7,20 @@
   <link rel="stylesheet" type="text/css" href="/font-awesome/css/font-awesome.css">
   <link rel="stylesheet" type="text/css" href="/uikit/dist/css/uikit.min.css">
   <link rel="stylesheet" type="text/css" href="style.css">
-
+  
+  <style>
+  button::after       { content: "play"; }
+  button.pause::after { content: "pause"; }
+  </style>
 </head>
 <body>
 
-  Hello Sandbox Template
+  <button class='uk-button'></button>
   
   <script src='/jquery/jquery.js'></script>
   <script src='/jquery-ui/jquery-ui.js'></script>
+  <script src='/timbre/timbre.dev.js'></script>
+  <script src='/subcollider.js/builds/subcollider.js'></script>
   <script src='script.js'></script>
 </body>
 </html>

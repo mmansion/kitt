@@ -82,4 +82,3 @@ var freq = T("pulse", {freq:5, add:880, mul:20}).kr();
   doRandNoteInterval();
 
  }
- play();

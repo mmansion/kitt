@@ -89,11 +89,14 @@ module.exports = {
 
           //require(path.join(root, 'cyto-auth/passport'))(passport); // pass passport for configuration
 
-          //static routes
-          require('./routes/static')(root, app);
 
+          //the order of which middleware are "defined" is important. the are invoked sequentially
+          
           //default routes
           app.use('/', require('./routes/default'));
+
+          //static routes
+          require('./routes/static')(root, app);
 
           //api v1
           //app.use('/api', require('./routes/api/v1'));

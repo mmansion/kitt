@@ -140,7 +140,7 @@ module.exports = function(grunt) {
           expand: true, 
           cwd: 'src/sandbox/sandbox-template/',
           src: ['**'],
-          dest: 'src/sandbox/new-sandbox/'
+          dest: 'src/sandbox/<%= sandboxSketchTitle %>/'
           }
         ]
       },
@@ -376,7 +376,6 @@ module.exports = function(grunt) {
 
   //development and distribution tasks
   grunt.registerTask('default', ['exec:startServer']);
-  grunt.registerTask('sandbox', ['copy:sandbox']);
 
   //TESTING CONFIG
 
@@ -412,6 +411,21 @@ module.exports = function(grunt) {
     grunt.file.write('src/classes.json', JSON.stringify(classList, null, 2));
 
     grunt.task.run('exec:editClass:' + newClass);
+  });
+
+  /**
+   *
+   * GRUNT SANDBOX
+   *
+   * Generates a new sandbox project template
+   *
+   * @arg title {String} - The title of the sandbox sketch
+   * @cmd grunt sandbox 'sandbox-sketch-title'
+   */
+
+  grunt.registerTask('sandbox', 'Creates a new sandbox project', function(title) {
+    grunt.config.set('sandboxSketchTitle', title);
+    grunt.task.run('copy:sandbox');
   });
 
   /*

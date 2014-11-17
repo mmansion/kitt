@@ -74,9 +74,18 @@ $(function() {
    // maxWidth: MAX_WIDGET_PANEL_WIDTH,
     containment: 'parent',
     //alsoResize: '#w2',
-    handles: "e",
+    handles: "w",
     resize: resizeAll
   });
 
+
+  $(".widget-panel").resizable({ 
+    minWidth: MIN_WIDGET_PANEL_WIDTH,
+   // maxWidth: MAX_WIDGET_PANEL_WIDTH,
+    containment: 'parent',
+    //alsoResize: '#w2',
+    handles: "w",
+    resize: resizeAll
+  });
 
 });

@@ -10,7 +10,7 @@
 
 #### v ~ Pre-cambrian
 
-The creative genome
+a creative genome
 
 *STATUS: Experimental, Unstable, Breaks Often*
 

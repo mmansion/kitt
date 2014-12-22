@@ -33,6 +33,7 @@
     "angular-ui-router": "~0.2.10",
     "codemirror": "~4.4.0",
     "timbre": "*",
-    "subcollider.js": "https://github.com/mohayonao/subcollider.js.git"
+    "subcollider.js": "https://github.com/mohayonao/subcollider.js.git",
+    "jquery-resizable-columns": "~0.1.3"
   }
 }

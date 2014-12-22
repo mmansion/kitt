@@ -10,13 +10,13 @@
 
 #### v ~ Pre-cambrian
 
-The creative genome
+a creative genome
 
 *STATUS: Experimental, Unstable, Breaks Often*
 
 ---
 
-Cyto is DNA for building creative coding projects and networked-based performances. The project is a chimera of opensource libraries and tools, glued together into a platform for building Whisper Lab projects. The interests and influences behind the this effort come from many other remarkable projects. An an ongoing list of inspirations and credits are kept [here](CREDITS.md).
+Cyto is DNA for building creative coding projects and networked-based performances using primarily web-based tools. The project is a chimera of opensource libraries and tools, glued together into a platform for building Whisper Lab projects. The interests and influences behind the this effort come from many other remarkable projects. An an ongoing list of inspirations and credits are kept [here](CREDITS.md).
 
 
 ---

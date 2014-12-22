@@ -6,11 +6,14 @@
 
 .widget-main {
 
-  position: absolute;
-  top: 0;
+  position: fixed;
+  height: 100%;
+  overflow: hidden;
+  top: 0 !important;
   border: thin solid gray;
   background-color: @color-bg-dark;
   min-width: 100px;
+  padding: 0;
 
   .widget-resize-handle-left {
     position: absolute;
@@ -24,6 +27,7 @@
   }
 
   .widget-top-panel {
+    position: relative;
     border-bottom: thin solid #EEE;
     width: 100%;
     margin: 0;
@@ -33,6 +37,7 @@
       margin: 0;
       display: inline;
       color: @color-text;
+
       &.editable {
         background: @color-bg-dark;
         outline: none;
@@ -54,6 +59,10 @@
     }
   }
   .widget-content {
+    position: fixed; // req for proper scrolling
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
     color: @color-text;
     padding: 1em; 
   }

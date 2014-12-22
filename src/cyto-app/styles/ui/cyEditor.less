@@ -1,32 +1,26 @@
 @import '../includes/cyto-colors.less';
 
-.widget-main {
+//inherits from widget.less
+.widget-main { 
 
-  position: absolute;
-  width: 30%;
-  height: 100%;
-  left: 70%;
-  padding: 0 !important;
-  padding-left: 0 !important;
-  overflow-y: scroll;
-  overflow-x: hidden;
-
-  background-color: @color-bg-dark;
-  //pointer-events: none;
+  //todo: integrate resizable columns
+  width  : 30%;
+  left   : 70%;
 }
 
 .widget-content {
 
-  padding: 0 !important;
+  padding: 10px !important; //override
 
   .editor {
-    position: absolute;
-    height: 100%;
-    width: 100%;
+    position : relative;
+    height   : 100%;
+    width    : 100%;
     
     .CodeMirror {
       height: auto;
       pointer-events: auto !important;
+
     }
   }
 }
@@ -51,18 +45,53 @@ input {
   background: red;
 }
 
-.cm-s-cyto.CodeMirror { background: @color-bg-dark; color: white; }
-.cm-s-cyto div.CodeMirror-selected { background: #b36539 !important; }
-.cm-s-cyto .CodeMirror-gutters { background: @color-bg-dark; border-right: 1px solid #aaa; }
-.cm-s-cyto .CodeMirror-guttermarker { color: #ffee80; }
-.cm-s-cyto .CodeMirror-guttermarker-subtle { color: #d0d0d0; }
-.cm-s-cyto .CodeMirror-linenumber { color: #d0d0d0; }
-.cm-s-cyto .CodeMirror-cursor { border-left: 1px solid white !important; }
+/* Code Mirror Color Profile
+   -------------------------------------------------- */
 
-.cm-s-cyto span.cm-comment { color: #266C7F; }
-.cm-s-cyto span.cm-atom    { color: #a0ffff; }
-.cm-s-cyto span.cm-number, .cm-s-cyto span.cm-attribute { color: #ff80e1; }
-.cm-s-cyto span.cm-keyword { color: #eFe9C2; }
+// default text and background colors
+.cm-s-cyto.CodeMirror { 
+  background: @color-bg-dark; 
+  color: white; 
+}
+
+// highlighting text
+.cm-s-cyto div.CodeMirror-selected { 
+  background: #b36539 !important; 
+}
+
+.cm-s-cyto .CodeMirror-gutters { 
+  background: @color-bg-dark; border-right: 1px solid #aaa; 
+}
+
+.cm-s-cyto .CodeMirror-guttermarker { 
+  color: #ffee80; 
+}
+
+.cm-s-cyto .CodeMirror-guttermarker-subtle { 
+  color: #d0d0d0; 
+}
+
+.cm-s-cyto .CodeMirror-linenumber { 
+  color: #d0d0d0; 
+}
+
+.cm-s-cyto .CodeMirror-cursor { 
+  border-left: 1px solid white !important; 
+}
+
+.cm-s-cyto span.cm-comment { 
+  color: #266C7F; 
+}
+
+.cm-s-cyto span.cm-atom    { 
+  color: #a0ffff; 
+}
+
+.cm-s-cyto span.cm-number, .cm-s-cyto span.cm-attribute { 
+  color: #ff80e1; 
+  color: rgb(213, 96, 135);
+}
+.cm-s-cyto span.cm-keyword { color: rgb(212, 202, 92); }
 .cm-s-cyto span.cm-string  { color: #267F7F; }
 .cm-s-cyto span.cm-meta    { color: #ff9d00; }
 .cm-s-cyto span.cm-variable-2, .cm-s-cyto span.cm-tag { color: #aaffff; }

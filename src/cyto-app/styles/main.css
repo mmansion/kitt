@@ -33,6 +33,7 @@ a:focus {
 /* cyto container */
 .cyto {
   position: absolute;
+  overflow: hidden;
   width: 100%;
   height: 100%;
   z-index: -1;

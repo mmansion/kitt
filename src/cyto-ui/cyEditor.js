@@ -3,7 +3,8 @@ define([
   'jquery',
   'jqueryUi',
   'cm/lib/codemirror',
-  'cm/mode/javascript/javascript'
+  'cm/mode/javascript/javascript',
+  'cm/keymap/sublime' //sublime keymap
 
   ], function ($, jqueryUi, CodeMirror) {
 
@@ -24,8 +25,6 @@ define([
 
     $cyEditor.init = function() {
 
-
-
       //make widget resizable
       $("#cy-editor").resizable({ 
         minWidth: 100,
@@ -38,6 +37,7 @@ define([
 
       $cyEditor.codeMirror = CodeMirror.fromTextArea($cyEditor.codeArea, {
         mode             : 'javascript',
+        keymap           : 'sublime',
         styleActiveLine  : true,
         matchBrackets    : true,
         indentUnit       : 2,
@@ -47,6 +47,12 @@ define([
         lineNumbers      : true,
         theme            : 'cyto'
       });
+
+      //additional code mirror configurations
+
+      $cyEditor.codeMirror.addKeyMap(CodeMirror.keyMap.sublime);
+
+      CodeMirror.commands.save = $cyEditor.onSubmit;
 
       $('#cy-editor').removeClass('show-onload');
     };

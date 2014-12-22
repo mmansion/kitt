@@ -23,9 +23,9 @@ require.config({
     highlight       : '/highlightjs/highlight.pack',
     underscore      : '/underscore/underscore',
     uikit           : '/uikit/dist/js/uikit',
-    cm              : '/codemirror',  //code mirror folder path
+    cm              : '/codemirror',  // set code mirror dir path (inc lib in editor)
 
-    jquery          : '/jquery/jquery',
+    jquery          : '/jquery/dist/jquery',
     jqueryUi        : '/jquery-ui/jquery-ui',
 
     //CYTO LIBRARY

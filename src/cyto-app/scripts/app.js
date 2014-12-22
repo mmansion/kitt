@@ -24,7 +24,7 @@ define([
     controllers, 
     angularUiRouter) {
 
-    // declare app-level angular module, which has additional dependencies
+    // declare app-level angular module, which has some additional dependencies
 
     var app = angular.module('cytoApp', [
       'ui.router',

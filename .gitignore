@@ -31,6 +31,9 @@
 /node_modules
 **/node_modules
 
+# SANDBOX
+src/sandbox/_shared/libs/
+
 ########################
 # LOGS & SQL #
 ########################

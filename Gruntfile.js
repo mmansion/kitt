@@ -17,11 +17,20 @@ module.exports = function(grunt) {
     */
 
     bower: {
+
       dist: {
         dest:      'dist/',
         js_dest:   'dist/scripts/libs',
         css_dest:  'dist/styles'
-      }
+      },
+
+      sandbox: {
+        dest:      'src/sandbox/_shared/libs/',
+        js_dest:   'src/sandbox/_shared/libs/scripts',
+        css_dest:  'src/sandbox/_shared/libs/styles',
+        fonts_dest : 'src/sandbox/_shared/libs/fonts',
+      },
+
     },
 
     /**
@@ -375,6 +384,9 @@ module.exports = function(grunt) {
    */
 
   //development and distribution tasks
+  grunt.registerTask('build-sandbox', ['bower:sandbox']);
+
+  //build task
   grunt.registerTask('default', ['exec:startServer']);
 
   //TESTING CONFIG
@@ -384,6 +396,8 @@ module.exports = function(grunt) {
     var config = eval(configJS);
     console.log(config());
   });
+
+
 
   /*
    *
@@ -425,7 +439,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('sandbox', 'Creates a new sandbox project', function(title) {
     if(!title) {
-      console.log('Sandbox project requires a title');
+      console.log('sandbox task requires a title');
       return;
     }
     grunt.config.set('sandboxSketchTitle', title);

@@ -424,6 +424,10 @@ module.exports = function(grunt) {
    */
 
   grunt.registerTask('sandbox', 'Creates a new sandbox project', function(title) {
+    if(!title) {
+      console.log('Sandbox project requires a title');
+      return;
+    }
     grunt.config.set('sandboxSketchTitle', title);
     grunt.task.run('copy:sandbox');
   });
